@@ -23,8 +23,8 @@ class DatabaseSeeder extends Seeder
             FirstUserSeed::class,
             PermissionUserSeeder::class,
             PermissionsSeeder::class,
-            Municipalities::class,
-            Barangays::class,
+            // Municipalities::class,
+            // Barangays::class,
         ]);
 
         \App\Models\User::factory(100)->create();
