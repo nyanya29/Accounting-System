@@ -55,7 +55,7 @@
                 @csrf
                 <div class="mb-3">
                     <label class="text-normal text-dark form-label">Username</label>
-                    <input type="email" name="email" class="form-control">
+                    <input type="text" name="username" class="form-control">
                 </div>
                 <div class="mb-3">
                     <label class="text-normal text-dark form-label">Password</label>

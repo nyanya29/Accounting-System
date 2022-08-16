@@ -1312,6 +1312,14 @@ var map = {
 		"./resources/js/Pages/Jevh/Index.vue",
 		"resources_js_Pages_Jevh_Index_vue"
 	],
+	"./Jevh/Modal": [
+		"./resources/js/Pages/Jevh/Modal.vue",
+		"resources_js_Pages_Jevh_Modal_vue"
+	],
+	"./Jevh/Modal.vue": [
+		"./resources/js/Pages/Jevh/Modal.vue",
+		"resources_js_Pages_Jevh_Modal_vue"
+	],
 	"./Posts/Index": [
 		"./resources/js/Pages/Posts/Index.vue",
 		"resources_js_Pages_Posts_Index_vue"
