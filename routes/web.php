@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MunicipalityController;
 use App\Http\Controllers\BarangayController;
+use App\Http\Controllers\JevhController;
 use App\Http\Controllers\PermissionController;
 
 Auth::routes();
@@ -51,4 +52,10 @@ Route::middleware('auth')->group(function() {
     Route::post('get-all-permissions', [PermissionController::class, 'getAllPermissions']);
     Route::post('update-user-permissions', [PermissionController::class, 'updateUserPermissions']);
     
+    //jevh
+    Route::prefix('/jevh')->group(function(){
+        Route::get('/index', [JevhController::class, 'index']);
+        Route::get('/create', [JevhController::class, 'create']);
+        Route::get('getFactCode', [JevhController::class, 'getFactCode']);
+    });
 });

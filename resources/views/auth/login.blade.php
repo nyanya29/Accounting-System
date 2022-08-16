@@ -23,7 +23,7 @@
                     </div>
                 </div>
                 <div class="row" style="color:white">
-                    <h3>YOUR INFORMATION SYSTEM NAME</h3>
+                    <h3>Accounting System</h3>
                 </div>
             </div>
         </div>
@@ -31,7 +31,7 @@
             <div class="row text-center" id="mobile-logo">
                 <div class="col-offset-5 mb-1">
                     <img class="img-fluid" src="images/logo.png" alt="">
-                    <h3>YOUR INFORMATION SYSTEM NAME</h3>
+                    <h3>Accounting System</h3>
                 </div>
             </div>
             <h4 class="fw-300 c-grey-900 mB-10">Login</h4>
