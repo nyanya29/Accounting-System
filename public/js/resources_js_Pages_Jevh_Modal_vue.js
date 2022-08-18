@@ -121,12 +121,60 @@ var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 );
 
 var _hoisted_6 = {
-  "class": "modal-body"
+  "class": "modal-body gap-10"
 };
 
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"accordion\" id=\"accordionExample\"><div class=\"accordion-item\"><h2 class=\"accordion-header\" id=\"headingOne\"><button class=\"accordion-button\" type=\"button\" data-bs-toggle=\"collapse\" data-bs-target=\"#collapseOne\" aria-expanded=\"true\" aria-controls=\"collapseOne\"> Accordion Item #1 </button></h2><div id=\"collapseOne\" class=\"accordion-collapse collapse show\" aria-labelledby=\"headingOne\" data-bs-parent=\"#accordionExample\"><div class=\"accordion-body\"><strong>This is the first item&#39;s accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It&#39;s also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow. </div></div></div></div><div class=\"col-12\"><div class=\"bgc-white p-20 bd table-responsive\"><table class=\"table table-hover\"><thead><tr><th scope=\"col\">ActCode Title</th><th scope=\"col\">ActCode</th><th scope=\"col\">SubCode Title</th><th scope=\"col\">SubCode</th><th scope=\"col\">SubCode2 Title</th><th scope=\"col\">RespCtr</th><th scope=\"col\">Voucher</th><th scope=\"col\">OBR#</th><th scope=\"col\">PR#</th><th scope=\"col\">Debit</th><th scope=\"col\">Credit</th><th scope=\"col\">Remarks</th><!-- &lt;th scope=&quot;col&quot; style=&quot;width: 30%&quot;&gt;&lt;/th&gt;\r\n                            &lt;th scope=&quot;col&quot; style=&quot;text-align: right&quot;&gt;Action&lt;/th&gt; --></tr></thead><tbody><tr><td></td></tr></tbody></table><div class=\"row justify-content-center\"><div class=\"col-md-12\"><!-- read the explanation in the Paginate.vue component --><!-- &lt;pagination :links=&quot;users.links&quot; /&gt; --><!-- &lt;pagination :next=&quot;users.next_page_url&quot; :prev=&quot;users.prev_page_url&quot; /&gt; --></div></div></div></div>", 2);
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"card card text-dark bg-light\"><div class=\"card-body\"><div class=\"col-12 gap-5\"><div class=\"row\"><div class=\"col-sm-3\"><div class=\"row\"><div class=\"col-sm-4\"><label class=\"col-form-label\" for=\"colFormLabelSm\" style=\"text-align:right;\"><b>Jev Type:</b></label></div><div class=\"col-sm-8\"><p class=\"col-form-label\"><u><b>test</b></u></p></div></div></div><div class=\"col-sm-3\"><div class=\"row\"><div class=\"col-sm-4\"><label class=\"col-form-label\" for=\"colFormLabelSm\" style=\"text-align:right;\"><b>FUND:</b></label></div><div class=\"col-sm-8\"><p class=\"col-form-label\"><u><b>test</b></u></p></div></div></div><div class=\"col-sm-3\"><div class=\"row\"><div class=\"col-sm-4\"><label class=\"col-form-label\" for=\"colFormLabelSm\" style=\"text-align:right;\"><b>JEV No.:</b></label></div><div class=\"col-sm-8\"><p class=\"col-form-label\"><u><b>test</b></u></p></div></div></div><div class=\"col-sm-3\"><div class=\"row\"><div class=\"col-sm-4\"><label class=\"col-form-label\" for=\"colFormLabelSm\" style=\"text-align:right;\"><b>JEV Date:</b></label></div><div class=\"col-sm-8\"><p class=\"col-form-label\"><u><b>test</b></u></p></div></div></div></div><div class=\"col-9\"><div class=\"row\"><div class=\"col-sm-3\"><div class=\"row\"><div class=\"col-sm-4\"><label class=\"col-form-label\" for=\"colFormLabelSm\" style=\"text-align:right;\"><b>Check#:</b></label></div><div class=\"col-sm-8\"><p class=\"col-form-label\"><u><b>test</b></u></p></div></div></div><div class=\"col-sm-3\"><div class=\"row\"><div class=\"col-sm-4\"><label class=\"col-form-label\" for=\"colFormLabelSm\" style=\"text-align:right;\"><b>Ref No.:</b></label></div><div class=\"col-sm-8\"><p class=\"col-form-label\"><u><b>test</b></u></p></div></div></div><div class=\"col-sm-3\"><div class=\"row\"><div class=\"col-sm-4\"><label class=\"col-form-label\" for=\"colFormLabelSm\" style=\"text-align:right;\"><b>Payee:</b></label></div><div class=\"col-sm-8\"><p class=\"col-form-label\"><u><b>test</b></u></p></div></div></div></div></div><!-- &lt;div class=&quot;col-3&quot;&gt;\r\n                                &lt;div class=&quot;col-sm-3&quot;&gt;\r\n                                    &lt;div class=&quot;row&quot;&gt;\r\n                                        &lt;div class=&quot;col-sm-4&quot;&gt;\r\n                                            &lt;label class=&quot;col-form-label&quot; for=&quot;colFormLabelSm&quot; style=&quot;text-align:right&quot;&gt;&lt;b&gt;Description:&lt;/b&gt;&lt;/label&gt;\r\n                                        &lt;/div&gt;\r\n                                        &lt;div class=&quot;col-sm-8&quot;&gt;\r\n                                            &lt;p class=&quot;col-form-label&quot;&gt;&lt;u&gt;&lt;b&gt;test&lt;/b&gt;&lt;/u&gt;&lt;/p&gt;\r\n                                        &lt;/div&gt;\r\n                                    &lt;/div&gt; \r\n                                &lt;/div&gt;\r\n                            &lt;/div&gt; --></div></div></div>", 1);
 
+var _hoisted_8 = {
+  "class": "col-12"
+};
 var _hoisted_9 = {
+  "class": "bgc-white p-20 bd table-responsive"
+};
+var _hoisted_10 = {
+  "class": "table table-hover"
+};
+
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
+  scope: "col"
+}, "ActCode Title"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
+  scope: "col"
+}, "ActCode"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
+  scope: "col"
+}, "SubCode Title"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
+  scope: "col"
+}, "SubCode"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
+  scope: "col"
+}, "SubCode2 Title"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
+  scope: "col"
+}, "SubCode2"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
+  scope: "col"
+}, "RespCtr"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
+  scope: "col"
+}, "Voucher"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
+  scope: "col"
+}, "OBR#"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
+  scope: "col"
+}, "PR#"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
+  scope: "col"
+}, "Debit"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
+  scope: "col"
+}, "Credit"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
+  scope: "col"
+}, "Remarks"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <th scope=\"col\" style=\"width: 30%\"></th>\r\n                                    <th scope=\"col\" style=\"text-align: right\">Action</th> ")])], -1
+/* HOISTED */
+);
+
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "row justify-content-center"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "col-md-12"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" read the explanation in the Paginate.vue component "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <pagination :links=\"users.links\" /> "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <pagination :next=\"users.next_page_url\" :prev=\"users.prev_page_url\" /> ")])], -1
+/* HOISTED */
+);
+
+var _hoisted_13 = {
   "class": "modal-footer"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -138,7 +186,39 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[0] || (_cache[0] = function ($event) {
       return $options.close_modal();
     })
-  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"card card text-dark bg-light\">\r\n          <div class=\"card-body\">\r\n            <div class=\"col-12\">\r\n              \r\n            </div>\r\n          </div>\r\n        </div> "), _hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [_hoisted_7, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_10, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.jevDdata, function (item) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", {
+      key: item.index
+    }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.fiscalyear), 1
+    /* TEXT */
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.FACTCODE), 1
+    /* TEXT */
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.FSTITLE), 1
+    /* TEXT */
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.FSUBCDE), 1
+    /* TEXT */
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.FSTITLE2), 1
+    /* TEXT */
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.FSUBCDE2), 1
+    /* TEXT */
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.FRESPCTR), 1
+    /* TEXT */
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.FVOUCHNO), 1
+    /* TEXT */
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.FALOBNO), 1
+    /* TEXT */
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.FPRNO), 1
+    /* TEXT */
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.jevdDebit), 1
+    /* TEXT */
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.jevdCredit), 1
+    /* TEXT */
+    ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(item.FREMARKS), 1
+    /* TEXT */
+    )]);
+  }), 128
+  /* KEYED_FRAGMENT */
+  ))])]), _hoisted_12])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "button",
     "class": "btn btn-secondary",
     "data-bs-dismiss": "modal",

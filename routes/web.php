@@ -54,6 +54,7 @@ Route::middleware('auth')->group(function() {
     //jevh
     Route::prefix('/jevh')->group(function(){
         Route::get('/index', [JevhController::class, 'index']);
+        Route::post('/get-fund-details', [JevhController::class, 'getFundDetails']);
     });
     //jevd
     Route::prefix('/jevd')->group(function(){

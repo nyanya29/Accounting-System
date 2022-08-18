@@ -17,8 +17,26 @@
         </div>
 
         <filtering v-if="filter" @closeFilter="filter=false">
-            <label>Sample Inputs</label>
+            <label>Fund</label>
+            <Select2 v-model="fundscode" :options="fund" id="fund"/>
+            <h4>{{ fund.FUNDDETAIL_NAME }}</h4>
+            <label>JEV Type</label>
+            <Select2/>
+            <h4></h4>
+            <label>JEV No.</label>
             <input type="text" class="form-control">
+            <label>Check No.</label>
+            <input type="text" class="form-control">
+            <label>Ref No.</label>
+            <input type="text" class="form-control">
+            <label>Payee No.</label>
+            <input type="text" class="form-control">
+            <label>From.</label>
+            <input type="date" class="form-control">
+            <label>To.</label>
+            <input type="date" class="form-control">
+            <div class="div"></div>
+            <button class="btn btn-sm btn-primary mT-5 text-white">Filter</button>
             <button class="btn btn-sm btn-primary mT-5 text-white">Filter</button>
         </filtering>
  
@@ -99,9 +117,12 @@ export default {
             confirm: false,
             filter: false,
             showModal: false,
-            jData: {}
+            jData: {},
+            fund:[],
+            fundscode:""
         };
     },
+
     watch: {
         search: _.debounce(function (value) {
             this.$inertia.get(
@@ -115,6 +136,11 @@ export default {
             );
         }, 300),
     },
+
+    mounted() {
+        this.getFunds();
+    },
+
     methods: {
         showFilter() {
             this.filter = !this.filter
@@ -126,6 +152,16 @@ export default {
         closeModal(){
         this.showModal = false
         },
+        getFunds(){
+            axios.post('/jevh/get-fund-details').then(response => {
+                this.fund = _.map(response.data, (obj) => {
+                    return {
+                        id: obj.FUND_SCODE,
+                        text: obj.FUNDDETAIL_NAME,
+                    }
+                })
+            })
+        }
     },
 };
 </script>
