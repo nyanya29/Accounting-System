@@ -21,7 +21,7 @@
             <Select2 v-model="fundscode" :options="fund" id="fund"/>
             <h4>{{ fund.FUNDDETAIL_NAME }}</h4>
             <label>JEV Type</label>
-            <Select2/>
+            <Select2 v-model="jType" :options="jevtype" id="jevtype"/>
             <h4></h4>
             <label>JEV No.</label>
             <input type="text" class="form-control">
@@ -119,7 +119,15 @@ export default {
             showModal: false,
             jData: {},
             fund:[],
-            fundscode:""
+            fundscode:"",
+               jevtype:[
+                {value:1, name:"Collection"},
+                {value:2, name:"Check Disbursement"},
+                {value:3, name:"Cash Disbursement"},
+                {value:4, name:"General"},
+                {value:5, name:"ADA"},
+                {value:6, name:"Procurement"},
+            ],
         };
     },
 

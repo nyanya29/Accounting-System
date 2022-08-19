@@ -35,7 +35,26 @@ __webpack_require__.r(__webpack_exports__);
       showModal: false,
       jData: {},
       fund: [],
-      fundscode: ""
+      fundscode: "",
+      jevtype: [{
+        value: 1,
+        name: "Collection"
+      }, {
+        value: 2,
+        name: "Check Disbursement"
+      }, {
+        value: 3,
+        name: "Cash Disbursement"
+      }, {
+        value: 4,
+        name: "General"
+      }, {
+        value: 5,
+        name: "ADA"
+      }, {
+        value: 6,
+        name: "Procurement"
+      }]
     };
   },
   watch: {
@@ -433,7 +452,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     })
   }, "Filter")])])]), $data.filter ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_filtering, {
     key: 0,
-    onCloseFilter: _cache[3] || (_cache[3] = function ($event) {
+    onCloseFilter: _cache[4] || (_cache[4] = function ($event) {
       return $data.filter = false;
     })
   }, {
@@ -449,7 +468,16 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       /* PROPS */
       , ["modelValue", "options"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h4", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.fund.FUNDDETAIL_NAME), 1
       /* TEXT */
-      ), _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Select2), _hoisted_10, _hoisted_11, _hoisted_12, _hoisted_13, _hoisted_14, _hoisted_15, _hoisted_16, _hoisted_17, _hoisted_18, _hoisted_19, _hoisted_20, _hoisted_21, _hoisted_22, _hoisted_23, _hoisted_24, _hoisted_25];
+      ), _hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Select2, {
+        modelValue: _ctx.jType,
+        "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+          return _ctx.jType = $event;
+        }),
+        options: $data.jevtype,
+        id: "jevtype"
+      }, null, 8
+      /* PROPS */
+      , ["modelValue", "options"]), _hoisted_10, _hoisted_11, _hoisted_12, _hoisted_13, _hoisted_14, _hoisted_15, _hoisted_16, _hoisted_17, _hoisted_18, _hoisted_19, _hoisted_20, _hoisted_21, _hoisted_22, _hoisted_23, _hoisted_24, _hoisted_25];
     }),
     _: 1
     /* STABLE */
@@ -489,7 +517,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   , ["next", "prev"])])])])]), $data.showModal ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_jevd_modal, {
     key: 1,
     jevdDetails: $data.jData,
-    onClose: _cache[4] || (_cache[4] = function ($event) {
+    onClose: _cache[5] || (_cache[5] = function ($event) {
       return $options.closeModal();
     })
   }, null, 8
