@@ -15,8 +15,11 @@ class JevhController extends Controller
         $this->funds = $funds;
     }
     public function index(Request $request){
+
+        $index = $this->getFilter($request);
+
         return inertia('Jevh/Index', [
-            "jevh" => $this->model
+            "jevh" => $index
             ->when($request->search, function ($query, $searchItem) {
                 $query->where('FJEVNO', 'like', '%' . $searchItem . '%');
             })
@@ -28,9 +31,33 @@ class JevhController extends Controller
     public function getFundDetails()
     {
         return $this->funds->select(DB::raw('TRIM(FUND_SCODE) as FUND_SCODE'), 'FUNDDETAIL_NAME')->get();
-        // return $this->funds->through(fn($funds) => [
-        //     'FUND_SCODE' => $funds->FUND_SCODE,
-        //     'FUNDDETAIL_NAME' => $funds->FUNDDETAIL_NAME
-        // ]);
+    }
+    public function getFilter($request)
+    {
+        $index = $this->model;
+
+        if ($request->fundscode) {
+            $index = $index->where('FUND_SCODE', 'like', '%' . $request->fundscode . '%');
+        }
+        if ($request->jType) {
+            $index = $index->where('FJEVTYP', 'like', '%' . $request->jType . '%');
+        }
+        if ($request->FJEVNO) {
+            $index = $index->where('FJEVNO', 'like', '%' . $request->FJEVNO . '%');
+        }
+        if ($request->FCHKNO) {
+            $index = $index->where('FCHKNO', 'like', '%' . $request->FCHKNO . '%');
+        }
+        if ($request->FREFNO) {
+            $index = $index->where('FREFNO', 'like', '%' . $request->FREFNO . '%');
+        }
+        if ($request->FPAYEE) {
+            $index = $index->where('FCHKNO', 'like', '%' . $request->FPAYEE . '%');
+        }
+        if ($request->FCHKNO) {
+            $index = $index->where('FCHKNO', 'like', '%' . $request->FCHKNO . '%');
+        }
+
+        return $index;
     }
 }

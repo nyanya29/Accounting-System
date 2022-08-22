@@ -124,7 +124,7 @@ var _hoisted_6 = {
   "class": "modal-body gap-10"
 };
 
-var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"card card text-dark bg-light\"><div class=\"card-body\"><div class=\"col-12 gap-5\"><div class=\"row\"><div class=\"col-sm-3\"><div class=\"row\"><div class=\"col-sm-4\"><label class=\"col-form-label\" for=\"colFormLabelSm\" style=\"text-align:right;\"><b>Jev Type:</b></label></div><div class=\"col-sm-8\"><p class=\"col-form-label\"><u><b>test</b></u></p></div></div></div><div class=\"col-sm-3\"><div class=\"row\"><div class=\"col-sm-4\"><label class=\"col-form-label\" for=\"colFormLabelSm\" style=\"text-align:right;\"><b>FUND:</b></label></div><div class=\"col-sm-8\"><p class=\"col-form-label\"><u><b>test</b></u></p></div></div></div><div class=\"col-sm-3\"><div class=\"row\"><div class=\"col-sm-4\"><label class=\"col-form-label\" for=\"colFormLabelSm\" style=\"text-align:right;\"><b>JEV No.:</b></label></div><div class=\"col-sm-8\"><p class=\"col-form-label\"><u><b>test</b></u></p></div></div></div><div class=\"col-sm-3\"><div class=\"row\"><div class=\"col-sm-4\"><label class=\"col-form-label\" for=\"colFormLabelSm\" style=\"text-align:right;\"><b>JEV Date:</b></label></div><div class=\"col-sm-8\"><p class=\"col-form-label\"><u><b>test</b></u></p></div></div></div></div><div class=\"col-9\"><div class=\"row\"><div class=\"col-sm-3\"><div class=\"row\"><div class=\"col-sm-4\"><label class=\"col-form-label\" for=\"colFormLabelSm\" style=\"text-align:right;\"><b>Check#:</b></label></div><div class=\"col-sm-8\"><p class=\"col-form-label\"><u><b>test</b></u></p></div></div></div><div class=\"col-sm-3\"><div class=\"row\"><div class=\"col-sm-4\"><label class=\"col-form-label\" for=\"colFormLabelSm\" style=\"text-align:right;\"><b>Ref No.:</b></label></div><div class=\"col-sm-8\"><p class=\"col-form-label\"><u><b>test</b></u></p></div></div></div><div class=\"col-sm-3\"><div class=\"row\"><div class=\"col-sm-4\"><label class=\"col-form-label\" for=\"colFormLabelSm\" style=\"text-align:right;\"><b>Payee:</b></label></div><div class=\"col-sm-8\"><p class=\"col-form-label\"><u><b>test</b></u></p></div></div></div></div></div><!-- &lt;div class=&quot;col-3&quot;&gt;\r\n                                &lt;div class=&quot;col-sm-3&quot;&gt;\r\n                                    &lt;div class=&quot;row&quot;&gt;\r\n                                        &lt;div class=&quot;col-sm-4&quot;&gt;\r\n                                            &lt;label class=&quot;col-form-label&quot; for=&quot;colFormLabelSm&quot; style=&quot;text-align:right&quot;&gt;&lt;b&gt;Description:&lt;/b&gt;&lt;/label&gt;\r\n                                        &lt;/div&gt;\r\n                                        &lt;div class=&quot;col-sm-8&quot;&gt;\r\n                                            &lt;p class=&quot;col-form-label&quot;&gt;&lt;u&gt;&lt;b&gt;test&lt;/b&gt;&lt;/u&gt;&lt;/p&gt;\r\n                                        &lt;/div&gt;\r\n                                    &lt;/div&gt; \r\n                                &lt;/div&gt;\r\n                            &lt;/div&gt; --></div></div></div>", 1);
+var _hoisted_7 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"card card text-dark bg-light\"><div class=\"card-body\"><div class=\"col-12 gap-5\"><div class=\"row\"><div class=\"col-sm-3\"><div class=\"row\"><div class=\"col-sm-4\"><label class=\"col-form-label\" for=\"colFormLabelSm\" style=\"text-align:right;\"><b>Jev Type:</b></label></div><div class=\"col-sm-8\"><p class=\"col-form-label\"><u><b>test</b></u></p></div></div></div><div class=\"col-sm-3\"><div class=\"row\"><div class=\"col-sm-4\"><label class=\"col-form-label\" for=\"colFormLabelSm\" style=\"text-align:right;\"><b>FUND:</b></label></div><div class=\"col-sm-8\"><p class=\"col-form-label\"><u><b>test</b></u></p></div></div></div><div class=\"col-sm-3\"><div class=\"row\"><div class=\"col-sm-4\"><label class=\"col-form-label\" for=\"colFormLabelSm\" style=\"text-align:right;\"><b>JEV No.:</b></label></div><div class=\"col-sm-8\"><p class=\"col-form-label\"><u><b>test</b></u></p></div></div></div><div class=\"col-sm-3\"><div class=\"row\"><div class=\"col-sm-4\"><label class=\"col-form-label\" for=\"colFormLabelSm\" style=\"text-align:right;\"><b>JEV Date:</b></label></div><div class=\"col-sm-8\"><p class=\"col-form-label\"><u><b>test</b></u></p></div></div></div></div><div class=\"row\"><div class=\"col-9\"><div class=\"row\"><div class=\"col-sm-4\"><div class=\"row\"><div class=\"col-sm-4\"><label class=\"col-form-label\" for=\"colFormLabelSm\" style=\"text-align:right;\"><b>Check#:</b></label></div><div class=\"col-sm-8\"><p class=\"col-form-label\"><u><b>test</b></u></p></div></div></div><div class=\"col-sm-4\"><div class=\"row\"><div class=\"col-sm-4\"><label class=\"col-form-label\" for=\"colFormLabelSm\" style=\"text-align:right;\"><b>Ref No.:</b></label></div><div class=\"col-sm-8\"><p class=\"col-form-label\"><u><b>test</b></u></p></div></div></div><div class=\"col-sm-4\"><div class=\"row\"><div class=\"col-sm-4\"><label class=\"col-form-label\" for=\"colFormLabelSm\" style=\"text-align:right;\"><b>Payee:</b></label></div><div class=\"col-sm-8\"><p class=\"col-form-label\"><u><b>test</b></u></p></div></div></div><div class=\"col-sm-4\"><div class=\"row\"><div class=\"col-sm-4\"><label class=\"col-form-label\" for=\"colFormLabelSm\" style=\"text-align:right;\"><b>Check#:</b></label></div><div class=\"col-sm-8\"><p class=\"col-form-label\"><u><b>test</b></u></p></div></div></div><div class=\"col-sm-4\"><div class=\"row\"><div class=\"col-sm-4\"><label class=\"col-form-label\" for=\"colFormLabelSm\" style=\"text-align:right;\"><b>Ref No.:</b></label></div><div class=\"col-sm-8\"><p class=\"col-form-label\"><u><b>test</b></u></p></div></div></div><div class=\"col-sm-4\"><div class=\"row\"><div class=\"col-sm-4\"><label class=\"col-form-label\" for=\"colFormLabelSm\" style=\"text-align:right;\"><b>Payee:</b></label></div><div class=\"col-sm-8\"><p class=\"col-form-label\"><u><b>test</b></u></p></div></div></div></div></div><div class=\"col-3\"><div class=\"row\"><div class=\"col-sm-12\"><textarea class=\"col-form-label form-control\" for=\"colFormLabelSm\" rows=\"3\" readonly></textarea></div></div></div></div></div></div></div>", 1);
 
 var _hoisted_8 = {
   "class": "col-12"
@@ -166,7 +166,19 @@ var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <td colspan=\"9\"></td> "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
+  scope: "row 9"
+}, "Total"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+  colspan: "9"
+}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+  "class": "table-active"
+}, "teest"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+  "class": "table-active"
+}, "test")], -1
+/* HOISTED */
+);
+
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "row justify-content-center"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "col-md-12"
@@ -174,7 +186,7 @@ var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_13 = {
+var _hoisted_14 = {
   "class": "modal-footer"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -218,7 +230,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     )]);
   }), 128
   /* KEYED_FRAGMENT */
-  ))])]), _hoisted_12])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  )), _hoisted_12])]), _hoisted_13])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     type: "button",
     "class": "btn btn-secondary",
     "data-bs-dismiss": "modal",

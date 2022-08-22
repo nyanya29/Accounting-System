@@ -54,52 +54,82 @@
                                 </div>
                             </div>
 
-                            <div class="col-9">
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <div class="row">
-                                            <div class="col-sm-4">
-                                                <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>Check#:</b></label>
-                                            </div>
-                                            <div class="col-sm-8">
-                                                <p class="col-form-label"><u><b>test</b></u></p>
-                                            </div>
-                                        </div> 
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <div class="row">
-                                            <div class="col-sm-4">
-                                                <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>Ref No.:</b></label>
-                                            </div>
-                                            <div class="col-sm-8">
-                                                <p class="col-form-label"><u><b>test</b></u></p>
-                                            </div>
-                                        </div> 
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <div class="row">
-                                            <div class="col-sm-4">
-                                                <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>Payee:</b></label>
-                                            </div>
-                                            <div class="col-sm-8">
-                                                <p class="col-form-label"><u><b>test</b></u></p>
-                                            </div>
-                                        </div> 
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- <div class="col-3">
-                                <div class="col-sm-3">
+                            <div class="row">
+
+                                <div class="col-9">
                                     <div class="row">
                                         <div class="col-sm-4">
-                                            <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>Description:</b></label>
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>Check#:</b></label>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <p class="col-form-label"><u><b>test</b></u></p>
+                                                </div>
+                                            </div> 
                                         </div>
-                                        <div class="col-sm-8">
-                                            <p class="col-form-label"><u><b>test</b></u></p>
+                                        <div class="col-sm-4">
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>Ref No.:</b></label>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <p class="col-form-label"><u><b>test</b></u></p>
+                                                </div>
+                                            </div> 
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>Payee:</b></label>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <p class="col-form-label"><u><b>test</b></u></p>
+                                                </div>
+                                            </div> 
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>Check#:</b></label>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <p class="col-form-label"><u><b>test</b></u></p>
+                                                </div>
+                                            </div> 
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>Ref No.:</b></label>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <p class="col-form-label"><u><b>test</b></u></p>
+                                                </div>
+                                            </div> 
+                                        </div>
+                                        <div class="col-sm-4">
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>Payee:</b></label>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <p class="col-form-label"><u><b>test</b></u></p>
+                                                </div>
+                                            </div> 
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-3">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <textarea class="col-form-label form-control" for="colFormLabelSm" rows="3" readonly></textarea>
                                         </div>
                                     </div> 
-                                </div>
-                            </div> -->
+                                </div> 
+                                
+                            </div>
 
                         </div>
                     </div>
@@ -126,6 +156,7 @@
                                     <!-- <th scope="col" style="width: 30%"></th>
                                     <th scope="col" style="text-align: right">Action</th> -->
                                 </tr>
+                                 
                             </thead>
                             <tbody>
                                 <tr v-for="item in jevDdata" :key="item.index">
@@ -142,6 +173,13 @@
                                     <td>{{ item.jevdDebit }}</td>
                                     <td>{{ item.jevdCredit }}</td>
                                     <td>{{ item.FREMARKS }}</td>
+                                </tr>
+                                <tr>
+                                    <!-- <td colspan="9"></td> -->
+                                    <th scope="row 9">Total</th>
+                                    <td colspan="9"></td>
+                                    <td  class="table-active">teest</td>
+                                    <td class="table-active">test</td>
                                 </tr>
                             </tbody>
                         </table>

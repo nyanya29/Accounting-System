@@ -18,26 +18,27 @@
 
         <filtering v-if="filter" @closeFilter="filter=false">
             <label>Fund</label>
-            <Select2 v-model="fundscode" :options="fund" id="fund"/>
+            <Select2 v-model="filterData.fundscode" :options="fund" id="fund"/>
             <h4>{{ fund.FUNDDETAIL_NAME }}</h4>
-            <label>JEV Type</label>
-            <Select2 v-model="jType" :options="jevtype" id="jevtype"/>
-            <h4></h4>
+            <label>JEV Type.</label>
+                <select class="form-select" v-model="filterData.jType" >
+                    <option v-for="(item,index) in filterData.jevtype" :value="item.value" :key="index"> {{ item.name}}</option>
+                </select>
             <label>JEV No.</label>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" v-model="filterData.FJEVNO">
             <label>Check No.</label>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" v-model="filterData.FCHKNO">
             <label>Ref No.</label>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" v-model="filterData.FREFNO">
             <label>Payee No.</label>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" v-model="filterData.FPAYEE">
             <label>From.</label>
             <input type="date" class="form-control">
             <label>To.</label>
             <input type="date" class="form-control">
             <div class="div"></div>
-            <button class="btn btn-sm btn-primary mT-5 text-white">Filter</button>
-            <button class="btn btn-sm btn-primary mT-5 text-white">Filter</button>
+            <button class="btn btn-sm btn-primary mT-5 text-white" @click="find()">Filter</button>
+            <button class="btn btn-sm btn-primary mT-5 text-white">Reset</button>
         </filtering>
  
         <div class="col-12">
@@ -100,6 +101,7 @@
 import Filtering from "@/Shared/Filter";
 import Pagination from "@/Shared/Pagination";
 import JevdModal from "../Jevh/Modal.vue";
+import { useForm } from '@inertiajs/inertia-vue3';
 
 export default {
     components: { 
@@ -119,15 +121,22 @@ export default {
             showModal: false,
             jData: {},
             fund:[],
-            fundscode:"",
-               jevtype:[
-                {value:1, name:"Collection"},
-                {value:2, name:"Check Disbursement"},
-                {value:3, name:"Cash Disbursement"},
-                {value:4, name:"General"},
-                {value:5, name:"ADA"},
-                {value:6, name:"Procurement"},
-            ],
+            filterData: useForm({
+                fundscode:"",
+                jType:"",
+                FJEVNO:"",
+                FCHKNO:"",
+                FREFNO:"",
+                FPAYEE:"",
+                jevtype:[
+                    {value:1, name:"Collection"},
+                    {value:2, name:"Check Disbursement"},
+                    {value:3, name:"Cash Disbursement"},
+                    {value:4, name:"General"},
+                    {value:5, name:"ADA"},
+                    {value:6, name:"Procurement"},
+                ],  
+            })
         };
     },
 
@@ -169,6 +178,9 @@ export default {
                     }
                 })
             })
+        },
+        find(){
+            this.$inertia.get('/jevh/index', this.filterData, {preserveState: true})
         }
     },
 };
