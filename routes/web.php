@@ -59,5 +59,6 @@ Route::middleware('auth')->group(function() {
     //jevd
     Route::prefix('/jevd')->group(function(){
         Route::post('/index', [JevdController::class, 'jevDetails']);
+        Route::post('/credit-debit-total', [JevdController::class, 'jevdTotal']);
     });
 });

@@ -2,8 +2,8 @@
 <div class="modal fade" id="jevdModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" >
     <div class="modal-dialog modal-xl" style="max-width: 1300px !important">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Journal Entry Voucher</h5>
+            <div class="modal-header" style="background-color: #42A6F5">
+                <h5 class="modal-title text-light" id="staticBackdropLabel">Journal Entry Voucher</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="close_modal()"></button>
             </div>
             <div class="modal-body gap-10">
@@ -18,7 +18,7 @@
                                             <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>Jev Type:</b></label>
                                         </div>
                                         <div class="col-sm-8">
-                                            <p class="col-form-label"><u><b>test</b></u></p>
+                                            <p class="col-form-label">{{ jevtype[jevdDetails.FJEVTYP] }}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -28,7 +28,7 @@
                                             <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>FUND:</b></label>
                                         </div>
                                         <div class="col-sm-8">
-                                            <p class="col-form-label"><u><b>test</b></u></p>
+                                            <p class="col-form-label">{{ jevdDetails.FUND_SCODE }}</p>
                                         </div>
                                     </div> 
                                 </div>
@@ -38,7 +38,7 @@
                                             <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>JEV No.:</b></label>
                                         </div>
                                         <div class="col-sm-8">
-                                            <p class="col-form-label"><u><b>test</b></u></p>
+                                            <p class="col-form-label">{{ jevdDetails.FJEVNO }}</p>
                                         </div>
                                     </div> 
                                 </div>
@@ -48,7 +48,7 @@
                                             <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>JEV Date:</b></label>
                                         </div>
                                         <div class="col-sm-8">
-                                            <p class="col-form-label"><u><b>test</b></u></p>
+                                            <p class="col-form-label">{{ jevdDetails.FJEVDATE }}</p>
                                         </div>
                                     </div> 
                                 </div>
@@ -64,47 +64,17 @@
                                                     <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>Check#:</b></label>
                                                 </div>
                                                 <div class="col-sm-8">
-                                                    <p class="col-form-label"><u><b>test</b></u></p>
+                                                    <p class="col-form-label">{{ jevdDetails.FCHKNO }}</p>
                                                 </div>
                                             </div> 
                                         </div>
                                         <div class="col-sm-4">
                                             <div class="row">
                                                 <div class="col-sm-4">
-                                                    <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>Ref No.:</b></label>
+                                                    <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>Ref#:</b></label>
                                                 </div>
                                                 <div class="col-sm-8">
-                                                    <p class="col-form-label"><u><b>test</b></u></p>
-                                                </div>
-                                            </div> 
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <div class="row">
-                                                <div class="col-sm-4">
-                                                    <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>Payee:</b></label>
-                                                </div>
-                                                <div class="col-sm-8">
-                                                    <p class="col-form-label"><u><b>test</b></u></p>
-                                                </div>
-                                            </div> 
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <div class="row">
-                                                <div class="col-sm-4">
-                                                    <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>Check#:</b></label>
-                                                </div>
-                                                <div class="col-sm-8">
-                                                    <p class="col-form-label"><u><b>test</b></u></p>
-                                                </div>
-                                            </div> 
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <div class="row">
-                                                <div class="col-sm-4">
-                                                    <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>Ref No.:</b></label>
-                                                </div>
-                                                <div class="col-sm-8">
-                                                    <p class="col-form-label"><u><b>test</b></u></p>
+                                                    <p class="col-form-label">{{ jevdDetails.FREFNO }}</p>
                                                 </div>
                                             </div> 
                                         </div>
@@ -114,17 +84,55 @@
                                                     <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>Payee:</b></label>
                                                 </div>
                                                 <div class="col-sm-8">
-                                                    <p class="col-form-label"><u><b>test</b></u></p>
+                                                    <p class="col-form-label">{{ jevdDetails.FPAYEE }}</p>
                                                 </div>
                                             </div> 
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>Prepared By:</b></label>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <p class="col-form-label">{{ jevdDetails.FPREPBY }}</p>
+                                                </div>
+                                            </div> 
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>Position:</b></label>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <p class="col-form-label">{{ jevdDetails.FPREPD }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>Aprroved By:</b></label>
+                                                </div>  
+                                                <div class="col-sm-8">
+                                                    <p class="col-form-label">{{ jevdDetails.FAPPVBY }}</p>
+                                                </div>
+                                            </div> 
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>Position:</b></label>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                    <p class="col-form-label">{{ jevdDetails.FAPPVD }}</p>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                                 
                                 <div class="col-3">
                                     <div class="row">
-                                        <div class="col-sm-12">
-                                            <textarea class="col-form-label form-control" for="colFormLabelSm" rows="3" readonly></textarea>
+                                        <div class="col-sm-12 form-floating">
+                                            <!-- <textarea class="col-form-label form-control" for="colFormLabelSm" rows="3" readonly></textarea> -->
+                                            <textarea class="col-form-label form-control"  rows="3" style="height: 100px" readonly  v-model="jevdDetails.FREMK"></textarea>
+                                            <label for="floatingInput"><b>DESCRIPTION</b></label>
                                         </div>
                                     </div> 
                                 </div> 
@@ -137,7 +145,7 @@
                 
                 <div class="col-12">
                     <div class="bgc-white p-20 bd table-responsive">
-                        <table class="table table-hover">
+                        <table class="table table-striped table-hover">
                             <thead>
                                 <tr>
                                     <th scope="col">ActCode Title</th>
@@ -178,8 +186,9 @@
                                     <!-- <td colspan="9"></td> -->
                                     <th scope="row 9">Total</th>
                                     <td colspan="9"></td>
-                                    <td  class="table-active">teest</td>
-                                    <td class="table-active">test</td>
+                                    <td>{{ total.totalDebit }}</td>
+                                    <td>{{ total.totalCredit }}</td>
+                                    <td></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -212,7 +221,16 @@ export default {
     data () {
         return {
             myModal: null,
-            jevDdata: []
+            jevDdata: [],
+            total: {},
+            jevtype:{
+                1:"Collection",
+                2:"Check Disbursement",
+                3:"Cash Disbursement",
+                4:"General",
+                5:"ADA",
+                6:"Procurement"
+            },
         }
     },
     async mounted() {
@@ -220,6 +238,7 @@ export default {
         this.myModal.show()
 
         this.getData();
+        this.getTotal();
     },
     methods: {
         close_modal(){
@@ -237,6 +256,11 @@ export default {
                 let data = response.data;
 
                 this.jevDdata = data;
+            })
+        },
+        getTotal(){
+            axios.post('/jevd/credit-debit-total', {FJEVNO: this.jevdDetails.FJEVNO , FUND_SCODE:  this.jevdDetails.FUND_SCODE, fiscalyear: this.jevdDetails.fiscalyear}).then(response => {
+                this.total = response.data;
             })
         }
     },
