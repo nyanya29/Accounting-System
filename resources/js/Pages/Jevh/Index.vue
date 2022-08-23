@@ -1,11 +1,11 @@
 <template>
     <Head>
-        <title>Users</title>
+        <title>JEVH</title>
     </Head>
 
     <div class="row gap-10 masonry pos-r">
         <div class="peers fxw-nw jc-sb ai-c">
-            <h3>Users</h3>
+            <h3>Journal Entry Voucher</h3>
             <div class="peers">
                 <div class="peer mR-10">
                     <input v-model="search" type="text" class="form-control form-control-sm" placeholder="Search...">
@@ -22,10 +22,10 @@
             <input type="text" class="form-control">
             <button class="btn btn-sm btn-primary mT-5 text-white">Filter</button>
         </filtering>
- 
+
         <div class="col-12">
             <div class="bgc-white p-20 bd">
-                <table class="table table-hover">
+                <table class="table">
                     <thead>
                         <tr>
                             <th scope="col">Fiscal Year</th>
@@ -56,7 +56,9 @@
                                     </svg>
                                   </button>
                                   <ul class="dropdown-menu action-dropdown" aria-labelledby="dropdownMenuButton1">
-                                    <li><Link class="dropdown-item" as="button">Show Details</Link></li>
+                                    <li>
+                                        <button class="dropdown-item" @click="showdetails(jevhdata)">Show Details</button>
+                                    </li>
                                   </ul>
                                 </div>
                             </td>
@@ -73,15 +75,21 @@
                 </div>
             </div>
         </div>
+        <jevd-modal v-if="showModal" :jevdDetails="jData" @close="closeModal()"></jevd-modal>
     </div>
 </template>
 
 <script>
 import Filtering from "@/Shared/Filter";
 import Pagination from "@/Shared/Pagination";
+import JevdModal from "../Jevh/Modal.vue";
 
 export default {
-    components: { Pagination, Filtering },
+    components: { 
+        Pagination,
+        Filtering,
+        jevdModal: JevdModal 
+        },
     props: {
         jevh: Object,
         filters: Object,
@@ -91,7 +99,8 @@ export default {
             search: this.$props.filters.search,
             confirm: false,
             filter: false,
-            // showModal: false,
+            showModal: false,
+            jData: {}
         };
     },
     watch: {
@@ -110,6 +119,13 @@ export default {
     methods: {
         showFilter() {
             this.filter = !this.filter
+        },
+        showdetails(jevhdata) {
+            this.jData = jevhdata
+            this.showModal = true
+        },
+        closeModal(){
+        this.showModal = false
         },
     },
 };

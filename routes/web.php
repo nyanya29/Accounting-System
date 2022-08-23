@@ -6,6 +6,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\MunicipalityController;
 use App\Http\Controllers\BarangayController;
+use App\Http\Controllers\JevdController;
 use App\Http\Controllers\JevhController;
 use App\Http\Controllers\PermissionController;
 
@@ -13,11 +14,9 @@ Auth::routes();
 
 
 Route::middleware('auth')->group(function() {
-    Route::get('/', function () {
-        return inertia('Home');
-    });
+    Route::get('/', [HomeController::class, 'index']);
 
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
+    // Route::get('/home', [HomeController::class, 'index'])->name('home');
 
     Route::prefix('/users')->group(function() {
         Route::get('/', [UserController::class, 'index']);
@@ -56,6 +55,16 @@ Route::middleware('auth')->group(function() {
     Route::prefix('/jevh')->group(function(){
         Route::get('/index', [JevhController::class, 'index']);
         Route::get('/create', [JevhController::class, 'create']);
-        Route::get('getFactCode', [JevhController::class, 'getFactCode']);
+        Route::post('getFundDetail', [JevhController::class, 'getFundDetail']);
+        Route::post('/store', [JevhController::class, 'store']);
+        
+    });
+    //jevd
+    Route::prefix('/jevd')->group(function(){
+        Route::post('/index', [JevdController::class, 'jevDetails']);
+        Route::get('/jevdcreate', [JevdController::class, 'jevdcreate']);
+        Route::post('getChartAccount', [JevdController::class, 'getChartAccount']);
+        Route::post('getSubCode1', [JevdController::class, 'getSubcode1']);
+        Route::post('getSubCode2', [JevdController::class, 'getSubCode2']);
     });
 });

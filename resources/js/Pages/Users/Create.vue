@@ -15,6 +15,10 @@
         </div>
         <div class="col-md-8">
             <form @submit.prevent="submit()">
+                <label for="">Username</label>
+                <input type="text" v-model="form.username" class="form-control" autocomplete="chrome-off">
+                <div class="fs-6 c-red-500" v-if="form.errors.username">{{ form.errors.username }}</div>
+
                 <label for="">Names</label>
                 <input type="text" v-model="form.name" class="form-control" autocomplete="chrome-off">
                 <div class="fs-6 c-red-500" v-if="form.errors.name">{{ form.errors.name }}</div>
@@ -65,6 +69,7 @@ export default {
                 purok_id:"",
                 email: "",
                 password: "",
+                username:"",
                 id: null
             }),
             municipals:[],
