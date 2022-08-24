@@ -9,136 +9,132 @@
             <div class="modal-body gap-10">
                 <div class="card card text-dark bg-light">
                     <div class="card-body">
+                        <div class="row">
+
+                        </div>
                         <div class="col-12 gap-5">
-
                             <div class="row">
-                                <div class="col-sm-3">
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>Jev Type:</b></label>
-                                        </div>
-                                        <div class="col-sm-8">
-                                            <p class="col-form-label">{{ jevtype[jevdDetails.FJEVTYP] }}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>FUND:</b></label>
-                                        </div>
-                                        <div class="col-sm-8">
-                                            <p class="col-form-label">{{ jevdDetails.FUND_SCODE }}</p>
-                                        </div>
-                                    </div> 
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>JEV No.:</b></label>
-                                        </div>
-                                        <div class="col-sm-8">
-                                            <p class="col-form-label">{{ jevdDetails.FJEVNO }}</p>
-                                        </div>
-                                    </div> 
-                                </div>
-                                <div class="col-sm-3">
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>JEV Date:</b></label>
-                                        </div>
-                                        <div class="col-sm-8">
-                                            <p class="col-form-label">{{ jevdDetails.FJEVDATE }}</p>
-                                        </div>
-                                    </div> 
-                                </div>
-                            </div>
-
-                            <div class="row">
-
-                                <div class="col-9">
-                                    <div class="row">
-                                        <div class="col-sm-4">
-                                            <div class="row">
-                                                <div class="col-sm-4">
-                                                    <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>Check#:</b></label>
-                                                </div>
-                                                <div class="col-sm-8">
-                                                    <p class="col-form-label">{{ jevdDetails.FCHKNO }}</p>
-                                                </div>
-                                            </div> 
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <div class="row">
-                                                <div class="col-sm-4">
-                                                    <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>Ref#:</b></label>
-                                                </div>
-                                                <div class="col-sm-8">
-                                                    <p class="col-form-label">{{ jevdDetails.FREFNO }}</p>
-                                                </div>
-                                            </div> 
-                                        </div>
-                                        <div class="col-sm-4">
-                                            <div class="row">
-                                                <div class="col-sm-4">
-                                                    <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>Payee:</b></label>
-                                                </div>
-                                                <div class="col-sm-8">
-                                                    <p class="col-form-label">{{ jevdDetails.FPAYEE }}</p>
-                                                </div>
-                                            </div> 
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="row">
-                                                <div class="col-sm-4">
-                                                    <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>Prepared By:</b></label>
-                                                </div>
-                                                <div class="col-sm-8">
-                                                    <p class="col-form-label">{{ jevdDetails.FPREPBY }}</p>
-                                                </div>
-                                            </div> 
-                                            <div class="row">
-                                                <div class="col-sm-4">
-                                                    <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>Position:</b></label>
-                                                </div>
-                                                <div class="col-sm-8">
-                                                    <p class="col-form-label">{{ jevdDetails.FPREPD }}</p>
-                                                </div>
+                                <div class="col-4">
+                                    <div class="col-sm-12">
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>Jev Type:</b></label>
                                             </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <div class="row">
-                                                <div class="col-sm-4">
-                                                    <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>Aprroved By:</b></label>
-                                                </div>  
-                                                <div class="col-sm-8">
-                                                    <p class="col-form-label">{{ jevdDetails.FAPPVBY }}</p>
-                                                </div>
-                                            </div> 
-                                            <div class="row">
-                                                <div class="col-sm-4">
-                                                    <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>Position:</b></label>
-                                                </div>
-                                                <div class="col-sm-8">
-                                                    <p class="col-form-label">{{ jevdDetails.FAPPVD }}</p>
-                                                </div>
+                                            <div class="col-sm-8">
+                                                <p class="col-form-label">{{ jevtype[jevdDetails.FJEVTYP] }}</p>
                                             </div>
                                         </div>
                                     </div>
+                                    <div class="col-sm-12">
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>FUND:</b></label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <p class="col-form-label">{{ jevdDetails.FUND_SCODE }}</p>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>JEV No.:</b></label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <p class="col-form-label">{{ jevdDetails.FJEVNO }}</p>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>JEV Date:</b></label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <p class="col-form-label">{{ jevdDetails.FJEVDATE }}</p>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>Check:</b></label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <p class="col-form-label">{{ jevdDetails.FCHKNO }}</p>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>Ref#:</b></label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <p class="col-form-label">{{ jevdDetails.FREFNO }}</p>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>Payee:</b></label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <p class="col-form-label">{{ jevdDetails.FPAYEE }}</p>
+                                            </div>
+                                        </div> 
+                                    </div>
                                 </div>
-                                
+                                <div class="col-5">
+                                    <div class="col-sm-12">
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>Prepared By:</b></label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <p class="col-form-label">{{ jevdDetails.FPREPBY }}</p>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>Position:</b></label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <p class="col-form-label">{{ jevdDetails.FPREPD }}</p>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>Aprroved By:</b></label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <p class="col-form-label">{{ jevdDetails.FAPPVBY }}</p>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <div class="row">
+                                            <div class="col-sm-4">
+                                                <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>Position:</b></label>
+                                            </div>
+                                            <div class="col-sm-8">
+                                                <p class="col-form-label">{{ jevdDetails.FAPPVD }}</p>
+                                            </div>
+                                        </div> 
+                                    </div>
+                                </div>
                                 <div class="col-3">
-                                    <div class="row">
-                                        <div class="col-sm-12 form-floating">
-                                            <!-- <textarea class="col-form-label form-control" for="colFormLabelSm" rows="3" readonly></textarea> -->
-                                            <textarea class="col-form-label form-control"  rows="3" style="height: 100px" readonly  v-model="jevdDetails.FREMK"></textarea>
-                                            <label for="floatingInput"><b>DESCRIPTION</b></label>
-                                        </div>
-                                    </div> 
-                                </div> 
-                                
+                                    <div class="col-sm-12 form-floating">                               
+                                        <textarea class="col-form-label form-control"  rows="3" style="height: 250px" readonly  v-model="jevdDetails.FREMK"></textarea>
+                                        <label for="floatingInput"><b>DESCRIPTION</b></label>
+                                    </div>
+                                </div>
                             </div>
-
                         </div>
                     </div>
                 </div>

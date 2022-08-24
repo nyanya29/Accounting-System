@@ -492,18 +492,21 @@ var _hoisted_3 = {
   "class": "bgc-white"
 };
 var _hoisted_4 = {
-  "class": "modal-header"
+  "class": "modal-header",
+  style: {
+    "background-color": "#42A6F5"
+  }
 };
 
 var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h5", {
-  "class": "modal-title",
-  id: "exampleModalLiveLabel"
+  "class": "modal-title text-light",
+  id: "advancedFiltering"
 }, "Advanced Filtering", -1
 /* HOISTED */
 );
 
 var _hoisted_6 = {
-  "class": "modal-body"
+  "class": "modal-body bg-light"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [_hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {

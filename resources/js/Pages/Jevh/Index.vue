@@ -17,27 +17,26 @@
         </div>
 
         <filtering v-if="filter" @closeFilter="filter=false">
-            <label>Fund</label>
+            <label class="mB-5">Fund</label>
             <Select2 v-model="filterData.fundscode" :options="fund" id="fund"/>
             <h4>{{ fund.FUNDDETAIL_NAME }}</h4>
-            <label>JEV Type.</label>
+            <label class="mB-5">JEV Type.</label>
                 <select class="form-select" v-model="filterData.jType" >
                     <option v-for="(item,index) in filterData.jevtype" :value="item.value" :key="index"> {{ item.name}}</option>
                 </select>
-            <label>JEV No.</label>
+            <label class="mB-5">JEV No.</label>
             <input type="text" class="form-control" v-model="filterData.FJEVNO">
-            <label>Check No.</label>
+            <label class="mB-5">Check No.</label>
             <input type="text" class="form-control" v-model="filterData.FCHKNO">
-            <label>Ref No.</label>
+            <label class="mB-5">Ref No.</label>
             <input type="text" class="form-control" v-model="filterData.FREFNO">
-            <label>Payee No.</label>
+            <label class="mB-5">Payee No.</label>
             <input type="text" class="form-control" v-model="filterData.FPAYEE">
-            <label>From.</label>
+            <label class="mB-5">From.</label>
             <input type="date" class="form-control">
-            <label>To.</label>
+            <label class="mB-5">To.</label>
             <input type="date" class="form-control">
-            <div class="div"></div>
-            <button class="btn btn-sm btn-primary mT-5 text-white" @click="find()">Filter</button>
+            <button class="btn btn-sm btn-primary mT-5 mR-10 text-white" @click="find()">Filter</button>
             <button class="btn btn-sm btn-primary mT-5 text-white">Reset</button>
         </filtering>
  
