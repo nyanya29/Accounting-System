@@ -17,7 +17,8 @@
                                     </div>
                                 </div>
                                 <div class="peer peer-greed">
-                                    <h5 class="lh-1 mB-0 logo-text text-white">
+                                    <h5 class="lh-1 mB-0 logo-text text-white" />
+                                    <h5 class="lh-1 mB-0 logo-text text-light">
                                         Admin
                                     </h5>
                                 </div>
@@ -59,16 +60,18 @@
                     >
                 </li>
                 <li class="nav-item">
-                    <Link class="sidebar-link" href="/jevh/index"
-                        ><span class="icon-holder"
-                            ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-file-earmark" viewBox="0 0 16 16">
-                                <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
+                    <Link class="sidebar-link" href="/jevh/index">
+                        <span class="icon-holder"
+                            ><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-earmark-post" viewBox="0 0 16 16">
+                              <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5h-2z"/>
+                              <path d="M4 6.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-7zm0-3a.5.5 0 0 1 .5-.5H7a.5.5 0 0 1 0 1H4.5a.5.5 0 0 1-.5-.5z"/>
                             </svg>
-                        </span
-                        ><span class="title">JEVH</span></Link
+                        </span>
+                        <span class="title">JEVH</span>
+                    </Link
                     >
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                     <Link class="sidebar-link" href="/posts"
                         ><span class="icon-holder"
                             ><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-file-earmark-post" viewBox="0 0 16 16">
@@ -76,9 +79,9 @@
                               <path d="M4 6.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-7zm0-3a.5.5 0 0 1 .5-.5H7a.5.5 0 0 1 0 1H4.5a.5.5 0 0 1-.5-.5z"/>
                             </svg>
                         </span
-                        ><span class="title">Posts</span></Link
+                        ><span class="title">Post</span></Link
                     >
-                </li>
+                </li> -->
                 <li class="nav-item dropdown">
                     <a class="dropdown-toggle" href="javascript:void(0);"
                         ><span class="icon-holder"

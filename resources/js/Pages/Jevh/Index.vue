@@ -18,9 +18,28 @@
         </div>
 
         <filtering v-if="filter" @closeFilter="filter=false">
-            <label>Sample Inputs</label>
-            <input type="text" class="form-control">
-            <button class="btn btn-sm btn-primary mT-5 text-white">Filter</button>
+            <label>Fund</label>
+            <Select2 v-model="filterData.fundscode" :options="fund" id="fund"/>
+            <h4>{{ fund.FUNDDETAIL_NAME }}</h4>
+            <label>JEV Type.</label>
+                <select class="form-select" v-model="filterData.jType" >
+                    <option v-for="(item,index) in filterData.jevtype" :value="item.value" :key="index"> {{ item.name}}</option>
+                </select>
+            <label>JEV No.</label>
+            <input type="text" class="form-control" v-model="filterData.FJEVNO">
+            <label>Check No.</label>
+            <input type="text" class="form-control" v-model="filterData.FCHKNO">
+            <label>Ref No.</label>
+            <input type="text" class="form-control" v-model="filterData.FREFNO">
+            <label>Payee No.</label>
+            <input type="text" class="form-control" v-model="filterData.FPAYEE">
+            <label>From.</label>
+            <input type="date" class="form-control">
+            <label>To.</label>
+            <input type="date" class="form-control">
+            <div class="div"></div>
+            <button class="btn btn-sm btn-primary mT-5 text-white" @click="find()">Filter</button>
+            <button class="btn btn-sm btn-primary mT-5 text-white">Reset</button>
         </filtering>
 
         <div class="col-12">
@@ -83,6 +102,7 @@
 import Filtering from "@/Shared/Filter";
 import Pagination from "@/Shared/Pagination";
 import JevdModal from "../Jevh/Modal.vue";
+import { useForm } from '@inertiajs/inertia-vue3';
 
 export default {
     components: { 
@@ -100,9 +120,27 @@ export default {
             confirm: false,
             filter: false,
             showModal: false,
-            jData: {}
+            jData: {},
+            fund:[],
+            filterData: useForm({
+                fundscode:"",
+                jType:"",
+                FJEVNO:"",
+                FCHKNO:"",
+                FREFNO:"",
+                FPAYEE:"",
+                jevtype:[
+                    {value:1, name:"Collection"},
+                    {value:2, name:"Check Disbursement"},
+                    {value:3, name:"Cash Disbursement"},
+                    {value:4, name:"General"},
+                    {value:5, name:"ADA"},
+                    {value:6, name:"Procurement"},
+                ],  
+            })
         };
     },
+
     watch: {
         search: _.debounce(function (value) {
             this.$inertia.get(
@@ -116,6 +154,11 @@ export default {
             );
         }, 300),
     },
+
+    mounted() {
+        this.getFunds();
+    },
+
     methods: {
         showFilter() {
             this.filter = !this.filter
@@ -127,6 +170,19 @@ export default {
         closeModal(){
         this.showModal = false
         },
+        getFunds(){
+            axios.post('/jevh/get-fund-details').then(response => {
+                this.fund = _.map(response.data, (obj) => {
+                    return {
+                        id: obj.FUND_SCODE,
+                        text: obj.FUNDDETAIL_NAME,
+                    }
+                })
+            })
+        },
+        find(){
+            this.$inertia.get('/jevh/index', this.filterData, {preserveState: true})
+        }
     },
 };
 </script>

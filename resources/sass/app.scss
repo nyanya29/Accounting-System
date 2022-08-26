@@ -49,6 +49,19 @@
 .select2-container .select2-selection--single {
     height: 33px !important;
 }
+.sidebar-menu {
+    --tw-bg-opacity: 1;
+    background-color: rgba(66, 166, 245, var(--tw-bg-opacity));
+}
+
+.sidebar-menu .title, .sidebar-menu .icon-holder {
+    --tw-text-opacity: 1;
+    color: rgba(255, 255, 255, var(--tw-text-opacity));
+}
+
+.sidebar-menu>li>a{
+    font-weight: unset !important;
+}
 
 .sidebar-menu {
     --tw-bg-opacity: 1;
@@ -77,4 +90,3 @@
     --tw-bg-opacity: 1;
     background-color: rgba(25, 30, 56, var(--tw-bg-opacity));
 }
-

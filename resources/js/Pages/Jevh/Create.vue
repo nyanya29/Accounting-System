@@ -6,109 +6,111 @@
         </div>
 
         <div class="row justify-content-center">
-            <div class="col-4">
+            <div class="col-6">
                 <div class="card">
+                    <ul class="nav nav-tabs" id="myTab">
+                        <li class="nav-item"> <a href="#jevh" class="nav-link active" data-bs-toggle="tab">Journal Entry Voucher</a></li>
+                        <li class="nav-item"> <a href="#jevdTab" id="jevdLink" class="nav-link" data-bs-toggle="tab">Journal</a></li>
+                    </ul>
                     <div class="card-body">
-                        <form @submit.prevent="">
-                            <div class="col-md-12">
-                                <div class="row">
-                                    <div class="col">
-                                       <label class="col-mb-3 col-form-label">Fiscal Year</label>
-                                        <input type="text" v-model="form.fiscalyear" class="form-control" autocomplete="chrome-off"> 
-                                    </div>
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="jevh">
+                                <!-- <form @submit.prevent=""> -->
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col">
+                                            <label class="col-mb-3 col-form-label">Fiscal Year</label>
+                                                <input type="text" v-model="form.fiscalyear" class="form-control" autocomplete="chrome-off"> 
+                                            </div>
 
-                                    <div class="col">
-                                       <label class="col-mb-3 col-form-label">Fund Details Code</label>
-                                            <select class="form-select" v-model="form.FUND_SCODE">
-                                            <option v-for="items in funds" :value="items.FUND_SCODE" :key="items.recid">{{ items.FUNDDETAIL_NAME }}</option>
-                                            </select>
-                                            <div class="fs-6 c-red-500" v-if="form.errors.FUND_SCODE">{{ form.errors.FUND_SCODE }}</div>
-                                    </div>
-                                </div>
+                                            <div class="col">
+                                            <label class="col-mb-3 col-form-label">Fund Details Code</label>
+                                                    <select class="form-select" v-model="form.FUND_SCODE">
+                                                    <option v-for="items in funds" :value="items.FUND_SCODE" :key="items.recid">{{ items.FUNDDETAIL_NAME }}</option>
+                                                    </select>
+                                                    <div class="fs-6 c-red-500" v-if="form.errors.FUND_SCODE">{{ form.errors.FUND_SCODE }}</div>
+                                            </div>
+                                        </div>
 
-                                <div class="row">
-                                    <div class="col">
-                                        <label class="col-mb-3 col-form-label">Jev Type</label>
-                                            <select  class="form-select" v-model="form.FJEVTYP">
-                                            <option v-for="(items,index) in jevtype" :value="items.value" :key="index"> {{ items.name }}</option>
-                                            </select>
-                                            <div class="fs-6 c-red-500" v-if="form.errors.FJEVTYPE">{{ form.errors.FJEVTYPE }}</div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <label class="col-mb-3 col-form-label">Jev Type</label>
+                                                    <select  class="form-select" v-model="form.FJEVTYP">
+                                                    <option v-for="(items,index) in jevtype" :value="items.value" :key="index"> {{ items.name }}</option>
+                                                    </select>
+                                                    <div class="fs-6 c-red-500" v-if="form.errors.FJEVTYPE">{{ form.errors.FJEVTYPE }}</div>
 
-                                    </div>
-                                    <div class="col">
-                                        <label class="col-mb-3 col-form-label">JEV Number</label>
-                                        <input type="text" v-model="form.FJEVNO" class="form-control" autocomplete="chrome-off">
-                                        <div class="fs-6 c-red-500" v-if="form.errors.FJEVNO">{{ form.errors.FJEVNO }}</div>
-                                    </div>
-                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <label class="col-mb-3 col-form-label">JEV Number</label>
+                                                <input type="text" v-model="form.FJEVNO" class="form-control" autocomplete="chrome-off">
+                                                <div class="fs-6 c-red-500" v-if="form.errors.FJEVNO">{{ form.errors.FJEVNO }}</div>
+                                            </div>
+                                        </div>
 
-                                <div class="row">
-                                    <div class="col">
-                                        <label class="col-mb-3 col-form-label">Payee</label>
-                                            <input type="text" v-model="form.FPAYEE" class="form-control" autocomplete="chrome-off">
-                                    </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <label class="col-mb-3 col-form-label">Payee</label>
+                                                    <input type="text" v-model="form.FPAYEE" class="form-control" autocomplete="chrome-off">
+                                            </div>
 
-                                    <div class="col">
-                                        <label class="col-mb-3 col-form-label">JEV Date</label>
-                                            <input type="date" v-model="form.FJEVDATE" class="form-control" autocomplete="chrome-off">
-                                    </div>
-                                    <div class="col">
-                                         <label class="col-mb-3 col-form-label">Check No</label>
-                                            <input type="text" v-model="form.FCHKNO" class="form-control" autocomplete="chrome-off">
-                                            <div class="fs-6 c-red-500" v-if="form.errors.FCHKNO">{{ form.errors.FCHKNO }}</div>
+                                            <div class="col">
+                                                <label class="col-mb-3 col-form-label">JEV Date</label>
+                                                    <input type="date" v-model="form.FJEVDATE" class="form-control" autocomplete="chrome-off">
+                                            </div>
+                                            <div class="col">
+                                                <label class="col-mb-3 col-form-label">Check No</label>
+                                                    <input type="text" v-model="form.FCHKNO" class="form-control" autocomplete="chrome-off">
+                                                    <div class="fs-6 c-red-500" v-if="form.errors.FCHKNO">{{ form.errors.FCHKNO }}</div>
 
-                                    </div>
-                                </div>
-                                <div class="row">
+                                            </div>
+                                        </div>
+                                        <div class="row">
 
-                                    <div class="col">
-                                        <label class="col-mb-3 col-form-label">Particulars</label>
-                                            <input type="text" v-model="form.FREMK" class="form-control" autocomplete="chrome-off">
-                                    </div>
-                                    <div class="col">
-                                         <label class="col-mb-3 col-form-label">Ref #</label>
-                                            <input type="text" v-model="form.FREFNO" class="form-control" autocomplete="chrome-off">
-                                    </div>
-                                </div>
-                                <div class="row">
+                                            <div class="col">
+                                                <label class="col-mb-3 col-form-label">Particulars</label>
+                                                    <input type="text" v-model="form.FREMK" class="form-control" autocomplete="chrome-off">
+                                            </div>
+                                            <div class="col">
+                                                <label class="col-mb-3 col-form-label">Ref #</label>
+                                                    <input type="text" v-model="form.FREFNO" class="form-control" autocomplete="chrome-off">
+                                            </div>
+                                        </div>
+                                        <div class="row">
 
-                                    <div class="col">
-                                        <label class="col-mb-3 col-form-label">Prepared By</label>
-                                            <input type="text" v-model="form.FPREPBY" class="form-control" autocomplete="chrome-off">
+                                            <div class="col">
+                                                <label class="col-mb-3 col-form-label">Prepared By</label>
+                                                    <input type="text" v-model="form.FPREPBY" class="form-control" autocomplete="chrome-off">
+                                            </div>
+                                            <div class="col">
+                                                <label class="col-mb-3 col-form-label">Position</label>
+                                                    <input type="text" v-model="form.FPREPD" class="form-control" autocomplete="chrome-off">
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="row">
+                                            <div class="col">
+                                                <label class="col-mb-3 col-form-label">Approved By</label>
+                                                    <input type="text" v-model="form.FAPPVBY" class="form-control" autocomplete="chrome-off">
+                                            </div>
+                                            <div class="col">
+                                                <label class="col-mb-3 col-form-label">Position</label>
+                                                    <input type="text" v-model="form.FAPPVD" class="form-control" autocomplete="chrome-off">
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col">
-                                        <label class="col-mb-3 col-form-label">Position</label>
-                                            <input type="text" v-model="form.FPREPD" class="form-control" autocomplete="chrome-off">
-                                    </div>
-                                </div>
-                                
-                                <div class="row">
-                                    <div class="col">
-                                        <label class="col-mb-3 col-form-label">Approved By</label>
-                                            <input type="text" v-model="form.FAPPVBY" class="form-control" autocomplete="chrome-off">
-                                    </div>
-                                    <div class="col">
-                                        <label class="col-mb-3 col-form-label">Position</label>
-                                            <input type="text" v-model="form.FAPPVD" class="form-control" autocomplete="chrome-off">
-                                    </div>
-                                </div>
                             </div>
-                            <div class="modal-footer p-1">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" v-model="checkadd" name="checkbox" id="checkbox" @click="showjev()">
-                                    <label class="form-check-label" for="checkbox"> Add Journal</label>
+                                <div class="tab-pane fade" id="jevdTab">
+                                    <jevd-index :jev="jevd" v-if="isDisabled"></jevd-index>
                                 </div>
-                                    <!-- <button type="button" class="btn btn-primary mt-3" @click="submit()">Save</button> -->
+                        </div>
+                            <div class="modal-footer p-1">
+                                <button type="button" class="btn btn-primary mt-3" @click="submit()">Save</button>
                             </div>   
-                        </form>
+                                <!-- </form> -->
                     </div>
                 </div>
             </div>
-            <transition name="bounce">
-                <div class="col-md-8" v-if="showModal">
-                    <jevd-index :jevd="jevd"></jevd-index>
-                </div>
-            </transition>
         </div>
     </div>
 </template>
@@ -116,12 +118,12 @@
 <script>
 import { useForm } from "@inertiajs/inertia-vue3"
 import BackButton from "../../Shared/BackButton.vue"
-import JevdIndex from "./JevdIndex.vue"
+import JevdIndex from "../Jevh/JevdIndex.vue"
 
 export default ({
     components: {
         BackButton,
-        JevdIndex: JevdIndex 
+        JevdIndex
     },
 
     data() {
@@ -155,7 +157,8 @@ export default ({
             checkadd: false,
             pageTitle: "Create Journal Entry",
             addjev: false,
-            showModal: false
+            showModal: false,
+            isDisabled:true
             
         }
     },
@@ -174,10 +177,10 @@ export default ({
             this.form.post("/jevh/store", this.form);
         },
 
-        showjev () {
-            this.showModal = !this.showModal
-            this.addjev = !this.addjev
-        }
+        // showjev () {
+        //     this.showModal = !this.showModal
+        //     this.addjev = !this.addjev
+        // }
     },
 })
 </script>
