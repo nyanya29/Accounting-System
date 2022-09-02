@@ -33,11 +33,11 @@
             <label class="mB-5">Payee No.</label>
             <input type="text" class="form-control" v-model="filterData.FPAYEE">
             <label class="mB-5">From.</label>
-            <input type="date" class="form-control">
+            <input type="date" class="form-control" v-model="filterData.from">
             <label class="mB-5">To.</label>
-            <input type="date" class="form-control">
+            <input type="date" class="form-control" v-model="filterData.to">
             <button class="btn btn-sm btn-primary mT-5 mR-10 text-white" @click="find()">Filter</button>
-            <button class="btn btn-sm btn-primary mT-5 text-white">Reset</button>
+            <button class="btn btn-sm btn-primary mT-5 text-white" @click="reset()">Reset</button>
         </filtering>
  
         <div class="col-12">
@@ -127,6 +127,8 @@ export default {
                 FCHKNO:"",
                 FREFNO:"",
                 FPAYEE:"",
+                from:"",
+                to:"",
                 jevtype:[
                     {value:1, name:"Collection"},
                     {value:2, name:"Check Disbursement"},
@@ -180,6 +182,10 @@ export default {
         },
         find(){
             this.$inertia.get('/jevh/index', this.filterData, {preserveState: true})
+        },
+        reset(){
+            this.filtered = {}
+            this.$inertia.get('/jevh/index')
         }
     },
 };

@@ -57,6 +57,18 @@ class JevhController extends Controller
         if ($request->FCHKNO) {
             $index = $index->where('FCHKNO', 'like', '%' . $request->FCHKNO . '%');
         }
+        if (($request->from && !$request->to) || ($request->to && !$request->from)) {
+            
+            $date = $request->from ? $request->from : $request->to;
+            
+            $index = $index->whereDate('FJEVDATE', $date);
+        } 
+        if($request->from && $request->to) {
+            $index = $index->whereBetween('FJEVDATE', [$request->from, $request->to]);
+        }
+        if ($request->sortBy) {
+            $index = $this->model->orderBy($request->sortBy, 'asc');
+        }
 
         return $index;
     }

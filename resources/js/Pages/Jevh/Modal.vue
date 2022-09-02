@@ -2,7 +2,7 @@
 <div class="modal fade" id="jevdModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" >
     <div class="modal-dialog modal-xl" style="max-width: 1300px !important">
         <div class="modal-content">
-            <div class="modal-header" style="background-color: #42A6F5">
+            <div class="modal-header" style="background-color: #EDC926">
                 <h5 class="modal-title text-light" id="staticBackdropLabel">Journal Entry Voucher</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="close_modal()"></button>
             </div>
@@ -75,6 +75,8 @@
                                             </div>
                                         </div> 
                                     </div>
+                                </div>
+                                <div class="col-5">
                                     <div class="col-sm-12">
                                         <div class="row">
                                             <div class="col-sm-4">
@@ -85,8 +87,6 @@
                                             </div>
                                         </div> 
                                     </div>
-                                </div>
-                                <div class="col-5">
                                     <div class="col-sm-12">
                                         <div class="row">
                                             <div class="col-sm-4">
