@@ -5,11 +5,11 @@
     >
         <div class="row" style="width: 380px;">
             <div class="bgc-white">  
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLiveLabel">Advanced Filtering</h5>
+                <div class="modal-header" style="background-color: #42A6F5">
+                    <h5 class="modal-title text-light" id="advancedFiltering">Advanced Filtering</h5>
                     <button type="button" class="btn-close" @click="$emit('closeFilter')"></button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body bg-light">
                     <slot></slot>
                 </div>
             </div>

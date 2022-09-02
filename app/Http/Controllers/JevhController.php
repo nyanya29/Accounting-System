@@ -32,28 +32,7 @@ class JevhController extends Controller
         ]);
 
     }
-    public function create()
-        {
-            return inertia('Jevh/Create');
-        }
     
-    public function getFundDetail()
-    {
-        return DB::table('funds_details')->select(DB::raw('TRIM(funds_details.FUND_SCODE) as FUND_SCODE'), 'FUNDDETAIL_NAME')->get();
-    }
-    public function store(JevhValidation $request)
-    {
-        $validated = $request->validated();
-
-       return $this->model->create($request->all());
-
-        // return redirect("/jevh/index")->with('message', 'Added Successfully');
-    }
-
-    public function getFundDetails()
-    {
-        return $this->funds->select(DB::raw('TRIM(FUND_SCODE) as FUND_SCODE'), 'FUNDDETAIL_NAME')->get();
-    }
     public function getFilter($request)
     {
         $index = $this->model;
@@ -82,4 +61,27 @@ class JevhController extends Controller
 
         return $index;
     }
+    public function create()
+        {
+            return inertia('Jevh/Create');
+        }
+    
+    public function getFundDetail()
+    {
+        return DB::table('funds_details')->select(DB::raw('TRIM(funds_details.FUND_SCODE) as FUND_SCODE'), 'FUNDDETAIL_NAME')->get();
+    }
+    public function getFundDetails()
+    {
+        return $this->funds->select(DB::raw('TRIM(FUND_SCODE) as FUND_SCODE'), 'FUNDDETAIL_NAME')->get();
+    }
+
+    public function store(JevhValidation $request)
+    {
+        $validated = $request->validated();
+
+        return $this->model->create($request->all());
+
+       // return redirect('/jevh/index')->with('message', 'Added Successfully');//
+    }
+    
 }

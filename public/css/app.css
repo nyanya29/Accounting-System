@@ -81574,12 +81574,12 @@ table.dataTable.no-footer {
 
 .sidebar-menu {
   --tw-bg-opacity: 1;
-  background-color: rgba(66, 166, 245, var(--tw-bg-opacity));
+  background-color: #1e2444;
 }
 
 .sidebar-menu .title, .sidebar-menu .icon-holder {
   --tw-text-opacity: 1;
-  color: rgba(255, 255, 255, var(--tw-text-opacity));
+  color: rgba(237, 201, 38, var(--tw-text-opacity));
 }
 
 .sidebar-menu > li > a {
@@ -81604,6 +81604,10 @@ table.dataTable.no-footer {
   color: #fff !important;
 }
 
+.icon-holder:hover {
+  color: #fff !important;
+}
+
 .sidebar-menu .active .title {
   color: #fff !important;
   font-weight: 500 !important;
@@ -81611,5 +81615,10 @@ table.dataTable.no-footer {
 
 .sidebar-logo {
   --tw-bg-opacity: 1;
-  background-color: rgba(25, 30, 56, var(--tw-bg-opacity));
+  background-color: #060d32;
+}
+
+.header-container {
+  --tw-bg-opacity: 1;
+  background-color: rgba(237, 201, 38, var(--tw-bg-opacity));
 }

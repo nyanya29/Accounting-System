@@ -6,16 +6,16 @@
         </div>
 
         <div class="row justify-content-center">
-            <div class="col-6">
+            <div class="col-8">
                 <div class="card">
                     <ul class="nav nav-tabs" id="myTab">
                         <li class="nav-item"> <a href="#jevh" class="nav-link active" data-bs-toggle="tab">Journal Entry Voucher</a></li>
-                        <li class="nav-item"> <a href="#jevdTab" id="jevdLink" class="nav-link" data-bs-toggle="tab">Journal</a></li>
+                        <li class="nav-item"> <a href="#jevdTab" id="jevdLink" class="nav-link" data-bs-toggle="tab" :aria-disabled="isDisabled" :class="{'disabled':isDisabled}">Journal</a></li>
                     </ul>
                     <div class="card-body">
                         <div class="tab-content">
                             <div class="tab-pane fade show active" id="jevh">
-                                <!-- <form @submit.prevent=""> -->
+                                <form @submit.prevent="">
                                     <div class="col-md-12">
                                         <div class="row">
                                             <div class="col">
@@ -99,15 +99,15 @@
                                             </div>
                                         </div>
                                     </div>
+                                </form>
                             </div>
                                 <div class="tab-pane fade" id="jevdTab">
-                                    <jevd-index :jev="jevd" v-if="isDisabled"></jevd-index>
+                                    <jevd-index :jev="jevd" v-if="!isDisabled"></jevd-index>
                                 </div>
                         </div>
                             <div class="modal-footer p-1">
                                 <button type="button" class="btn btn-primary mt-3" @click="submit()">Save</button>
                             </div>   
-                                <!-- </form> -->
                     </div>
                 </div>
             </div>
@@ -174,13 +174,14 @@ export default ({
         },
 
         submit() {
-            this.form.post("/jevh/store", this.form);
+            this.isDisabled = false;
+            this.$inertia.post("/jevh/store", this.form);
+
+            setTimeout ( () => {
+                document.getElementById('jevdLink').click();
+            }, 100)
         },
 
-        // showjev () {
-        //     this.showModal = !this.showModal
-        //     this.addjev = !this.addjev
-        // }
     },
 })
 </script>
