@@ -17,6 +17,7 @@
                                     </div>
                                 </div>
                                 <div class="peer peer-greed">
+                                    <h5 class="lh-1 mB-0 logo-text text-white" />
                                     <h5 class="lh-1 mB-0 logo-text text-light">
                                         Admin
                                     </h5>

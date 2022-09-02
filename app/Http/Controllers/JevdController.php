@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Jevd;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use PhpParser\Node\Expr\AssignOp\ShiftLeft;
 
 class JevdController extends Controller
 {
@@ -45,6 +46,57 @@ class JevdController extends Controller
 
             return $details;
     }
+
+    public function create()
+    {
+        return inertia('Jevd/Create');
+    }
+
+    public function getChartAccount()
+    {
+        return DB::table('chartofaccounts')->select(DB::raw('TRIM(FACTCODE) as FACTCODE'), 'FTITLE')->get();
+    }
+
+    public  function getSubCode1(Request $request)
+    {
+        $subcode1 = DB::table('subaccounts1')
+                ->select(
+                    'subaccounts1.*',
+                    'chartofaccounts.FACTCODE',
+                    'chartofaccounts.FTITLE',
+                    'subaccounts1.FSUBCDE',
+                    'subaccounts1.FSTITLE',
+                    DB::raw('TRIM(subaccounts1.FSUBCDE) as FSUBCDE, TRIM(subaccounts1.FSTITLE) as FSTITLE')
+                )
+                ->leftJoin('chartofaccounts', function ($query) {
+                    $query->on('chartofaccounts.FACTCODE', '=', 'subaccounts1.FACTCODE');
+                })
+                ->where('subaccounts1.FACTCODE','=',$request->FACTCODE)
+                ->get();
+
+                return $subcode1;
+    }
+    
+    public function getSubCode2(Request $request)
+    {
+        $subcode2 = DB::table('subaccounts2')
+                ->select(
+                    'subaccounts2.*',
+                    'chartofaccounts.FACTCODE',
+                    'chartofaccounts.FTITLE',
+                    'subaccounts2.FSUBCDE',
+                    'subaccounts2.FSTITLE',
+                    DB::raw('TRIM(FSUBCDE2) as FSUBCDE2, TRIM(subaccounts2.FSTITLE2) as FSTITLE2')
+                )
+                ->leftJoin('chartofaccounts', function ($query) {
+                    $query->on('chartofaccounts.FACTCODE', '=', 'subaccounts2.FACTCODE');
+                })
+                ->where('subaccounts2.FACTCODE', '=', $request->FACTCODE)
+                ->get();
+
+                return $subcode2;
+    }
+
     public function jevdTotal(Request $request)
     {
         $totalSum = DB::table('jevd')

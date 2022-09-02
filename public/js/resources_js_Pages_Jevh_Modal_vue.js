@@ -468,7 +468,7 @@ var _hoisted_73 = {
   "class": "bgc-white p-20 bd table-responsive"
 };
 var _hoisted_74 = {
-  "class": "table table-striped table-hover"
+  "class": "table table-hover"
 };
 
 var _hoisted_75 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {

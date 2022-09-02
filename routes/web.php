@@ -54,11 +54,19 @@ Route::middleware('auth')->group(function() {
     //jevh
     Route::prefix('/jevh')->group(function(){
         Route::get('/index', [JevhController::class, 'index']);
+        Route::get('/create', [JevhController::class, 'create']);
+        Route::post('getFundDetail', [JevhController::class, 'getFundDetail']);
+        Route::post('/store', [JevhController::class, 'store']);
+
         Route::post('/get-fund-details', [JevhController::class, 'getFundDetails']);
     });
     //jevd
     Route::prefix('/jevd')->group(function(){
         Route::post('/index', [JevdController::class, 'jevDetails']);
+        Route::get('/jevdcreate', [JevdController::class, 'jevdcreate']);
+        Route::post('getChartAccount', [JevdController::class, 'getChartAccount']);
+        Route::post('getSubCode1', [JevdController::class, 'getSubcode1']);
+        Route::post('getSubCode2', [JevdController::class, 'getSubCode2']);
         Route::post('/credit-debit-total', [JevdController::class, 'jevdTotal']);
     });
 });

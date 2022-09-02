@@ -12,4 +12,13 @@ class Jevh extends Model
     protected $table = "jevh";
     protected $guarded = [];
     protected $primaryKey = "recid";
+
+    public function jevd(){
+        return $this->hasMany(Jevd::class, 'FJEVNO','FJEVNO');
+    }
+
+    public function jevddetails(){
+        return $this->belongsTo(Jevd::class, 'FUND_SCODE','FUND_SCODE');
+    }
+
 }

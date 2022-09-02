@@ -11,6 +11,7 @@
                     <input v-model="search" type="text" class="form-control form-control-sm" placeholder="Search...">
                 </div>
                 <div class="peer">
+                    <Link class="btn btn-success btn-sm mL-2 text-white" href="/jevh/create"> Add new record</Link>
                     <button class="btn btn-primary btn-sm mL-2 text-white" @click="showFilter()">Filter</button>
                 </div>
             </div>
@@ -39,10 +40,10 @@
             <button class="btn btn-sm btn-primary mT-5 mR-10 text-white" @click="find()">Filter</button>
             <button class="btn btn-sm btn-primary mT-5 text-white" @click="reset()">Reset</button>
         </filtering>
- 
+
         <div class="col-12">
             <div class="bgc-white p-20 bd">
-                <table class="table table-hover">
+                <table class="table">
                     <thead>
                         <tr>
                             <th scope="col">Fiscal Year</th>

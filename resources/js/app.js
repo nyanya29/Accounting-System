@@ -6,6 +6,7 @@ import Layout  from "./Shared/Layout"
 import Modal  from "./Shared/Modal"
 import Notification  from "./Shared/Notification"
 import { InertiaProgress } from '@inertiajs/progress'
+import BackButton from "./Shared/BackButton"
 import Select2 from 'vue3-select2-component';
 
 //PLEASE COMMENT THE PLUGINS THAT YOU WON'T BE USING
@@ -45,6 +46,7 @@ createInertiaApp({
       .component("Notification", Notification)
       .component("FilePond", FilePond)
       .component('Select2', Select2)
+      .component("BackButton", BackButton)
       .mount(el)
   },
 
