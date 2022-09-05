@@ -7,11 +7,24 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" @click="close_modal()"></button>
             </div>
             <div class="modal-body gap-10">
-                <div class="card card text-dark bg-light">
+                <div class="card" aria-hidden="true" v-if="!isFullyLoaded">
+                  <!-- <img src="..." class="card-img-top" alt="..."> -->
+                  <div class="card-body">
+                    <h5 class="card-title placeholder-glow">
+                      <span class="placeholder col-6"></span>
+                    </h5>
+                    <p class="card-text placeholder-glow">
+                      <span class="placeholder col-7"></span>
+                      <span class="placeholder col-4"></span>
+                      <span class="placeholder col-4"></span>
+                      <span class="placeholder col-6"></span>
+                      <span class="placeholder col-8"></span>
+                    </p>
+                    <a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-6"></a>
+                  </div>
+                </div>
+                <div class="card card text-dark bg-light" v-if="isFullyLoaded">
                     <div class="card-body">
-                        <div class="row">
-
-                        </div>
                         <div class="col-12 gap-5">
                             <div class="row">
                                 <div class="col-4">
@@ -139,9 +152,9 @@
                     </div>
                 </div>
                 
-                <div class="col-12">
+                <div class="col-12" v-if="isFullyLoaded">
                     <div class="bgc-white p-20 bd table-responsive">
-                        <table class="table table-hover">
+                        <table class="table table-hover table-striped ">
                             <thead>
                                 <tr>
                                     <th scope="col">ActCode Title</th>
@@ -182,20 +195,12 @@
                                     <!-- <td colspan="9"></td> -->
                                     <th scope="row 9">Total</th>
                                     <td colspan="9"></td>
-                                    <td>{{ total.totalDebit }}</td>
-                                    <td>{{ total.totalCredit }}</td>
+                                    <td><b>{{ total.totalDebit }}</b></td>
+                                    <td><b>{{ total.totalCredit }}</b></td>
                                     <td></td>
                                 </tr>
                             </tbody>
                         </table>
-
-                        <div class="row justify-content-center">
-                            <div class="col-md-12">
-                                <!-- read the explanation in the Paginate.vue component -->
-                                <!-- <pagination :links="users.links" /> -->
-                                <!-- <pagination :next="users.next_page_url" :prev="users.prev_page_url" /> -->
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -216,6 +221,7 @@ export default {
     },
     data () {
         return {
+            isFullyLoaded:false,
             myModal: null,
             jevDdata: [],
             total: {},
@@ -229,12 +235,13 @@ export default {
             },
         }
     },
+  
     async mounted() {
         this.myModal = new Modal(document.getElementById('jevdModal'))
         this.myModal.show()
 
-        this.getData();
-        this.getTotal();
+        await this.getData();
+        await this.getTotal();
     },
     methods: {
         close_modal(){
@@ -255,8 +262,10 @@ export default {
             })
         },
         getTotal(){
+            var self = this;
             axios.post('/jevd/credit-debit-total', {FJEVNO: this.jevdDetails.FJEVNO , FUND_SCODE:  this.jevdDetails.FUND_SCODE, fiscalyear: this.jevdDetails.fiscalyear}).then(response => {
                 this.total = response.data;
+                self.isFullyLoaded = true;
             })
         }
     },

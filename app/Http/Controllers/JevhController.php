@@ -25,7 +25,7 @@ class JevhController extends Controller
             ->when($request->search, function ($query, $searchItem) {
                 $query->where('FJEVNO', 'like', '%' . $searchItem . '%');
             })
-            ->latest()
+            ->orderBy('FJEVNO')
             ->simplePaginate(10)
             ->withQueryString(),
             "filters" => $request->only(['search']),
