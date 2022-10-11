@@ -77,6 +77,15 @@
                                     <li>
                                         <button class="dropdown-item" @click="showdetails(jevhdata)">Show Details</button>
                                     </li>
+                                    <li>
+                                        <button class="dropdown-item" @click="print(jevhdata)">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer-fill" viewBox="0 0 16 16">
+                                                <path d="M5 1a2 2 0 0 0-2 2v1h10V3a2 2 0 0 0-2-2H5zm6 8H5a1 1 0 0 0-1 1v3a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3a1 1 0 0 0-1-1z"/>
+                                                <path d="M0 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2h-1v-2a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v2H2a2 2 0 0 1-2-2V7zm2.5 1a.5.5 0 1 0 0-1 .5.5 0 0 0 0 1z"/>
+                                            </svg>
+                                            Print
+                                        </button>
+                                    </li>
                                   </ul>
                                 </div>
                             </td>
@@ -187,6 +196,9 @@ export default {
         reset(){
             this.filtered = {}
             this.$inertia.get('/jevh/index')
+        },
+        print(jevhdata){
+            window.open('http://192.168.6.23:8080/jasperserver/flow.html?_flowId=viewReportFlow&_flowId=viewReportFlow&ParentFolderUri=%2Freports%2Faccounting_system&reportUnit=%2Freports%2Faccounting_system%2Fjevd_report&standAlone=true&decorate=no&FJEVNO='+jevhdata.FJEVNO+'&FUND_SCODE='+jevhdata.FUND_SCODE+'&fiscalyear='+jevhdata.fiscalyear);
         }
     },
 };

@@ -69,4 +69,7 @@ Route::middleware('auth')->group(function() {
         Route::post('getSubCode2', [JevdController::class, 'getSubCode2']);
         Route::post('/credit-debit-total', [JevdController::class, 'jevdTotal']);
     });
+    //reports
 });
+Route::get('print-jevd', [JevdController::class, 'jevdReport']);
+Route::get('print-jevtype', [JevdController::class, 'jevdTypeReport']);

@@ -143,7 +143,7 @@
                                 </div>
                                 <div class="col-3">
                                     <div class="col-sm-12 form-floating">                               
-                                        <textarea class="col-form-label form-control"  rows="3" style="height: 250px" readonly  v-model="jevdDetails.FREMK"></textarea>
+                                        <textarea class="col-form-label form-control"  rows="3" style="height: 200px" readonly  v-model="jevdDetails.FREMK"></textarea>
                                         <label for="floatingInput"><b>DESCRIPTION</b></label>
                                     </div>
                                 </div>
@@ -157,12 +157,12 @@
                         <table class="table table-hover table-striped ">
                             <thead>
                                 <tr>
-                                    <th scope="col">ActCode Title</th>
                                     <th scope="col">ActCode</th>
-                                    <th scope="col">SubCode Title</th>
+                                    <th scope="col">ActCode Title</th>
                                     <th scope="col">SubCode</th>
-                                    <th scope="col">SubCode2 Title</th>
+                                    <th scope="col">SubCode Title</th>
                                     <th scope="col">SubCode2</th>
+                                    <th scope="col">SubCode2 Title</th>
                                     <th scope="col">RespCtr</th>
                                     <th scope="col">Voucher</th>
                                     <th scope="col">OBR#</th>
@@ -177,12 +177,12 @@
                             </thead>
                             <tbody>
                                 <tr v-for="item in jevDdata" :key="item.index">
-                                    <td>{{ item.fiscalyear }}</td>
                                     <td>{{ item.FACTCODE }}</td>
-                                    <td>{{ item.FSTITLE }}</td>
+                                    <td>{{ item.FTITLE }}</td>
                                     <td>{{ item.FSUBCDE }}</td>
-                                    <td>{{ item.FSTITLE2 }}</td>
+                                    <td>{{ item.FSTITLE }}</td>
                                     <td>{{ item.FSUBCDE2 }}</td>
+                                    <td>{{ item.FSTITLE2 }}</td>
                                     <td>{{ item.FRESPCTR }}</td>
                                     <td>{{ item.FVOUCHNO }}</td>
                                     <td>{{ item.FALOBNO }}</td>
