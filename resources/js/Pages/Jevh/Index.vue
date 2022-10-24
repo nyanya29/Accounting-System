@@ -11,9 +11,15 @@
                     <input v-model="search" type="text" class="form-control form-control-sm" placeholder="Search...">
                 </div>
                 <div class="peer">
-                    <Link class="btn btn-success btn-sm mL-2 text-white" href="/jevh/create"> Add new record</Link>
+                    <!-- <Link class="btn btn-success btn-sm mL-2 text-white" href="/jevh/create"> Add new record</Link> -->
+                    <Link class="btn btn-success btn-sm mL-2 text-white" href="/jevh/jevh-create"> Add new record</Link>
                     <button class="btn btn-primary btn-sm mL-2 text-white" @click="showFilter()">Filter</button>
                 </div>
+            </div>
+        </div>
+        <div class="bd-callout bd-callout-info">
+            <div class="bd-callout-body">
+                test
             </div>
         </div>
 
@@ -42,8 +48,8 @@
         </filtering>
 
         <div class="col-12">
-            <div class="bgc-white p-20 bd">
-                <table class="table">
+            <div class="bgc-white p-20 bd table-responsive">
+                <table class="table table-hover table-striped">
                     <thead>
                         <tr>
                             <th scope="col">Fiscal Year</th>
@@ -97,7 +103,14 @@
                     <div class="col-md-12">
                         <!-- read the explanation in the Paginate.vue component -->
                         <!-- <pagination :links="users.links" /> -->
-                        <pagination :next="jevh.next_page_url" :prev="jevh.prev_page_url" />
+                        <div class="row">
+                            <div class="col-6">
+                                <pagination :next="jevh.next_page_url" :prev="jevh.prev_page_url" />
+                            </div>
+                            <div class="col-6 d-flex justify-content-end">
+                                <h6>Showing {{jevh.from}} to {{jevh.to}} of {{jevh.total}} entries</h6>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

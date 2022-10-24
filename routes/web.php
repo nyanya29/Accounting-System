@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\MunicipalityController;
 use App\Http\Controllers\BarangayController;
 use App\Http\Controllers\JevdController;
+use App\Http\Controllers\JevdReportsController;
 use App\Http\Controllers\JevhController;
 use App\Http\Controllers\PermissionController;
 
@@ -59,6 +60,11 @@ Route::middleware('auth')->group(function() {
         Route::post('/store', [JevhController::class, 'store']);
 
         Route::post('/get-fund-details', [JevhController::class, 'getFundDetails']);
+
+        //garcia
+        Route::get('/jevh-create', [JevhController::class, 'jevhCreate']);
+        Route::get('/jevd-create/{id}', [JevhController::class, 'jevdCreate']);
+
     });
     //jevd
     Route::prefix('/jevd')->group(function(){
@@ -71,5 +77,5 @@ Route::middleware('auth')->group(function() {
     });
     //reports
 });
-Route::get('print-jevd', [JevdController::class, 'jevdReport']);
-Route::get('print-jevtype', [JevdController::class, 'jevdTypeReport']);
+Route::get('print-jevd', [JevdReportsController::class, 'jevdReport']);
+Route::get('print-jevtype', [JevdReportsController::class, 'jevdTypeReport']);
