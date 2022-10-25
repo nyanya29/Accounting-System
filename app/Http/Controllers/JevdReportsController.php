@@ -91,11 +91,23 @@ class JevdReportsController extends Controller
                     ->where('jevh.FJEVTYP','=',$request->FJEVTYP)
                     ->where('jevd.FUND_SCODE','=',$request->FUND_SCODE)
                     ->whereBetween('jevh.FJEVDATE',[$request->from,$request->to])
-                    // ->groupBy('jevd.FJEVNO','jevh.FJEVDATE','jevh.FPAYEE')
-                    // ->groupBy('jevh.recid')
-                    // ->orderBy('FJEVNO')
+                    ->groupBy(
+                        'jevh.recid',
+                        'jevd.FDEBIT',
+                        'jevd.FUND_SCODE',
+                        'jevd.FCREDIT',
+                        'jevd.fiscalyear',
+                        'jevd.FJEVNO',
+                        'jevd.FACTCODE',
+                        'jevh.FJEVTYP',
+                        'jevh.FPAYEE',
+                        'jevh.FJEVDATE',
+                        'funds_details.FUNDDETAIL_NAME'
+                    )
+                    ->groupBy('jevh.recid')
+                    ->orderBy('FJEVNO')
                     ->get();
 
-            return $details;
+        return $details;
     }
 }
