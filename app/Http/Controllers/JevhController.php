@@ -26,7 +26,7 @@ class JevhController extends Controller
                 $query->where('FJEVNO', 'like', '%' . $searchItem . '%');
             })
             ->orderBy('FJEVNO')
-            ->simplePaginate(10)
+            ->paginate(10)
             ->withQueryString(),
             "filters" => $request->only(['search']),
         ]);
@@ -89,11 +89,24 @@ class JevhController extends Controller
 
     public function store(JevhValidation $request)
     {
-        $validated = $request->validated();
+        // dd($request);
+        $request->validated();
 
-        return $this->model->create($request->all());
+        $data = $this->model->create($request->all());
+        return redirect("/jevh/jevd-create/$data->recid")->with('message', 'Added Successfully');
+    }
 
-       // return redirect('/jevh/index')->with('message', 'Added Successfully');//
+    //garcia
+    public function jevhCreate()
+    {
+        return inertia('Jevh/JevhCreate');
+    }
+    public function jevdCreate($id)
+    {
+        $data = $this->model->find($id);
+        return inertia('Jevh/Jevd/Create',[
+            'data' => $data,
+        ]);
     }
     
 }

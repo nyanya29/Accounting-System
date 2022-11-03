@@ -99,3 +99,20 @@
     --tw-bg-opacity: 1;
     background-color: rgba(237, 201, 38, var(--tw-bg-opacity)); 
 }
+// fo adding jevd pane.
+.bd-callout.bd-callout-info {
+    border-left-color: #5bc0de;
+}
+.bd-callout {
+    
+    padding: 1.25rem;
+    margin-top: 1.25rem;
+    margin-bottom: 1.25rem;
+    border: 1px solid #e9ecef;
+    border-left-width: 0.25rem;
+    border-radius: 0.25rem;
+}
+
+.bd-callout > .bd-callout-body {
+    padding: 1rem 0.5rem 1rem 0.5rem;
+}
