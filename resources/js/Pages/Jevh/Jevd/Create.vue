@@ -243,7 +243,7 @@
                                 <textarea class="form-control" v-model="form.FREMARKS" id="floatingTextarea2" style="height:105px;"></textarea> 
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary" @click="submit()"> Add</button>
+                            <button type="submit" class="btn btn-primary"> Add{{form.processing ? 'ing...':''}}</button>
                         </div>
                     </form>
                 </div>
@@ -268,6 +268,7 @@ export default {
                 5:"ADA",
                 6:"Procurement"
             },
+            total:{},
             jevd:{},
             factcodes:{},
             subcode1: {},
@@ -295,6 +296,7 @@ export default {
         this.getSubCode1(),
         this.getSubCode2(),
         this.getjevdData()
+        // this.getTotal()
     },
 
     methods: {
@@ -338,7 +340,17 @@ export default {
                     this.jevd = data;
                 })
         },
+
+    // getTotal()
+    //     {
+    //         var self = this;
+    //             this.post('/jevd/credit-debit-total', {FJEVNO: this.jevdDetails.FJEVNO , FUND_SCODE:  this.jevdDetails.FUND_SCODE, fiscalyear: this.jevdDetails.fiscalyear}).then(response => {
+    //                 this.total = response.data;
+    //                 self.isFullyLoaded = true;
+    //             })
+    //     }
     },
+
     // watch: {
     //     refreshTable: function() {
     //         this.getjevdData()

@@ -130,12 +130,5 @@ class JevdController extends Controller
     {
         $jevd = $this->model->create($request->all());
         return back()->with('message', "Added Successfully");
-        // return redirect()->action([JevdController::class, 'store'],
-        //         [
-        //             'fiscalyear' => $request->fiscalyear,
-        //             'FJEVNO' => $request->FJEVNO,
-        //             'FUND_SCODE' => $request->FUND_SCODE
-        //         ]);
-        // return redirect('/jevh/jevd-create/{id}')->with('message', "Added Successfully");
     }
 }

@@ -28,6 +28,7 @@ __webpack_require__.r(__webpack_exports__);
         5: "ADA",
         6: "Procurement"
       },
+      total: {},
       jevd: {},
       factcodes: {},
       subcode1: {},
@@ -50,7 +51,7 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
-    this.getChartAccount(), this.getSubCode1(), this.getSubCode2(), this.getjevdData();
+    this.getChartAccount(), this.getSubCode1(), this.getSubCode2(), this.getjevdData(); // this.getTotal()
   },
   methods: {
     getChartAccount: function getChartAccount() {
@@ -104,7 +105,15 @@ __webpack_require__.r(__webpack_exports__);
         var data = response.data;
         _this5.jevd = data;
       });
-    }
+    } // getTotal()
+    //     {
+    //         var self = this;
+    //             this.post('/jevd/credit-debit-total', {FJEVNO: this.jevdDetails.FJEVNO , FUND_SCODE:  this.jevdDetails.FUND_SCODE, fiscalyear: this.jevdDetails.fiscalyear}).then(response => {
+    //                 this.total = response.data;
+    //                 self.isFullyLoaded = true;
+    //             })
+    //     }
+
   } // watch: {
   //     refreshTable: function() {
   //         this.getjevdData()
@@ -591,6 +600,10 @@ var _hoisted_95 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 var _hoisted_96 = {
   "class": "modal-footer"
 };
+var _hoisted_97 = {
+  type: "submit",
+  "class": "btn btn-primary"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <h3>{{ pageTitle}}</h3> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <back-button :backToURL=\"'/jevh/index'\"></back-button> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_11, [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.jevtype[$props.data.FJEVTYP]), 1
   /* TEXT */
@@ -658,7 +671,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }), 128
   /* KEYED_FRAGMENT */
   )), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <tr>\r\n                                       \r\n                                        <th scope=\"row 9\">Total</th>\r\n                                        <td colspan=\"9\"></td>\r\n                                        <td><b>{{ total.totalDebit }}</b></td>\r\n                                        <td><b>{{ total.totalCredit }}</b></td>\r\n                                        <td></td>\r\n                                    </tr> ")])])])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_73, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_74, [_hoisted_75, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
-    onSubmit: _cache[13] || (_cache[13] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
+    onSubmit: _cache[12] || (_cache[12] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
       return $options.submit();
     }, ["prevent"]))
   }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_76, [_hoisted_77, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
@@ -777,13 +790,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }
   }, null, 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.FREMARKS]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_96, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
-    type: "submit",
-    "class": "btn btn-primary",
-    onClick: _cache[12] || (_cache[12] = function ($event) {
-      return $options.submit();
-    })
-  }, " Add")])], 32
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.FREMARKS]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_96, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", _hoisted_97, " Add" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form.processing ? 'ing...' : ''), 1
+  /* TEXT */
+  )])], 32
   /* HYDRATE_EVENTS */
   )])])]);
 }
