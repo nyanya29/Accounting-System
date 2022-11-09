@@ -60,11 +60,13 @@ Route::middleware('auth')->group(function() {
         Route::post('/store', [JevhController::class, 'store']);
 
         Route::post('/get-fund-details', [JevhController::class, 'getFundDetails']);
-
+        
         //garcia
         Route::get('/jevh-create', [JevhController::class, 'jevhCreate']);
         Route::get('/jevd-create/{id}', [JevhController::class, 'jevdCreate']);
-
+        
+        //charlie update
+        Route::patch('/jevd-update/{id}', [JevdController::class, 'update']);
     });
     //jevd
     Route::prefix('/jevd')->group(function(){
@@ -79,7 +81,6 @@ Route::middleware('auth')->group(function() {
         Route::post('/get-jevdData', [JevdController::class, 'jevDetails']);
 
         Route::get('/{id}/edit', [JevdController::class, 'editJevd']);
-        Route::patch('/{id}', [JevdController::class, 'update']);
         Route::delete('/{id}', [JevdController::class, 'destroy']);
     });
     //reports

@@ -1,7 +1,9 @@
 <template>
-    <div class="row">
+    <div class="row gap-10 masonry pos-r">
+        <div class="peers fxw-nw jc-sb ai-c">
             <h3>{{ pageTitle}}</h3>
-            <!-- <back-button :backToURL="'/jevh/index'"></back-button> -->
+            <back-button :backToURL="'/jevh/index'"></back-button>
+        </div>
             <div class="col-md-8">
                 <div class="form-group row p-3">
                     <div class="col-12 mb-1">
@@ -277,7 +279,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="submit" class="btn btn-primary" v-if="pageTitle === 'Create'" :disabled="isDisabled"> Add{{form.processing ? 'ing...':''}}</button>
-                            <button type="submit" class="btn btn-primary" v-if="pageTitle === 'Edit'" :disabled="isDisabled">Update{{form.processing ? 'ing...':''}}</button>
+                            <button type="submit" class="btn btn-primary" v-if="pageTitle === 'Edit'" :disabled="isDisabled">Update</button>
                         </div>
                     </form>
                 </div>
@@ -380,7 +382,11 @@ export default {
     submit () {
         if( !!this.jevdData )
         {
-            this.form.patch('/jevh/jevd/'+this.data.recid);
+            this.form.patch('/jevh/jevd-update/'+this.data.recid, {
+                onFinish: visit => {
+                        this.$inertia.visit('/jevh/jevd-create/'+this.data.recid)
+                    } 
+            });
         } else {
             this.form.post("/jevd/", {
                     onFinish: visit => {
@@ -390,11 +396,6 @@ export default {
             );
         }
 
-        // this.$inertia.visit("/jevd/", {
-        //     onFinish: visit => {
-        //         this.getjevdData()
-        //     }
-        // })
     },
     editJevD(id) {
             axios.get('/jevd/'+id+'/edit').then(response => {

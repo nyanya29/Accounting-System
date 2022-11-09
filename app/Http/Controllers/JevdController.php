@@ -140,9 +140,10 @@ class JevdController extends Controller
         return $data;
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request
+    )
     {
-        $data = $this->model->findOrFail($id);
+        $data = $this->model->findOrFail($request->id);
         $data->update($request->all());
 
         return back()->with('message', "Updated Succesfuly");
