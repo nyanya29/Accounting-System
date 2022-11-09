@@ -77,6 +77,10 @@ Route::middleware('auth')->group(function() {
         Route::post('/', [JevdController::class, 'store']);
 
         Route::post('/get-jevdData', [JevdController::class, 'jevDetails']);
+
+        Route::get('/{id}/edit', [JevdController::class, 'editJevd']);
+        Route::patch('/{id}', [JevdController::class, 'update']);
+        Route::delete('/{id}', [JevdController::class, 'destroy']);
     });
     //reports
 });

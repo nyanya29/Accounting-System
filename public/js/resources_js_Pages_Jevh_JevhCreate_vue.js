@@ -97,7 +97,8 @@ __webpack_require__.r(__webpack_exports__);
     JevdCreate: _JevdCreate_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   props: {
-    jevd: Object
+    jevd: Object,
+    jevhDetails: Object
   },
   data: function data() {
     return {
@@ -560,34 +561,379 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
-
-var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<div class=\"card card text-dark bg-light\"><div class=\"card-body\"><div class=\"row\"></div><div class=\"col-12 gap-5\"><div class=\"row\"><div class=\"col-4\"><div class=\"col-sm-12\"><div class=\"row\"><div class=\"col-sm-4\"><label class=\"col-form-label\" for=\"colFormLabelSm\" style=\"text-align:right;\"><b>Jev Type:</b></label></div><!-- &lt;div class=&quot;col-sm-8&quot;&gt;\r\n                                                &lt;p class=&quot;col-form-label&quot;&gt;{{ jevtype[jevdDetails.FJEVTYP] }}&lt;/p&gt;\r\n                                            &lt;/div&gt; --></div></div><div class=\"col-sm-12\"><div class=\"row\"><div class=\"col-sm-4\"><label class=\"col-form-label\" for=\"colFormLabelSm\" style=\"text-align:right;\"><b>FUND:</b></label></div><!-- &lt;div class=&quot;col-sm-8&quot;&gt;\r\n                                                &lt;p class=&quot;col-form-label&quot;&gt;{{ jevdDetails.FUND_SCODE }}&lt;/p&gt;\r\n                                            &lt;/div&gt; --></div></div><div class=\"col-sm-12\"><div class=\"row\"><div class=\"col-sm-4\"><label class=\"col-form-label\" for=\"colFormLabelSm\" style=\"text-align:right;\"><b>JEV No.:</b></label></div><!-- &lt;div class=&quot;col-sm-8&quot;&gt;\r\n                                                &lt;p class=&quot;col-form-label&quot;&gt;{{ jevdDetails.FJEVNO }}&lt;/p&gt;\r\n                                            &lt;/div&gt; --></div></div><div class=\"col-sm-12\"><div class=\"row\"><div class=\"col-sm-4\"><label class=\"col-form-label\" for=\"colFormLabelSm\" style=\"text-align:right;\"><b>JEV Date:</b></label></div><!-- &lt;div class=&quot;col-sm-8&quot;&gt;\r\n                                                &lt;p class=&quot;col-form-label&quot;&gt;{{ jevdDetails.FJEVDATE }}&lt;/p&gt;\r\n                                            &lt;/div&gt; --></div></div><div class=\"col-sm-12\"><div class=\"row\"><div class=\"col-sm-4\"><label class=\"col-form-label\" for=\"colFormLabelSm\" style=\"text-align:right;\"><b>Check:</b></label></div><!-- &lt;div class=&quot;col-sm-8&quot;&gt;\r\n                                                &lt;p class=&quot;col-form-label&quot;&gt;{{ jevdDetails.FCHKNO }}&lt;/p&gt;\r\n                                            &lt;/div&gt; --></div></div><div class=\"col-sm-12\"><div class=\"row\"><div class=\"col-sm-4\"><label class=\"col-form-label\" for=\"colFormLabelSm\" style=\"text-align:right;\"><b>Ref#:</b></label></div><!-- &lt;div class=&quot;col-sm-8&quot;&gt;\r\n                                                &lt;p class=&quot;col-form-label&quot;&gt;{{ jevdDetails.FREFNO }}&lt;/p&gt;\r\n                                            &lt;/div&gt; --></div></div><div class=\"col-sm-12\"><div class=\"row\"><div class=\"col-sm-4\"><label class=\"col-form-label\" for=\"colFormLabelSm\" style=\"text-align:right;\"><b>Payee:</b></label></div><!-- &lt;div class=&quot;col-sm-8&quot;&gt;\r\n                                                &lt;p class=&quot;col-form-label&quot;&gt;{{ jevdDetails.FPAYEE }}&lt;/p&gt;\r\n                                            &lt;/div&gt; --></div></div></div><div class=\"col-5\"><div class=\"col-sm-12\"><div class=\"row\"><div class=\"col-sm-4\"><label class=\"col-form-label\" for=\"colFormLabelSm\" style=\"text-align:right;\"><b>Prepared By:</b></label></div><!-- &lt;div class=&quot;col-sm-8&quot;&gt;\r\n                                                &lt;p class=&quot;col-form-label&quot;&gt;{{ jevdDetails.FPREPBY }}&lt;/p&gt;\r\n                                            &lt;/div&gt; --></div></div><div class=\"col-sm-12\"><div class=\"row\"><div class=\"col-sm-4\"><label class=\"col-form-label\" for=\"colFormLabelSm\" style=\"text-align:right;\"><b>Position:</b></label></div><!-- &lt;div class=&quot;col-sm-8&quot;&gt;\r\n                                                &lt;p class=&quot;col-form-label&quot;&gt;{{ jevdDetails.FPREPD }}&lt;/p&gt;\r\n                                            &lt;/div&gt; --></div></div><div class=\"col-sm-12\"><div class=\"row\"><div class=\"col-sm-4\"><label class=\"col-form-label\" for=\"colFormLabelSm\" style=\"text-align:right;\"><b>Aprroved By:</b></label></div><!-- &lt;div class=&quot;col-sm-8&quot;&gt;\r\n                                                &lt;p class=&quot;col-form-label&quot;&gt;{{ jevdDetails.FAPPVBY }}&lt;/p&gt;\r\n                                            &lt;/div&gt; --></div></div><div class=\"col-sm-12\"><div class=\"row\"><div class=\"col-sm-4\"><label class=\"col-form-label\" for=\"colFormLabelSm\" style=\"text-align:right;\"><b>Position:</b></label></div><!-- &lt;div class=&quot;col-sm-8&quot;&gt;\r\n                                                &lt;p class=&quot;col-form-label&quot;&gt;{{ jevdDetails.FAPPVD }}&lt;/p&gt;\r\n                                            &lt;/div&gt; --></div></div></div><div class=\"col-3\"><div class=\"col-sm-12 form-floating\"><!-- &lt;textarea class=&quot;col-form-label form-control&quot;  rows=&quot;3&quot; style=&quot;height: 250px&quot; readonly  v-model=&quot;jevdDetails.FREMK&quot;&gt;&lt;/textarea&gt; --><label for=\"floatingInput\"><b>DESCRIPTION</b></label></div></div></div></div></div></div>   ", 2);
-
-var _hoisted_3 = {
-  "class": "card"
+var _hoisted_1 = {
+  "class": "card card text-dark bg-light"
 };
+var _hoisted_2 = {
+  "class": "card-body"
+};
+
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "row"
+}, null, -1
+/* HOISTED */
+);
+
 var _hoisted_4 = {
-  "class": "bgc-white p-20 bd table-responsive"
+  "class": "col-12 gap-5"
 };
 var _hoisted_5 = {
+  "class": "row"
+};
+var _hoisted_6 = {
+  "class": "col-4"
+};
+var _hoisted_7 = {
+  "class": "col-sm-12"
+};
+var _hoisted_8 = {
+  "class": "row"
+};
+
+var _hoisted_9 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "col-sm-4"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "col-form-label",
+  "for": "colFormLabelSm",
+  style: {
+    "text-align": "right"
+  }
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "Jev Type:")])], -1
+/* HOISTED */
+);
+
+var _hoisted_10 = {
+  "class": "col-sm-8"
+};
+var _hoisted_11 = {
+  "class": "col-form-label"
+};
+var _hoisted_12 = {
+  "class": "col-sm-12"
+};
+var _hoisted_13 = {
+  "class": "row"
+};
+
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "col-sm-4"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "col-form-label",
+  "for": "colFormLabelSm",
+  style: {
+    "text-align": "right"
+  }
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "FUND:")])], -1
+/* HOISTED */
+);
+
+var _hoisted_15 = {
+  "class": "col-sm-8"
+};
+var _hoisted_16 = {
+  "class": "col-form-label"
+};
+var _hoisted_17 = {
+  "class": "col-sm-12"
+};
+var _hoisted_18 = {
+  "class": "row"
+};
+
+var _hoisted_19 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "col-sm-4"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "col-form-label",
+  "for": "colFormLabelSm",
+  style: {
+    "text-align": "right"
+  }
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "JEV No.:")])], -1
+/* HOISTED */
+);
+
+var _hoisted_20 = {
+  "class": "col-sm-8"
+};
+var _hoisted_21 = {
+  "class": "col-form-label"
+};
+var _hoisted_22 = {
+  "class": "col-sm-12"
+};
+var _hoisted_23 = {
+  "class": "row"
+};
+
+var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "col-sm-4"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "col-form-label",
+  "for": "colFormLabelSm",
+  style: {
+    "text-align": "right"
+  }
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "JEV Date:")])], -1
+/* HOISTED */
+);
+
+var _hoisted_25 = {
+  "class": "col-sm-8"
+};
+var _hoisted_26 = {
+  "class": "col-form-label"
+};
+var _hoisted_27 = {
+  "class": "col-sm-12"
+};
+var _hoisted_28 = {
+  "class": "row"
+};
+
+var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "col-sm-4"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "col-form-label",
+  "for": "colFormLabelSm",
+  style: {
+    "text-align": "right"
+  }
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "Check:")])], -1
+/* HOISTED */
+);
+
+var _hoisted_30 = {
+  "class": "col-sm-8"
+};
+var _hoisted_31 = {
+  "class": "col-form-label"
+};
+var _hoisted_32 = {
+  "class": "col-sm-12"
+};
+var _hoisted_33 = {
+  "class": "row"
+};
+
+var _hoisted_34 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "col-sm-4"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "col-form-label",
+  "for": "colFormLabelSm",
+  style: {
+    "text-align": "right"
+  }
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "Ref#:")])], -1
+/* HOISTED */
+);
+
+var _hoisted_35 = {
+  "class": "col-sm-8"
+};
+var _hoisted_36 = {
+  "class": "col-form-label"
+};
+var _hoisted_37 = {
+  "class": "col-sm-12"
+};
+var _hoisted_38 = {
+  "class": "row"
+};
+
+var _hoisted_39 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "col-sm-4"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "col-form-label",
+  "for": "colFormLabelSm",
+  style: {
+    "text-align": "right"
+  }
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "Payee:")])], -1
+/* HOISTED */
+);
+
+var _hoisted_40 = {
+  "class": "col-sm-8"
+};
+var _hoisted_41 = {
+  "class": "col-form-label"
+};
+var _hoisted_42 = {
+  "class": "col-5"
+};
+var _hoisted_43 = {
+  "class": "col-sm-12"
+};
+var _hoisted_44 = {
+  "class": "row"
+};
+
+var _hoisted_45 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "col-sm-4"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "col-form-label",
+  "for": "colFormLabelSm",
+  style: {
+    "text-align": "right"
+  }
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "Prepared By:")])], -1
+/* HOISTED */
+);
+
+var _hoisted_46 = {
+  "class": "col-sm-8"
+};
+var _hoisted_47 = {
+  "class": "col-form-label"
+};
+var _hoisted_48 = {
+  "class": "col-sm-12"
+};
+var _hoisted_49 = {
+  "class": "row"
+};
+
+var _hoisted_50 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "col-sm-4"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "col-form-label",
+  "for": "colFormLabelSm",
+  style: {
+    "text-align": "right"
+  }
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "Position:")])], -1
+/* HOISTED */
+);
+
+var _hoisted_51 = {
+  "class": "col-sm-8"
+};
+var _hoisted_52 = {
+  "class": "col-form-label"
+};
+var _hoisted_53 = {
+  "class": "col-sm-12"
+};
+var _hoisted_54 = {
+  "class": "row"
+};
+
+var _hoisted_55 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "col-sm-4"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "col-form-label",
+  "for": "colFormLabelSm",
+  style: {
+    "text-align": "right"
+  }
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "Aprroved By:")])], -1
+/* HOISTED */
+);
+
+var _hoisted_56 = {
+  "class": "col-sm-8"
+};
+var _hoisted_57 = {
+  "class": "col-form-label"
+};
+var _hoisted_58 = {
+  "class": "col-sm-12"
+};
+var _hoisted_59 = {
+  "class": "row"
+};
+
+var _hoisted_60 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "col-sm-4"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "col-form-label",
+  "for": "colFormLabelSm",
+  style: {
+    "text-align": "right"
+  }
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "Position:")])], -1
+/* HOISTED */
+);
+
+var _hoisted_61 = {
+  "class": "col-sm-8"
+};
+var _hoisted_62 = {
+  "class": "col-form-label"
+};
+var _hoisted_63 = {
+  "class": "col-4"
+};
+var _hoisted_64 = {
+  "class": "col-sm-12 form-floating"
+};
+
+var _hoisted_65 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "floatingInput"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "DESCRIPTION")], -1
+/* HOISTED */
+);
+
+var _hoisted_66 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)("   ");
+
+var _hoisted_67 = {
+  "class": "card"
+};
+var _hoisted_68 = {
+  "class": "bgc-white p-20 bd table-responsive"
+};
+var _hoisted_69 = {
   "class": "col-auto",
   align: "right"
 };
 
-var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("   <table class=\"table table-hover\"><thead><tr><th scope=\"col\">ActCode Title</th><!-- &lt;th scope=&quot;col&quot;&gt;ActCode&lt;/th&gt; --><th scope=\"col\">SubCode Title</th><!-- &lt;th scope=&quot;col&quot;&gt;SubCode&lt;/th&gt; --><th scope=\"col\">SubCode2 Title</th><!-- &lt;th scope=&quot;col&quot;&gt;SubCode2&lt;/th&gt; --><th scope=\"col\">RespCtr</th><th scope=\"col\">Voucher</th><th scope=\"col\">OBR #</th><th scope=\"col\">PR #</th><th scope=\"col\">Debit</th><th scope=\"col\">Credit</th><th scope=\"col\">Remarks</th><th scope=\"col\" style=\"text-align:right;\">Action</th></tr></thead></table><div class=\"row justify-content-end\"><div class=\"col-2\"><div class=\"form-floating\"><input type=\"text\" class=\"form-control fw-bold\" style=\"width:150px;height:55px;\"><label for=\"floatingInputGrid\">Total Debit</label></div></div><div class=\"col-2\"><div class=\"form-floating\"><input type=\"text\" class=\"form-control fw-bold\" style=\"width:150px;height:55px;\"><label for=\"floatingInputGrid\">Total Credit</label></div></div></div>", 3);
+var _hoisted_70 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("   <table class=\"table table-hover\"><thead><tr><th scope=\"col\">ActCode Title</th><!-- &lt;th scope=&quot;col&quot;&gt;ActCode&lt;/th&gt; --><th scope=\"col\">SubCode Title</th><!-- &lt;th scope=&quot;col&quot;&gt;SubCode&lt;/th&gt; --><th scope=\"col\">SubCode2 Title</th><!-- &lt;th scope=&quot;col&quot;&gt;SubCode2&lt;/th&gt; --><th scope=\"col\">RespCtr</th><th scope=\"col\">Voucher</th><th scope=\"col\">OBR #</th><th scope=\"col\">PR #</th><th scope=\"col\">Debit</th><th scope=\"col\">Credit</th><th scope=\"col\">Remarks</th><th scope=\"col\" style=\"text-align:right;\">Action</th></tr></thead></table><div class=\"row justify-content-end\"><div class=\"col-2\"><div class=\"form-floating\"><input type=\"text\" class=\"form-control fw-bold\" style=\"width:150px;height:55px;\"><label for=\"floatingInputGrid\">Total Debit</label></div></div><div class=\"col-2\"><div class=\"form-floating\"><input type=\"text\" class=\"form-control fw-bold\" style=\"width:150px;height:55px;\"><label for=\"floatingInputGrid\">Total Credit</label></div></div></div>", 3);
 
-var _hoisted_9 = {
+var _hoisted_73 = {
   "class": "col-md-12"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_jevd_create = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("jevd-create");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [_hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [_hoisted_3, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [_hoisted_9, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.jevtype[_ctx.jevdDetails.FJEVTYP]), 1
+  /* TEXT */
+  )])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_13, [_hoisted_14, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.jevhDetails.FUND_SCODE), 1
+  /* TEXT */
+  )])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [_hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.jevhDetails.FJEVNO), 1
+  /* TEXT */
+  )])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [_hoisted_24, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_25, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_26, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.jevhDetails.FJEVDATE), 1
+  /* TEXT */
+  )])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_27, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_28, [_hoisted_29, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_30, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_31, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.jevhDetails.FCHKNO), 1
+  /* TEXT */
+  )])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_32, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_33, [_hoisted_34, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_35, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_36, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.jevhDetails.FREFNO), 1
+  /* TEXT */
+  )])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_37, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_38, [_hoisted_39, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_40, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_41, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.jevhDetails.FPAYEE), 1
+  /* TEXT */
+  )])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_42, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_43, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_44, [_hoisted_45, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_46, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_47, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.jevhDetails.FPREPBY), 1
+  /* TEXT */
+  )])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_48, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_49, [_hoisted_50, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_51, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_52, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.jevhDetails.FPREPD), 1
+  /* TEXT */
+  )])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_53, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_54, [_hoisted_55, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_56, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_57, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.jevhDetails.FAPPVBY), 1
+  /* TEXT */
+  )])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_58, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_59, [_hoisted_60, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_61, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_62, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.jevhDetails.FAPPVD), 1
+  /* TEXT */
+  )])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_63, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_64, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
+    "class": "col-form-label form-control",
+    style: {
+      "height": "200px"
+    },
+    readonly: "",
+    "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
+      return $props.jevhDetails.FREMK = $event;
+    })
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $props.jevhDetails.FREMK]]), _hoisted_65])])])])])]), _hoisted_66, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_67, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_68, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_69, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
     "class": "btn btn-success btn-sm mL-2 text-white",
-    onClick: _cache[0] || (_cache[0] = function ($event) {
+    onClick: _cache[1] || (_cache[1] = function ($event) {
       return $options.createjev();
     })
-  }, " Add new record")]), _hoisted_6]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [$data.showModal ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_jevd_create, {
+  }, " Add new record")]), _hoisted_70]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_73, [$data.showModal ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_jevd_create, {
     key: 0,
     jev: _ctx.jev
   }, null, 8

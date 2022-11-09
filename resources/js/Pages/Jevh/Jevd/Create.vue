@@ -1,6 +1,6 @@
 <template>
     <div class="row">
-            <!-- <h3>{{ pageTitle}}</h3> -->
+            <h3>{{ pageTitle}}</h3>
             <!-- <back-button :backToURL="'/jevh/index'"></back-button> -->
             <div class="col-md-8">
                 <div class="form-group row p-3">
@@ -139,7 +139,7 @@
 
                     <div class="col-12">
                         <div class="bgc-white p-20 bd table-responsive shadow">
-                            <table class="table table-hover table-striped ">
+                            <table class="table table-hover">
                                 <thead>
                                     <tr>
                                         <th scope="col">RespCtr</th>
@@ -155,8 +155,8 @@
                                         <th scope="col">Debit</th>
                                         <th scope="col">Credit</th>
                                         <th scope="col">Remarks</th>
-                                        <!-- <th scope="col" style="width: 30%"></th>
-                                        <th scope="col" style="text-align: right">Action</th> -->
+                                        <!-- <th scope="col" style="width: 30%"></th> -->
+                                        <th scope="col" style="text-align: right">Action</th>
                                     </tr>
                                     
                                 </thead>
@@ -175,15 +175,39 @@
                                         <td>{{ item.jevdDebit }}</td>
                                         <td>{{ item.jevdCredit }}</td>
                                         <td>{{ item.FREMARKS }}</td>
+                                        <td style="text-align: right">
+                                            <div class="dropdown dropstart">
+                                                <button class="btn btn-secondary btn-sm action-btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots" viewBox="0 0 16 16">
+                                                    <path d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+                                                    </svg>
+                                                </button>
+
+                                                <ul class="dropdown-menu action-dropdown" aria-labelledby="dropdownMenuButton1">
+                                                    <li><button class="dropdown-item" @click="editJevD(item.recid)">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                                                        </svg> Edit</button></li>
+
+                                                    <li> <hr class="dropdown-divider action-divider"></li>
+                                                        <li><Link class="text-danger dropdown-item" @click="deleteJevd(item.recid)">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
+                                                        <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
+                                                        </svg> Delete </Link></li>
+                                                </ul>
+
+                                            </div>
+                                        </td>
                                     </tr>
-                                    <!-- <tr>
+                                    <tr>
                                        
-                                        <th scope="row 9">Total</th>
+                                        <th scope="row 12">Total</th>
                                         <td colspan="9"></td>
                                         <td><b>{{ total.totalDebit }}</b></td>
                                         <td><b>{{ total.totalCredit }}</b></td>
-                                        <td></td>
-                                    </tr> -->
+                                    </tr>
+
                                 </tbody>
                             </table>
                         </div>
@@ -201,23 +225,30 @@
     
                             <label class="col-form-label"><b>RespCenter</b></label>
                             <input type="text" v-model="form.FRESPCTR" class="form-control" autocomplete="chrome-off">
-    
+                            <div class="fs-6 c-red" v-if="form.errors.FRESPCTR"> {{form.errors.FRESPCTR}}</div>
+                            
                             <label class="col-form-label"><b>Voucher #</b></label>
                             <input type="text" v-model="form.FVOUCHNO" class="form-control" autocomplete="chrome-off">
+                            <div class="fs-6 c-red" v-if="form.errors.FVOUCHNO"> {{form.errors.FVOUCHNO}}</div>
     
                             <label class="col-mb-3 col-form-label"><b>OBR #</b></label>
                             <input type="text" v-model="form.FALOBNO" class="form-control" autocomplete="chrome-off">
+                            <div class="fs-6 c-red" v-if="form.errors.FALOBNO"> {{form.errors.FALOBNO}}</div>
     
                             <div class="row">
                                 <div class="col-md-6 ">
                                     <label class="col-form-label"><b>PR #</b></label>
                                     <input type="text" v-model="form.FPRNO" class="form-control" autocomplete="chrome-off"> 
+
+                                    <div class="fs-6 c-red" v-if="form.errors.FPRNO"> {{form.errors.FPRNO}}</div>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="col-form-label"><b>Act Code</b></label>
                                     <select  class="form-select" v-model="form.FACTCODE" @change="getSubCode1(), getSubCode2()">
                                         <option v-for="item in factcodes" :value="item.FACTCODE" :key="item.recid">{{ item.FTITLE}}</option>
                                     </select>
+
+                                    <div class="fs-6 c-red" v-if="form.errors.FACTCODE"> {{form.errors.FACTCODE}}</div>
                                 </div>
                             </div>
                             <div class="row">
@@ -235,15 +266,18 @@
     
                             <label class="col-mb-3 col-form-label"><b>Debit</b></label>
                             <input type="text" v-model="form.FDEBIT" class="form-control" autocomplete="chrome-off">
+                            <div class="fs-6 c-red" v-if="form.errors.FDEBIT"> {{form.errors.FDEBIT}}</div>
     
                             <label class="col-mb-3 col-form-label"><b>Credit</b></label>
                             <input type="text" v-model="form.FCREDIT" class="form-control" autocomplete="chrome-off">
+                            <div class="fs-6 c-red" v-if="form.errors.FCREDIT"> {{form.errors.FCREDIT}}</div>
     
                             <label class="col-mb-3 col-form-label"><b>Description</b></label>
                                 <textarea class="form-control" v-model="form.FREMARKS" id="floatingTextarea2" style="height:105px;"></textarea> 
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary"> Add{{form.processing ? 'ing...':''}}</button>
+                            <button type="submit" class="btn btn-primary" v-if="pageTitle === 'Create'" :disabled="isDisabled"> Add{{form.processing ? 'ing...':''}}</button>
+                            <button type="submit" class="btn btn-primary" v-if="pageTitle === 'Edit'" :disabled="isDisabled">Update{{form.processing ? 'ing...':''}}</button>
                         </div>
                     </form>
                 </div>
@@ -256,7 +290,7 @@ import { useForm } from '@inertiajs/inertia-vue3';
 export default {
     props:{
         data:Object,
-        jevhdata: Object
+        // editData: Object
     },
     data () {
         return {
@@ -268,7 +302,6 @@ export default {
                 5:"ADA",
                 6:"Procurement"
             },
-            total:{},
             jevd:{},
             factcodes:{},
             subcode1: {},
@@ -287,16 +320,44 @@ export default {
                 FDEBIT: "",
                 FCREDIT: "",
                 FREMARKS: ""
-            })
+            }),
+            jevdData:{},
+            total:{},
+            pageTitle: "",
+            isDisabled: false,
         }
     },
 
-    mounted() {
+    async mounted() {
         this.getChartAccount(),
-        this.getSubCode1(),
+        this.getSubCode1()
         this.getSubCode2(),
-        this.getjevdData()
-        // this.getTotal()
+        this.getjevdData(),
+        
+        await this.getTotal()
+
+        if( !!this.editData ){
+            this.form.FRESPCTR = this.jevdData.FRESPCTR
+            this.form.FACTCODE = this.jevdData.FACTCODE
+            this.form.FSUBCDE = this.jevdData.FSUBCDE
+            this.form.FSUBCDE2 = this.jevdData.FSUBCDE2
+            this.form.FALOBNO = this.jevdData.FALOBNO
+            this.form.FVOUCHNO = this.jevdData.FVOUCHNO
+            this.form.FPRNO = this.jevdData.FPRNO
+            this.form.FDEBIT = this.jevdData.FDEBIT
+            this.form.FCREDIT = this.jevdData.FCREDIT
+            this.form.FREMARKS = this.jevdData.FCREDIT
+            this.form.recid = this.jevdData.recid
+        } else {
+            this.pageTitle = 'Create'
+        }
+    },
+
+    watch: {
+        'jevdData': function(value) {
+            this.getSubCode1()
+            this.getSubCode2()
+        },
     },
 
     methods: {
@@ -306,7 +367,8 @@ export default {
         })
     },
     getSubCode1() {
-        axios.post('/jevd/getSubCode1', {FACTCODE: this.form.FACTCODE}).then( response => {
+
+            axios.post('/jevd/getSubCode1', {FACTCODE: this.form.FACTCODE}).then( response => {
             this.subcode1 = response.data
         })
     },
@@ -316,17 +378,41 @@ export default {
         })
     },
     submit () {
-        this.form.post("/jevd/", {
-                onFinish: visit => {
-                    this.$inertia.visit('/jevh/jevd-create/'+this.data.recid)
+        if( !!this.jevdData )
+        {
+            this.form.patch('/jevh/jevd/'+this.data.recid);
+        } else {
+            this.form.post("/jevd/", {
+                    onFinish: visit => {
+                        this.$inertia.visit('/jevh/jevd-create/'+this.data.recid)
+                    }
                 }
-            }
-        );
+            );
+        }
+
         // this.$inertia.visit("/jevd/", {
         //     onFinish: visit => {
         //         this.getjevdData()
-        //     } 
+        //     }
         // })
+    },
+    editJevD(id) {
+            axios.get('/jevd/'+id+'/edit').then(response => {
+                this.jevdData = response.data
+                this.form.FRESPCTR = response.data.FRESPCTR 
+                this.form.FACTCODE = response.data.FACTCODE
+                this.form.FSUBCDE = response.data.FSUBCDE
+                this.form.FSUBCDE2 = response.data.FSUBCDE2
+                this.form.FALOBNO = response.data.FALOBNO
+                this.form.FVOUCHNO = response.data.FVOUCHNO
+                this.form.FPRNO = response.data.FPRNO
+                this.form.FDEBIT = response.data.FDEBIT
+                this.form.FCREDIT = response.data.FCREDIT
+                this.form.FREMARKS = response.data.FREMARKS
+
+                this.pageTitle = 'Edit'
+                });
+           
     },
     getjevdData(url = "/jevd/get-jevdData"){
             let payload = {
@@ -341,14 +427,29 @@ export default {
                 })
         },
 
-    // getTotal()
-    //     {
-    //         var self = this;
-    //             this.post('/jevd/credit-debit-total', {FJEVNO: this.jevdDetails.FJEVNO , FUND_SCODE:  this.jevdDetails.FUND_SCODE, fiscalyear: this.jevdDetails.fiscalyear}).then(response => {
-    //                 this.total = response.data;
-    //                 self.isFullyLoaded = true;
-    //             })
-    //     }
+    deleteJevd (id)
+    {
+        let text = "Warning!\Are you sure you want to Delete this Record?";
+            if(confirm(text) == true) {
+                this.$inertia.delete("/jevd/" + id, {
+                    onFinish: visit => {
+                        this.$inertia.visit('/jevh/jevd-create/'+this.data.recid)
+                    }});
+            }
+            
+    },
+
+    getTotal()
+        {
+            var self = this;
+                axios.post('/jevd/credit-debit-total', 
+                {FJEVNO: this.data.FJEVNO , FUND_SCODE:  
+                    this.data.FUND_SCODE, fiscalyear: 
+                    this.data.fiscalyear}).then(response => {
+                    this.total = response.data;
+                    self.isFullyLoaded = true;
+                })
+        }
     },
 
     // watch: {

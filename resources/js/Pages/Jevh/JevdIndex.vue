@@ -12,9 +12,9 @@
                                             <div class="col-sm-4">
                                                 <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>Jev Type:</b></label>
                                             </div>
-                                            <!-- <div class="col-sm-8">
+                                            <div class="col-sm-8">
                                                 <p class="col-form-label">{{ jevtype[jevdDetails.FJEVTYP] }}</p>
-                                            </div> -->
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-12">
@@ -22,9 +22,9 @@
                                             <div class="col-sm-4">
                                                 <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>FUND:</b></label>
                                             </div>
-                                            <!-- <div class="col-sm-8">
-                                                <p class="col-form-label">{{ jevdDetails.FUND_SCODE }}</p>
-                                            </div> -->
+                                            <div class="col-sm-8">
+                                                <p class="col-form-label">{{ jevhDetails.FUND_SCODE }}</p>
+                                            </div>
                                         </div> 
                                     </div>
                                     <div class="col-sm-12">
@@ -32,9 +32,9 @@
                                             <div class="col-sm-4">
                                                 <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>JEV No.:</b></label>
                                             </div>
-                                            <!-- <div class="col-sm-8">
-                                                <p class="col-form-label">{{ jevdDetails.FJEVNO }}</p>
-                                            </div> -->
+                                            <div class="col-sm-8">
+                                                <p class="col-form-label">{{ jevhDetails.FJEVNO }}</p>
+                                            </div>
                                         </div> 
                                     </div>
                                     <div class="col-sm-12">
@@ -42,9 +42,9 @@
                                             <div class="col-sm-4">
                                                 <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>JEV Date:</b></label>
                                             </div>
-                                            <!-- <div class="col-sm-8">
-                                                <p class="col-form-label">{{ jevdDetails.FJEVDATE }}</p>
-                                            </div> -->
+                                            <div class="col-sm-8">
+                                                <p class="col-form-label">{{ jevhDetails.FJEVDATE }}</p>
+                                            </div>
                                         </div> 
                                     </div>
                                     <div class="col-sm-12">
@@ -52,9 +52,9 @@
                                             <div class="col-sm-4">
                                                 <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>Check:</b></label>
                                             </div>
-                                            <!-- <div class="col-sm-8">
-                                                <p class="col-form-label">{{ jevdDetails.FCHKNO }}</p>
-                                            </div> -->
+                                            <div class="col-sm-8">
+                                                <p class="col-form-label">{{ jevhDetails.FCHKNO }}</p>
+                                            </div>
                                         </div> 
                                     </div>
                                     <div class="col-sm-12">
@@ -62,9 +62,9 @@
                                             <div class="col-sm-4">
                                                 <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>Ref#:</b></label>
                                             </div>
-                                            <!-- <div class="col-sm-8">
-                                                <p class="col-form-label">{{ jevdDetails.FREFNO }}</p>
-                                            </div> -->
+                                            <div class="col-sm-8">
+                                                <p class="col-form-label">{{ jevhDetails.FREFNO }}</p>
+                                            </div>
                                         </div> 
                                     </div>
                                     <div class="col-sm-12">
@@ -72,9 +72,9 @@
                                             <div class="col-sm-4">
                                                 <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>Payee:</b></label>
                                             </div>
-                                            <!-- <div class="col-sm-8">
-                                                <p class="col-form-label">{{ jevdDetails.FPAYEE }}</p>
-                                            </div> -->
+                                            <div class="col-sm-8">
+                                                <p class="col-form-label">{{ jevhDetails.FPAYEE }}</p>
+                                            </div>
                                         </div> 
                                     </div>
                                 </div>
@@ -84,9 +84,9 @@
                                             <div class="col-sm-4">
                                                 <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>Prepared By:</b></label>
                                             </div>
-                                            <!-- <div class="col-sm-8">
-                                                <p class="col-form-label">{{ jevdDetails.FPREPBY }}</p>
-                                            </div> -->
+                                            <div class="col-sm-8">
+                                                <p class="col-form-label">{{ jevhDetails.FPREPBY }}</p>
+                                            </div>
                                         </div> 
                                     </div>
                                     <div class="col-sm-12">
@@ -94,9 +94,9 @@
                                             <div class="col-sm-4">
                                                 <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>Position:</b></label>
                                             </div>
-                                            <!-- <div class="col-sm-8">
-                                                <p class="col-form-label">{{ jevdDetails.FPREPD }}</p>
-                                            </div> -->
+                                            <div class="col-sm-8">
+                                                <p class="col-form-label">{{ jevhDetails.FPREPD }}</p>
+                                            </div>
                                         </div> 
                                     </div>
                                     <div class="col-sm-12">
@@ -104,9 +104,9 @@
                                             <div class="col-sm-4">
                                                 <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>Aprroved By:</b></label>
                                             </div>
-                                            <!-- <div class="col-sm-8">
-                                                <p class="col-form-label">{{ jevdDetails.FAPPVBY }}</p>
-                                            </div> -->
+                                            <div class="col-sm-8">
+                                                <p class="col-form-label">{{ jevhDetails.FAPPVBY }}</p>
+                                            </div>
                                         </div> 
                                     </div>
                                     <div class="col-sm-12">
@@ -114,18 +114,18 @@
                                             <div class="col-sm-4">
                                                 <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>Position:</b></label>
                                             </div>
-                                            <!-- <div class="col-sm-8">
-                                                <p class="col-form-label">{{ jevdDetails.FAPPVD }}</p>
-                                            </div> -->
+                                            <div class="col-sm-8">
+                                                <p class="col-form-label">{{ jevhDetails.FAPPVD }}</p>
+                                            </div>
                                         </div> 
                                     </div>
                                 </div>
-                                <div class="col-3">
-                                    <div class="col-sm-12 form-floating">                               
-                                        <!-- <textarea class="col-form-label form-control"  rows="3" style="height: 250px" readonly  v-model="jevdDetails.FREMK"></textarea> -->
-                                        <label for="floatingInput"><b>DESCRIPTION</b></label>
-                                    </div>
-                                </div>
+                                <div class="col-4">
+                                            <div class="col-sm-12 form-floating">                               
+                                                <textarea class="col-form-label form-control" style="height: 200px" readonly v-model="jevhDetails.FREMK"></textarea>
+                                                <label for="floatingInput"><b>DESCRIPTION</b></label>
+                                            </div>
+                                        </div>
                             </div>
                         </div>
                     </div>
@@ -185,7 +185,8 @@ export default {
         JevdCreate : JevdCreate,
     },
     props: {
-        jevd: Object
+        jevd: Object,
+        jevhDetails: Object
     },
 
     data() {
