@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Jevd;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use PhpParser\Node\Expr\AssignOp\ShiftLeft;
+use App\Http\Requests\JevdValidation;
 
 class JevdController extends Controller
 {
@@ -13,6 +13,7 @@ class JevdController extends Controller
     {
         $this->model = $model;
     }
+
     public function jevDetails(Request $request)
     {
         $details = DB::table('jevd')
@@ -123,5 +124,36 @@ class JevdController extends Controller
                 ->get();
 
                 return $subcode2;
+    }
+
+    public function store(JevdValidation $request)
+    {
+        $validated = $request->validated();
+        
+        $jevd = $this->model->create($request->all());
+        return back()->with('message', "Added Successfully");
+    }
+
+    public function editJevd(Request $request,$id)
+    {
+        $data = $this->model->where('recid', $id)->first();
+        return $data;
+    }
+
+    public function update(Request $request
+    )
+    {
+        $data = $this->model->findOrFail($request->id);
+        $data->update($request->all());
+
+        return back()->with('message', "Updated Succesfuly");
+    }
+
+    public function destroy(Request $request)
+    {
+        $data = $this->model->findOrFail($request->id);
+        $data->delete();
+        
+       return back()->with('message', 'Successfully Deleted!');
     }
 }

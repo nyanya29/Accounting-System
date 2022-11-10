@@ -195,6 +195,7 @@
                                     <!-- <td colspan="9"></td> -->
                                     <th scope="row 9">Total</th>
                                     <td colspan="9"></td>
+
                                     <td><b>{{ total.totalDebit }}</b></td>
                                     <td><b>{{ total.totalCredit }}</b></td>
                                     <td></td>
@@ -263,7 +264,11 @@ export default {
         },
         getTotal(){
             var self = this;
-            axios.post('/jevd/credit-debit-total', {FJEVNO: this.jevdDetails.FJEVNO , FUND_SCODE:  this.jevdDetails.FUND_SCODE, fiscalyear: this.jevdDetails.fiscalyear}).then(response => {
+            axios.post('/jevd/credit-debit-total', {
+                FJEVNO: this.jevdDetails.FJEVNO , 
+                FUND_SCODE:  this.jevdDetails.FUND_SCODE, 
+                fiscalyear: this.jevdDetails.fiscalyear
+            }).then(response => {
                 this.total = response.data;
                 self.isFullyLoaded = true;
             })

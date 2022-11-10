@@ -66,7 +66,7 @@
                     <tbody>
                         <tr v-for="(jevhdata, index) in jevh.data" :key="index">
                             <td>{{ jevhdata.fiscalyear }}</td>
-                            <td>{{ jevhdata.FUND_SCODE }}</td>
+                            <td>{{ jevhdata.FUND_SCODE }}</td> 
                             <td>{{ jevhdata.FJEVNO }}</td>
                             <td>{{ jevhdata.FJEVDATE }}</td>
                             <td>{{ jevhdata.FCHKNO }}</td>
