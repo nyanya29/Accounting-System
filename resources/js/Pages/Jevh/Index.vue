@@ -17,11 +17,11 @@
                 </div>
             </div>
         </div>
-        <div class="bd-callout bd-callout-info">
+        <!-- <div class="bd-callout bd-callout-info">
             <div class="bd-callout-body">
                 test
             </div>
-        </div>
+        </div> -->
 
         <filtering v-if="filter" @closeFilter="filter=false">
             <label class="mB-5">Fund</label>

@@ -67,7 +67,7 @@ Route::middleware('auth')->group(function() {
 
     });
     //jevd
-    Route::prefix('/jevd')->group(function(){
+    Route::prefix('/jevd')->group(function($slug){
         Route::post('/index', [JevdController::class, 'jevDetails']);
         Route::get('/jevdcreate', [JevdController::class, 'jevdcreate']);
         Route::post('getChartAccount', [JevdController::class, 'getChartAccount']);
@@ -79,3 +79,5 @@ Route::middleware('auth')->group(function() {
 });
 Route::get('print-jevd', [JevdReportsController::class, 'jevdReport']);
 Route::get('print-jevtype', [JevdReportsController::class, 'jevdTypeReport']);
+Route::get('jevtype_data_set', [JevdReportsController::class, 'dataSetJevtyp']);
+Route::get('jevtype-sundry', [JevdReportsController::class, 'jevdtypSundry']);
