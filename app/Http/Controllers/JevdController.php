@@ -6,6 +6,7 @@ use App\Models\Jevd;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\JevdValidation;
+use Inertia\Inertia;
 
 class JevdController extends Controller
 {
@@ -131,7 +132,7 @@ class JevdController extends Controller
         $validated = $request->validated();
         
         $jevd = $this->model->create($request->all());
-        return back()->with('message', "Added Successfully");
+        return redirect()->back()->with('message', "Added Successfully");
     }
 
     public function editJevd(Request $request,$id)
@@ -140,9 +141,9 @@ class JevdController extends Controller
         return $data;
     }
 
-    public function update(Request $request
-    )
+    public function update(Request $request, $id)
     {
+        
         $data = $this->model->findOrFail($request->id);
         $data->update($request->all());
 

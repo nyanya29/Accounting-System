@@ -164,13 +164,13 @@
                                 </thead>
                                 <tbody>
                                     <tr v-for="item in jevd" :key="item.index">
+                                        <td>{{ item.FRESPCTR }}</td>
                                         <td>{{ item.FACTCODE }}</td>
                                         <td>{{ item.FTITLE }}</td>
                                         <td>{{ item.FSUBCDE }}</td>
                                         <td>{{ item.FSTITLE }}</td>
                                         <td>{{ item.FSUBCDE2 }}</td>
                                         <td>{{ item.FSTITLE2 }}</td>
-                                        <td>{{ item.FRESPCTR }}</td>
                                         <td>{{ item.FVOUCHNO }}</td>
                                         <td>{{ item.FALOBNO }}</td>
                                         <td>{{ item.FPRNO }}</td>
@@ -208,7 +208,12 @@
                                         <td colspan="9"></td>
                                         <td><b>{{ total.totalDebit }}</b></td>
                                         <td><b>{{ total.totalCredit }}</b></td>
+                                        <td colspan="2"></td>
                                     </tr>
+                                    <tr v-if="total.totalCredit != total.totalDebit">
+                                       <td colspan="9"></td>
+                                       <td colspan="5"><div class="fs-6 c-red text-danger">Debit is not equal to credit!!!</div></td>
+                                   </tr>
 
                                 </tbody>
                             </table>
@@ -227,30 +232,30 @@
     
                             <label class="col-form-label"><b>RespCenter</b></label>
                             <input type="text" v-model="form.FRESPCTR" class="form-control" autocomplete="chrome-off">
-                            <div class="fs-6 c-red" v-if="form.errors.FRESPCTR"> {{form.errors.FRESPCTR}}</div>
+                            <div class="fs-6 c-red text-danger" v-if="form.errors.FRESPCTR"> {{form.errors.FRESPCTR}}</div>
                             
                             <label class="col-form-label"><b>Voucher #</b></label>
                             <input type="text" v-model="form.FVOUCHNO" class="form-control" autocomplete="chrome-off">
-                            <div class="fs-6 c-red" v-if="form.errors.FVOUCHNO"> {{form.errors.FVOUCHNO}}</div>
+                            <div class="fs-6 c-red text-danger" v-if="form.errors.FVOUCHNO"> {{form.errors.FVOUCHNO}}</div>
     
                             <label class="col-mb-3 col-form-label"><b>OBR #</b></label>
                             <input type="text" v-model="form.FALOBNO" class="form-control" autocomplete="chrome-off">
-                            <div class="fs-6 c-red" v-if="form.errors.FALOBNO"> {{form.errors.FALOBNO}}</div>
+                            <div class="fs-6 c-red text-danger" v-if="form.errors.FALOBNO"> {{form.errors.FALOBNO}}</div>
     
                             <div class="row">
                                 <div class="col-md-6 ">
                                     <label class="col-form-label"><b>PR #</b></label>
                                     <input type="text" v-model="form.FPRNO" class="form-control" autocomplete="chrome-off"> 
 
-                                    <div class="fs-6 c-red" v-if="form.errors.FPRNO"> {{form.errors.FPRNO}}</div>
+                                    <div class="fs-6 c-red text-danger" v-if="form.errors.FPRNO"> {{form.errors.FPRNO}}</div>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="col-form-label"><b>Act Code</b></label>
                                     <select  class="form-select" v-model="form.FACTCODE" @change="getSubCode1(), getSubCode2()">
                                         <option v-for="item in factcodes" :value="item.FACTCODE" :key="item.recid">{{ item.FTITLE}}</option>
                                     </select>
-
-                                    <div class="fs-6 c-red" v-if="form.errors.FACTCODE"> {{form.errors.FACTCODE}}</div>
+ 
+                                    <div class="fs-6 c-red text-danger" v-if="form.errors.FACTCODE"> {{form.errors.FACTCODE}}</div>
                                 </div>
                             </div>
                             <div class="row">
@@ -268,11 +273,11 @@
     
                             <label class="col-mb-3 col-form-label"><b>Debit</b></label>
                             <input type="text" v-model="form.FDEBIT" class="form-control" autocomplete="chrome-off">
-                            <div class="fs-6 c-red" v-if="form.errors.FDEBIT"> {{form.errors.FDEBIT}}</div>
+                            <div class="fs-6 c-red text-danger" v-if="form.errors.FDEBIT"> {{form.errors.FDEBIT}}</div>
     
                             <label class="col-mb-3 col-form-label"><b>Credit</b></label>
                             <input type="text" v-model="form.FCREDIT" class="form-control" autocomplete="chrome-off">
-                            <div class="fs-6 c-red" v-if="form.errors.FCREDIT"> {{form.errors.FCREDIT}}</div>
+                            <div class="fs-6 c-red text-danger" v-if="form.errors.FCREDIT"> {{form.errors.FCREDIT}}</div>
     
                             <label class="col-mb-3 col-form-label"><b>Description</b></label>
                                 <textarea class="form-control" v-model="form.FREMARKS" id="floatingTextarea2" style="height:105px;"></textarea> 
@@ -327,6 +332,7 @@ export default {
             total:{},
             pageTitle: "",
             isDisabled: false,
+            recid_to_update:null
         }
     },
 
@@ -380,25 +386,28 @@ export default {
         })
     },
     submit () {
-        if( !!this.jevdData )
+        if( this.pageTitle == 'Create')
         {
-            this.form.patch('/jevh/jevd-update/'+this.data.recid, {
-                onFinish: visit => {
-                        this.$inertia.visit('/jevh/jevd-create/'+this.data.recid)
-                    } 
-            });
-        } else {
             this.form.post("/jevd/", {
-                    onFinish: visit => {
+
+                    onSuccess: visit => {
+
                         this.$inertia.visit('/jevh/jevd-create/'+this.data.recid)
                     }
                 }
             );
+        } else {
+            this.form.patch('/jevh/jevd-update/'+this.recid_to_update, {
+                onFinish: visit => {
+                    this.$inertia.visit('/jevh/jevd-create/'+this.data.recid)
+                } 
+            });
         }
 
     },
     editJevD(id) {
             axios.get('/jevd/'+id+'/edit').then(response => {
+                this.recid_to_update = id;
                 this.jevdData = response.data
                 this.form.FRESPCTR = response.data.FRESPCTR 
                 this.form.FACTCODE = response.data.FACTCODE
@@ -450,7 +459,15 @@ export default {
                     this.total = response.data;
                     self.isFullyLoaded = true;
                 })
-        }
+        },
+
+    // closeJev(){
+    //     if(this.total.totalCredit != this.total.totalDebit){
+    //         this.form.errors("Credit is not equal to credit", 'error')
+    //     }else{
+    //         this.$inertia.get('/jevh/index');
+    //     }
+    // }
     },
 
     // watch: {

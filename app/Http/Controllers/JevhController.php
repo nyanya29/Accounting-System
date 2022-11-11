@@ -108,5 +108,10 @@ class JevhController extends Controller
             'data' => $data,
         ]);
     }
+
+    public function JevReport()
+    {
+       return inertia('Jevh/JevReport');
+    }
     
 }

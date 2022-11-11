@@ -104,8 +104,7 @@ class JevdReportsController extends Controller
                         'jevh.FPAYEE',
                         'jevh.FJEVDATE',
                         'funds_details.FUNDDETAIL_NAME'
-                    )
-                    ->orderBy('FJEVNO');
+                    );
         
         // //$details = $details->;
         
@@ -136,6 +135,9 @@ class JevdReportsController extends Controller
         //     'dateTo' => Carbon::parse($request->to)->format('F d, Y')
         // ]));
         $this->temp = $details
+        ->where('jevh.FJEVTYP','=',$request->FJEVTYP)
+        ->where('jevd.FUND_SCODE','=',$request->FUND_SCODE)
+        ->whereBetween('jevh.FJEVDATE',[$request->from,$request->to])
         ->get()
         ->groupBy('recid')
         ->map(fn($item) => [
@@ -154,7 +156,7 @@ class JevdReportsController extends Controller
                     "FCREDIT"           => $item->sum('FCREDIT'),
                     "fiscalyear"        => $item[0]->fiscalyear,
                     "FJEVNO"            => $item[0]->FJEVNO,
-                    "FACTCODE"          => $item[0]->FACTCODE,
+                    "FACTCODE"          => "",
                     "FJEVTYP"           => $item[0]->FJEVTYP,
                     "FPAYEE"            => $item[0]->FPAYEE,
                     "FJEVDATE"          => $item[0]->FJEVDATE,
@@ -166,6 +168,7 @@ class JevdReportsController extends Controller
         $this->temp_index = 0;
         $this->FJEVDATE   = "";
         $this->FJEVNO     = "";
+
         $details = $details
                     ->where('jevd.FACTCODE','!=','40102080')
                     ->where('jevd.FACTCODE','!=','40102040')
@@ -175,6 +178,9 @@ class JevdReportsController extends Controller
                     ->where('jevd.FACTCODE','!=','10101010')
                     ->where('jevd.FACTCODE','!=','10102010')
                     ->where('jevd.FACTCODE','!=','10201010')
+                    ->where('jevh.FJEVTYP','=',$request->FJEVTYP)
+                    ->where('jevd.FUND_SCODE','=',$request->FUND_SCODE)
+                    ->whereBetween('jevh.FJEVDATE',[$request->from,$request->to])
                     ->get()
                     ->map(function($item,$index)
                     {
@@ -199,38 +205,63 @@ class JevdReportsController extends Controller
                                     && $x["FJEVTYP"]        == $item->FJEVTYP 
                                     && $x["FUND_SCODE"]     == $item->FUND_SCODE)
                                 {
-                                    $debit101       =   $x["debit101"]    ;  
-                                    $credit080      =   $x["credit080"]   ;
-                                    $credit040      =   $x["credit040"]   ;
-                                    $credit050      =   $x["credit050"]   ;
-                                    $credit1040     =   $x["credit1040"]  ;
-                                    $credit2200     =   $x["credit2200"]  ;
-                                    $debit2010      =   $x["debit2010"]   ;
-                                    $debit201010    =   $x["debit201010"] ;
-                                    $credit101010   =   $x["credit101010"];
-                                    $dateFrom       =   $x["dateFrom"]    ;  
-                                    $dateTo         =   $x["dateTo"]    ;  
+                                    if($index > 0)
+                                    {
+                                        if($item->FJEVNO ==  $this->FJEVNO)
+                                        {
+                                            $debit101       = 0  ;  
+                                            $credit080      = 0  ;
+                                            $credit040      = 0  ;
+                                            $credit050      = 0  ;
+                                            $credit1040     = 0  ;
+                                            $credit2200     = 0  ;
+                                            $debit2010      = 0  ;
+                                            $debit201010    = 0  ;
+                                            $credit101010   = 0  ;
+                                            $dateFrom       = 0  ;  
+                                            $dateTo         = 0  ; 
+                                            $finalFJEVDATE  = ""; 
+                                        }
+                                        else
+                                        {
+                                            $debit101       =   $x["debit101"]    ;  
+                                            $credit080      =   $x["credit080"]   ;
+                                            $credit040      =   $x["credit040"]   ;
+                                            $credit050      =   $x["credit050"]   ;
+                                            $credit1040     =   $x["credit1040"]  ;
+                                            $credit2200     =   $x["credit2200"]  ;
+                                            $debit2010      =   $x["debit2010"]   ;
+                                            $debit201010    =   $x["debit201010"] ;
+                                            $credit101010   =   $x["credit101010"];
+                                            $dateFrom       =   $x["dateFrom"]    ;  
+                                            $dateTo         =   $x["dateTo"]      ;
+                                            $finalFJEVDATE  =   $x["FJEVDATE"]    ;
+                                        }
+                                      
+                                    }
+                                    else
+                                    {
+                                        $debit101       =   $x["debit101"]    ;  
+                                        $credit080      =   $x["credit080"]   ;
+                                        $credit040      =   $x["credit040"]   ;
+                                        $credit050      =   $x["credit050"]   ;
+                                        $credit1040     =   $x["credit1040"]  ;
+                                        $credit2200     =   $x["credit2200"]  ;
+                                        $debit2010      =   $x["debit2010"]   ;
+                                        $debit201010    =   $x["debit201010"] ;
+                                        $credit101010   =   $x["credit101010"];
+                                        $dateFrom       =   $x["dateFrom"]    ;  
+                                        $dateTo         =   $x["dateTo"]      ;
+                                        $finalFJEVDATE  =   $x["FJEVDATE"]    ;  
+                                    }
+                                   
                                 }
                             }
 
-                            // if(
-                            //     $item->FJEVDATE != $this->FJEVDATE &&
-                            //     $item->FJEVNO   != $this->FJEVNO
-                            // )
-                            // {
-                            //     $this->FJEVDATE = $item->FJEVDATE;
-                            //     $this->FJEVNO   = $item->FJEVNO;
-                            //     $finalFJEVDATE  = $item->FJEVDATE;
-                            // }
-                            // if(
-                            //     $item->FJEVNO   != $this->FJEVNO
-                            // )
-                            // {
-                            //     $this->FJEVDATE   = "";
-                            // }
+                            $this->FJEVNO = $item->FJEVNO;
 
                         return [
-                            'debit101'          => $debit101    ,      //GIKAN KA TEMP
+                            'debit101'          => $debit101    ,//GIKAN KA TEMP
                             'credit080'         => $credit080   ,//GIKAN KA TEMP
                             'credit040'         => $credit040   ,//GIKAN KA TEMP
                             'credit050'         => $credit050   ,//GIKAN KA TEMP
@@ -249,12 +280,12 @@ class JevdReportsController extends Controller
                             "FACTCODE"          => $item->FACTCODE,
                             "FJEVTYP"           => $item->FJEVTYP,
                             "FPAYEE"            => $item->FPAYEE,
-                            "FJEVDATE"          => $item->FJEVDATE,//$finalFJEVDATE,//
+                            "FJEVDATE"          => $finalFJEVDATE,//$item->FJEVDATE,//
                             "FUNDDETAIL_NAME"   => $item->FUNDDETAIL_NAME,
                             'dateFrom'          => $dateFrom,//$item->$dateFrom, //GIKAN KA TEMP
                             'dateTo'            => $dateTo,//$item->$dateTo, //GIKAN KA TEMP
                         ];
-                    })->values();
+                    });
 
             foreach ($this->temp as $x)
             { 
@@ -275,8 +306,8 @@ class JevdReportsController extends Controller
                 }
             }
 
-        $details = $details->sortBy("FJEVNO")->values();
-
+        // $details = $details->sortBy('FJEVNO')->values();
+        //dd($details);
         return $details;   
     }
     
