@@ -13,6 +13,7 @@
                 <div class="peer">
                     <!-- <Link class="btn btn-success btn-sm mL-2 text-white" href="/jevh/create"> Add new record</Link> -->
                     <Link class="btn btn-success btn-sm mL-2 text-white" href="/jevh/jevh-create"> Add new record</Link>
+                    <Link class="btn btn-info btn-sm mL-2 text-white" href="/jevh/jevh-report"> Jevtype Report</Link>
                     <button class="btn btn-primary btn-sm mL-2 text-white" @click="showFilter()">Filter</button>
                 </div>
             </div>
@@ -212,7 +213,8 @@ export default {
         },
         print(jevhdata){
             window.open('http://192.168.6.23:8080/jasperserver/flow.html?_flowId=viewReportFlow&_flowId=viewReportFlow&ParentFolderUri=%2Freports%2Faccounting_system&reportUnit=%2Freports%2Faccounting_system%2Fjevd_report&standAlone=true&decorate=no&FJEVNO='+jevhdata.FJEVNO+'&FUND_SCODE='+jevhdata.FUND_SCODE+'&fiscalyear='+jevhdata.fiscalyear);
-        }
+        },
+
     },
 };
 </script>

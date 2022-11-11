@@ -177,7 +177,7 @@ export default ({
             this.isDisabled = false;
             this.$inertia.post("/jevh/store", this.form);
 
-            setTimeout ( () => {
+            setTimeout ( () => { 
                 document.getElementById('jevdLink').click();
             }, 100)
         },

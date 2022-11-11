@@ -67,11 +67,13 @@ Route::middleware('auth')->group(function() {
         
         //charlie update
         Route::patch('/jevd-update/{id}', [JevdController::class, 'update']);
+
+        Route::get('/jevh-report', [JevhController::class, 'JevReport']);
     });
     //jevd
     Route::prefix('/jevd')->group(function(){
         Route::post('/index', [JevdController::class, 'jevDetails']);
-        Route::get('/jevdcreate', [JevdController::class, 'jevdcreate']);
+        // Route::get('/jevdcreate', [JevdController::class, 'jevdcreate']);
         Route::post('getChartAccount', [JevdController::class, 'getChartAccount']);
         Route::post('getSubCode1', [JevdController::class, 'getSubcode1']);
         Route::post('getSubCode2', [JevdController::class, 'getSubCode2']);
@@ -79,8 +81,8 @@ Route::middleware('auth')->group(function() {
         Route::post('/', [JevdController::class, 'store']);
 
         Route::post('/get-jevdData', [JevdController::class, 'jevDetails']);
-
         Route::get('/{id}/edit', [JevdController::class, 'editJevd']);
+        
         Route::delete('/{id}', [JevdController::class, 'destroy']);
     });
     //reports

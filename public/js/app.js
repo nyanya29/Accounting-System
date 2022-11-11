@@ -1444,6 +1444,14 @@ var map = {
 		"./resources/js/Pages/Jevh/Index.vue",
 		"resources_js_Pages_Jevh_Index_vue"
 	],
+	"./Jevh/JevReport": [
+		"./resources/js/Pages/Jevh/JevReport.vue",
+		"resources_js_Pages_Jevh_JevReport_vue"
+	],
+	"./Jevh/JevReport.vue": [
+		"./resources/js/Pages/Jevh/JevReport.vue",
+		"resources_js_Pages_Jevh_JevReport_vue"
+	],
 	"./Jevh/Jevd/Create": [
 		"./resources/js/Pages/Jevh/Jevd/Create.vue",
 		"resources_js_Pages_Jevh_Jevd_Create_vue"
