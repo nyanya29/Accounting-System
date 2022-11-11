@@ -73,7 +73,7 @@ class JevdReportsController extends Controller
                         DB::raw('SUM(CASE WHEN jevd.FACTCODE=10101010 THEN jevd.FDEBIT else null END) as debit101'),
                         DB::raw('SUM(CASE WHEN jevd.FACTCODE=40102080 THEN jevd.FCREDIT else null END) as credit080'),
                         DB::raw('SUM(CASE WHEN jevd.FACTCODE=40102040 THEN jevd.FCREDIT else null END) as credit040'),
-                        DB::raw('SUM(CASE WHEN jevd.FACTCODE=40102050 THEN jevd.FCREDIT else null END) as credit050'),
+                        DB::raw('SUM(CASE WHEN jevd.FACTCODE=40202050 THEN jevd.FCREDIT else null END) as credit050'),
                         DB::raw('SUM(CASE WHEN jevd.FACTCODE=40201040 THEN jevd.FCREDIT else null END) as credit1040'),
                         DB::raw('SUM(CASE WHEN jevd.FACTCODE=40202200 THEN jevd.FCREDIT else null END) as credit2200'),
                         DB::raw('SUM(CASE WHEN jevd.FACTCODE=10102010 THEN jevd.FDEBIT else null END) as debit2010'),
@@ -105,42 +105,179 @@ class JevdReportsController extends Controller
                         'jevh.FJEVDATE',
                         'funds_details.FUNDDETAIL_NAME'
                     )
-                    // ->groupBy('jevh.recid')
-                    ->orderBy('FJEVNO')
-                    ->get();
+                    ->orderBy('FJEVNO');
         
-        //$details = $details->;
+        // //$details = $details->;
         
-        // dd($details->groupBy('recid'));
-        // dd($details);
-        return $details->groupBy('recid')->map(fn($item) => [
-                    'debit101' => $item->sum('debit101'),
-                    'credit080' => $item->sum('credit080'),
-                    'credit040' => $item->sum('credit040'),
-                    'credit050' => $item->sum('credit050'),
-                    'credit1040' => $item->sum('credit1040'),
-                    'credit2200' => $item->sum('credit2200'),
-                    'debit2010' => $item->sum('debit2010'),
-                    'debit201010' => $item->sum('debit201010'),
-                    'credit101010' => $item->sum('credit101010'),
-                    "recid" => $item[0]->recid,
-                    "FDEBIT" => $item->sum('FDEBIT'),
-                    "FUND_SCODE" => $item[0]->FUND_SCODE,
-                    "FCREDIT" => $item->sum('FCREDIT'),
-                    "fiscalyear" => $item[0]->fiscalyear,
-                    "FJEVNO" => $item[0]->FJEVNO,
-                    "FACTCODE" => $item[0]->FACTCODE,
-                    "FJEVTYP" => $item[0]->FJEVTYP,
-                    "FPAYEE" => $item[0]->FPAYEE,
-                    "FJEVDATE" => $item[0]->FJEVDATE,
-                    "FUNDDETAIL_NAME" => $item[0]->FUNDDETAIL_NAME,
-                    'dateFrom' => Carbon::parse($request->from)->format('F d, Y'),
-                    'dateTo' => Carbon::parse($request->to)->format('F d, Y')
+        // // dd($details->groupBy('recid'));
+        // // dd($details);
+        // dd($details->groupBy('recid')->map(fn($item) => [
+        //     'debit101' => $item->sum('debit101'),
+        //     'credit080' => $item->sum('credit080'),
+        //     'credit040' => $item->sum('credit040'),
+        //     'credit050' => $item->sum('credit050'),
+        //     'credit1040' => $item->sum('credit1040'),
+        //     'credit2200' => $item->sum('credit2200'),
+        //     'debit2010' => $item->sum('debit2010'),
+        //     'debit201010' => $item->sum('debit201010'),
+        //     'credit101010' => $item->sum('credit101010'),
+        //     "recid" => $item[0]->recid,
+        //     "FDEBIT" => $item->sum('FDEBIT'),
+        //     "FUND_SCODE" => $item[0]->FUND_SCODE,
+        //     "FCREDIT" => $item->sum('FCREDIT'),
+        //     "fiscalyear" => $item[0]->fiscalyear,
+        //     "FJEVNO" => $item[0]->FJEVNO,
+        //     "FACTCODE" => $item[0]->FACTCODE,
+        //     "FJEVTYP" => $item[0]->FJEVTYP,
+        //     "FPAYEE" => $item[0]->FPAYEE,
+        //     "FJEVDATE" => $item[0]->FJEVDATE,
+        //     "FUNDDETAIL_NAME" => $item[0]->FUNDDETAIL_NAME,
+        //     'dateFrom' => Carbon::parse($request->from)->format('F d, Y'),
+        //     'dateTo' => Carbon::parse($request->to)->format('F d, Y')
+        // ]));
+        $this->temp = $details
+        ->get()
+        ->groupBy('recid')
+        ->map(fn($item) => [
+                    'debit101'          => $item->sum('debit101'),
+                    'credit080'         => $item->sum('credit080'),
+                    'credit040'         => $item->sum('credit040'),
+                    'credit050'         => $item->sum('credit050'),
+                    'credit1040'        => $item->sum('credit1040'),
+                    'credit2200'        => $item->sum('credit2200'),
+                    'debit2010'         => $item->sum('debit2010'),
+                    'debit201010'       => $item->sum('debit201010'),
+                    'credit101010'      => $item->sum('credit101010'),
+                    "recid"             => $item[0]->recid,
+                    "FDEBIT"            => $item->sum('FDEBIT'),
+                    "FUND_SCODE"        => $item[0]->FUND_SCODE,
+                    "FCREDIT"           => $item->sum('FCREDIT'),
+                    "fiscalyear"        => $item[0]->fiscalyear,
+                    "FJEVNO"            => $item[0]->FJEVNO,
+                    "FACTCODE"          => $item[0]->FACTCODE,
+                    "FJEVTYP"           => $item[0]->FJEVTYP,
+                    "FPAYEE"            => $item[0]->FPAYEE,
+                    "FJEVDATE"          => $item[0]->FJEVDATE,
+                    "FUNDDETAIL_NAME"   => $item[0]->FUNDDETAIL_NAME,
+                    'dateFrom'          => Carbon::parse($request->from)->format('F d, Y'),
+                    'dateTo'            => Carbon::parse($request->to)->format('F d, Y')
                 ])->values();
-        // return [
-        //     'recid'=>$details[0]->recid,
-        //     'debit2010' => collect($details)->sum('debit2010')
-        // ];
+         
+        $this->temp_index = 0;
+        $this->FJEVDATE   = "";
+        $this->FJEVNO     = "";
+        $details = $details
+                    ->where('jevd.FACTCODE','!=','40102080')
+                    ->where('jevd.FACTCODE','!=','40102040')
+                    ->where('jevd.FACTCODE','!=','40202050')
+                    ->where('jevd.FACTCODE','!=','40201040')
+                    ->where('jevd.FACTCODE','!=','40202200')
+                    ->where('jevd.FACTCODE','!=','10101010')
+                    ->where('jevd.FACTCODE','!=','10102010')
+                    ->where('jevd.FACTCODE','!=','10201010')
+                    ->get()
+                    ->map(function($item,$index)
+                    {
+
+                        $debit101       = "";  
+                        $credit080      = "";
+                        $credit040      = "";
+                        $credit050      = "";
+                        $credit1040     = "";
+                        $credit2200     = "";
+                        $debit2010      = "";
+                        $debit201010    = "";
+                        $credit101010   = "";
+                        $dateFrom       = "";
+                        $dateTo         = "";
+                        $finalFJEVDATE  = "";
+
+                        foreach ($this->temp as $x)
+                            { 
+                            
+                                if(    $x["FJEVNO"]         == $item->FJEVNO
+                                    && $x["FJEVTYP"]        == $item->FJEVTYP 
+                                    && $x["FUND_SCODE"]     == $item->FUND_SCODE)
+                                {
+                                    $debit101       =   $x["debit101"]    ;  
+                                    $credit080      =   $x["credit080"]   ;
+                                    $credit040      =   $x["credit040"]   ;
+                                    $credit050      =   $x["credit050"]   ;
+                                    $credit1040     =   $x["credit1040"]  ;
+                                    $credit2200     =   $x["credit2200"]  ;
+                                    $debit2010      =   $x["debit2010"]   ;
+                                    $debit201010    =   $x["debit201010"] ;
+                                    $credit101010   =   $x["credit101010"];
+                                    $dateFrom       =   $x["dateFrom"]    ;  
+                                    $dateTo         =   $x["dateTo"]    ;  
+                                }
+                            }
+
+                            // if(
+                            //     $item->FJEVDATE != $this->FJEVDATE &&
+                            //     $item->FJEVNO   != $this->FJEVNO
+                            // )
+                            // {
+                            //     $this->FJEVDATE = $item->FJEVDATE;
+                            //     $this->FJEVNO   = $item->FJEVNO;
+                            //     $finalFJEVDATE  = $item->FJEVDATE;
+                            // }
+                            // if(
+                            //     $item->FJEVNO   != $this->FJEVNO
+                            // )
+                            // {
+                            //     $this->FJEVDATE   = "";
+                            // }
+
+                        return [
+                            'debit101'          => $debit101    ,      //GIKAN KA TEMP
+                            'credit080'         => $credit080   ,//GIKAN KA TEMP
+                            'credit040'         => $credit040   ,//GIKAN KA TEMP
+                            'credit050'         => $credit050   ,//GIKAN KA TEMP
+                            'credit1040'        => $credit1040  ,//GIKAN KA TEMP
+                            'credit2200'        => $credit2200  ,//GIKAN KA TEMP
+                            'debit2010'         => $debit2010   ,//GIKAN KA TEMP
+                            'debit201010'       => $debit201010 ,//GIKAN KA TEMP
+                            'credit101010'      => $credit101010,//GIKAN KA TEMP
+
+                            "recid"             => $item->recid,
+                            "FDEBIT"            => $item->FDEBIT,
+                            "FUND_SCODE"        => $item->FUND_SCODE,
+                            "FCREDIT"           => $item->FCREDIT,
+                            "fiscalyear"        => $item->fiscalyear,
+                            "FJEVNO"            => $item->FJEVNO,
+                            "FACTCODE"          => $item->FACTCODE,
+                            "FJEVTYP"           => $item->FJEVTYP,
+                            "FPAYEE"            => $item->FPAYEE,
+                            "FJEVDATE"          => $item->FJEVDATE,//$finalFJEVDATE,//
+                            "FUNDDETAIL_NAME"   => $item->FUNDDETAIL_NAME,
+                            'dateFrom'          => $dateFrom,//$item->$dateFrom, //GIKAN KA TEMP
+                            'dateTo'            => $dateTo,//$item->$dateTo, //GIKAN KA TEMP
+                        ];
+                    })->values();
+
+            foreach ($this->temp as $x)
+            { 
+                $found = 0;
+                foreach($details as $y)
+                {
+                    if(     $x["FJEVNO"]        ==  $y["FJEVNO"]    
+                        &&  $x["FJEVTYP"]        == $y["FJEVTYP"]   
+                        &&  $x["FUND_SCODE"]     == $y["FUND_SCODE"])
+                    {
+                        $found = 1;
+                    }
+                }
+
+                if($found == 0)
+                {
+                    $details->add($x);
+                }
+            }
+
+        $details = $details->sortBy("FJEVNO")->values();
+
+        return $details;   
     }
     
     public function jevdtypSundry(Request $request){
@@ -174,8 +311,9 @@ class JevdReportsController extends Controller
                     ->where('jevd.FACTCODE','!=','10201010')
                     ->where('jevh.FJEVTYP','=',$request->FJEVTYP)
                     ->where('jevd.FUND_SCODE','=',$request->FUND_SCODE)
-                    ->where('jevh.recid','=',$request->recid)
-                    ->whereBetween('jevh.FJEVDATE',[$request->from,$request->to])
+                    ->where('jevd.FJEVNO','=',$request->FJEVNO)
+                    
+                   
                     // ->where('jevh.FJEVTYP','=','1')
                     // ->where('jevd.FUND_SCODE','=','105')
                     // ->where('jevh.recid','=','1')
