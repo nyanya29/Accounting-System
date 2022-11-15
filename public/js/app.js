@@ -713,7 +713,7 @@ var _hoisted_15 = [_hoisted_14];
 
 var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "title"
-}, "JEVH", -1
+}, "Journal Entry Voucher", -1
 /* HOISTED */
 );
 

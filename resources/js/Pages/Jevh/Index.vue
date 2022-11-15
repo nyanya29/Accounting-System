@@ -11,18 +11,12 @@
                     <input v-model="search" type="text" class="form-control form-control-sm" placeholder="Search...">
                 </div>
                 <div class="peer">
-                    <!-- <Link class="btn btn-success btn-sm mL-2 text-white" href="/jevh/create"> Add new record</Link> -->
                     <Link class="btn btn-success btn-sm mL-2 text-white" href="/jevh/jevh-create"> Add new record</Link>
                     <Link class="btn btn-info btn-sm mL-2 text-white" href="/jevh/jevh-report"> Jevtype Report</Link>
                     <button class="btn btn-primary btn-sm mL-2 text-white" @click="showFilter()">Filter</button>
                 </div>
             </div>
         </div>
-        <!-- <div class="bd-callout bd-callout-info">
-            <div class="bd-callout-body">
-                test
-            </div>
-        </div> -->
 
         <filtering v-if="filter" @closeFilter="filter=false">
             <label class="mB-5">Fund</label>

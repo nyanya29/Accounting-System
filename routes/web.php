@@ -89,5 +89,4 @@ Route::middleware('auth')->group(function() {
 });
 Route::get('print-jevd', [JevdReportsController::class, 'jevdReport']);
 Route::get('print-jevtype', [JevdReportsController::class, 'jevdTypeReport']);
-Route::get('jevtype_data_set', [JevdReportsController::class, 'dataSetJevtyp']);
-Route::get('jevtype-sundry', [JevdReportsController::class, 'jevdtypSundry']);
+Route::get('jevtype-second-report', [JevdReportsController::class, 'jevdTypeSecondReport']);
