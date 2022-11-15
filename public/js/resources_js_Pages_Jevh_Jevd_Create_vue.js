@@ -23,8 +23,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
-    data: Object // editData: Object
-
+    data: Object
   },
   data: function data() {
     return {

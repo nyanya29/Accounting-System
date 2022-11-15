@@ -10,6 +10,8 @@ use App\Http\Controllers\JevdController;
 use App\Http\Controllers\JevdReportsController;
 use App\Http\Controllers\JevhController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Requests\JevhValidation;
+use App\Models\Jevh;
 
 Auth::routes();
 
@@ -69,6 +71,7 @@ Route::middleware('auth')->group(function() {
         Route::patch('/jevd-update/{id}', [JevdController::class, 'update']);
 
         Route::get('/jevh-report', [JevhController::class, 'JevReport']);
+        Route::patch('/{id}/edit', [JevhController::class, 'edit']);
     });
     //jevd
     Route::prefix('/jevd')->group(function($slug){
@@ -82,7 +85,6 @@ Route::middleware('auth')->group(function() {
 
         Route::post('/get-jevdData', [JevdController::class, 'jevDetails']);
         Route::get('/{id}/edit', [JevdController::class, 'editJevd']);
-        
         Route::delete('/{id}', [JevdController::class, 'destroy']);
     });
     //reports

@@ -37,13 +37,13 @@ class JevdValidation extends FormRequest
     public function messages()
     {
         return [
-            'FRESPCTR.required' => 'FRESPCTR is required',
-            'FACTCODE.required' => 'FACTCODE is required',
-            'FALOBNO.required' => 'FRESPCTR is required',
-            'FVOUCHNO.required' => 'FALOBNO is required',
-            'FPRNO.required' => 'FPRNO is required',
-            'FDEBIT.regex' => 'Invalid Format',
-            'FCREDIT.regex' => 'Invalid format',
+            'FRESPCTR.required' => 'Resp Center is required !!',
+            'FACTCODE.required' => 'Account Code is required !!',
+            'FALOBNO.required' => 'OBR is required !!',
+            'FVOUCHNO.required' => 'Voucher No is required !!',
+            'FPRNO.required' => 'PR No is required !!',
+            'FDEBIT.regex' => 'Invalid Format !!',
+            'FCREDIT.regex' => 'Invalid format !!',
         ];
     }
 }

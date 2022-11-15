@@ -106,7 +106,8 @@
                                 </div>
                         </div>
                             <div class="modal-footer p-1">
-                                <button type="button" class="btn btn-primary mt-3" @click="submit()">Save</button>
+                                <button type="button" class="btn btn-primary mt-3" v-if="pageTitle === 'Create'" @click="submit()">Save</button>
+                                <button type="button" class="btn btn-primary mt-3" v-if="pageTitle === 'Edit Jev'" @click="submit()" > Update</button>
                             </div>   
                     </div>
                 </div>
@@ -124,6 +125,9 @@ export default ({
     components: {
         BackButton,
         JevdIndex
+    },
+    props: {
+        editData: Object
     },
 
     data() {
@@ -165,6 +169,15 @@ export default ({
 
     mounted() {
         this.getFundDetail()
+
+        if (!!this.editData)
+        {
+            this.pageTitle = "Edit Jev"
+            this.form.FUND_SCODE = this.editData.FUND_SCODE
+            this.form.FJEVNO = this.editData.FJEVNO
+        } else {
+            this.pageTitle = "Create"
+        }
     },
     methods: {
         getFundDetail () {
@@ -173,13 +186,18 @@ export default ({
             })
         },
 
-        submit() {
-            this.isDisabled = false;
-            this.$inertia.post("/jevh/store", this.form);
+    editjev(id)
+    {
+        this.$inertia.get('/jevh/'+id+"/edit");
+    },
 
-            setTimeout ( () => { 
-                document.getElementById('jevdLink').click();
-            }, 100)
+        submit() {
+                this.isDisabled = false;
+                this.$inertia.post("/jevh/store", this.form);
+    
+                setTimeout ( () => { 
+                    document.getElementById('jevdLink').click();
+                }, 100)
         },
 
     },
