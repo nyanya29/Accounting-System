@@ -22,6 +22,9 @@ __webpack_require__.r(__webpack_exports__);
     BackButton: _Shared_BackButton_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
     JevdIndex: _Jevh_JevdIndex_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
+  props: {
+    editData: Object
+  },
   data: function data() {
     return {
       funds: "",
@@ -68,6 +71,14 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.getFundDetail();
+
+    if (!!this.editData) {
+      this.pageTitle = "Edit Jev";
+      this.form.FUND_SCODE = this.editData.FUND_SCODE;
+      this.form.FJEVNO = this.editData.FJEVNO;
+    } else {
+      this.pageTitle = "Create";
+    }
   },
   methods: {
     getFundDetail: function getFundDetail() {
@@ -76,6 +87,9 @@ __webpack_require__.r(__webpack_exports__);
       axios.post('/jevh/getFundDetail').then(function (response) {
         _this.funds = response.data;
       });
+    },
+    editjev: function editjev(id) {
+      this.$inertia.get('/jevh/' + id + "/edit");
     },
     submit: function submit() {
       this.isDisabled = false;
@@ -605,13 +619,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     jev: _ctx.jevd
   }, null, 8
   /* PROPS */
-  , ["jev"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_53, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  , ["jev"])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_53, [$data.pageTitle === 'Create' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
+    key: 0,
     type: "button",
     "class": "btn btn-primary mt-3",
     onClick: _cache[14] || (_cache[14] = function ($event) {
       return $options.submit();
     })
-  }, "Save")])])])])])]);
+  }, "Save")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.pageTitle === 'Edit Jev' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
+    key: 1,
+    type: "button",
+    "class": "btn btn-primary mt-3",
+    onClick: _cache[15] || (_cache[15] = function ($event) {
+      return $options.submit();
+    })
+  }, " Update")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])])])])]);
 }
 
 /***/ }),

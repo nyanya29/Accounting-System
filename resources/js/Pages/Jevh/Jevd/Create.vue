@@ -297,7 +297,6 @@ import { useForm } from '@inertiajs/inertia-vue3';
 export default {
     props:{
         data:Object,
-        // editData: Object
     },
     data () {
         return {

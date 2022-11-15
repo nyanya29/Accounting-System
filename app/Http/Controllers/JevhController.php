@@ -109,6 +109,13 @@ class JevhController extends Controller
         ]);
     }
 
+    public function edit(Request $request,$id)
+    {
+        return inertia('Jevh/Create', [
+            'editData' => $this->model->where('recid',$id)->first()
+        ]);
+    }
+
     public function JevReport()
     {
        return inertia('Jevh/JevReport');
