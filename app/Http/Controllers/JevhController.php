@@ -73,10 +73,10 @@ class JevhController extends Controller
 
         return $index;
     }
-    public function create()
-        {
-            return inertia('Jevh/Create');
-        }
+    // public function create()
+    // {
+    //     return inertia('Jevh/Create');
+    // }
     
     public function getFundDetail()
     {
@@ -109,16 +109,37 @@ class JevhController extends Controller
         ]);
     }
 
-    public function edit(Request $request,$id)
-    {
-        return inertia('Jevh/Create', [
-            'editData' => $this->model->where('recid',$id)->first()
-        ]);
-    }
+    // public function edit(Request $request,$id)
+    // {
+    //     return inertia('Jevh/Create', [
+    //         'editData' => $this->model->where('recid',$id)->first()
+    //     ]);
+    // }
 
     public function JevReport()
     {
        return inertia('Jevh/JevReport');
     }
-    
+    public function editJevh(Request $request, $recid)
+    {
+        $data = $this->model->where('recid',$recid)->first();
+        return inertia('Jevh/JevhCreate',[
+            'editData'=> $data
+        ]);
+    }
+    public function updateJevh(Request $request)
+    {
+        $data = $this->model->findOrFail($request->recid);
+        // dd($data);
+        $data->update($request->all());
+
+        return redirect("/jevh/jevd-create/$data->recid")->with('message', 'Updated Successfully');
+    }
+    public function deleteJevh(Request $request)
+    {
+        $data = $this->model->findOrFail($request->recid);
+        $data->delete();
+        
+        return redirect('/jevh/index')->with('message', 'Record deleted');
+    }
 }

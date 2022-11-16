@@ -124,7 +124,7 @@ import JevdIndex from "../Jevh/JevdIndex.vue"
 export default ({
     components: {
         BackButton,
-        JevdIndex
+        JevdIndex,
     },
     props: {
         editData: Object
@@ -172,9 +172,20 @@ export default ({
 
         if (!!this.editData)
         {
-            this.pageTitle = "Edit Jev"
+            this.pageTitle = "Edit"
+            this.form.fiscalyear = this.editData.fiscalyear
             this.form.FUND_SCODE = this.editData.FUND_SCODE
             this.form.FJEVNO = this.editData.FJEVNO
+            this.form.FJEVTYP = this.editData.FJEVTYP
+            this.form.FJEVDATE = this.editData.FJEVDATE
+            this.form.FPAYEE = this.editData.FPAYEE
+            this.form.FCHKNO = this.editData.FCHKNO
+            this.form.FREMK = this.editData.FREMK
+            this.form.FREFNO = this.editData.FREFNO
+            this.form.FPREPBY = this.editData.FPREPBY
+            this.form.FPREPD = this.editData.FPREPD
+            this.form.FAPPVBY = this.editData.FAPPVBY
+            this.form.FAPPVD = this.editData.FAPPVD
         } else {
             this.pageTitle = "Create"
         }

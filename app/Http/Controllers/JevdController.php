@@ -77,10 +77,10 @@ class JevdController extends Controller
         return $totalSum;
         // dd($totalSum);
     }
-    public function create()
-    {
-        return inertia('Jevd/Create');
-    }
+    // public function create()
+    // {
+    //     return inertia('Jevd/Create');
+    // }
 
     public function getChartAccount()
     {
