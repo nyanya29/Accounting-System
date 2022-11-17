@@ -19,6 +19,7 @@ class JevhController extends Controller
     public function index(Request $request){
 
         $index = $this->getFilter($request);
+        // dd($index = $this->model->with('jevd'));
 
         return inertia('Jevh/Index', [
             "jevh" => $index
@@ -30,12 +31,11 @@ class JevhController extends Controller
             ->withQueryString(),
             "filters" => $request->only(['search']),
         ]);
-
     }
     
     public function getFilter($request)
     {
-        $index = $this->model;
+        $index = $this->model->with('jevd');
 
         if ($request->fundscode) {
             $index = $index->where('FUND_SCODE', 'like', '%' . $request->fundscode . '%');

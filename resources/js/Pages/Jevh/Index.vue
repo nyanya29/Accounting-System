@@ -67,6 +67,7 @@
                             <td>{{ jevhdata.FCHKNO }}</td>
                             <td>{{ jevhdata.FPAYEE }}</td>
                             <td>{{ jevhdata.FREMK }}</td>
+                            <!-- <td>{{ jevhdata.jevd }}</td> -->
                             <td style="text-align: right">
                                 <div class="dropdown dropstart">
                                   <button class="btn btn-secondary btn-sm action-btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -95,10 +96,12 @@
                                             Print
                                         </button>
                                     </li>
-                                    <li><hr class="dropdown-divider action-divider"></li>
-                                    <li>
-                                        <button class="text-danger dropdown-item" :disabled="isDisabled" @click="deleteJev(jevhdata.recid)">Delete</button>
-                                    </li>
+                                    <span v-if="jevhdata.jevd.length == 0">
+                                        <li><hr class="dropdown-divider action-divider"></li>
+                                        <li>
+                                            <button class="text-danger dropdown-item" @click="deleteJev(jevhdata.recid)">Delete</button>
+                                        </li>
+                                    </span>
                                   </ul>
                                 </div>
                             </td>
@@ -222,7 +225,7 @@ export default {
             window.open('http://192.168.6.23:8080/jasperserver/flow.html?pp=u%3DJamshasadid%7Cr%3DManager%7Co%3DEMEA,Sales%7Cpa1%3DSweden&_flowId=viewReportFlow&_flowId=viewReportFlow&_flowId=viewReportFlow&ParentFolderUri=%2Freports%2Faccounting_system&reportUnit=%2Freports%2Faccounting_system%2Fjevd_report&standAlone=true&decorate=no&FJEVNO='+jevhdata.FJEVNO+'&FUND_SCODE='+jevhdata.FUND_SCODE+'&fiscalyear='+jevhdata.fiscalyear);
         },
         deleteJev(recid){
-            this.isDisabled = !this.isDisabled
+            // this.isDisabled = !this.isDisabled
             let text = "Warning!\Are you sure you want to delete this record?";
 
             if (confirm(text) == true) {
