@@ -88,9 +88,6 @@ __webpack_require__.r(__webpack_exports__);
         _this.funds = response.data;
       });
     },
-    editjev: function editjev(id) {
-      this.$inertia.get('/jevh/' + id + "/edit");
-    },
     submit: function submit() {
       this.isDisabled = false;
       this.$inertia.post("/jevh/store", this.form);

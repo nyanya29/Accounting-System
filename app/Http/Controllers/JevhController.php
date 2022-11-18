@@ -109,9 +109,9 @@ class JevhController extends Controller
         ]);
     }
 
-    public function edit(Request $request,$id)
+    public function editJevh(Request $request,$id)
     {
-        return inertia('Jevh/Create', [
+        return inertia('Jevh/JevhCreate', [
             'editData' => $this->model->where('recid',$id)->first()
         ]);
     }

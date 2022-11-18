@@ -71,7 +71,7 @@ Route::middleware('auth')->group(function() {
         Route::patch('/jevd-update/{id}', [JevdController::class, 'update']);
 
         Route::get('/jevh-report', [JevhController::class, 'JevReport']);
-        Route::patch('/{id}/edit', [JevhController::class, 'edit']);
+        Route::get('/{id}/edit', [JevhController::class, 'editJevh']);
     });
     //jevd
     Route::prefix('/jevd')->group(function(){

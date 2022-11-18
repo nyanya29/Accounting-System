@@ -186,15 +186,10 @@ export default ({
             })
         },
 
-    editjev(id)
-    {
-        this.$inertia.get('/jevh/'+id+"/edit");
-    },
-
         submit() {
                 this.isDisabled = false;
                 this.$inertia.post("/jevh/store", this.form);
-    
+
                 setTimeout ( () => { 
                     document.getElementById('jevdLink').click();
                 }, 100)
