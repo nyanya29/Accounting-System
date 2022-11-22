@@ -96,7 +96,8 @@
                                             Print
                                         </button>
                                     </li>
-                                    <span v-if="jevhdata.jevd.length == 0">
+                                    <!-- v-if="jevhdata.jevd.length == 0" -->
+                                    <span>
                                         <li><hr class="dropdown-divider action-divider"></li>
                                         <li>
                                             <button class="text-danger dropdown-item" @click="deleteJev(jevhdata.recid)">Delete</button>
@@ -143,6 +144,7 @@ export default {
         },
     props: {
         jevh: Object,
+        jevd: Object,
         filters: Object,
     },
     data() {

@@ -13,12 +13,23 @@ class Jevd extends Model
     protected $primaryKey = 'recid';
     protected $guarded = [];
 
+    // public function __construct(Jevh $jevh)
+    // {
+    //     $this->model = $jevh;
+    // }
     public function fundDetails()
     {
         return $this->hasMany(FundDetails::class, 'FUND_SCODE', 'FUND_SCODE');
     }
-    public function jevh(){
-        return $this->hasMany(Jevd::class, 'FUND_SCODE','FUND_SCODE');
-    }
-
+    // public function jevh(){
+    //     return $this->hasMany(Jevd::class, 'FUND_SCODE','FUND_SCODE');
+    // }
+    // public function actcode()
+    // {
+    //     return $this->hasMany(ChartofAccounts::class, 'factcode','factcode');
+    // }
+    // public function test($jevh){
+    //     $jev = Jevd::whereBelongsTo($jevh)->get();
+    //     return $jev;
+    // }
 }

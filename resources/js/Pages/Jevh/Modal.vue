@@ -191,16 +191,19 @@
                                     <td>{{ item.jevdCredit }}</td>
                                     <td>{{ item.FREMARKS }}</td>
                                 </tr>
+                            </tbody>
+                            <tfoot>
                                 <tr>
                                     <!-- <td colspan="9"></td> -->
-                                    <th scope="row 9">Total</th>
-                                    <td colspan="9"></td>
-
-                                    <td><b>{{ total.totalDebit }}</b></td>
-                                    <td><b>{{ total.totalCredit }}</b></td>
-                                    <td></td>
+                                    <!-- <th scope="row">Total</th> -->
+                                    <td colspan="5"></td>
+                                    <td colspan="2" class="text-end"><b>Total Debit</b></td>
+                                    <td colspan="2"><b>{{ total.totalDebit }}</b></td>
+                                    <td colspan="2" class="text-end"><b>Total Credit</b></td>
+                                    <td colspan="2"><b>{{ total.totalCredit }}</b></td>
+                                    <!-- <td></td> -->
                                 </tr>
-                            </tbody>
+                            </tfoot>
                         </table>
                     </div>
                 </div>

@@ -18,11 +18,18 @@ class JevhController extends Controller
     }
     public function index(Request $request){
 
+        // $index = $this->model->with('jevd');
+        // dd($index);
+        
         $index = $this->getFilter($request);
-        // dd($index = $this->model->with('jevd'));
+        // dd($index->with('jevd')->get());
 
         return inertia('Jevh/Index', [
-            "jevh" => $index
+            "jevh" => $index->with(['jevd'])
+            // "jevh" => $index->with(['jevd' => function($q) use($index){
+            //     $q->where('FUND_SCODE', $index->jevd->FUND_SCODE);
+            // }])
+            // "jevh" => $index->with('jevd')
             ->when($request->search, function ($query, $searchItem) {
                 $query->where('FJEVNO', 'like', '%' . $searchItem . '%');
             })
@@ -30,13 +37,15 @@ class JevhController extends Controller
             ->paginate(10)
             ->withQueryString(),
             "filters" => $request->only(['search']),
+           // "jevd" =>  
         ]);
+       
     }
     
     public function getFilter($request)
     {
-        $index = $this->model->with('jevd');
-
+        $index = $this->model;
+        
         if ($request->fundscode) {
             $index = $index->where('FUND_SCODE', 'like', '%' . $request->fundscode . '%');
         }
@@ -73,11 +82,6 @@ class JevhController extends Controller
 
         return $index;
     }
-    // public function create()
-    // {
-    //     return inertia('Jevh/Create');
-    // }
-    
     public function getFundDetail()
     {
         return DB::table('funds_details')->select(DB::raw('TRIM(funds_details.FUND_SCODE) as FUND_SCODE'), 'FUNDDETAIL_NAME')->get();
@@ -109,13 +113,6 @@ class JevhController extends Controller
         ]);
     }
 
-    // public function edit(Request $request,$id)
-    // {
-    //     return inertia('Jevh/Create', [
-    //         'editData' => $this->model->where('recid',$id)->first()
-    //     ]);
-    // }
-
     public function JevReport()
     {
        return inertia('Jevh/JevReport');
@@ -140,6 +137,6 @@ class JevhController extends Controller
         $data = $this->model->findOrFail($request->recid);
         $data->delete();
         
-        return redirect('/jevh/index')->with('message', 'Record deleted');
+        return back()->with('message', 'Record deleted!');
     }
 }

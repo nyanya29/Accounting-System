@@ -202,20 +202,33 @@
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr>
+                                    <!-- <tr>
                                        
                                         <th scope="row 12">Total</th>
                                         <td colspan="9"></td>
                                         <td><b>{{ total.totalDebit }}</b></td>
                                         <td><b>{{ total.totalCredit }}</b></td>
                                         <td colspan="2"></td>
-                                    </tr>
+                                    </tr> -->
+                                    <!-- <tr v-if="total.totalCredit != total.totalDebit">
+                                       <td colspan="9"></td>
+                                       <td colspan="5"><div class="fs-6 c-red text-danger">Debit is not equal to credit!!!</div></td>
+                                   </tr> -->
+
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <td colspan="6"></td>
+                                    <td colspan="2" class="text-end"><b>Total Debit</b></td>
+                                    <td colspan="2"><b>{{ total.totalDebit }}</b></td>
+                                    <td colspan="2" class="text-end"><b>Total Credit</b></td>
+                                    <td colspan="2"><b>{{ total.totalCredit }}</b></td>
+                                </tr>
                                     <tr v-if="total.totalCredit != total.totalDebit">
                                        <td colspan="9"></td>
                                        <td colspan="5"><div class="fs-6 c-red text-danger">Debit is not equal to credit!!!</div></td>
                                    </tr>
-
-                                </tbody>
+                            </tfoot>
                             </table>
                         </div>
                     </div>

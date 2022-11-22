@@ -64,7 +64,7 @@ class JevdReportsController extends Controller
                         'jevd.FUND_SCODE',
                         'jevd.FCREDIT',
                         'jevd.fiscalyear',
-                        'jevd.FJEVNO',
+                        'jevh.FJEVNO',
                         'jevd.FACTCODE',
                         'jevh.FJEVTYP',
                         'jevh.FPAYEE',
@@ -97,20 +97,21 @@ class JevdReportsController extends Controller
                         'jevd.FUND_SCODE',
                         'jevd.FCREDIT',
                         'jevd.fiscalyear',
-                        'jevd.FJEVNO',
+                        'jevh.FJEVNO',
                         'jevd.FACTCODE',
                         'jevh.FJEVTYP',
                         'jevh.FPAYEE',
                         'jevh.FJEVDATE',
                         'funds_details.FUNDDETAIL_NAME'
-                    );
+                    )->orderBy('jevh.FJEVNO');
 
         $this->temp = $details
-        ->where('jevh.FJEVTYP','=',$request->FJEVTYP)
-        ->where('jevd.FUND_SCODE','=',$request->FUND_SCODE)
-        ->whereBetween('jevh.FJEVDATE',[$request->from,$request->to])
+        // ->where('jevh.FJEVTYP','=',$request->FJEVTYP)
+        // ->where('jevd.FUND_SCODE','=',$request->FUND_SCODE)
+        // ->whereBetween('jevh.FJEVDATE',[$request->from,$request->to])
         ->get()
         ->groupBy('recid')
+        // ->sortBy('jevd.FJEVNO')
         ->map(fn($item) => [
                     'debit101'          => $item->sum('debit101'),
                     'credit080'         => $item->sum('credit080'),
@@ -127,7 +128,7 @@ class JevdReportsController extends Controller
                     "FCREDIT"           => $item->sum('FCREDIT'),
                     "fiscalyear"        => $item[0]->fiscalyear,
                     "FJEVNO"            => $item[0]->FJEVNO,
-                    "FACTCODE"          => "",
+                    "FACTCODE"          => "",//$item[0]->FACTCODE,
                     "FJEVTYP"           => $item[0]->FJEVTYP,
                     "FPAYEE"            => $item[0]->FPAYEE,
                     "FJEVDATE"          => $item[0]->FJEVDATE,
@@ -189,8 +190,8 @@ class JevdReportsController extends Controller
                                             $debit2010      = 0  ;
                                             $debit201010    = 0  ;
                                             $credit101010   = 0  ;
-                                            $dateFrom       = 0  ;  
-                                            $dateTo         = 0  ; 
+                                            $dateFrom       = $x["dateFrom"]    ;  
+                                            $dateTo         = $x["dateTo"]      ;
                                             $finalFJEVDATE  = ""; 
                                         }
                                         else
@@ -204,8 +205,8 @@ class JevdReportsController extends Controller
                                             $debit2010      =   $x["debit2010"]   ;
                                             $debit201010    =   $x["debit201010"] ;
                                             $credit101010   =   $x["credit101010"];
-                                            $dateFrom       =   $x["dateFrom"]    ;  
-                                            $dateTo         =   $x["dateTo"]      ;
+                                            // $dateFrom       =   $x["dateFrom"]    ;  
+                                            // $dateTo         =   $x["dateTo"]      ;
                                             $finalFJEVDATE  =   $x["FJEVDATE"]    ;
                                         }
                                       
@@ -276,9 +277,6 @@ class JevdReportsController extends Controller
                     $details->add($x);
                 }
             }
-
-        // $details = $details->sortBy('FJEVNO')->values();
-        //dd($details);
         return $details;   
     }
     public function jevdTypeSecondReport(Request $request)
