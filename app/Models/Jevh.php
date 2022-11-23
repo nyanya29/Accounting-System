@@ -12,22 +12,11 @@ class Jevh extends Model
     protected $table = "jevh";
     protected $guarded = [];
     protected $primaryKey = "recid";
+    public $timestamps = false;
 
     public function jevd(){
-        return $this->hasMany(Jevd::class, 'FJEVNO','FJEVNO');
+        return $this->hasMany(Jevd::class, 'FJEVNO','fjevno');
     }
-    // public function jevdOne(){
-    //     return $this->hasMany(Jevd::class, 'FUND_SCODE','FUND_SCODE');
-    // }
-    // public function jevdAll(){
-    //     return $this->friends->merge($this->jevdOne);
-    // }
-    // public function jevdTest(){
-    //     return Jevd::where(function ($q){
-    //         $q->where()
-    //     });
-    // }
-
     public function jevddetails(){
         return $this->belongsTo(Jevd::class, 'FUND_SCODE','FUND_SCODE');
     }

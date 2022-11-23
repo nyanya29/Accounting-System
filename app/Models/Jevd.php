@@ -12,6 +12,7 @@ class Jevd extends Model
     protected $table = "jevd";
     protected $primaryKey = 'recid';
     protected $guarded = [];
+    public $timestamps = false;
 
     // public function __construct(Jevh $jevh)
     // {

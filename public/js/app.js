@@ -1428,14 +1428,6 @@ var map = {
 		"/js/vendor",
 		"resources_js_Pages_Home_vue"
 	],
-	"./Jevh/Create": [
-		"./resources/js/Pages/Jevh/Create.vue",
-		"resources_js_Pages_Jevh_Create_vue"
-	],
-	"./Jevh/Create.vue": [
-		"./resources/js/Pages/Jevh/Create.vue",
-		"resources_js_Pages_Jevh_Create_vue"
-	],
 	"./Jevh/Index": [
 		"./resources/js/Pages/Jevh/Index.vue",
 		"resources_js_Pages_Jevh_Index_vue"
@@ -1459,22 +1451,6 @@ var map = {
 	"./Jevh/Jevd/Create.vue": [
 		"./resources/js/Pages/Jevh/Jevd/Create.vue",
 		"resources_js_Pages_Jevh_Jevd_Create_vue"
-	],
-	"./Jevh/JevdCreate": [
-		"./resources/js/Pages/Jevh/JevdCreate.vue",
-		"resources_js_Pages_Jevh_JevdCreate_vue"
-	],
-	"./Jevh/JevdCreate.vue": [
-		"./resources/js/Pages/Jevh/JevdCreate.vue",
-		"resources_js_Pages_Jevh_JevdCreate_vue"
-	],
-	"./Jevh/JevdIndex": [
-		"./resources/js/Pages/Jevh/JevdIndex.vue",
-		"resources_js_Pages_Jevh_JevdIndex_vue"
-	],
-	"./Jevh/JevdIndex.vue": [
-		"./resources/js/Pages/Jevh/JevdIndex.vue",
-		"resources_js_Pages_Jevh_JevdIndex_vue"
 	],
 	"./Jevh/JevhCreate": [
 		"./resources/js/Pages/Jevh/JevhCreate.vue",

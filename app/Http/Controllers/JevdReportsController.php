@@ -17,18 +17,18 @@ class JevdReportsController extends Controller
                         'subaccounts1.FSTITLE',
                         'subaccounts2.FSTITLE2',
                         'funds_details.FUNDDETAIL_NAME',
-                        'jevh.FJEVTYP',
-                        'jevh.FPREPBY',
-                        'jevh.FPREPD',
-                        'jevh.FAPPVBY',
-                        'jevh.FAPPVD',
-                        'jevh.FJEVDATE',
-                        'jevh.FCHKNO',
+                        'jevh.fjevtyp',
+                        'jevh.fprepby',
+                        'jevh.fprepd',
+                        'jevh.fappvby',
+                        'jevh.fappvd',
+                        'jevh.fjevdate',
+                        'jevh.fchkno',
                         DB::raw('FORMAT(jevd.FCREDIT, 2) as jevdCredit, FORMAT(jevd.FDEBIT, 2) as jevdDebit'),
                     )
                     ->leftjoin('jevh', function ($query){
-                        $query->on('jevh.FUND_SCODE', '=', 'jevd.FUND_SCODE')
-                            ->on('jevd.FJEVNO', '=', 'jevh.FJEVNO');
+                        $query->on('jevh.fund_scode', '=', 'jevd.FUND_SCODE')
+                            ->on('jevd.FJEVNO', '=', 'jevh.fjevno');
                     })
                     ->leftJoin('chartofaccounts', function ($query) {
                         $query->on('chartofaccounts.FACTCODE', '=', 'jevd.FACTCODE')
@@ -64,11 +64,11 @@ class JevdReportsController extends Controller
                         'jevd.FUND_SCODE',
                         'jevd.FCREDIT',
                         'jevd.fiscalyear',
-                        'jevh.FJEVNO',
-                        'jevd.FACTCODE',
-                        'jevh.FJEVTYP',
-                        'jevh.FPAYEE',
-                        'jevh.FJEVDATE',
+                        'jevh.fjevno',
+                        'jevd.factcode',
+                        'jevh.fjevtyp',
+                        'jevh.fpayee',
+                        'jevh.fjevdate',
                         'funds_details.FUNDDETAIL_NAME',
                         DB::raw('SUM(CASE WHEN jevd.FACTCODE=10101010 THEN jevd.FDEBIT else null END) as debit101'),
                         DB::raw('SUM(CASE WHEN jevd.FACTCODE=40102080 THEN jevd.FCREDIT else null END) as credit080'),
@@ -82,29 +82,30 @@ class JevdReportsController extends Controller
                     )
 
                     ->leftJoin('jevh', function($query){
-                        $query->on('jevh.FUND_SCODE', '=', 'jevd.FUND_SCODE')
-                        ->on('jevh.FJEVNO', '=', 'jevd.FJEVNO')
+                        $query->on('jevh.fund_scode', '=', 'jevd.FUND_SCODE')
+                        ->on('jevh.fjevno', '=', 'jevd.FJEVNO')
                         ->on('jevh.fiscalyear', '=', 'jevd.fiscalyear');                     
                     })
 
                     ->leftJoin('funds_details', 'jevd.FUND_SCODE','=', 'funds_details.FUND_SCODE')
-                    ->where('jevh.FJEVTYP','=',$request->FJEVTYP)
+                    ->where('jevh.fjevtyp','=',$request->FJEVTYP)
                     ->where('jevd.FUND_SCODE','=',$request->FUND_SCODE)
-                    ->whereBetween('jevh.FJEVDATE',[$request->from,$request->to])
+                    ->whereBetween('jevh.fjevdate',[$request->from,$request->to])
                     ->groupBy(
                         'jevh.recid',
                         'jevd.FDEBIT',
                         'jevd.FUND_SCODE',
                         'jevd.FCREDIT',
                         'jevd.fiscalyear',
-                        'jevh.FJEVNO',
-                        'jevd.FACTCODE',
-                        'jevh.FJEVTYP',
-                        'jevh.FPAYEE',
-                        'jevh.FJEVDATE',
+                        'jevh.fjevno',
+                        'jevd.factcode',
+                        'jevh.fjevtyp',
+                        'jevh.fpayee',
+                        'jevh.fjevdate',
                         'funds_details.FUNDDETAIL_NAME'
-                    )->orderBy('jevh.FJEVNO');
+                    )->orderBy('jevh.fjevno');
 
+                    // dd($details->get());
         $this->temp = $details
         // ->where('jevh.FJEVTYP','=',$request->FJEVTYP)
         // ->where('jevd.FUND_SCODE','=',$request->FUND_SCODE)
@@ -127,11 +128,11 @@ class JevdReportsController extends Controller
                     "FUND_SCODE"        => $item[0]->FUND_SCODE,
                     "FCREDIT"           => $item->sum('FCREDIT'),
                     "fiscalyear"        => $item[0]->fiscalyear,
-                    "FJEVNO"            => $item[0]->FJEVNO,
+                    "FJEVNO"            => $item[0]->fjevno,
                     "FACTCODE"          => "",//$item[0]->FACTCODE,
-                    "FJEVTYP"           => $item[0]->FJEVTYP,
-                    "FPAYEE"            => $item[0]->FPAYEE,
-                    "FJEVDATE"          => $item[0]->FJEVDATE,
+                    "FJEVTYP"           => $item[0]->fjevtyp,
+                    "FPAYEE"            => $item[0]->fpayee,
+                    "FJEVDATE"          => $item[0]->fjevdate,
                     "FUNDDETAIL_NAME"   => $item[0]->FUNDDETAIL_NAME,
                     'dateFrom'          => Carbon::parse($request->from)->format('F d, Y'),
                     'dateTo'            => Carbon::parse($request->to)->format('F d, Y')
@@ -150,9 +151,9 @@ class JevdReportsController extends Controller
                     ->where('jevd.FACTCODE','!=','10101010')
                     ->where('jevd.FACTCODE','!=','10102010')
                     ->where('jevd.FACTCODE','!=','10201010')
-                    ->where('jevh.FJEVTYP','=',$request->FJEVTYP)
+                    ->where('jevh.fjevtyp','=',$request->FJEVTYP)
                     ->where('jevd.FUND_SCODE','=',$request->FUND_SCODE)
-                    ->whereBetween('jevh.FJEVDATE',[$request->from,$request->to])
+                    ->whereBetween('jevh.fjevdate',[$request->from,$request->to])
                     ->get()
                     ->map(function($item,$index)
                     {
@@ -173,13 +174,13 @@ class JevdReportsController extends Controller
                         foreach ($this->temp as $x)
                             { 
                             
-                                if(    $x["FJEVNO"]         == $item->FJEVNO
-                                    && $x["FJEVTYP"]        == $item->FJEVTYP 
+                                if(    $x["FJEVNO"]         == $item->fjevno
+                                    && $x["FJEVTYP"]        == $item->fjevtyp 
                                     && $x["FUND_SCODE"]     == $item->FUND_SCODE)
                                 {
                                     if($index > 0)
                                     {
-                                        if($item->FJEVNO ==  $this->FJEVNO)
+                                        if($item->fjevno ==  $this->FJEVNO)
                                         {
                                             $debit101       = 0  ;  
                                             $credit080      = 0  ;
@@ -230,7 +231,7 @@ class JevdReportsController extends Controller
                                 }
                             }
 
-                            $this->FJEVNO = $item->FJEVNO;
+                            $this->FJEVNO = $item->fjevno;
 
                         return [
                             'debit101'          => $debit101    ,//GIKAN KA TEMP
@@ -248,10 +249,10 @@ class JevdReportsController extends Controller
                             "FUND_SCODE"        => $item->FUND_SCODE,
                             "FCREDIT"           => $item->FCREDIT,
                             "fiscalyear"        => $item->fiscalyear,
-                            "FJEVNO"            => $item->FJEVNO,
-                            "FACTCODE"          => $item->FACTCODE,
-                            "FJEVTYP"           => $item->FJEVTYP,
-                            "FPAYEE"            => $item->FPAYEE,
+                            "FJEVNO"            => $item->fjevno,
+                            "FACTCODE"          => $item->factcode,
+                            "FJEVTYP"           => $item->fjevtyp,
+                            "FPAYEE"            => $item->fpayee,
                             "FJEVDATE"          => $finalFJEVDATE,//$item->FJEVDATE,//
                             "FUNDDETAIL_NAME"   => $item->FUNDDETAIL_NAME,
                             'dateFrom'          => $dateFrom,//$item->$dateFrom, //GIKAN KA TEMP
@@ -288,18 +289,18 @@ class JevdReportsController extends Controller
                             'jevd.FUND_SCODE',
                             'jevd.FCREDIT',
                             'jevd.fiscalyear',
-                            'jevd.FJEVNO',
-                            'jevd.FACTCODE',
-                            'jevh.FJEVTYP',
-                            'jevh.FPAYEE',
-                            'jevh.FJEVDATE',
+                            'jevd.fjevno',
+                            'jevd.factcode',
+                            'jevh.fjevtyp',
+                            'jevh.fpayee',
+                            'jevh.fjevdate',
                             'funds_details.FUNDDETAIL_NAME',
                             'chartofaccounts.FTITLE',
                         )
 
         ->leftJoin('jevh', function($query){
-            $query->on('jevh.FUND_SCODE', '=', 'jevd.FUND_SCODE')
-            ->on('jevh.FJEVNO', '=', 'jevd.FJEVNO')
+            $query->on('jevh.fund_scode', '=', 'jevd.FUND_SCODE')
+            ->on('jevh.fjevno', '=', 'jevd.FJEVNO')
             ->on('jevh.fiscalyear', '=', 'jevd.fiscalyear');                     
         })
         ->leftJoin('chartofaccounts', function ($query) {
@@ -309,24 +310,24 @@ class JevdReportsController extends Controller
         })
 
         ->leftJoin('funds_details', 'jevd.FUND_SCODE','=', 'funds_details.FUND_SCODE')
-        ->where('jevh.FJEVTYP','=',$request->FJEVTYP)
+        ->where('jevh.fjevtyp','=',$request->FJEVTYP)
         ->where('jevd.FUND_SCODE','=',$request->FUND_SCODE)
-        ->whereBetween('jevh.FJEVDATE',[$request->from,$request->to])
+        ->whereBetween('jevh.fjevdate',[$request->from,$request->to])
         ->groupBy(
             'jevh.recid',
             'jevd.FDEBIT',
             'jevd.FUND_SCODE',
             'jevd.FCREDIT',
             'jevd.fiscalyear',
-            'jevd.FJEVNO',
-            'jevd.FACTCODE',
-            'jevh.FJEVTYP',
-            'jevh.FPAYEE',
-            'jevh.FJEVDATE',
+            'jevd.fjevno',
+            'jevd.factcode',
+            'jevh.fjevtyp',
+            'jevh.fpayee',
+            'jevh.fjevdate',
             'funds_details.FUNDDETAIL_NAME',
             'chartofaccounts.FTITLE'
         )
-        ->orderBy('FJEVDATE')
+        ->orderBy('fjevdate')
         ->get();
 
         return $details->map(fn($item) => [
@@ -335,14 +336,14 @@ class JevdReportsController extends Controller
             "FUND_SCODE" => $item->FUND_SCODE,
             "FCREDIT" => $item->FCREDIT,
             "fiscalyear" => $item->fiscalyear,
-            "FJEVNO" => $item->FJEVNO,
-            "FACTCODE" => $item->FACTCODE,
-            "FJEVTYP" => $item->FJEVTYP,
-            "FPAYEE" => $item->FPAYEE,
-            "FJEVDATE" => $item->FJEVDATE,
+            "FJEVNO" => $item->fjevno,
+            "FACTCODE" => $item->factcode,
+            "FJEVTYP" => $item->fjevtyp,
+            "FPAYEE" => $item->fpayee,
+            "FJEVDATE" => $item->fjevdate,
             "FUNDDETAIL_NAME" => $item->FUNDDETAIL_NAME,
             "FTITLE" => $item->FTITLE,
-            'date' => Carbon::parse($item->FJEVDATE)->format('F Y'),
+            'date' => Carbon::parse($item->fjevdate)->format('F Y'),
         ]);
     }
 }

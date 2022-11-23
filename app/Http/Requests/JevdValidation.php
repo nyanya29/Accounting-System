@@ -24,24 +24,20 @@ class JevdValidation extends FormRequest
     public function rules()
     {
         return [
-            'FRESPCTR' => 'required',
             'FACTCODE' => 'required',
-            'FALOBNO' => 'required',
-            'FVOUCHNO' => 'required',
-            'FPRNO' => 'required',
-            'FDEBIT' => 'nullable|regex:/^\d{1,13}(\.\d{1,4})?$/',
-            'FCREDIT' => 'nullable|regex:/^\d{1,13}(\.\d{1,4})?$/',
+            'FSUBCDE' => 'required',
+            'FSUBCDE2' => 'required',
+            'FDEBIT' => 'required|nullable|regex:/^\d{1,13}(\.\d{1,4})?$/',
+            'FCREDIT' => 'required|nullable|regex:/^\d{1,13}(\.\d{1,4})?$/',
         ];
 
     }
     public function messages()
     {
         return [
-            'FRESPCTR.required' => 'Resp Center is required !!',
             'FACTCODE.required' => 'Account Code is required !!',
-            'FALOBNO.required' => 'OBR is required !!',
-            'FVOUCHNO.required' => 'Voucher No is required !!',
-            'FPRNO.required' => 'PR No is required !!',
+            'FSUBCDE.required' => 'Sub Code is required',
+            'FSUBCDE2.required' => 'Sub Code 2 is required',
             'FDEBIT.regex' => 'Invalid Format !!',
             'FCREDIT.regex' => 'Invalid format !!',
         ];
