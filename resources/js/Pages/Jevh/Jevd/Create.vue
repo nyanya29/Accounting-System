@@ -19,7 +19,7 @@
                                                         <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>Jev Type:</b></label>
                                                     </div>
                                                     <div class="col-sm-8">
-                                                        <p class="col-form-label">{{ jevtype[data.FJEVTYP] }}</p>
+                                                        <p class="col-form-label">{{ jevtype[data.fjevtyp] }}</p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -29,7 +29,7 @@
                                                         <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>FUND:</b></label>
                                                     </div>
                                                     <div class="col-sm-8">
-                                                        <p class="col-form-label">{{ data.FUND_SCODE }}</p>
+                                                        <p class="col-form-label">{{ data.fund_scode }}</p>
                                                     </div>
                                                 </div> 
                                             </div>
@@ -39,7 +39,7 @@
                                                         <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>JEV No.:</b></label>
                                                     </div>
                                                     <div class="col-sm-8">
-                                                        <p class="col-form-label">{{ data.FJEVNO }}</p>
+                                                        <p class="col-form-label">{{ data.fjevno }}</p>
                                                     </div>
                                                 </div> 
                                             </div>
@@ -49,7 +49,7 @@
                                                         <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>JEV Date:</b></label>
                                                     </div>
                                                     <div class="col-sm-8">
-                                                        <p class="col-form-label">{{ data.FJEVDATE }}</p>
+                                                        <p class="col-form-label">{{ data.fjevdate }}</p>
                                                     </div>
                                                 </div> 
                                             </div>
@@ -59,7 +59,7 @@
                                                         <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>Check:</b></label>
                                                     </div>
                                                     <div class="col-sm-8">
-                                                        <p class="col-form-label">{{ data.FCHKNO }}</p>
+                                                        <p class="col-form-label">{{ data.fchkno }}</p>
                                                     </div>
                                                 </div> 
                                             </div>
@@ -69,7 +69,7 @@
                                                         <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>Ref#:</b></label>
                                                     </div>
                                                     <div class="col-sm-8">
-                                                        <p class="col-form-label">{{ data.FREFNO }}</p>
+                                                        <p class="col-form-label">{{ data.frefno }}</p>
                                                     </div>
                                                 </div> 
                                             </div>
@@ -81,7 +81,7 @@
                                                         <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>Payee:</b></label>
                                                     </div>
                                                     <div class="col-sm-8">
-                                                        <p class="col-form-label">{{ data.FPAYEE }}</p>
+                                                        <p class="col-form-label">{{ data.fpayee }}</p>
                                                     </div>
                                                 </div> 
                                             </div>
@@ -91,7 +91,7 @@
                                                         <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>Prepared By:</b></label>
                                                     </div>
                                                     <div class="col-sm-8">
-                                                        <p class="col-form-label">{{ data.FPREPBY }}</p>
+                                                        <p class="col-form-label">{{ data.fprepby }}</p>
                                                     </div>
                                                 </div> 
                                             </div>
@@ -101,7 +101,7 @@
                                                         <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>Position:</b></label>
                                                     </div>
                                                     <div class="col-sm-8">
-                                                        <p class="col-form-label">{{ data.FPREPD }}</p>
+                                                        <p class="col-form-label">{{ data.fprepd }}</p>
                                                     </div>
                                                 </div> 
                                             </div>
@@ -111,7 +111,7 @@
                                                         <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>Aprroved By:</b></label>
                                                     </div>
                                                     <div class="col-sm-8">
-                                                        <p class="col-form-label">{{ data.FAPPVBY }}</p>
+                                                        <p class="col-form-label">{{ data.fappvby }}</p>
                                                     </div>
                                                 </div> 
                                             </div>
@@ -121,14 +121,14 @@
                                                         <label class="col-form-label" for="colFormLabelSm" style="text-align:right"><b>Position:</b></label>
                                                     </div>
                                                     <div class="col-sm-8">
-                                                        <p class="col-form-label">{{ data.FAPPVD }}</p>
+                                                        <p class="col-form-label">{{ data.fappvd }}</p>
                                                     </div>
                                                 </div> 
                                             </div>
                                         </div>
                                         <div class="col-4">
                                             <div class="col-sm-12 form-floating">                               
-                                                <textarea class="col-form-label form-control" style="height: 200px" readonly v-model="data.FREMK"></textarea>
+                                                <textarea class="col-form-label form-control" style="height: 200px" readonly v-model="data.fremk"></textarea>
                                                 <label for="floatingInput"><b>DESCRIPTION</b></label>
                                             </div>
                                         </div>
@@ -163,7 +163,7 @@
                                     
                                 </thead>
                                 <tbody>
-                                    <tr v-for="item in jevd" :key="item.index">
+                                    <tr v-for="item in jevd1" :key="item.index">
                                         <td>{{ item.FRESPCTR }}</td>
                                         <td>{{ item.FACTCODE }}</td>
                                         <td>{{ item.FTITLE }}</td>
@@ -198,24 +198,23 @@
                                                         <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/>
                                                         </svg> Delete </Link></li>
                                                 </ul>
-
                                             </div>
                                         </td>
                                     </tr>
-                                    <tr>
-                                       
-                                        <th scope="row 12">Total</th>
-                                        <td colspan="9"></td>
-                                        <td><b>{{ total.totalDebit }}</b></td>
-                                        <td><b>{{ total.totalCredit }}</b></td>
-                                        <td colspan="2"></td>
-                                    </tr>
-                                    <tr v-if="total.totalCredit != total.totalDebit">
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <td colspan="6"></td>
+                                    <td colspan="2" class="text-end"><b>Total Debit</b></td>
+                                    <td colspan="2"><b>{{ totalDebit }}</b></td>
+                                    <td colspan="2" class="text-end"><b>Total Credit</b></td>
+                                    <td colspan="2"><b>{{ totalCredit }}</b></td>
+                                </tr>
+                                    <tr v-if="totalCredit != totalDebit">
                                        <td colspan="9"></td>
                                        <td colspan="5"><div class="fs-6 c-red text-danger">Debit is not equal to credit!!!</div></td>
                                    </tr>
-
-                                </tbody>
+                            </tfoot>
                             </table>
                         </div>
                     </div>
@@ -232,22 +231,17 @@
     
                             <label class="col-form-label"><b>RespCenter</b></label>
                             <input type="text" v-model="form.FRESPCTR" class="form-control" autocomplete="chrome-off">
-                            <div class="fs-6 c-red text-danger" v-if="form.errors.FRESPCTR"> {{form.errors.FRESPCTR}}</div>
                             
                             <label class="col-form-label"><b>Voucher #</b></label>
                             <input type="text" v-model="form.FVOUCHNO" class="form-control" autocomplete="chrome-off">
-                            <div class="fs-6 c-red text-danger" v-if="form.errors.FVOUCHNO"> {{form.errors.FVOUCHNO}}</div>
     
                             <label class="col-mb-3 col-form-label"><b>OBR #</b></label>
                             <input type="text" v-model="form.FALOBNO" class="form-control" autocomplete="chrome-off">
-                            <div class="fs-6 c-red text-danger" v-if="form.errors.FALOBNO"> {{form.errors.FALOBNO}}</div>
     
                             <div class="row">
                                 <div class="col-md-6 ">
                                     <label class="col-form-label"><b>PR #</b></label>
                                     <input type="text" v-model="form.FPRNO" class="form-control" autocomplete="chrome-off"> 
-
-                                    <div class="fs-6 c-red text-danger" v-if="form.errors.FPRNO"> {{form.errors.FPRNO}}</div>
                                 </div>
                                 <div class="col-md-6">
                                     <label class="col-form-label"><b>Act Code</b></label>
@@ -263,11 +257,14 @@
                                     <label class="col-form-label"><b>Sub Code</b></label>
                                     <select class="form-select" v-model="form.FSUBCDE">
                                     <option v-for="item in subcode1" :value="item.FSUBCDE" :key="item.recid"> {{ item.FSTITLE}} </option></select>
+                                    <div class="text-danger" v-if="form.errors.FSUBCDE"> {{form.errors.FSUBCDE}}</div>
                                 </div>
+
                                 <div class="col-md-6">
                                     <label class="col-form-label"><b>Sub Code2</b></label>
                                     <select class="form-select" v-model="form.FSUBCDE2">
                                     <option v-for="item in subcode2" :value="item.FSUBCDE2" :key="item.recid">{{item.FSTITLE2}}</option></select>
+                                    <div class="text-danger" v-if="form.errors.FSUBCDE2"> {{form.errors.FSUBCDE2}}</div>
                                 </div>
                             </div>
     
@@ -313,6 +310,9 @@ import { useForm } from '@inertiajs/inertia-vue3';
 export default {
     props:{
         data:Object,
+        jevd1:Array,
+        totalCredit: Number,
+        totalDebit: Number
     },
     data () {
         return {
@@ -330,8 +330,8 @@ export default {
             subcode2: {},
             form: useForm ({
                 fiscalyear: this.data.fiscalyear,
-                FUND_SCODE: this.data.FUND_SCODE,
-                FJEVNO: this.data.FJEVNO,
+                FUND_SCODE: this.data.fund_scode,
+                FJEVNO: this.data.fjevno,
                 FRESPCTR: "",
                 FACTCODE: "",
                 FSUBCDE: "",
@@ -355,7 +355,7 @@ export default {
         this.getChartAccount(),
         this.getSubCode1()
         this.getSubCode2(),
-        this.getjevdData(),
+        // this.getjevdData(),
         
         await this.getTotal()
 
@@ -387,13 +387,12 @@ export default {
   
 
     methods: {
-        getChartAccount() {
+    getChartAccount() {
         axios.post('/jevd/getChartAccount').then(response => {
             this.factcodes = response.data
         })
     },
     getSubCode1() {
-
             axios.post('/jevd/getSubCode1', {FACTCODE: this.form.FACTCODE}).then( response => {
             this.subcode1 = response.data
         })
@@ -408,9 +407,10 @@ export default {
         {
             this.form.post("/jevd/", {
 
-                    onSuccess: visit => {
+                    onSuccess: () => {
 
-                        this.$inertia.visit('/jevh/jevd-create/'+this.data.recid)
+                        this.form.reset();
+                        
                     }
                 }
             );
@@ -444,8 +444,8 @@ export default {
     },
     getjevdData(url = "/jevd/get-jevdData"){
             let payload = {
-                FJEVNO: this.data.FJEVNO,
-                FUND_SCODE: this.data.FUND_SCODE,
+                fjevno: this.data.fjevno,
+                fund_scode: this.data.fund_scode,
                 fiscalyear: this.data.fiscalyear
                 }
                 axios.post(url, payload).then((response) => {
@@ -487,12 +487,6 @@ export default {
     //     }
     // }
     },
-
-    // watch: {
-    //     refreshTable: function() {
-    //         this.getjevdData()
-    //     },
-    // },
 }
 </script>
 

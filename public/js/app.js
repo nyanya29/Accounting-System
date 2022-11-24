@@ -674,31 +674,6 @@ var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
   width: "20",
   height: "20",
   fill: "currentColor",
-  "class": "bi bi-people",
-  viewBox: "0 0 16 16"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
-  d: "M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z"
-})], -1
-/* HOISTED */
-);
-
-var _hoisted_11 = [_hoisted_10];
-
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  "class": "title"
-}, "Users", -1
-/* HOISTED */
-);
-
-var _hoisted_13 = {
-  "class": "nav-item"
-};
-
-var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
-  xmlns: "http://www.w3.org/2000/svg",
-  width: "20",
-  height: "20",
-  fill: "currentColor",
   "class": "bi bi-file-earmark-post",
   viewBox: "0 0 16 16"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
@@ -709,9 +684,9 @@ var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_15 = [_hoisted_14];
+var _hoisted_11 = [_hoisted_10];
 
-var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "title"
 }, "Journal Entry Voucher", -1
 /* HOISTED */
@@ -740,27 +715,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   }, 8
   /* PROPS */
-  , ["class"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["sidebar-link", {
-      'active': _ctx.$page.url === '/users'
-    }]),
-    href: "/users"
-  }, {
-    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-        "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["icon-holder", {
-          'text-white': _ctx.$page.url === '/users'
-        }])
-      }, _hoisted_11, 2
-      /* CLASS */
-      ), _hoisted_12];
-    }),
-    _: 1
-    /* STABLE */
-
-  }, 8
-  /* PROPS */
-  , ["class"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
+  , ["class"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <li class=\"nav-item\">\r\n                    <Link class=\"sidebar-link\" :class=\"{'active': $page.url === '/users'}\" href=\"/users\"\r\n                        ><span class=\"icon-holder\" :class=\"{'text-white': $page.url === '/users'}\"\r\n                            ><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" fill=\"currentColor\" class=\"bi bi-people\" viewBox=\"0 0 16 16\">\r\n                              <path d=\"M15 14s1 0 1-1-1-4-5-4-5 3-5 4 1 1 1 1h8zm-7.978-1A.261.261 0 0 1 7 12.996c.001-.264.167-1.03.76-1.72C8.312 10.629 9.282 10 11 10c1.717 0 2.687.63 3.24 1.276.593.69.758 1.457.76 1.72l-.008.002a.274.274 0 0 1-.014.002H7.022zM11 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm3-2a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM6.936 9.28a5.88 5.88 0 0 0-1.23-.247A7.35 7.35 0 0 0 5 9c-4 0-5 3-5 4 0 .667.333 1 1 1h4.216A2.238 2.238 0 0 1 5 13c0-1.01.377-2.042 1.09-2.904.243-.294.526-.569.846-.816zM4.92 10A5.493 5.493 0 0 0 4 13H1c0-.26.164-1.03.76-1.724.545-.636 1.492-1.256 3.16-1.275zM1.5 5.5a3 3 0 1 1 6 0 3 3 0 0 1-6 0zm3-2a2 2 0 1 0 0 4 2 2 0 0 0 0-4z\"/>\r\n                            </svg>\r\n                        </span\r\n                        ><span class=\"title\">Users</span></Link\r\n                    >\r\n                </li> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
     "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["sidebar-link", {
       'active': _ctx.$page.url === '/jevh/index'
     }]),
@@ -771,9 +726,9 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["icon-holder", {
           'text-white': _ctx.$page.url === '/jevh/index'
         }])
-      }, _hoisted_15, 2
+      }, _hoisted_11, 2
       /* CLASS */
-      ), _hoisted_16];
+      ), _hoisted_12];
     }),
     _: 1
     /* STABLE */
@@ -1428,14 +1383,6 @@ var map = {
 		"/js/vendor",
 		"resources_js_Pages_Home_vue"
 	],
-	"./Jevh/Create": [
-		"./resources/js/Pages/Jevh/Create.vue",
-		"resources_js_Pages_Jevh_Create_vue"
-	],
-	"./Jevh/Create.vue": [
-		"./resources/js/Pages/Jevh/Create.vue",
-		"resources_js_Pages_Jevh_Create_vue"
-	],
 	"./Jevh/Index": [
 		"./resources/js/Pages/Jevh/Index.vue",
 		"resources_js_Pages_Jevh_Index_vue"
@@ -1459,22 +1406,6 @@ var map = {
 	"./Jevh/Jevd/Create.vue": [
 		"./resources/js/Pages/Jevh/Jevd/Create.vue",
 		"resources_js_Pages_Jevh_Jevd_Create_vue"
-	],
-	"./Jevh/JevdCreate": [
-		"./resources/js/Pages/Jevh/JevdCreate.vue",
-		"resources_js_Pages_Jevh_JevdCreate_vue"
-	],
-	"./Jevh/JevdCreate.vue": [
-		"./resources/js/Pages/Jevh/JevdCreate.vue",
-		"resources_js_Pages_Jevh_JevdCreate_vue"
-	],
-	"./Jevh/JevdIndex": [
-		"./resources/js/Pages/Jevh/JevdIndex.vue",
-		"resources_js_Pages_Jevh_JevdIndex_vue"
-	],
-	"./Jevh/JevdIndex.vue": [
-		"./resources/js/Pages/Jevh/JevdIndex.vue",
-		"resources_js_Pages_Jevh_JevdIndex_vue"
 	],
 	"./Jevh/JevhCreate": [
 		"./resources/js/Pages/Jevh/JevhCreate.vue",

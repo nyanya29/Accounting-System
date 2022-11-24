@@ -18,14 +18,14 @@ class JevdController extends Controller
     public function jevDetails(Request $request)
     {
         $details = DB::table('jevd')
-            ->select('jevd.*',
-                    'chartofaccounts.FTITLE',
-                    'subaccounts1.FTITLE',
-                    'subaccounts1.FSTITLE',
-                    'subaccounts2.FSTITLE2',
-                    'funds_details.FUNDDETAIL_NAME',
-                    DB::raw('FORMAT(jevd.FCREDIT, 2) as jevdCredit, FORMAT(jevd.FDEBIT, 2) as jevdDebit')
-                )
+                    ->select('jevd.*',
+                            'chartofaccounts.FTITLE',
+                            'subaccounts1.FTITLE',
+                            'subaccounts1.FSTITLE',
+                            'subaccounts2.FSTITLE2',
+                            'funds_details.FUNDDETAIL_NAME',
+                            DB::raw('FORMAT(jevd.FCREDIT, 2) as jevdCredit, FORMAT(jevd.FDEBIT, 2) as jevdDebit')
+                        )
                     ->leftJoin('chartofaccounts', function ($query) {
                         $query->on('chartofaccounts.FACTCODE', '=', 'jevd.FACTCODE')
                             ->on('jevd.fiscalyear', '>=', 'chartofaccounts.fiscalyear')
@@ -41,13 +41,14 @@ class JevdController extends Controller
                             ->on('subaccounts2.FSUBCDE2', '=', 'jevd.FSUBCDE2');
                     })
                     ->leftJoin('funds_details', 'jevd.FUND_SCODE', 'funds_details.FUND_SCODE')
-                    ->where('jevd.FJEVNO','=',$request->FJEVNO)
-                    ->where('jevd.FUND_SCODE','=',$request->FUND_SCODE)
+                    ->where('jevd.FJEVNO','=',$request->fjevno)
+                    ->where('jevd.FUND_SCODE','=',$request->fund_scode)
                     ->where('jevd.fiscalyear','=',$request->fiscalyear)
                     ->get();
 
             return $details;
     }
+    
     public function jevdTotal(Request $request)
     {
         $totalSum = DB::table('jevd')
@@ -69,8 +70,8 @@ class JevdController extends Controller
                         ->on('subaccounts2.FSUBCDE2', '=', 'jevd.FSUBCDE2');
                 })
                 ->leftJoin('funds_details', 'jevd.FUND_SCODE', 'funds_details.FUND_SCODE')
-                ->where('jevd.FJEVNO','=',$request->FJEVNO)
-                ->where('jevd.FUND_SCODE','=',$request->FUND_SCODE)
+                ->where('jevd.FJEVNO','=',$request->fjevno)
+                ->where('jevd.FUND_SCODE','=',$request->fund_scode)
                 ->where('jevd.fiscalyear','=',$request->fiscalyear)
                 ->first();
 

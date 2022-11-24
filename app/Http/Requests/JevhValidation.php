@@ -24,18 +24,36 @@ class JevhValidation extends FormRequest
     public function rules()
     {
         return [
-           'FJEVNO' => 'required',
-           'FCHKNO' => 'required',
-           'FJEVTYP' => 'required'
+           'fjevno' => 'required',
+           'fchkno' => 'required',
+           'fjevtyp' => 'required',
+           'fund_scode' => 'required',
+           'fjevdate' => 'required',
+           'frefno' => 'required',
+           'fpayee' => 'required',
+           'fremk' => 'required',
+           'fprepby' => 'required',
+           'fprepd' => 'required',
+           'fappvby' => 'required',
+           'fappvd' => 'required',
         ];
     }
 
     public function messages()
     {
         return [
-            'FJEVNO.required' => 'Jev Number is Required',
-            'FCHKNO.required' =>  'Check Number is Required',
-            'FJEVTYP.required' =>  'Jev Type is Required',
+            'fjevno.required' => 'Jev Number is required',
+            'fchkno.required' => 'Check Number is required',
+            'fjevtyp.required' => 'Jev Type is required',
+            'fund_scode.required' => 'Fund_Scode is required',
+            'fjevdate.required' => 'Date is required',
+            'frefno.required' => 'Reference Number is required',
+            'fpayee.required' => 'Payee is required',
+            'fremk.required' => 'Remarks is required',
+            'fprepby.required' => 'Prepare by is required',
+            'fprepd.required' => 'Position is required',
+            'fappvby.required' => 'Approved by is required',
+            'fappvd.required' => 'Approver position is required',
         ];
     }
     
