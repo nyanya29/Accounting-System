@@ -21,4 +21,5 @@ class Jevh extends Model
         return $this->belongsTo(Jevd::class, 'FUND_SCODE','FUND_SCODE');
     }
 
+
 }

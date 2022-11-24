@@ -139,6 +139,9 @@ __webpack_require__.r(__webpack_exports__);
     BackButton: _Shared_BackButton_vue__WEBPACK_IMPORTED_MODULE_1__["default"],
     JevdIndex: _Jevh_JevdIndex_vue__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
+  props: {
+    editData: Object
+  },
   data: function data() {
     return {
       funds: "",
@@ -174,7 +177,8 @@ __webpack_require__.r(__webpack_exports__);
         FPREPBY: "",
         FPREPD: "",
         FAPPVBY: "",
-        FAPPVD: ""
+        FAPPVD: "",
+        recid: ""
       }),
       checkadd: false,
       pageTitle: "Create Journal Entry",
@@ -185,6 +189,26 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.getFundDetail();
+
+    if (!!this.editData) {
+      this.pageTitle = "Edit";
+      this.form.fiscalyear = this.editData.fiscalyear;
+      this.form.FUND_SCODE = this.editData.FUND_SCODE;
+      this.form.FJEVNO = this.editData.FJEVNO;
+      this.form.FJEVTYP = this.editData.FJEVTYP;
+      this.form.FJEVDATE = this.editData.FJEVDATE;
+      this.form.FPAYEE = this.editData.FPAYEE;
+      this.form.FCHKNO = this.editData.FCHKNO;
+      this.form.FREMK = this.editData.FREMK;
+      this.form.FREFNO = this.editData.FREFNO;
+      this.form.FPREPBY = this.editData.FPREPBY;
+      this.form.FPREPD = this.editData.FPREPD;
+      this.form.FAPPVBY = this.editData.FAPPVBY;
+      this.form.FAPPVD = this.editData.FAPPVD;
+      this.form.recid = this.editData.recid;
+    } else {
+      this.pageTitle = "Create";
+    }
   },
   methods: {
     getFundDetail: function getFundDetail() {
@@ -195,10 +219,11 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     submit: function submit() {
-      // this.isDisabled = false;
-      this.form.post("/jevh/store"); // setTimeout ( () => {
-      //     document.getElementById('jevdLink').click();
-      // }, 100)
+      if (this.editData !== undefined) {
+        this.form.patch("/jevh/update-jevh/" + this.form.recid); //dre ko last sa edit
+      } else {
+        this.form.post("/jevh/store");
+      }
     }
   }
 });
@@ -1097,15 +1122,19 @@ var _hoisted_33 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_34 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+var _hoisted_34 = {
   "class": "modal-footer p-1"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+};
+var _hoisted_35 = {
+  key: 0,
   type: "submit",
   "class": "btn btn-primary mt-3"
-}, "Save")], -1
-/* HOISTED */
-);
-
+};
+var _hoisted_36 = {
+  key: 1,
+  type: "submit",
+  "class": "btn btn-primary mt-3"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_back_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("back-button");
 
@@ -1251,7 +1280,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     autocomplete: "chrome-off"
   }, null, 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.FAPPVD]])])])]), _hoisted_34], 32
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.FAPPVD]])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_34, [$data.pageTitle === 'Create' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", _hoisted_35, "Save")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.pageTitle === 'Edit' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", _hoisted_36, "Update")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])], 32
   /* HYDRATE_EVENTS */
   )])])])])]);
 }

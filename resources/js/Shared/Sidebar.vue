@@ -66,7 +66,7 @@
                               <path d="M4 6.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-7zm0-3a.5.5 0 0 1 .5-.5H7a.5.5 0 0 1 0 1H4.5a.5.5 0 0 1-.5-.5z"/>
                             </svg>
                         </span>
-                        <span class="title">JEVH</span>
+                        <span class="title">Journal Entry Voucher</span>
                     </Link
                     >
                 </li>

@@ -272,11 +272,27 @@
                             </div>
     
                             <label class="col-mb-3 col-form-label"><b>Debit</b></label>
-                            <input type="text" v-model="form.FDEBIT" class="form-control" autocomplete="chrome-off">
+                            <input 
+                                type="number" 
+                                v-model="form.FDEBIT" 
+                                class="form-control" 
+                                :class="{'is-invalid' :form.FCREDIT}"
+                                autocomplete="chrome-off" 
+                                :disabled="form.FCREDIT != ''"
+                                :placeholder="form.FCREDIT != '' ? `Unable to inpurrrt Debirt` : ``"
+                            >
                             <div class="fs-6 c-red text-danger" v-if="form.errors.FDEBIT"> {{form.errors.FDEBIT}}</div>
     
                             <label class="col-mb-3 col-form-label"><b>Credit</b></label>
-                            <input type="text" v-model="form.FCREDIT" class="form-control" autocomplete="chrome-off">
+                            <input 
+                                type="number" 
+                                v-model="form.FCREDIT" 
+                                class="form-control"
+                                :class="{'is-invalid' :form.FDEBIT}"
+                                autocomplete="chrome-off"
+                                :disabled="form.FDEBIT != ''"
+                                :placeholder="form.FDEBIT != '' ? `Unable to inpurrrt Credit` : ``"
+                            >
                             <div class="fs-6 c-red text-danger" v-if="form.errors.FCREDIT"> {{form.errors.FCREDIT}}</div>
     
                             <label class="col-mb-3 col-form-label"><b>Description</b></label>
@@ -331,7 +347,7 @@ export default {
             total:{},
             pageTitle: "",
             isDisabled: false,
-            recid_to_update:null
+            recid_to_update:null,
         }
     },
 
@@ -365,7 +381,10 @@ export default {
             this.getSubCode1()
             this.getSubCode2()
         },
+        
+       
     },
+  
 
     methods: {
         getChartAccount() {

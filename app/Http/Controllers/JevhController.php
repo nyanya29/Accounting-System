@@ -19,6 +19,7 @@ class JevhController extends Controller
     public function index(Request $request){
 
         $index = $this->getFilter($request);
+        // dd($index = $this->model->with('jevd'));
 
         return inertia('Jevh/Index', [
             "jevh" => $index
@@ -30,12 +31,14 @@ class JevhController extends Controller
             ->withQueryString(),
             "filters" => $request->only(['search']),
         ]);
-
     }
     
     public function getFilter($request)
     {
-        $index = $this->model;
+        $index = $this->model->with(
+            'jevd'
+            
+        );
 
         if ($request->fundscode) {
             $index = $index->where('FUND_SCODE', 'like', '%' . $request->fundscode . '%');
@@ -73,10 +76,10 @@ class JevhController extends Controller
 
         return $index;
     }
-    public function create()
-        {
-            return inertia('Jevh/Create');
-        }
+    // public function create()
+    // {
+    //     return inertia('Jevh/Create');
+    // }
     
     public function getFundDetail()
     {
@@ -109,16 +112,30 @@ class JevhController extends Controller
         ]);
     }
 
-    public function editJevh(Request $request,$id)
-    {
-        return inertia('Jevh/JevhCreate', [
-            'editData' => $this->model->where('recid',$id)->first()
-        ]);
-    }
-
     public function JevReport()
     {
        return inertia('Jevh/JevReport');
     }
-    
+    public function editJevh(Request $request, $recid)
+    {
+        $data = $this->model->where('recid',$recid)->first();
+        return inertia('Jevh/JevhCreate',[
+            'editData'=> $data
+        ]);
+    }
+    public function updateJevh(Request $request)
+    {
+        $data = $this->model->findOrFail($request->recid);
+        // dd($data);
+        $data->update($request->all());
+
+        return redirect("/jevh/jevd-create/$data->recid")->with('message', 'Updated Successfully');
+    }
+    public function deleteJevh(Request $request)
+    {
+        $data = $this->model->findOrFail($request->id);
+        $data->delete();
+        
+        return redirect('/jevh/index')->with('message', 'Record deleted');
+    }
 }

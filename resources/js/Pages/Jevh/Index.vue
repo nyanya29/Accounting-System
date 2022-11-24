@@ -11,16 +11,10 @@
                     <input v-model="search" type="text" class="form-control form-control-sm" placeholder="Search...">
                 </div>
                 <div class="peer">
-                    <!-- <Link class="btn btn-success btn-sm mL-2 text-white" href="/jevh/create"> Add new record</Link> -->
                     <Link class="btn btn-success btn-sm mL-2 text-white" href="/jevh/jevh-create"> Add new record</Link>
                     <Link class="btn btn-info btn-sm mL-2 text-white" href="/jevh/jevh-report"> Jevtype Report</Link>
                     <button class="btn btn-primary btn-sm mL-2 text-white" @click="showFilter()">Filter</button>
                 </div>
-            </div>
-        </div>
-        <div class="bd-callout bd-callout-info">
-            <div class="bd-callout-body">
-                test
             </div>
         </div>
 
@@ -73,6 +67,7 @@
                             <td>{{ jevhdata.FCHKNO }}</td>
                             <td>{{ jevhdata.FPAYEE }}</td>
                             <td>{{ jevhdata.FREMK }}</td>
+                            <!-- <td>{{ jevhdata.jevd }}</td> -->
                             <td style="text-align: right">
                                 <div class="dropdown dropstart">
                                   <button class="btn btn-secondary btn-sm action-btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -85,12 +80,13 @@
                                         <button class="dropdown-item" @click="showdetails(jevhdata)">Show Details</button>
                                     </li>
 
-                                    <li><Link class="dropdown-item" @click="editJevh(jevhdata.recid)"> 
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-pencil me-2" viewBox="0 0 16 16">
-                                            <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                                    <li><Link class="dropdown-item" :href="`/jevh/${jevhdata.recid}/edit`">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
                                             </svg> Edit
-                                        </Link></li>
-
+                                        </Link>
+                                    </li>
                                     <li>
                                         <button class="dropdown-item" @click="print(jevhdata)">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-printer-fill" viewBox="0 0 16 16">
@@ -100,6 +96,12 @@
                                             Print
                                         </button>
                                     </li>
+                                    <span>
+                                        <li><hr class="dropdown-divider action-divider"></li>
+                                        <li>
+                                            <button class="text-danger dropdown-item" @click="deleteJevh(jevhdata.recid)">Delete</button>
+                                        </li>
+                                    </span>
                                   </ul>
                                 </div>
                             </td>
@@ -168,7 +170,8 @@ export default {
                     {value:5, name:"ADA"},
                     {value:6, name:"Procurement"},
                 ],  
-            })
+            }),
+            isDisabled:false,
         };
     },
 
@@ -191,10 +194,6 @@ export default {
     },
 
     methods: {
-        editJevh(id)
-        {
-            this.$inertia.get("/jevh/"+id+"/edit");
-        },
         showFilter() {
             this.filter = !this.filter
         },
@@ -223,9 +222,17 @@ export default {
             this.$inertia.get('/jevh/index')
         },
         print(jevhdata){
-            window.open('http://192.168.6.23:8080/jasperserver/flow.html?_flowId=viewReportFlow&_flowId=viewReportFlow&ParentFolderUri=%2Freports%2Faccounting_system&reportUnit=%2Freports%2Faccounting_system%2Fjevd_report&standAlone=true&decorate=no&FJEVNO='+jevhdata.FJEVNO+'&FUND_SCODE='+jevhdata.FUND_SCODE+'&fiscalyear='+jevhdata.fiscalyear);
+            window.open('http://192.168.6.23:8080/jasperserver/flow.html?pp=u%3DJamshasadid%7Cr%3DManager%7Co%3DEMEA,Sales%7Cpa1%3DSweden&_flowId=viewReportFlow&_flowId=viewReportFlow&_flowId=viewReportFlow&ParentFolderUri=%2Freports%2Faccounting_system&reportUnit=%2Freports%2Faccounting_system%2Fjevd_report&standAlone=true&decorate=no&FJEVNO='+jevhdata.FJEVNO+'&FUND_SCODE='+jevhdata.FUND_SCODE+'&fiscalyear='+jevhdata.fiscalyear);
         },
+        deleteJevh(recid){
+            // this.isDisabled = !this.isDisabled
+            let text = "Warning!\Are you sure you want to delete this record?";
 
+            if (confirm(text) == true) {
+                // console.log('test');
+                this.$inertia.delete("/jevh/jevh-delete/" + recid);
+            }
+        }
     },
 };
 </script>
