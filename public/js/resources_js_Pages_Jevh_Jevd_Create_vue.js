@@ -39,9 +39,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         6: "Procurement"
       },
       jevd: {},
-      factcodes: {},
-      subcode1: {},
-      subcode2: {},
+      factcodes: [],
+      subcode1: [],
+      subcode2: [],
       form: (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.useForm)({
         fiscalyear: this.data.fiscalyear,
         FUND_SCODE: this.data.fund_scode,
@@ -55,7 +55,9 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         FPRNO: "",
         FDEBIT: "",
         FCREDIT: "",
-        FREMARKS: ""
+        FREMARKS: "",
+        isSubcode1: '',
+        isSubcode2: ''
       }),
       jevdData: {},
       total: {},
@@ -72,14 +74,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         while (1) {
           switch (_context.prev = _context.next) {
             case 0:
-              _this.getChartAccount(), _this.getSubCode1();
+              _this.getChartAccount();
 
-              _this.getSubCode2();
-
-              _context.next = 4;
+              _context.next = 3;
               return _this.getTotal();
 
-            case 4:
+            case 3:
               if (!!_this.editData) {
                 _this.form.FRESPCTR = _this.jevdData.FRESPCTR;
                 _this.form.FACTCODE = _this.jevdData.FACTCODE;
@@ -92,11 +92,15 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 _this.form.FCREDIT = _this.jevdData.FCREDIT;
                 _this.form.FREMARKS = _this.jevdData.FCREDIT;
                 _this.form.recid = _this.jevdData.recid;
+
+                _this.getSubCode1();
+
+                _this.getSubCode2();
               } else {
                 _this.pageTitle = 'Create';
               }
 
-            case 5:
+            case 4:
             case "end":
               return _context.stop();
           }
@@ -108,6 +112,10 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
     'jevdData': function jevdData(value) {
       this.getSubCode1();
       this.getSubCode2();
+    },
+    'form.FACTCODE': function formFACTCODE(value) {
+      this.form.FSUBCDE = '';
+      this.form.FSUBCDE2 = '';
     }
   },
   methods: {
@@ -125,6 +133,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         FACTCODE: this.form.FACTCODE
       }).then(function (response) {
         _this3.subcode1 = response.data;
+        _this3.form.isSubcode1 = response.data.length != 0;
       });
     },
     getSubCode2: function getSubCode2() {
@@ -134,6 +143,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         FACTCODE: this.form.FACTCODE
       }).then(function (response) {
         _this4.subcode2 = response.data;
+        _this4.form.isSubcode2 = response.data.length != 0;
       });
     },
     submit: function submit() {
@@ -1056,14 +1066,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "onUpdate:modelValue": _cache[9] || (_cache[9] = function ($event) {
       return $data.form.FDEBIT = $event;
     }),
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["form-control", {
-      'is-invalid': $data.form.FCREDIT
-    }]),
+    "class": "form-control",
     autocomplete: "chrome-off",
     disabled: $data.form.FCREDIT != '',
     placeholder: $data.form.FCREDIT != '' ? "Unable to inpurrrt Debirt" : ""
-  }, null, 10
-  /* CLASS, PROPS */
+  }, null, 8
+  /* PROPS */
   , _hoisted_118), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.FDEBIT]]), $data.form.errors.FDEBIT ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_119, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form.errors.FDEBIT), 1
   /* TEXT */
   )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_120, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
@@ -1071,14 +1079,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "onUpdate:modelValue": _cache[10] || (_cache[10] = function ($event) {
       return $data.form.FCREDIT = $event;
     }),
-    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["form-control", {
-      'is-invalid': $data.form.FDEBIT
-    }]),
+    "class": "form-control",
     autocomplete: "chrome-off",
     disabled: $data.form.FDEBIT != '',
     placeholder: $data.form.FDEBIT != '' ? "Unable to inpurrrt Credit" : ""
-  }, null, 10
-  /* CLASS, PROPS */
+  }, null, 8
+  /* PROPS */
   , _hoisted_121), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.FCREDIT]]), $data.form.errors.FCREDIT ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_122, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form.errors.FCREDIT), 1
   /* TEXT */
   )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_123, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
@@ -1125,13 +1131,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _Create_vue_vue_type_template_id_3f74ec69__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Create.vue?vue&type=template&id=3f74ec69 */ "./resources/js/Pages/Jevh/Jevd/Create.vue?vue&type=template&id=3f74ec69");
 /* harmony import */ var _Create_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Create.vue?vue&type=script&lang=js */ "./resources/js/Pages/Jevh/Jevd/Create.vue?vue&type=script&lang=js");
-/* harmony import */ var C_xampp_htdocs_Accounting_System_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
+/* harmony import */ var D_xampp_htdocs_Accounting_System_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./node_modules/vue-loader/dist/exportHelper.js */ "./node_modules/vue-loader/dist/exportHelper.js");
 
 
 
 
 ;
-const __exports__ = /*#__PURE__*/(0,C_xampp_htdocs_Accounting_System_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Create_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Create_vue_vue_type_template_id_3f74ec69__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/Jevh/Jevd/Create.vue"]])
+const __exports__ = /*#__PURE__*/(0,D_xampp_htdocs_Accounting_System_node_modules_vue_loader_dist_exportHelper_js__WEBPACK_IMPORTED_MODULE_2__["default"])(_Create_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__["default"], [['render',_Create_vue_vue_type_template_id_3f74ec69__WEBPACK_IMPORTED_MODULE_0__.render],['__file',"resources/js/Pages/Jevh/Jevd/Create.vue"]])
 /* hot reload */
 if (false) {}
 

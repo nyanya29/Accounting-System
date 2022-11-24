@@ -273,7 +273,6 @@
                                 type="number" 
                                 v-model="form.FDEBIT" 
                                 class="form-control" 
-                                :class="{'is-invalid' :form.FCREDIT}"
                                 autocomplete="chrome-off" 
                                 :disabled="form.FCREDIT != ''"
                                 :placeholder="form.FCREDIT != '' ? `Unable to inpurrrt Debirt` : ``"
@@ -285,7 +284,6 @@
                                 type="number" 
                                 v-model="form.FCREDIT" 
                                 class="form-control"
-                                :class="{'is-invalid' :form.FDEBIT}"
                                 autocomplete="chrome-off"
                                 :disabled="form.FDEBIT != ''"
                                 :placeholder="form.FDEBIT != '' ? `Unable to inpurrrt Credit` : ``"
@@ -325,9 +323,9 @@ export default {
                 6:"Procurement"
             },
             jevd:{},
-            factcodes:{},
-            subcode1: {},
-            subcode2: {},
+            factcodes:[],
+            subcode1: [],
+            subcode2: [],
             form: useForm ({
                 fiscalyear: this.data.fiscalyear,
                 FUND_SCODE: this.data.fund_scode,
@@ -341,7 +339,9 @@ export default {
                 FPRNO: "",
                 FDEBIT: "",
                 FCREDIT: "",
-                FREMARKS: ""
+                FREMARKS: "",
+                isSubcode1:'',
+                isSubcode2:'',
             }),
             jevdData:{},
             total:{},
@@ -353,9 +353,6 @@ export default {
 
     async mounted() {
         this.getChartAccount(),
-        this.getSubCode1()
-        this.getSubCode2(),
-        // this.getjevdData(),
         
         await this.getTotal()
 
@@ -371,6 +368,9 @@ export default {
             this.form.FCREDIT = this.jevdData.FCREDIT
             this.form.FREMARKS = this.jevdData.FCREDIT
             this.form.recid = this.jevdData.recid
+            
+            this.getSubCode1()
+            this.getSubCode2()
         } else {
             this.pageTitle = 'Create'
         }
@@ -381,6 +381,10 @@ export default {
             this.getSubCode1()
             this.getSubCode2()
         },
+        'form.FACTCODE': function(value) {
+            this.form.FSUBCDE = ''
+            this.form.FSUBCDE2 = ''
+        }
         
        
     },
@@ -395,11 +399,13 @@ export default {
     getSubCode1() {
             axios.post('/jevd/getSubCode1', {FACTCODE: this.form.FACTCODE}).then( response => {
             this.subcode1 = response.data
+            this.form.isSubcode1 = response.data.length != 0;
         })
     },
     getSubCode2() {
         axios.post('/jevd/getSubCode2', {FACTCODE: this.form.FACTCODE}).then( response => {
             this.subcode2 = response.data
+            this.form.isSubcode2 = response.data.length != 0;
         })
     },
     submit () {

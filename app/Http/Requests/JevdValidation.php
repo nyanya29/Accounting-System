@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class JevdValidation extends FormRequest
 {
@@ -23,23 +24,24 @@ class JevdValidation extends FormRequest
      */
     public function rules()
     {
+        $isRequired = !$this->FDEBIT && !$this->FCREDIT;
+
         return [
             'FACTCODE' => 'required',
-            'FSUBCDE' => 'required',
-            'FSUBCDE2' => 'required',
-            'FDEBIT' => 'required|nullable|regex:/^\d{1,13}(\.\d{1,4})?$/',
-            'FCREDIT' => 'required|nullable|regex:/^\d{1,13}(\.\d{1,4})?$/',
+            'FSUBCDE' => [Rule::requiredIf($this->isSubcode1)],
+            'FSUBCDE2' => [Rule::requiredIf($this->isSubcode2)],
+            'FDEBIT' => [Rule::when($isRequired,['required', 'numeric'])],
+            'FCREDIT' => [Rule::when($isRequired,['required', 'numeric'])],
         ];
-
     }
     public function messages()
     {
         return [
             'FACTCODE.required' => 'Account Code is required !!',
-            'FSUBCDE.required' => 'Sub Code is required',
-            'FSUBCDE2.required' => 'Sub Code 2 is required',
-            'FDEBIT.regex' => 'Invalid Format !!',
-            'FCREDIT.regex' => 'Invalid format !!',
+            'FSUBCDE.required' => 'Sub Code is required !!',
+            'FSUBCDE2.required' => 'Sub Code 2 is required !!',
+            'FDEBIT.required' => 'Debit is required !!',
+            'FCREDIT.required' => 'Credit is required  !!',
         ];
     }
 }

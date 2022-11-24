@@ -11,7 +11,21 @@ class Jevd extends Model
 
     protected $table = "jevd";
     protected $primaryKey = 'recid';
-    protected $guarded = [];
+    protected $fillable = [
+        'fiscalyear',
+        'FUND_SCODE',
+        'FJEVNO',
+        'FRESPCTR',
+        'FACTCODE',
+        'FSUBCDE',
+        'FSUBCDE2',
+        'FALOBNO',
+        'FVOUCHNO',
+        'FPRNO',
+        'FDEBIT',
+        'FCREDIT',
+        'FREMARKS',
+    ];
     public $timestamps = false;
 
     // public function __construct(Jevh $jevh)
