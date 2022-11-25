@@ -114,7 +114,7 @@ class JevhController extends Controller
     {
 
         // $data = $this->model->find($id);
-        $data = $this->model->find($id);
+        $data = $this->model->findOrFail($id);
         // dd($data);    
         
         $jevD =  DB::table('jevd')
@@ -124,6 +124,8 @@ class JevhController extends Controller
                             'subaccounts1.FSTITLE',
                             'subaccounts2.FSTITLE2',
                             'funds_details.FUNDDETAIL_NAME',
+                            'jevd.FCREDIT',
+                            'jevd.FDEBIT',
                             DB::raw(
                                 'FORMAT(jevd.FCREDIT, 2) as jevdCredit, 
                                 FORMAT(jevd.FDEBIT, 2) as jevdDebit'
@@ -153,8 +155,8 @@ class JevhController extends Controller
             // 'data' => $data[0]['jevh'],
             'jevd1' => $jevD,
             'data' => $data,
-            'totalDebit' => $jevD->sum('jevdDebit'),
-            'totalCredit' => $jevD->sum('jevdCredit'),
+            'totalDebit' => $jevD->sum('FDEBIT'),
+            'totalCredit' => $jevD->sum('FCREDIT'),
         ]);
     }
 
@@ -171,11 +173,18 @@ class JevhController extends Controller
     }
     public function updateJevh(Request $request)
     {
-        $data = $this->model->findOrFail($request->recid);
-        // dd($data);
-        $data->update($request->all());
+        try {
+            //code...
+            $data = $this->model->findOrFail($request->recid);
+            // dd($request->all());
+            $data->update($request->all());
+        } catch (\Throwable $th) {
+            //throw $th;
+            return $th->getMessage();
+        }
+        // dd("test");
 
-        return redirect("/jevh/jevd-create/$data->recid")->with('message', 'Updated Successfully');
+        return redirect("/jevh/jevd-create/".$data->recid)->with('message', 'Updated Successfully');
     }
     public function deleteJevh(Request $request)
     {

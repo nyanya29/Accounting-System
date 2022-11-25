@@ -206,9 +206,17 @@
                                 <tr>
                                     <td colspan="6"></td>
                                     <td colspan="2" class="text-end"><b>Total Debit</b></td>
-                                    <td colspan="2"><b>{{ totalDebit }}</b></td>
+                                    <td colspan="2">
+                                        <b>
+                                            <to-currency :money="totalDebit"></to-currency>
+                                        </b>
+                                    </td>
                                     <td colspan="2" class="text-end"><b>Total Credit</b></td>
-                                    <td colspan="2"><b>{{ totalCredit }}</b></td>
+                                    <td colspan="2">
+                                        <b>
+                                            <to-currency :money="totalCredit"></to-currency>
+                                        </b>
+                                    </td>
                                 </tr>
                                     <tr v-if="totalCredit != totalDebit">
                                        <td colspan="9"></td>
@@ -305,7 +313,9 @@
 
 <script>
 import { useForm } from '@inertiajs/inertia-vue3';
+import ToCurrency from '../../../Shared/ToCurrency.vue';
 export default {
+  components: { ToCurrency },
     props:{
         data:Object,
         jevd1:Array,
