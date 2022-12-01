@@ -67,35 +67,18 @@
                             </svg>
                         </span>
                         <span class="title">Journal Entry Voucher</span>
-                    </Link
-                    >
+                    </Link>
                 </li>
-                
-                <!-- <li class="nav-item dropdown">
-                    <a class="dropdown-toggle" href="javascript:void(0);"
-                        ><span class="icon-holder"
-                            ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-table" viewBox="0 0 16 16">
-                              <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm15 2h-4v3h4V4zm0 4h-4v3h4V8zm0 4h-4v3h3a1 1 0 0 0 1-1v-2zm-5 3v-3H6v3h4zm-5 0v-3H1v2a1 1 0 0 0 1 1h3zm-4-4h4V8H1v3zm0-4h4V4H1v3zm5-3v3h4V4H6zm4 4H6v3h4V8z"/>
-                            </svg></span
-                        ><span class="title">Tables</span>
-                        <span class="arrow"
-                            ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
-                          <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-                        </svg></span
-                    ></a>
-                    <ul class="dropdown-menu">
-                        <li>
-                            <a class="sidebar-link" href="basic-table.html"
-                                >Basic Table</a
-                            >
-                        </li>
-                        <li>
-                            <a class="sidebar-link" href="datatable.html"
-                                >Data Table</a
-                            >
-                        </li>
-                    </ul>
-                </li> -->
+                <li class="nav-item">
+                    <Link class="sidebar-link" :class="{'active': $page.url === '/jevh/jev-posting-index'}" href="/jevh/jev-posting-index"> 
+                        <span class="icon-holder" :class="{'text-white': $page.url === '/jevh/jev-posting-index'}"
+                            ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sticky-fill" viewBox="0 0 16 16">
+                                <path d="M2.5 1A1.5 1.5 0 0 0 1 2.5v11A1.5 1.5 0 0 0 2.5 15h6.086a1.5 1.5 0 0 0 1.06-.44l4.915-4.914A1.5 1.5 0 0 0 15 8.586V2.5A1.5 1.5 0 0 0 13.5 1h-11zm6 8.5a1 1 0 0 1 1-1h4.396a.25.25 0 0 1 .177.427l-5.146 5.146a.25.25 0 0 1-.427-.177V9.5z"/>
+                            </svg>
+                        </span>
+                        <span class="title">JEV Posting</span>
+                    </Link>
+                </li>
             </ul>
         </div>
     </div>

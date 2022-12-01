@@ -1096,7 +1096,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "form-control",
     autocomplete: "chrome-off",
     disabled: $data.form.FCREDIT != '',
-    placeholder: $data.form.FCREDIT != '' ? "Unable to inpurrrt Debirt" : ""
+    placeholder: $data.form.FCREDIT != '' ? "Unable to input Debit" : ""
   }, null, 8
   /* PROPS */
   , _hoisted_118), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.FDEBIT]]), $data.form.errors.FDEBIT ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_119, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form.errors.FDEBIT), 1
@@ -1109,7 +1109,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "form-control",
     autocomplete: "chrome-off",
     disabled: $data.form.FDEBIT != '',
-    placeholder: $data.form.FDEBIT != '' ? "Unable to inpurrrt Credit" : ""
+    placeholder: $data.form.FDEBIT != '' ? "Unable to input Credit" : ""
   }, null, 8
   /* PROPS */
   , _hoisted_121), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.FCREDIT]]), $data.form.errors.FCREDIT ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_122, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form.errors.FCREDIT), 1

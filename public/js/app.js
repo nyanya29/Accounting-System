@@ -692,6 +692,31 @@ var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
+var _hoisted_13 = {
+  "class": "nav-item"
+};
+
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
+  xmlns: "http://www.w3.org/2000/svg",
+  width: "16",
+  height: "16",
+  fill: "currentColor",
+  "class": "bi bi-sticky-fill",
+  viewBox: "0 0 16 16"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
+  d: "M2.5 1A1.5 1.5 0 0 0 1 2.5v11A1.5 1.5 0 0 0 2.5 15h6.086a1.5 1.5 0 0 0 1.06-.44l4.915-4.914A1.5 1.5 0 0 0 15 8.586V2.5A1.5 1.5 0 0 0 13.5 1h-11zm6 8.5a1 1 0 0 1 1-1h4.396a.25.25 0 0 1 .177.427l-5.146 5.146a.25.25 0 0 1-.427-.177V9.5z"
+})], -1
+/* HOISTED */
+);
+
+var _hoisted_15 = [_hoisted_14];
+
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+  "class": "title"
+}, "JEV Posting", -1
+/* HOISTED */
+);
+
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Link");
 
@@ -735,7 +760,27 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   }, 8
   /* PROPS */
-  , ["class"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <li class=\"nav-item dropdown\">\r\n                    <a class=\"dropdown-toggle\" href=\"javascript:void(0);\"\r\n                        ><span class=\"icon-holder\"\r\n                            ><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-table\" viewBox=\"0 0 16 16\">\r\n                              <path d=\"M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm15 2h-4v3h4V4zm0 4h-4v3h4V8zm0 4h-4v3h3a1 1 0 0 0 1-1v-2zm-5 3v-3H6v3h4zm-5 0v-3H1v2a1 1 0 0 0 1 1h3zm-4-4h4V8H1v3zm0-4h4V4H1v3zm5-3v3h4V4H6zm4 4H6v3h4V8z\"/>\r\n                            </svg></span\r\n                        ><span class=\"title\">Tables</span>\r\n                        <span class=\"arrow\"\r\n                            ><svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-chevron-right\" viewBox=\"0 0 16 16\">\r\n                          <path fill-rule=\"evenodd\" d=\"M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z\"/>\r\n                        </svg></span\r\n                    ></a>\r\n                    <ul class=\"dropdown-menu\">\r\n                        <li>\r\n                            <a class=\"sidebar-link\" href=\"basic-table.html\"\r\n                                >Basic Table</a\r\n                            >\r\n                        </li>\r\n                        <li>\r\n                            <a class=\"sidebar-link\" href=\"datatable.html\"\r\n                                >Data Table</a\r\n                            >\r\n                        </li>\r\n                    </ul>\r\n                </li> ")])])]);
+  , ["class"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_13, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
+    "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["sidebar-link", {
+      'active': _ctx.$page.url === '/jevh/jev-posting-index'
+    }]),
+    href: "/jevh/jev-posting-index"
+  }, {
+    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+        "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)(["icon-holder", {
+          'text-white': _ctx.$page.url === '/jevh/jev-posting-index'
+        }])
+      }, _hoisted_15, 2
+      /* CLASS */
+      ), _hoisted_16];
+    }),
+    _: 1
+    /* STABLE */
+
+  }, 8
+  /* PROPS */
+  , ["class"])])])])]);
 }
 
 /***/ }),
@@ -1422,6 +1467,14 @@ var map = {
 	"./Jevh/Modal.vue": [
 		"./resources/js/Pages/Jevh/Modal.vue",
 		"resources_js_Pages_Jevh_Modal_vue"
+	],
+	"./Jevh/Posting": [
+		"./resources/js/Pages/Jevh/Posting.vue",
+		"resources_js_Pages_Jevh_Posting_vue"
+	],
+	"./Jevh/Posting.vue": [
+		"./resources/js/Pages/Jevh/Posting.vue",
+		"resources_js_Pages_Jevh_Posting_vue"
 	],
 	"./Posts/Index": [
 		"./resources/js/Pages/Posts/Index.vue",

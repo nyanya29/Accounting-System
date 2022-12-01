@@ -29,22 +29,6 @@ class JevhController extends Controller
                             ->orderBy('recid', 'desc')
                             ->paginate(10)
                             ->withQueryString(),
-                            // ->through(fn($item) => [
-                            //     'fiscalyear' => $item->fiscalyear,
-                            //     'fund_scode' => $item->fund_scode,
-                            //     'fjevno' => $item->fjevno,
-                            //     'fjevdate' => $item->fjevdate,
-                            //     'fchkno' => $item->fchkno,
-                            //     'fpayee' => $item->fpayee,
-                            //     'fremk' => $item->fremk,
-                            //     'recid' => $item->recid,
-                            //     'fprepby' => $item->fprepby,
-                            //     'fprepd' => $item->fprepd,
-                            //     'fappvby' => $item->fappvby,
-                            //     'fappvd' => $item->fappvd,
-                            //     'fjevtyp' => $item->fjevtyp,
-                            //     'canDelete' => !Jevd::where('FUND_SCODE', $item->fund_scode)->where('FJEVNO',  $item->fjevno)->first()
-                            // ]),
             "filters" => $request->only(['search']),
         ]);
        
@@ -98,8 +82,15 @@ class JevhController extends Controller
 
     public function store(JevhValidation $request)
     {
-        // dd($request);
         $request->validated();
+        
+        // // dd($data = $request['fjevtyp']);
+        // $data = collect($request->all())->values();
+        // // $data = $request['fjevtyp'];
+        // // dd($data = $request['fund_scode']);
+        // $fp = fopen('data.txt', 'a');
+        // fwrite($fp, $data);
+        // fclose($fp);
 
         $data = $this->model->create($request->all());
         return redirect("/jevh/jevd-create/$data->recid")->with('message', 'Added Successfully');
@@ -110,12 +101,11 @@ class JevhController extends Controller
     {
         return inertia('Jevh/JevhCreate');
     }
+
+    
     public function jevdCreate(Request $request, $id)
     {
-
-        // $data = $this->model->find($id);
         $data = $this->model->findOrFail($id);
-        // dd($data);    
         
         $jevD =  DB::table('jevd')
                     ->select('jevd.*',
@@ -124,8 +114,6 @@ class JevhController extends Controller
                             'subaccounts1.FSTITLE',
                             'subaccounts2.FSTITLE2',
                             'funds_details.FUNDDETAIL_NAME',
-                            'jevd.FCREDIT',
-                            'jevd.FDEBIT',
                             DB::raw(
                                 'FORMAT(jevd.FCREDIT, 2) as jevdCredit, 
                                 FORMAT(jevd.FDEBIT, 2) as jevdDebit'
@@ -149,6 +137,7 @@ class JevhController extends Controller
                     ->where('jevd.FJEVNO','=',$data->fjevno)
                     ->where('jevd.FUND_SCODE','=',$data->fund_scode)
                     ->where('jevd.fiscalyear','=',$data->fiscalyear)
+                    ->orderBy('jevd.recid', 'desc')
                     ->get();
         // dd($jevD);
         return inertia('Jevh/Jevd/Create',[
@@ -188,18 +177,29 @@ class JevhController extends Controller
     }
     public function deleteJevh(Request $request)
     {
-        $jevh = $this->model
-                    ->rightJoin('jevd', function($q){
-                        $q->on('jevd.FJEVNO','jevh.fjevno')
-                            ->on('jevd.FUND_SCODE','jevh.fund_scode');
-                    })
-                    ->where('jevh.recid', $request->recid)
-                    ->count();
-        dd($jevh);
-
-        // $data = $this->model->findOrFail($request->recid);
-        // $data->delete();
+        $data = $this->model->findorFail($request->recid);
+      
+        $childdata = DB::table('jevd')->where('FJEVNO',$data->fjevno)
+                                    ->where('FUND_SCODE',$data->fund_scode)
+                                    ->where('fiscalyear',$data->fiscalyear);
+        
+        $data->delete();
+        $childdata->delete();
         
         return back()->with('message', 'Record deleted!');
+    }
+    public function postingIndex()
+    {
+        return inertia('Jevh/Posting');
+    }
+    public function posting(Request $request)
+    {
+        // dd($request);
+        $data = $this->model
+                ->whereBetween('fjevdate',[$request->from,$request->to]);           
+        $data->update([
+            'fdatepost' => $request->fdatepost
+        ]);
+        return redirect("/jevh/index")->with('message', 'Posted Successfully');
     }
 }

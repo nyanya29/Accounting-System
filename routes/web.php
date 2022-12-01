@@ -63,20 +63,19 @@ Route::middleware('auth')->group(function() {
         //edit update for jevh
         Route::get('/{recid}/edit', [JevhController::class, 'editJevh']);
         Route::patch('/update-jevh/{recid}', [JevhController::class, 'updateJevh']);
-        //--------------------
         //delete
         Route::delete('/jevh-delete/{recid}', [JevhController::class, 'deleteJevh']);
-        //--------------------
+        //getFunds---------
         Route::post('/get-fund-details', [JevhController::class, 'getFundDetails']);
-        
-        //garcia
+        //garcia----------
         Route::get('/jevh-create', [JevhController::class, 'jevhCreate']);
         Route::get('/jevd-create/{id}', [JevhController::class, 'jevdCreate']);
-        
         //charlie update
         Route::patch('/jevd-update/{id}', [JevdController::class, 'update']);
-
         Route::get('/jevh-report', [JevhController::class, 'JevReport']);
+        //jev posting----
+        Route::get('/jev-posting-index', [JevhController::class, 'postingIndex']);
+        Route::post('/jev-posting', [JevhController::class, 'posting']);
     });
     //jevd 
     Route::prefix('/jevd')->group(function($slug){

@@ -138,7 +138,7 @@ export default ({
                 fprepd:"",
                 fappvby:"",
                 fappvd:"",
-                recid:"",
+                // recid:"",
             }),
             checkadd: false,
             pageTitle: "Create Journal Entry",

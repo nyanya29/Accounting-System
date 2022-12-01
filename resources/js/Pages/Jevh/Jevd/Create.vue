@@ -283,7 +283,7 @@
                                 class="form-control" 
                                 autocomplete="chrome-off" 
                                 :disabled="form.FCREDIT != ''"
-                                :placeholder="form.FCREDIT != '' ? `Unable to inpurrrt Debirt` : ``"
+                                :placeholder="form.FCREDIT != '' ? `Unable to input Debit` : ``"
                             >
                             <div class="fs-6 c-red text-danger" v-if="form.errors.FDEBIT"> {{form.errors.FDEBIT}}</div>
     
@@ -294,7 +294,7 @@
                                 class="form-control"
                                 autocomplete="chrome-off"
                                 :disabled="form.FDEBIT != ''"
-                                :placeholder="form.FDEBIT != '' ? `Unable to inpurrrt Credit` : ``"
+                                :placeholder="form.FDEBIT != '' ? `Unable to input Credit` : ``"
                             >
                             <div class="fs-6 c-red text-danger" v-if="form.errors.FCREDIT"> {{form.errors.FCREDIT}}</div>
     
