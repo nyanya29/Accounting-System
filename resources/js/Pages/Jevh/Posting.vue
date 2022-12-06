@@ -15,7 +15,8 @@
                                         <label class="col-form-label mt-3 text-right"><b>From:</b></label>
                                     </div>
                                     <div class="col-8">
-                                        <input type="date" class="form-control mt-3" autocomplete="chrome-off" v-model="form.from"> 
+                                        <input type="date" class="form-control mt-3" autocomplete="chrome-off" v-model="form.from">
+                                        <div class="text-danger" v-if="form.errors.from"> {{form.errors.from}}</div>
                                     </div>                             
                                 </div>
                                 <div class="row">
@@ -23,7 +24,8 @@
                                         <label class="col-form-label mt-3" style="text-align:right"><b>To:</b></label>
                                     </div>
                                     <div class="col-8">
-                                        <input type="date" class="form-control mt-3" autocomplete="chrome-off" v-model="form.to"> 
+                                        <input type="date" class="form-control mt-3" autocomplete="chrome-off" v-model="form.to">
+                                        <div class="text-danger" v-if="form.errors.from"> {{form.errors.to}}</div> 
                                     </div>                             
                                 </div>
                                 <div class="row">

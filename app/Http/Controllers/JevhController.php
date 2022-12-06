@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 use App\Http\Requests\JevhValidation;
+use App\Http\Requests\PostingValidationRequest;
 use App\Models\Jevd;
 
 class JevhController extends Controller
@@ -192,9 +193,9 @@ class JevhController extends Controller
     {
         return inertia('Jevh/Posting');
     }
-    public function posting(Request $request)
+    public function posting(PostingValidationRequest $request)
     {
-        // dd($request);
+        $request->validated();
         $data = $this->model
                 ->whereBetween('fjevdate',[$request->from,$request->to]);           
         $data->update([
