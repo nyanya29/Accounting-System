@@ -4,11 +4,97 @@
             <h3>{{ pageTitle}}</h3>
             <back-button :backToURL="'/jevh/index'"></back-button>
         </div>
-            <div class="col-md-8">
+        <!-- new design -->
+        <div class="col-md-3">
+                <div class="card card shadow">
+                    <!-- <div class="card-header">
+                        Add Jevd
+                    </div> -->
+                    <form @submit.prevent="submit()">
+                        <div class="card-body">
+
+                            <div class="row">
+                                <div class="col-md-6 ">
+                                        <label class="col-form-label"><b>Fiscal Year</b></label>
+                                        <input type="text" v-model="form.fiscalyear" class="form-control" autocomplete="chrome-off"> 
+                                    </div>
+                                <div class="col-md-6">
+                                    <label class="col-form-label"><b>Jev Type</b></label>
+                                    <select  class="form-select" v-model="form.fjevtyp">
+                                        <option></option>
+                                    </select>
+                                    <div class="fs-6 c-red-500" v-if="form.errors.fjevtyp">{{ form.errors.fjevtyp }}</div>
+                                </div>
+                            </div>
+                            <label class="col-form-label"><b>Fund Details Code</b></label>
+                                <select class="form-select" v-model="form.fund_scode">
+                                    <option></option>
+                                </select>
+                                <div class="fs-6 c-red-500" v-if="form.errors.fund_scode">{{ form.errors.fund_scode }}</div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="col-form-label"><b>JEV Number</b></label>
+                                    <input type="text" v-model="form.fjevno" class="form-control" autocomplete="chrome-off">
+                                    <div class="text-danger" v-if="form.errors.fjevno">{{ form.errors.fjevno }}</div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="col-form-label"><b>JEV Date</b></label>
+                                    <input type="date" v-model="form.fjevdate" class="form-control" autocomplete="chrome-off">
+                                    <div class="text-danger" v-if="form.errors.fjevdate">{{ form.errors.fjevdate }}</div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="col-form-label"><b>Check No</b></label>
+                                    <input type="text" v-model="form.fchkno" class="form-control" autocomplete="chrome-off">
+                                    <div class="fs-6 c-red-500" v-if="form.errors.fchkno">{{ form.errors.fchkno }}</div>
+                                </div>
+                                <div class="col-md">
+                                    <label class="col-form-label"><b>Ref #</b></label>
+                                    <input type="text" v-model="form.frefno" class="form-control" autocomplete="chrome-off">
+                                    <div class="fs-6 c-red-500" v-if="form.errors.frefno">{{ form.errors.frefno }}</div>
+                                </div>
+                            </div>
+                                <label class="col-mb-3 col-form-label"><b>Payee</b></label>
+                                <input type="text" v-model="form.fpayee" class="form-control" autocomplete="chrome-off">
+                                <div class="fs-6 c-red-500" v-if="form.errors.fpayee">{{ form.errors.fpayee }}</div>
+
+                                <label class="col-mb-3 col-form-label"><b>Description</b></label>
+                                <textarea 
+                                    class="form-control" 
+                                    v-model="form.fremk" 
+                                    placeholder="Write here" 
+                                    id="floatingTextarea2" 
+                                    style="height:105px;">
+                                </textarea>
+                                <div class="fs-6 c-red-500" v-if="form.errors.fremk">{{ form.errors.fremk }}</div>
+                                <label class="col-mb-3 col-form-label"><b>Prepared by:</b></label>
+
+                                <input type="text" v-model="form.fprepby" class="form-control" autocomplete="chrome-off"/>
+                                <div class="fs-6 c-red-500" v-if="form.errors.fprepby">{{ form.errors.fprepby }}</div>
+
+                                <label class="col-mb-3 col-form-label"><b>Position</b></label>
+                                <input type="text" v-model="form.fprepd" class="form-control" autocomplete="chrome-off"/>
+                                <div class="fs-6 c-red-500" v-if="form.errors.fprepd">{{ form.errors.fprepd }}</div>
+
+                                <label class="col-mb-3 col-form-label"><b>Approved by:</b></label>
+                                <input type="text" v-model="form.fappvby" class="form-control" autocomplete="chrome-off"/>
+                                <div class="fs-6 c-red-500" v-if="form.errors.fappvby">{{ form.errors.fappvby }}</div>
+
+                                <label class="col-mb-3 col-form-label"><b>Position</b></label>
+                                <input type="text" v-model="form.fappvd" class="form-control" autocomplete="chrome-off"/>
+                                <div class="fs-6 c-red-500" v-if="form.errors.fappvd">{{ form.errors.fappvd }}</div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- end here -->
+            <div class="col-md-9">
                 <div class="form-group row p-3">
+                    <!-- mb-1 -->
                     <div class="col-12 mb-1">
                         
-                        <div class="card card text-dark bg-light shadow">
+                        <!-- <div class="card card text-dark bg-light shadow">
                             <div class="card-body">
                                 <div class="col-12 gap-5">
                                     <div class="row">
@@ -135,6 +221,97 @@
                                     </div>
                                 </div>
                             </div>
+                        </div> -->
+                        <div class="card card shadow">
+                            <div class="card-body">
+                                <form @submit.prevent="submit()">
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <label class="col-form-label"><b>RespCenter</b></label>
+                                            <input type="text" v-model="form.FRESPCTR" class="form-control" autocomplete="chrome-off">
+
+                                            <label class="col-form-label"><b>Voucher #</b></label>
+                                            <input type="text" v-model="form.FVOUCHNO" class="form-control" autocomplete="chrome-off">
+
+                                            <label class="col-mb-3 col-form-label"><b>OBR #</b></label>
+                                            <input type="text" v-model="form.FALOBNO" class="form-control" autocomplete="chrome-off">
+
+                                        </div>
+                                        <div class="col-md-2">
+                                            <label class="col-form-label"><b>Act Code</b></label>
+                                            <select  class="form-select" v-model="form.FACTCODE" @change="getSubCode1(), getSubCode2()">
+                                                <option v-for="item in factcodes" :value="item.FACTCODE" :key="item.recid">{{ item.FTITLE}}</option>
+                                            </select>
+                                            <div div class="fs-6 c-red text-danger" v-if="form.errors.FACTCODE"> {{form.errors.FACTCODE}}</div>
+
+                                            <label class="col-form-label"><b>Sub Code</b></label>
+                                            <select class="form-select" v-model="form.FSUBCDE">
+                                                <option option v-for="item in subcode1" :value="item.FSUBCDE" :key="item.recid"> {{ item.FSTITLE}} </option>
+                                            </select>
+                                            <div class="text-danger" v-if="form.errors.FSUBCDE"> {{form.errors.FSUBCDE}}</div>
+
+                                            <label class="col-form-label"><b>Sub Code2</b></label>
+                                            <select class="form-select" v-model="form.FSUBCDE2">
+                                                <option v-for="item in subcode2" :value="item.FSUBCDE2" :key="item.recid">{{item.FSTITLE2}}</option>
+                                            </select>
+                                            <div class="text-danger" v-if="form.errors.FSUBCDE2"> {{form.errors.FSUBCDE2}}</div>
+                                        </div>
+                                        
+                                        <div class="col-md-4">
+                                            <label class="col-form-label"><b>Act Title</b></label>
+                                            <input type="text" class="form-control" autocomplete="chrome-off">
+
+                                            <label class="col-form-label"><b>Sub Code Title</b></label>
+                                            <input type="text" class="form-control" autocomplete="chrome-off">
+
+                                            <label class="col-form-label"><b>Sub Code2 Title</b></label>
+                                            <input type="text" class="form-control" autocomplete="chrome-off">
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <label for="col-form-label"><b>Remarks</b></label>
+                                            <textarea class="form-control" v-model="data.fremk"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <label class="col-form-label"><b>PR #</b></label>
+                                            <input type="text" v-model="form.FPRNO" class="form-control" autocomplete="chrome-off"> 
+                                        </div>
+                                        <div class="col-md-4">
+                                            
+                                            <label class="col-mb-6 col-form-label"><b>Debit</b></label>
+                                            <input 
+                                                type="number" 
+                                                v-model="form.FDEBIT" 
+                                                class="form-control" 
+                                                autocomplete="chrome-off" 
+                                                :disabled="form.FCREDIT != ''"
+                                                :placeholder="form.FCREDIT != '' ? `Unable to input Debit` : ``"
+                                            >
+                                            <div class="fs-6 c-red text-danger" v-if="form.errors.FDEBIT"> {{form.errors.FDEBIT}}</div>
+                                        </div>
+                                        
+                                        <div class="col-md-4">
+
+                                            <label class="col-mb-6 col-form-label"><b>Credit</b></label>
+                                            <input 
+                                                type="number" 
+                                                v-model="form.FCREDIT" 
+                                                class="form-control"
+                                                autocomplete="chrome-off"
+                                                :disabled="form.FDEBIT != ''"
+                                                :placeholder="form.FDEBIT != '' ? `Unable to input Credit` : ``"
+                                            >
+                                            <div class="fs-6 c-red text-danger" v-if="form.errors.FCREDIT"> {{form.errors.FCREDIT}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary" v-if="pageTitle === 'Create'" :disabled="isDisabled"> Add{{form.processing ? 'ing...':''}}</button>
+                                        <button type="submit" class="btn btn-primary" v-if="pageTitle === 'Edit'" :disabled="isDisabled">Update</button>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
 
                     </div>
@@ -229,23 +406,35 @@
 
                 </div>
             </div>
-            <div class="col-md-4">
+            <!-- <div class="col-md-4">
                 <div class="card card shadow">
                     <div class="card-header">
                         Add Jevd
                     </div>
                     <form @submit.prevent="submit()">
                         <div class="card-body">
-    
-                            <label class="col-form-label"><b>RespCenter</b></label>
-                            <input type="text" v-model="form.FRESPCTR" class="form-control" autocomplete="chrome-off">
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="col-form-label"><b>RespCenter</b></label>
+                                    <input type="text" v-model="form.FRESPCTR" class="form-control" autocomplete="chrome-off">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="col-form-label"><b>Voucher #</b></label>
+                                    <input type="text" v-model="form.FVOUCHNO" class="form-control" autocomplete="chrome-off">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label class="col-mb-3 col-form-label"><b>OBR #</b></label>
+                                    <input type="text" v-model="form.FALOBNO" class="form-control" autocomplete="chrome-off">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="col-form-label"><b>PR #</b></label>
+                                    <input type="text" v-model="form.FPRNO" class="form-control" autocomplete="chrome-off"> 
+                                </div>
+                            </div>
                             
-                            <label class="col-form-label"><b>Voucher #</b></label>
-                            <input type="text" v-model="form.FVOUCHNO" class="form-control" autocomplete="chrome-off">
-    
-                            <label class="col-mb-3 col-form-label"><b>OBR #</b></label>
-                            <input type="text" v-model="form.FALOBNO" class="form-control" autocomplete="chrome-off">
-    
                             <div class="row">
                                 <div class="col-md-6 ">
                                     <label class="col-form-label"><b>PR #</b></label>
@@ -307,7 +496,7 @@
                         </div>
                     </form>
                 </div>
-            </div>
+            </div> -->
     </div>    
 </template>
 
@@ -320,7 +509,8 @@ export default {
         data:Object,
         jevd1:Array,
         totalCredit: Number,
-        totalDebit: Number
+        totalDebit: Number,
+        data1:Object
     },
     data () {
         return {

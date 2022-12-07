@@ -84,14 +84,6 @@ class JevhController extends Controller
     public function store(JevhValidation $request)
     {
         $request->validated();
-        
-        // // dd($data = $request['fjevtyp']);
-        // $data = collect($request->all())->values();
-        // // $data = $request['fjevtyp'];
-        // // dd($data = $request['fund_scode']);
-        // $fp = fopen('data.txt', 'a');
-        // fwrite($fp, $data);
-        // fclose($fp);
 
         $data = $this->model->create($request->all());
         return redirect("/jevh/jevd-create/$data->recid")->with('message', 'Added Successfully');
@@ -107,7 +99,8 @@ class JevhController extends Controller
     public function jevdCreate(Request $request, $id)
     {
         $data = $this->model->findOrFail($id);
-        
+        // $data1 = $request->session()->all();
+
         $jevD =  DB::table('jevd')
                     ->select('jevd.*',
                             'chartofaccounts.FTITLE',
@@ -147,6 +140,7 @@ class JevhController extends Controller
             'data' => $data,
             'totalDebit' => $jevD->sum('FDEBIT'),
             'totalCredit' => $jevD->sum('FCREDIT'),
+            // 'data1' =>  $data1
         ]);
     }
 

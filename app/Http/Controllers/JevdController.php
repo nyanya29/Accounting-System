@@ -127,13 +127,34 @@ class JevdController extends Controller
 
                 return $subcode2;
     }
-
+    //jevd crud
     public function store(JevdValidation $request)
     {
+        $request['FCREDIT'] = $request->FCREDIT ? $request->FCREDIT : 0;
+        $request['FDEBIT'] = $request->FDEBIT ? $request->FDEBIT : 0;
         $validated = $request->validated();
         
         $jevd = $this->model->create($request->all());
         return redirect()->back()->with('message', "Added Successfully");
+        // dd($request);
+        // session([
+        //     "fiscalyear" => $request->fiscalyear,
+        //     "FUND_SCODE" => $request->FUND_SCODE,
+        //     "FJEVNO" => $request->FJEVNO,
+        //     "FRESPCTR" => $request->FRESPCTR,
+        //     "FACTCODE" => $request->FACTCODE,
+        //     "FSUBCDE" => $request->FSUBCDE,
+        //     "FSUBCDE2" => $request->FSUBCDE2,
+        //     "FALOBNO" => $request->FALOBNO,
+        //     "FVOUCHNO" => $request->FVOUCHNO,
+        //     "FPRNO" => $request->FPRNO,
+        //     "FDEBIT" => $request->FDEBIT,
+        //     "FCREDIT" => $request->FCREDIT,
+        //     "FREMARKS" => $request->FREMARKS
+        // ]);
+        // // session()->put('test', 'tests');
+        // dd(session()->all());
+        //  return redirect()->back()->with('message', "Added Successfully");
     }
 
     public function editJevd(Request $request,$id)
@@ -144,7 +165,8 @@ class JevdController extends Controller
 
     public function update(Request $request, $id)
     {
-        
+        $request['FCREDIT'] = $request->FCREDIT ? $request->FCREDIT : 0;
+        $request['FDEBIT'] = $request->FDEBIT ? $request->FDEBIT : 0;   
         $data = $this->model->findOrFail($request->id);
         $data->update($request->all());
 
