@@ -86,8 +86,7 @@ Route::middleware('auth')->group(function() {
         Route::post('getSubCode2', [JevdController::class, 'getSubCode2']);
         Route::post('/credit-debit-total', [JevdController::class, 'jevdTotal']);
         Route::post('/', [JevdController::class, 'store']);
-
-        Route::post('/get-jevdData', [JevdController::class, 'jevDetails']);
+        // Route::post('/get-jevdData', [JevdController::class, 'jevDetails']);
         Route::get('/{id}/edit', [JevdController::class, 'editJevd']);
         Route::delete('/{id}', [JevdController::class, 'destroy']);
     });

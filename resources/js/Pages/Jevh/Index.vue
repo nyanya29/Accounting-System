@@ -11,6 +11,7 @@
                     <input v-model="search" type="text" class="form-control form-control-sm" placeholder="Search...">
                 </div>
                 <div class="peer">
+                    <!-- <Link class="btn btn-success btn-sm mL-2 text-white" href="/jevh/jevh-create"> Add new record</Link> -->
                     <Link class="btn btn-success btn-sm mL-2 text-white" href="/jevh/jevh-create"> Add new record</Link>
                     <Link class="btn btn-info btn-sm mL-2 text-white" href="/jevh/jevh-report"> Jevtype Report</Link>
                     <button class="btn btn-primary btn-sm mL-2 text-white" @click="showFilter()">Filter</button>
@@ -54,6 +55,7 @@
                             <th scope="col">Check No.</th>
                             <th scope="col">Payee</th>
                             <th scope="col">Particulars</th>
+                            <th scope="col">Status</th>
                             <!-- <th scope="col" style="width: 30%"></th> -->
                             <th scope="col" style="text-align: right">Action</th>
                         </tr>
@@ -67,7 +69,8 @@
                             <td>{{ jevhdata.fchkno }}</td>
                             <td>{{ jevhdata.fpayee }}</td>
                             <td>{{ jevhdata.fremk }}</td>
-                            <!-- <td>{{ jevhdata.jevd }}</td> -->
+                            <td><span class="badge rounded-pill bg-success">✔</span></td>
+                            <!-- <td><span class="badge rounded-pill bg-danger">✖</span></td> -->
                             <td style="text-align: right">
                                 <div class="dropdown dropstart">
                                   <button class="btn btn-secondary btn-sm action-btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -146,6 +149,7 @@ export default {
         jevh: Object,
         jevd: Object,
         filters: Object,
+        data:Object,
     },
     data() {
         return {

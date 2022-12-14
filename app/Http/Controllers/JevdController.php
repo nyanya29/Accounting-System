@@ -85,12 +85,19 @@ class JevdController extends Controller
 
     public function getChartAccount()
     {
-        return DB::table('chartofaccounts')->select(DB::raw('TRIM(FACTCODE) as FACTCODE'), 'FTITLE')->get();
+        return DB::table('chartofaccounts')
+                ->select(DB::raw('TRIM(FACTCODE) as FACTCODE'), 'FTITLE')
+                ->get()
+                ->map(fn($item) => [
+                    'id'    =>  $item->FACTCODE,
+                    'text'  =>  "$item->FTITLE",
+                    // 'text1' =>  "$item->FACTCODE ------ $item->FTITLE"
+                ]);
     }
 
     public  function getSubCode1(Request $request)
     {
-        $subcode1 = DB::table('subaccounts1')
+       return DB::table('subaccounts1')
                 ->select(
                     'subaccounts1.*',
                     'chartofaccounts.FACTCODE',
@@ -103,14 +110,18 @@ class JevdController extends Controller
                     $query->on('chartofaccounts.FACTCODE', '=', 'subaccounts1.FACTCODE');
                 })
                 ->where('subaccounts1.FACTCODE','=',$request->FACTCODE)
-                ->get();
+                ->get()
+                ->map(fn($item) => [
+                   'id'     =>  $item->FSUBCDE,
+                   'text'   =>  $item->FSTITLE
+                ]);
 
-                return $subcode1;
+                // return $subcode1;
     }
     
     public function getSubCode2(Request $request)
     {
-        $subcode2 = DB::table('subaccounts2')
+        return DB::table('subaccounts2')
                 ->select(
                     'subaccounts2.*',
                     'chartofaccounts.FACTCODE',
@@ -123,9 +134,11 @@ class JevdController extends Controller
                     $query->on('chartofaccounts.FACTCODE', '=', 'subaccounts2.FACTCODE');
                 })
                 ->where('subaccounts2.FACTCODE', '=', $request->FACTCODE)
-                ->get();
-
-                return $subcode2;
+                ->get()
+                ->map(fn($item) => [
+                    'id'     =>  $item->FSUBCDE2,
+                    'text'   =>  $item->FSTITLE2
+                ]);
     }
     //jevd crud
     public function store(JevdValidation $request)
@@ -136,30 +149,13 @@ class JevdController extends Controller
         
         $jevd = $this->model->create($request->all());
         return redirect()->back()->with('message', "Added Successfully");
-        // dd($request);
-        // session([
-        //     "fiscalyear" => $request->fiscalyear,
-        //     "FUND_SCODE" => $request->FUND_SCODE,
-        //     "FJEVNO" => $request->FJEVNO,
-        //     "FRESPCTR" => $request->FRESPCTR,
-        //     "FACTCODE" => $request->FACTCODE,
-        //     "FSUBCDE" => $request->FSUBCDE,
-        //     "FSUBCDE2" => $request->FSUBCDE2,
-        //     "FALOBNO" => $request->FALOBNO,
-        //     "FVOUCHNO" => $request->FVOUCHNO,
-        //     "FPRNO" => $request->FPRNO,
-        //     "FDEBIT" => $request->FDEBIT,
-        //     "FCREDIT" => $request->FCREDIT,
-        //     "FREMARKS" => $request->FREMARKS
-        // ]);
-        // // session()->put('test', 'tests');
-        // dd(session()->all());
-        //  return redirect()->back()->with('message', "Added Successfully");
     }
 
     public function editJevd(Request $request,$id)
     {
         $data = $this->model->where('recid', $id)->first();
+        $data->FCREDIT = $data->FCREDIT != 0 ? $data->FCREDIT : ''; 
+        $data->FDEBIT = $data->FDEBIT != 0 ? $data->FDEBIT : ''; 
         return $data;
     }
 
