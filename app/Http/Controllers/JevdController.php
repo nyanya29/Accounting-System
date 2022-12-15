@@ -90,8 +90,8 @@ class JevdController extends Controller
                 ->get()
                 ->map(fn($item) => [
                     'id'    =>  $item->FACTCODE,
-                    'text'  =>  "$item->FTITLE",
-                    // 'text1' =>  "$item->FACTCODE ------ $item->FTITLE"
+                    // 'text'  =>  "$item->FTITLE",
+                    'text' =>  "$item->FACTCODE ----- $item->FTITLE"
                 ]);
     }
 
@@ -113,7 +113,7 @@ class JevdController extends Controller
                 ->get()
                 ->map(fn($item) => [
                    'id'     =>  $item->FSUBCDE,
-                   'text'   =>  $item->FSTITLE
+                   'text'   =>  "$item->FSUBCDE ----- $item->FSTITLE"
                 ]);
 
                 // return $subcode1;
@@ -137,7 +137,7 @@ class JevdController extends Controller
                 ->get()
                 ->map(fn($item) => [
                     'id'     =>  $item->FSUBCDE2,
-                    'text'   =>  $item->FSTITLE2
+                    'text'   =>  "$item->FSUBCDE2 ----- $item->FSTITLE2"
                 ]);
     }
     //jevd crud

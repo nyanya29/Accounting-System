@@ -20,87 +20,26 @@ class JevhController extends Controller
     }
     public function index(Request $request){
 
-        // $index = $this->getFilter($request);
-        $index = $this->model->leftjoin('jevd', function($q){
-                                $q->on('jevd.FUND_SCODE','jevh.fund_scode')
-                                    ->on('jevd.FJEVNO','jevh.fjevno')
-                                    ->on('jevd.fiscalyear','jevh.fiscalyear')
-                                    ->orderBy('recid')
-                                    ->groupBy(
-                                        'jevd.FUND_SCODE',
-                                        'jevd.FJEVNO',
-                                        'jevh.fund_scode',
-                                        'jevh.fjevno',
-                                        'jevh.recid'
-                                    );
-        });
-        // dd($index->limit(10)->get());
-    //    $data = $this->model->get();
-    // //    dd($data->limit(10)->get());
-    //    $jevD = DB::table('jevd')
-    //                 ->select('jevd.*',
-    //                         'chartofaccounts.FTITLE',
-    //                         'subaccounts1.FTITLE',
-    //                         'subaccounts1.FSTITLE',
-    //                         'subaccounts2.FSTITLE2',
-    //                         'funds_details.FUNDDETAIL_NAME',
-    //                         DB::raw('FORMAT(jevd.FCREDIT, 2) as jevdCredit, FORMAT(jevd.FDEBIT, 2) as jevdDebit')
-    //                     )
-    //                 ->leftJoin('chartofaccounts', function ($query) {
-    //                     $query->on('chartofaccounts.FACTCODE', '=', 'jevd.FACTCODE')
-    //                         ->on('jevd.fiscalyear', '>=', 'chartofaccounts.fiscalyear')
-    //                         ->on('jevd.fiscalyear', '<=', 'chartofaccounts.fiscalyear_to');
-    //                 })
-    //                 ->leftJoin('subaccounts1', function ($query) {
-    //                     $query->on('subaccounts1.FACTCODE', '=', 'jevd.FACTCODE')
-    //                         ->on('subaccounts1.FSUBCDE', '=', 'jevd.FSUBCDE');
-    //                 })
-    //                 ->leftJoin('subaccounts2', function ($query) {
-    //                     $query->on('subaccounts2.FACTCODE', '=', 'jevd.FACTCODE')
-    //                         ->on('subaccounts2.FSUBCDE', '=', 'jevd.FSUBCDE')
-    //                         ->on('subaccounts2.FSUBCDE2', '=', 'jevd.FSUBCDE2');
-    //                 })
-    //                 ->leftJoin('funds_details', 'jevd.FUND_SCODE', 'funds_details.FUND_SCODE')
-    //                 ->where('jevd.FJEVNO','=',$data->fjevno)
-    //                 ->where('jevd.FUND_SCODE','=',$data->fund_scode)
-    //                 ->where('jevd.fiscalyear','=',$data->fiscalyear)
-    //                 ->get();
-        // dd($jevD);
+        $index = $this->getFilter($request);
+        // $index = $this->model->leftjoin('jevd', function($q){
+        //                         $q->on('jevd.FUND_SCODE','jevh.fund_scode')
+        //                             ->on('jevd.FJEVNO','jevh.fjevno')
+        //                             ->on('jevd.fiscalyear','jevh.fiscalyear')
+        //                             // ->orderBy('recid','desc')
+        //                             ->groupBy(
+        //                                 'jevh.recid'
+        //                             );
+        // });
         return inertia('Jevh/Index', [
             // "jevd" => $jevD,
             "jevh" => $index
                             ->when($request->search, function ($query, $searchItem) {
                                 $query->where('FJEVNO', 'like', '%' . $searchItem . '%');
                             })
-                            // ->orderBy('recid', 'desc')
+                            ->orderBy('recid', 'desc')
                             ->paginate(10)
                             ->withQueryString(),
-            // "jevh" => $data
-            //                 ->when($request->search, function ($query, $searchItem) {
-            //                     $query->where('FJEVNO', 'like', '%' . $searchItem . '%');
-            //                 })
-            //                 ->orderBy('recid', 'desc')
-            //                 ->paginate(10)
-            //                 ->withQueryString(),
             "filters" => $request->only(['search']),
-            // "jevh" => $this->model
-            //                 ->with('jevd', function($q){
-            //                     $q->on('jevd.FUND_SCODE','jevh.fund_scode')
-            //                         ->on('jevd.FJEVNO','jevh.fjevno')
-            //                         ->on('jevd.fiscalyear','jevh.fiscalyear')
-            //                         ->groupBy(
-            //                                 'jevd.FUND_SCODE',
-            //                                 'jevd.FJEVNO',
-            //                                 // 'jevh.fund_scode',
-            //                                 // 'jevh.fjevno'
-            //                             );
-            //                 })
-            //                 ->when($request->search, function ($query, $searchItem) {
-            //                     $query->where('FJEVNO', 'like', '%' . $searchItem . '%');
-            //                 })
-            // ->orderBy('recid', 'desc')
-            // ->paginate(10)
-            // ->withQueryString()
         ]);
        
     }
@@ -159,16 +98,18 @@ class JevhController extends Controller
         return redirect("/jevh/jevd-create/$data->recid")->with('message', 'Added Successfully');
     }
     //garcia
-    public function jevhCreate()
-    {
-        return inertia('Jevh/JevhCreate');
-        // return inertia('Jevh/Jevd/Create');
-    }
     public function create()
     {
-        // $last_id =  $this->model->orderBy('recid', 'desc')->first()->recid;
-        // // return inertia('Jevh/JevhCreate');
-        return inertia('Jevh/Create');
+        $data = $this->model->create();
+        return redirect("/jevh/create-jevd/$data->recid");
+    }
+    public function createJevd(Request $request, $recid)
+    {
+        $data = $this->model->findOrFail($recid);
+
+        return inertia('Jevh/Create', [
+            'data' => $data
+        ]);
     }
 
     public function jevdCreate(Request $request, $id)

@@ -32,4 +32,8 @@ class Jevd extends Model
     {
         return $this->hasMany(FundDetails::class, 'FUND_SCODE', 'FUND_SCODE');
     }
+    // public function jevDetails(){
+    //     // return $this->hasMany(Jevd::class, 'FJEVNO','fjevno');
+    //     return $this->hasMany(Jevd::class, ['FJEVNO','fjevno'],['FUND_SCODE','fund_scode']);
+    // }
 }

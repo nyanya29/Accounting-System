@@ -49,7 +49,8 @@ class JevdReportsController extends Controller
                     ->where('jevd.FUND_SCODE','=',$request->FUND_SCODE)
                     ->where('jevd.fiscalyear','=',$request->fiscalyear)
                     ->orderBy('jevd.FACTCODE')
-                    // ->groupBy('recid')
+                    ->groupBy('recid')
+                    // ->groupBy('jevh.recid')
                     ->get();
         
             return $details;

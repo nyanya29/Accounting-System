@@ -12,7 +12,7 @@
                 </div>
                 <div class="peer">
                     <!-- <Link class="btn btn-success btn-sm mL-2 text-white" href="/jevh/jevh-create"> Add new record</Link> -->
-                    <Link class="btn btn-success btn-sm mL-2 text-white" href="/jevh/jevh-create"> Add new record</Link>
+                    <Link class="btn btn-success btn-sm mL-2 text-white" href="/jevh/create"> Add new record</Link>
                     <Link class="btn btn-info btn-sm mL-2 text-white" href="/jevh/jevh-report"> Jevtype Report</Link>
                     <button class="btn btn-primary btn-sm mL-2 text-white" @click="showFilter()">Filter</button>
                 </div>

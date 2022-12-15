@@ -16,10 +16,9 @@ class Jevh extends Model
 
     public function jevd(){
         return $this->hasMany(Jevd::class, 'FJEVNO','fjevno');
+        // return $this->hasMany(Jevd::class, ['FJEVNO','fjevno'],['FUND_SCODE','fund_scode']);
     }
     public function jevddetails(){
         return $this->belongsTo(Jevd::class, 'FUND_SCODE','FUND_SCODE');
     }
-
-
 }

@@ -57,7 +57,10 @@ Route::middleware('auth')->group(function() {
     //jevh
     Route::prefix('/jevh')->group(function(){
         Route::get('/index', [JevhController::class, 'index']);
+        //------
         Route::get('/create', [JevhController::class, 'create']);
+        Route::get('/create-jevd/{recid}', [JevhController::class, 'createJevd']);
+        //------
         Route::post('getFundDetail', [JevhController::class, 'getFundDetail']);
         Route::post('/store', [JevhController::class, 'store']);
         //edit update for jevh
