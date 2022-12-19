@@ -6,82 +6,79 @@
     </div>
     <div class="col-md-3">
             <div class="card card shadow">
-                <!-- <div class="card-header">
-                    Add Jevd
-                </div> -->
-                <form @submit.prevent="submit()">
+                <form>
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6 ">
                                     <label class="col-form-label"><b>Fiscal Year</b></label>
-                                    <input type="text" v-model="jevhForm.fiscalyear" class="form-control" autocomplete="chrome-off"> 
+                                    <input type="text" v-model="form.jevh.fiscalyear" class="form-control" autocomplete="chrome-off"> 
                                 </div>
                             <div class="col-md-6">
                                 <label class="col-form-label"><b>Jev Type</b></label>
-                                <select  class="form-select" v-model="jevhForm.fjevtyp">
+                                <select  class="form-select" v-model="form.jevh.fjevtyp">
                                     <option v-for="(items,index) in jevtype" :value="items.value" :key="index"> {{ items.name }}</option>
                                 </select>
-                                <div class="fs-6 c-red-500" v-if="jevhForm.errors.fjevtyp">{{ jevhForm.errors.fjevtyp }}</div>
+                                <!-- <div class="fs-6 c-red-500" v-if="form.errors.jevh.fjevtyp">{{ form.errors.jevh.fjevtyp }}</div> -->
                             </div>
                         </div>
                         <label class="col-form-label"><b>Fund Details Code</b></label>
-                            <select class="form-select" v-model="jevhForm.fund_scode">
+                            <select class="form-select" v-model="form.jevh.fund_scode">
                                 <option v-for="items in funds" :value="items.FUND_SCODE" :key="items.recid">{{ items.FUNDDETAIL_NAME }}</option>
                             </select>
-                            <div class="fs-6 c-red-500" v-if="jevhForm.errors.fund_scode">{{ jevhForm.errors.fund_scode }}</div>
+                            <!-- <div class="fs-6 c-red-500" v-if="form.errors.jevh.fund_scode">{{ form.errors.jevh.fund_scode }}</div> -->
                         <div class="row">
                             <div class="col-md-6">
                                 <label class="col-form-label"><b>JEV Number</b></label>
-                                <input type="text" v-model="jevhForm.fjevno" class="form-control" autocomplete="chrome-off">
-                                <div class="text-danger" v-if="jevhForm.errors.fjevno">{{ jevhForm.errors.fjevno }}</div>
+                                <input type="text" v-model="form.jevh.fjevno" class="form-control" autocomplete="chrome-off">
+                                <!-- <div class="text-danger" v-if="form.errors.jevh.fjevno">{{ form.errors.jevh.fjevno }}</div> -->
                             </div>
                             <div class="col-md-6">
                                 <label class="col-form-label"><b>JEV Date</b></label>
-                                <input type="date" v-model="jevhForm.fjevdate" class="form-control" autocomplete="chrome-off">
-                                <div class="text-danger" v-if="jevhForm.errors.fjevdate">{{ jevhForm.errors.fjevdate }}</div>
+                                <input type="date" v-model="form.jevh.fjevdate" class="form-control" autocomplete="chrome-off">
+                                <!-- <div class="text-danger" v-if="form.errors.jevh.fjevdate">{{ form.errors.jevh.fjevdate }}</div> -->
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <label class="col-form-label"><b>Check No</b></label>
-                                <input type="text" v-model="jevhForm.fchkno" class="form-control" autocomplete="chrome-off">
-                                <div class="fs-6 c-red-500" v-if="jevhForm.errors.fchkno">{{ jevhForm.errors.fchkno }}</div>
+                                <input type="text" v-model="form.jevh.fchkno" class="form-control" autocomplete="chrome-off">
+                                <!-- <div class="fs-6 c-red-500" v-if="form.errors.jevh.fchkno">{{ form.errors.jevh.fchkno }}</div> -->
                             </div>
                             <div class="col-md">
                                 <label class="col-form-label"><b>Ref #</b></label>
-                                <input type="text" v-model="jevhForm.frefno" class="form-control" autocomplete="chrome-off">
-                                <div class="fs-6 c-red-500" v-if="jevhForm.errors.frefno">{{ jevhForm.errors.frefno }}</div>
+                                <input type="text" v-model="form.jevh.frefno" class="form-control" autocomplete="chrome-off">
+                                <!-- <div class="fs-6 c-red-500" v-if="form.errors.jevh.frefno">{{ form.errors.jevh.frefno }}</div> -->
                             </div>
                         </div>
                         <label class="col-mb-3 col-form-label"><b>Payee</b></label>
-                        <input type="text" v-model="jevhForm.fpayee" class="form-control" autocomplete="chrome-off">
-                        <div class="fs-6 c-red-500" v-if="jevhForm.errors.fpayee">{{ jevhForm.errors.fpayee }}</div>
+                        <input type="text" v-model="form.jevh.fpayee" class="form-control" autocomplete="chrome-off">
+                        <!-- <div class="fs-6 c-red-500" v-if="form.errors.jevh.fpayee">{{ form.errors.jevh.fpayee }}</div> -->
 
                         <label class="col-mb-3 col-form-label"><b>Description</b></label>
                         <textarea 
                             class="form-control" 
-                            v-model="jevhForm.fremk" 
+                            v-model="form.jevh.fremk" 
                             placeholder="Write here" 
                             id="floatingTextarea2" 
                             style="height:105px;">
                         </textarea>
-                        <div class="fs-6 c-red-500" v-if="jevhForm.errors.fremk">{{ jevhForm.errors.fremk }}</div>
+                        <!-- <div class="fs-6 c-red-500" v-if="form.errors.jevh.fremk">{{ form.errors.jevh.fremk }}</div> -->
                         <label class="col-mb-3 col-form-label"><b>Prepared by:</b></label>
 
-                        <input type="text" v-model="jevhForm.fprepby" class="form-control" autocomplete="chrome-off"/>
-                        <div class="fs-6 c-red-500" v-if="jevhForm.errors.fprepby">{{ jevhForm.errors.fprepby }}</div>
+                        <input type="text" v-model="form.jevh.fprepby" class="form-control" autocomplete="chrome-off"/>
+                        <!-- <div class="fs-6 c-red-500" v-if="form.errors.jevh.fprepby">{{ form.errors.jevh.fprepby }}</div> -->
 
                         <label class="col-mb-3 col-form-label"><b>Position</b></label>
-                        <input type="text" v-model="jevhForm.fprepd" class="form-control" autocomplete="chrome-off"/>
-                        <div class="fs-6 c-red-500" v-if="jevhForm.errors.fprepd">{{ jevhForm.errors.fprepd }}</div>
+                        <input type="text" v-model="form.jevh.fprepd" class="form-control" autocomplete="chrome-off"/>
+                        <!-- <div class="fs-6 c-red-500" v-if="form.errors.jevh.fprepd">{{ form.errors.jevh.fprepd }}</div> -->
 
                         <label class="col-mb-3 col-form-label"><b>Approved by:</b></label>
-                        <input type="text" v-model="jevhForm.fappvby" class="form-control" autocomplete="chrome-off"/>
-                        <div class="fs-6 c-red-500" v-if="jevhForm.errors.fappvby">{{ jevhForm.errors.fappvby }}</div>
+                        <input type="text" v-model="form.jevh.fappvby" class="form-control" autocomplete="chrome-off"/>
+                        <!-- <div class="fs-6 c-red-500" v-if="form.errors.jevh.fappvby">{{ form.errors.jevh.fappvby }}</div> -->
 
                         <label class="col-mb-3 col-form-label"><b>Position</b></label>
-                        <input type="text" v-model="jevhForm.fappvd" class="form-control" autocomplete="chrome-off"/>
-                        <div class="fs-6 c-red-500" v-if="jevhForm.errors.fappvd">{{ jevhForm.errors.fappvd }}</div>
+                        <input type="text" v-model="form.jevh.fappvd" class="form-control" autocomplete="chrome-off"/>
+                        <!-- <div class="fs-6 c-red-500" v-if="form.errors.jevh.fappvd">{{ form.errors.jevh.fappvd }}</div> -->
                     </div>
                 </form>
             </div>
@@ -181,71 +178,74 @@
                                 <div class="row">
                                     <div class="col-md-2">
                                         <label class="col-form-label"><b>RespCenter</b></label>
-                                        <input type="text" v-model="jevdForm.FRESPCTR" class="form-control" autocomplete="chrome-off">
+                                        <input type="text" v-model="form.jevd.FRESPCTR" class="form-control" autocomplete="chrome-off">
 
                                         <label class="col-form-label"><b>Voucher #</b></label>
-                                        <input type="text" v-model="jevdForm.FVOUCHNO" class="form-control" autocomplete="chrome-off">
+                                        <input type="text" v-model="form.jevd.FVOUCHNO" class="form-control" autocomplete="chrome-off">
 
                                         <label class="col-mb-3 col-form-label"><b>OBR #</b></label>
-                                        <input type="text" v-model="jevdForm.FALOBNO" class="form-control" autocomplete="chrome-off">
+                                        <input type="text" v-model="form.jevd.FALOBNO" class="form-control" autocomplete="chrome-off">
 
                                     </div>
                                     <div class="col-md-5">
                                         <label class="col-form-label"><b>Act Code/Title</b></label>
-                                        <select2 id="FACTCODE" v-model="jevdForm.FACTCODE" :options="factcodes" placeholder="Select Account Code" @select="getSubCode1(), getSubCode2()"></select2>
+                                        <select2 id="FACTCODE" v-model="form.jevd.FACTCODE" :options="factcodes" placeholder="Select Account Code" @select="getSubCode1(), getSubCode2()"></select2>
 
-                                        <div class="fs-6 c-red text-danger" v-if="jevdForm.errors.FACTCODE"> {{jevdForm.errors.FACTCODE}}</div>
+                                        <!-- <div class="fs-6 c-red text-danger" v-if="form.errors.jevd.FACTCODE"> {{form.errors.jevd.FACTCODE}}</div> -->
 
                                         <label class="col-form-label"><b>Sub Code/Title</b></label>
-                                        <select2 v-model="jevdForm.FSUBCDE" :options="subcode1" placeholder="Select Account Code First"></select2>
+                                        <select2 v-model="form.jevd.FSUBCDE" :options="subcode1" placeholder="Select Account Code First"></select2>
 
-                                        <div class="text-danger" v-if="jevdForm.errors.FSUBCDE"> {{jevdForm.errors.FSUBCDE}}</div>
+                                        <!-- <div class="text-danger" v-if="form.errors.jevd.FSUBCDE"> {{form.errors.jevd.FSUBCDE}}</div> -->
 
                                         <label class="col-form-label"><b>Sub Code2/Title</b></label>
-                                        <select2 v-model="jevdForm.FSUBCDE2" :options="subcode2" placeholder="Select Account Code First"></select2>
+                                        <select2 v-model="form.jevd.FSUBCDE2" :options="subcode2" placeholder="Select Account Code First"></select2>
 
-                                        <div class="text-danger" v-if="jevdForm.errors.FSUBCDE2"> {{jevdForm.errors.FSUBCDE2}}</div>
+                                        <!-- <div class="text-danger" v-if="form.errors.jevd.FSUBCDE2"> {{form.errors.jevd.FSUBCDE2}}</div> -->
                                     </div>
                                     
                                     <div class="col-md-5">
                                         <label class="col-form-label"><b>Remarks</b></label>
-                                        <textarea class="form-control" v-model="jevdForm.FREMARKS" rows="7"></textarea>
+                                        <textarea class="form-control" v-model="form.jevd.FREMARKS" rows="7"></textarea>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-2">
                                         <label class="col-form-label"><b>PR #</b></label>
-                                        <input type="text" v-model="jevdForm.FPRNO" class="form-control" autocomplete="chrome-off"> 
+                                        <input type="text" v-model="form.jevd.FPRNO" class="form-control" autocomplete="chrome-off"> 
                                     </div>
                                     <div class="col-md-4">
                                         <label class="col-mb-6 col-form-label"><b>Debit</b></label>
                                         <input 
                                             type="number" 
-                                            v-model="jevdForm.FDEBIT" 
+                                            v-model="form.jevd.FDEBIT" 
                                             class="form-control" 
                                             autocomplete="chrome-off" 
-                                            :disabled="jevdForm.FCREDIT != ''"
-                                            :placeholder="jevdForm.FCREDIT != '' ? `Unable to input Debit` : ``"
+                                            :disabled="form.jevd.FCREDIT != ''"
+                                            :placeholder="form.jevd.FCREDIT != '' ? `Unable to input Debit` : ``"
                                         >
-                                        <div class="fs-6 c-red text-danger" v-if="jevdForm.errors.FDEBIT"> {{jevdForm.errors.FDEBIT}}</div>
+                                        <!-- <div class="fs-6 c-red text-danger" v-if="form.errors.jevd.FDEBIT"> {{form.errors.jevd.FDEBIT}}</div> -->
                                     </div>
                                     
                                     <div class="col-md-4">
                                         <label class="col-mb-6 col-form-label"><b>Credit</b></label>
                                         <input 
                                             type="number" 
-                                            v-model="jevdForm.FCREDIT" 
+                                            v-model="form.jevd.FCREDIT" 
                                             class="form-control"
                                             autocomplete="chrome-off"
-                                            :disabled="jevdForm.FDEBIT != ''"
-                                            :placeholder="jevdForm.FDEBIT != '' ? `Unable to input Credit` : ``"
+                                            :disabled="form.jevd.FDEBIT != ''"
+                                            :placeholder="form.jevd.FDEBIT != '' ? `Unable to input Credit` : ``"
                                         >
-                                        <div class="fs-6 c-red text-danger" v-if="jevdForm.errors.FCREDIT"> {{jevdForm.errors.FCREDIT}}</div>
+                                        <!-- <div class="fs-6 c-red text-danger" v-if="form.errors.jevd.FCREDIT"> {{form.errors.jevd.FCREDIT}}</div> -->
+                                    </div>
+                                    <div class="col-2">
+                                        <button type="button" class="btn btn-primary" v-if="pageTitle === 'Create'" :disabled="isDisabled" @click="saveAll()"> Add{{form.jevd.processing ? 'ing...':''}}</button>
+                                        <button type="button" class="btn btn-primary" v-if="pageTitle === 'Edit'" :disabled="isDisabled" @click="saveAll()">Update</button>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="submit" class="btn btn-primary" v-if="pageTitle === 'Create'" :disabled="isDisabled"> Add{{jevdForm.processing ? 'ing...':''}}</button>
-                                    <button type="submit" class="btn btn-primary" v-if="pageTitle === 'Edit'" :disabled="isDisabled">Update</button>
+                                    <button type="submit" class="btn btn-primary">Save All</button>
                                 </div>
                             </form>
                         </div>
@@ -291,42 +291,77 @@ export default {
             factcodes:[],
             subcode1: [],
             subcode2: [],
-            jevdForm: useForm ({
-                // fiscalyear: this.jevhForm.fiscalyear,
-                // FUND_SCODE: this.jevhForm.fund_scode,
-                // FJEVNO: this.jevhForm.fjevno,
-                FRESPCTR: "",
-                FACTCODE: "",
-                FSUBCDE: "",
-                FSUBCDE2: "",
-                FALOBNO: "",
-                FVOUCHNO: "",
-                FPRNO: "",
-                FDEBIT: "",
-                FCREDIT: "",
-                FREMARKS: "",
-                isSubcode1:'',
-                isSubcode2:'',
+            form: useForm({
+               jevh: {
+                    fiscalyear: new Date().getFullYear(),
+                    fund_scode:"",
+                    fjevno:"",
+                    fjevtyp:"",
+                    fjevdate:"",
+                    fpayee:"",
+                    fchkno:"",
+                    fremk:"",
+                    frefno: "",
+                    fprepby:"",
+                    fprepd:"",
+                    fappvby:"",
+                    fappvd:"",
+                    // recid:"",
+               },
+               jevd: {
+                    // fiscalyear: this.form.jevh.fiscalyear,
+                    // FUND_SCODE: this.form.jevh.fund_scode,
+                    // FJEVNO: this.form.jevh.fjevno,
+                    FRESPCTR: "",
+                    FACTCODE: "",
+                    FSUBCDE: "",
+                    FSUBCDE2: "",
+                    FALOBNO: "",
+                    FVOUCHNO: "",
+                    FPRNO: "",
+                    FDEBIT: "",
+                    FCREDIT: "",
+                    FREMARKS: "",
+                    isSubcode1:'',
+                    isSubcode2:'',
+               } 
             }),
-            jevhForm: useForm({
-                fiscalyear: new Date().getFullYear(),
-                fund_scode:"",
-                fjevno:"",
-                fjevtyp:"",
-                fjevdate:"",
-                fpayee:"",
-                fchkno:"",
-                fremk:"",
-                frefno: "",
-                fprepby:"",
-                fprepd:"",
-                fappvby:"",
-                fappvd:"",
-                // recid:"",
-            }),
-            jevdData:{},
-            total:{},
-            pageTitle: 'create',
+            // jevdForm: useForm ({
+            //     fiscalyear: this.form.jevh.fiscalyear,
+            //     FUND_SCODE: this.form.jevh.fund_scode,
+            //     FJEVNO: this.form.jevh.fjevno,
+            //     FRESPCTR: "",
+            //     FACTCODE: "",
+            //     FSUBCDE: "",
+            //     FSUBCDE2: "",
+            //     FALOBNO: "",
+            //     FVOUCHNO: "",
+            //     FPRNO: "",
+            //     FDEBIT: "",
+            //     FCREDIT: "",
+            //     FREMARKS: "",
+            //     isSubcode1:'',
+            //     isSubcode2:'',
+            // }),
+            // form.jevh: useForm({
+            //     fiscalyear: new Date().getFullYear(),
+            //     fund_scode:"",
+            //     fjevno:"",
+            //     fjevtyp:"",
+            //     fjevdate:"",
+            //     fpayee:"",
+            //     fchkno:"",
+            //     fremk:"",
+            //     frefno: "",
+            //     fprepby:"",
+            //     fprepd:"",
+            //     fappvby:"",
+            //     fappvd:"",
+            //     // recid:"",
+            // }),
+            // jevdData:{},
+            // total:{},
+            // pageTitle: 'create',
             isDisabled: false,
             recid_to_update:null,
         }
@@ -338,17 +373,17 @@ export default {
         this.getChartAccount()
 
         if( !!this.editData ){
-            this.jevdForm.FRESPCTR = this.jevdData.FRESPCTR
-            this.jevdForm.FACTCODE = this.jevdData.FACTCODE
-            this.jevdForm.FSUBCDE = this.jevdData.FSUBCDE
-            this.jevdForm.FSUBCDE2 = this.jevdData.FSUBCDE2
-            this.jevdForm.FALOBNO = this.jevdData.FALOBNO
-            this.jevdForm.FVOUCHNO = this.jevdData.FVOUCHNO
-            this.jevdForm.FPRNO = this.jevdData.FPRNO
-            this.jevdForm.FDEBIT = this.jevdData.FDEBIT
-            this.jevdForm.FCREDIT = this.jevdData.FCREDIT
-            this.jevdForm.FREMARKS = this.jevdData.FCREDIT
-            this.jevdForm.recid = this.jevdData.recid
+            this.form.jevd.FRESPCTR = this.jevdData.FRESPCTR
+            this.form.jevd.FACTCODE = this.jevdData.FACTCODE
+            this.form.jevd.FSUBCDE = this.jevdData.FSUBCDE
+            this.form.jevd.FSUBCDE2 = this.jevdData.FSUBCDE2
+            this.form.jevd.FALOBNO = this.jevdData.FALOBNO
+            this.form.jevd.FVOUCHNO = this.jevdData.FVOUCHNO
+            this.form.jevd.FPRNO = this.jevdData.FPRNO
+            this.form.jevd.FDEBIT = this.jevdData.FDEBIT
+            this.form.jevd.FCREDIT = this.jevdData.FCREDIT
+            this.form.jevd.FREMARKS = this.jevdData.FCREDIT
+            this.form.jevd.recid = this.jevdData.recid
             
             this.getSubCode1()
             this.getSubCode2()
@@ -362,9 +397,9 @@ export default {
             this.getSubCode1()
             this.getSubCode2()
         },
-        'jevdForm.FACTCODE': function(value) {
-            this.jevdForm.FSUBCDE = ''
-            this.jevdForm.FSUBCDE2 = ''
+        'form.jevd.FACTCODE': function(value) {
+            this.form.jevd.FSUBCDE = ''
+            this.form.jevd.FSUBCDE2 = ''
         },
     },
     methods: {
@@ -379,27 +414,27 @@ export default {
             })
         },
         getSubCode1() {
-                axios.post('/jevd/getSubCode1', {FACTCODE: this.jevdForm.FACTCODE}).then( response => {
+                axios.post('/jevd/getSubCode1', {FACTCODE: this.form.jevd.FACTCODE}).then( response => {
                 this.subcode1 = response.data
-                this.jevdForm.isSubcode1 = response.data.length != 0;
+                this.form.jevd.isSubcode1 = response.data.length != 0;
             })
         },
         getSubCode2() {
-            axios.post('/jevd/getSubCode2', {FACTCODE: this.jevdForm.FACTCODE}).then( response => {
+            axios.post('/jevd/getSubCode2', {FACTCODE: this.form.jevd.FACTCODE}).then( response => {
                 this.subcode2 = response.data
-                this.jevdForm.isSubcode2 = response.data.length != 0;
+                this.form.jevd.isSubcode2 = response.data.length != 0;
             })
         },
         submit () {
             if( this.pageTitle == 'Create')
             {
-                this.form.post("/jevd/", {
+                this.form.post("/jevh/store-jev", {
 
-                        onSuccess: () => {
+                        // onSuccess: () => {
 
-                            this.form.reset();
+                        //     this.form.reset();
                             
-                        }
+                        // }
                     }
                 );
         } else {

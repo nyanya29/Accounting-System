@@ -59,7 +59,8 @@ Route::middleware('auth')->group(function() {
         Route::get('/index', [JevhController::class, 'index']);
         //------
         Route::get('/create', [JevhController::class, 'create']);
-        Route::get('/create-jevd/{recid}', [JevhController::class, 'createJevd']);
+        // Route::get('/create-jevd/{recid}', [JevhController::class, 'createJevd']);
+        Route::post('/store-jev', [JevhController::class, 'storeJev']);
         //------
         Route::post('getFundDetail', [JevhController::class, 'getFundDetail']);
         Route::post('/store', [JevhController::class, 'store']);

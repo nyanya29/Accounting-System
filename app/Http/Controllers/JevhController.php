@@ -13,10 +13,11 @@ use App\Models\Jevd;
 
 class JevhController extends Controller
 {
-    public function __construct(Jevh $model, Fund $funds)
+    public function __construct(Jevh $model, Fund $funds, Jevd $jevd)
     {
         $this->model = $model;
         $this->funds = $funds;
+        $this->jevd = $jevd;
     }
     public function index(Request $request){
 
@@ -100,16 +101,76 @@ class JevhController extends Controller
     //garcia
     public function create()
     {
-        $data = $this->model->create();
-        return redirect("/jevh/create-jevd/$data->recid");
+        // $data = $this->model->create();
+        // return redirect("/jevh/create-jevd/$data->recid");
+        return inertia('Jevh/Create');
     }
-    public function createJevd(Request $request, $recid)
-    {
-        $data = $this->model->findOrFail($recid);
+    // public function createJevd(Request $request, $recid)
+    // {
+    //     $data = $this->model->findOrFail($recid);
 
-        return inertia('Jevh/Create', [
-            'data' => $data
+    //     return inertia('Jevh/Create', [
+    //         'data' => $data
+    //     ]);
+    // }
+    public function storeJev(Request $request)
+    {
+        // dd($request);
+        $jevhData = $this->model->create([
+                "fiscalyear"    =>  $request->jevh['fiscalyear'],
+                "fund_scode"    =>  $request->jevh['fund_scode'],
+                "fjevno"        =>  $request->jevh['fjevno'],
+                "fjevtyp"       =>  $request->jevh['fjevtyp'],
+                "fjevdate"      =>  $request->jevh['fjevdate'],
+                "fpayee"        =>  $request->jevh['fpayee'],
+                "fchkno"        =>  $request->jevh['fchkno'],
+                "fremk"         =>  $request->jevh['fremk'],
+                "frefno"        =>  $request->jevh['frefno'],
+                "fprepby"       =>  $request->jevh['fprepby'],
+                "fprepd"        =>  $request->jevh['fprepd'],
+                "fappvby"       =>  $request->jevh['fappvby'],
+                "fappvd"        =>  $request->jevh['fappvd'],  
         ]);
+        
+        $jevhRecid = $jevhData->recid;
+        dd($jevhRecid);
+        $jevdData= $this->jevd->findOrFail($jevhRecid);
+        // $jevdData->create([
+        //     "fiscalyear"    =>  $request->jevh->fiscalyear,
+        //     "fund_scode"    =>  $request->jevh->FUND_SCODE,
+        //     "fjevno"        =>  $request->jevh->FJEVNO,
+        //     "FRESPCTR"      =>  $request->jevd->FRESPCTR,  
+        //     "FACTCODE"      =>  $request->jevd->FACTCODE,
+        //     "FSUBCDE"       =>  $request->jevd->FSUBCDE,   
+        //     "FSUBCDE2"      =>  $request->jevd->FSUBCDE2,  
+        //     "FALOBNO"       =>  $request->jevd->FALOBNO,   
+        //     "FVOUCHNO"      =>  $request->jevd->FVOUCHNO,  
+        //     "FPRNO"         =>  $request->jevd->FPRNO,     
+        //     "FDEBIT"        =>  $request->jevd->FDEBIT,    
+        //     "FCREDIT"       =>  $request->jevd->FCREDIT,   
+        //     "FREMARKS"      =>  $request->jevd->FREMARKS,  
+        // ]);
+        $jevdData->create([
+            "fiscalyear"    =>  $jevhData->fiscalyear,
+            "fund_scode"    =>  $jevhData->FUND_SCODE,
+            "fjevno"        =>  $jevhData->FJEVNO,
+            "FRESPCTR"      =>  'test001',
+            "FACTCODE"      =>  'test001',
+            "FSUBCDE"       =>  'test001',
+            "FSUBCDE2"      =>  'test001',
+            "FALOBNO"       =>  'test001',
+            "FVOUCHNO"      =>  'test001',
+            "FPRNO"         =>  'test001',
+            "FDEBIT"        =>  'test001',
+            "FCREDIT"       =>  'test001',
+            "FREMARKS"      =>  'test001',
+        ]);
+        // dd( $jevRecid);
+
+        // $array = array();
+
+        // foreach ($request->)
+        return redirect("/jevh/index")->with('message', 'Added Successfully');
     }
 
     public function jevdCreate(Request $request, $id)

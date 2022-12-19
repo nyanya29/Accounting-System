@@ -141,8 +141,9 @@ class JevdController extends Controller
                 ]);
     }
     //jevd crud
-    public function store(JevdValidation $request)
+    public function store(Request $request)
     {
+        dd($request->jevh);
         $request['FCREDIT'] = $request->FCREDIT ? $request->FCREDIT : 0;
         $request['FDEBIT'] = $request->FDEBIT ? $request->FDEBIT : 0;
         $validated = $request->validated();

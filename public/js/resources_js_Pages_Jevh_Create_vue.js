@@ -60,42 +60,77 @@ __webpack_require__.r(__webpack_exports__);
       factcodes: [],
       subcode1: [],
       subcode2: [],
-      jevdForm: (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_0__.useForm)({
-        // fiscalyear: this.jevhForm.fiscalyear,
-        // FUND_SCODE: this.jevhForm.fund_scode,
-        // FJEVNO: this.jevhForm.fjevno,
-        FRESPCTR: "",
-        FACTCODE: "",
-        FSUBCDE: "",
-        FSUBCDE2: "",
-        FALOBNO: "",
-        FVOUCHNO: "",
-        FPRNO: "",
-        FDEBIT: "",
-        FCREDIT: "",
-        FREMARKS: "",
-        isSubcode1: '',
-        isSubcode2: ''
-      }),
-      jevhForm: (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_0__.useForm)({
-        fiscalyear: new Date().getFullYear(),
-        fund_scode: "",
-        fjevno: "",
-        fjevtyp: "",
-        fjevdate: "",
-        fpayee: "",
-        fchkno: "",
-        fremk: "",
-        frefno: "",
-        fprepby: "",
-        fprepd: "",
-        fappvby: "",
-        fappvd: "" // recid:"",
+      form: (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_0__.useForm)({
+        jevh: {
+          fiscalyear: new Date().getFullYear(),
+          fund_scode: "",
+          fjevno: "",
+          fjevtyp: "",
+          fjevdate: "",
+          fpayee: "",
+          fchkno: "",
+          fremk: "",
+          frefno: "",
+          fprepby: "",
+          fprepd: "",
+          fappvby: "",
+          fappvd: "" // recid:"",
 
+        },
+        jevd: {
+          // fiscalyear: this.form.jevh.fiscalyear,
+          // FUND_SCODE: this.form.jevh.fund_scode,
+          // FJEVNO: this.form.jevh.fjevno,
+          FRESPCTR: "",
+          FACTCODE: "",
+          FSUBCDE: "",
+          FSUBCDE2: "",
+          FALOBNO: "",
+          FVOUCHNO: "",
+          FPRNO: "",
+          FDEBIT: "",
+          FCREDIT: "",
+          FREMARKS: "",
+          isSubcode1: '',
+          isSubcode2: ''
+        }
       }),
-      jevdData: {},
-      total: {},
-      pageTitle: 'create',
+      // jevdForm: useForm ({
+      //     fiscalyear: this.form.jevh.fiscalyear,
+      //     FUND_SCODE: this.form.jevh.fund_scode,
+      //     FJEVNO: this.form.jevh.fjevno,
+      //     FRESPCTR: "",
+      //     FACTCODE: "",
+      //     FSUBCDE: "",
+      //     FSUBCDE2: "",
+      //     FALOBNO: "",
+      //     FVOUCHNO: "",
+      //     FPRNO: "",
+      //     FDEBIT: "",
+      //     FCREDIT: "",
+      //     FREMARKS: "",
+      //     isSubcode1:'',
+      //     isSubcode2:'',
+      // }),
+      // form.jevh: useForm({
+      //     fiscalyear: new Date().getFullYear(),
+      //     fund_scode:"",
+      //     fjevno:"",
+      //     fjevtyp:"",
+      //     fjevdate:"",
+      //     fpayee:"",
+      //     fchkno:"",
+      //     fremk:"",
+      //     frefno: "",
+      //     fprepby:"",
+      //     fprepd:"",
+      //     fappvby:"",
+      //     fappvd:"",
+      //     // recid:"",
+      // }),
+      // jevdData:{},
+      // total:{},
+      // pageTitle: 'create',
       isDisabled: false,
       recid_to_update: null
     };
@@ -104,17 +139,17 @@ __webpack_require__.r(__webpack_exports__);
     this.getFundDetail(), this.getChartAccount();
 
     if (!!this.editData) {
-      this.jevdForm.FRESPCTR = this.jevdData.FRESPCTR;
-      this.jevdForm.FACTCODE = this.jevdData.FACTCODE;
-      this.jevdForm.FSUBCDE = this.jevdData.FSUBCDE;
-      this.jevdForm.FSUBCDE2 = this.jevdData.FSUBCDE2;
-      this.jevdForm.FALOBNO = this.jevdData.FALOBNO;
-      this.jevdForm.FVOUCHNO = this.jevdData.FVOUCHNO;
-      this.jevdForm.FPRNO = this.jevdData.FPRNO;
-      this.jevdForm.FDEBIT = this.jevdData.FDEBIT;
-      this.jevdForm.FCREDIT = this.jevdData.FCREDIT;
-      this.jevdForm.FREMARKS = this.jevdData.FCREDIT;
-      this.jevdForm.recid = this.jevdData.recid;
+      this.form.jevd.FRESPCTR = this.jevdData.FRESPCTR;
+      this.form.jevd.FACTCODE = this.jevdData.FACTCODE;
+      this.form.jevd.FSUBCDE = this.jevdData.FSUBCDE;
+      this.form.jevd.FSUBCDE2 = this.jevdData.FSUBCDE2;
+      this.form.jevd.FALOBNO = this.jevdData.FALOBNO;
+      this.form.jevd.FVOUCHNO = this.jevdData.FVOUCHNO;
+      this.form.jevd.FPRNO = this.jevdData.FPRNO;
+      this.form.jevd.FDEBIT = this.jevdData.FDEBIT;
+      this.form.jevd.FCREDIT = this.jevdData.FCREDIT;
+      this.form.jevd.FREMARKS = this.jevdData.FCREDIT;
+      this.form.jevd.recid = this.jevdData.recid;
       this.getSubCode1();
       this.getSubCode2();
     } else {
@@ -126,9 +161,9 @@ __webpack_require__.r(__webpack_exports__);
       this.getSubCode1();
       this.getSubCode2();
     },
-    'jevdForm.FACTCODE': function jevdFormFACTCODE(value) {
-      this.jevdForm.FSUBCDE = '';
-      this.jevdForm.FSUBCDE2 = '';
+    'form.jevd.FACTCODE': function formJevdFACTCODE(value) {
+      this.form.jevd.FSUBCDE = '';
+      this.form.jevd.FSUBCDE2 = '';
     }
   },
   methods: {
@@ -150,30 +185,29 @@ __webpack_require__.r(__webpack_exports__);
       var _this3 = this;
 
       axios.post('/jevd/getSubCode1', {
-        FACTCODE: this.jevdForm.FACTCODE
+        FACTCODE: this.form.jevd.FACTCODE
       }).then(function (response) {
         _this3.subcode1 = response.data;
-        _this3.jevdForm.isSubcode1 = response.data.length != 0;
+        _this3.form.jevd.isSubcode1 = response.data.length != 0;
       });
     },
     getSubCode2: function getSubCode2() {
       var _this4 = this;
 
       axios.post('/jevd/getSubCode2', {
-        FACTCODE: this.jevdForm.FACTCODE
+        FACTCODE: this.form.jevd.FACTCODE
       }).then(function (response) {
         _this4.subcode2 = response.data;
-        _this4.jevdForm.isSubcode2 = response.data.length != 0;
+        _this4.form.jevd.isSubcode2 = response.data.length != 0;
       });
     },
     submit: function submit() {
       var _this5 = this;
 
       if (this.pageTitle == 'Create') {
-        this.form.post("/jevd/", {
-          onSuccess: function onSuccess() {
-            _this5.form.reset();
-          }
+        this.form.post("/jevh/store-jev", {// onSuccess: () => {
+          //     this.form.reset();
+          // }
         });
       } else {
         this.form.patch('/jevh/jevd-update/' + this.recid_to_update, {
@@ -287,38 +321,39 @@ var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 );
 
 var _hoisted_11 = ["value"];
-var _hoisted_12 = {
-  key: 0,
-  "class": "fs-6 c-red-500"
-};
 
-var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "col-form-label"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "Fund Details Code")], -1
 /* HOISTED */
 );
 
-var _hoisted_14 = ["value"];
-var _hoisted_15 = {
-  key: 0,
-  "class": "fs-6 c-red-500"
-};
-var _hoisted_16 = {
+var _hoisted_13 = ["value"];
+var _hoisted_14 = {
   "class": "row"
 };
+var _hoisted_15 = {
+  "class": "col-md-6"
+};
+
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "class": "col-form-label"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "JEV Number")], -1
+/* HOISTED */
+);
+
 var _hoisted_17 = {
   "class": "col-md-6"
 };
 
 var _hoisted_18 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "col-form-label"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "JEV Number")], -1
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "JEV Date")], -1
 /* HOISTED */
 );
 
 var _hoisted_19 = {
-  key: 0,
-  "class": "text-danger"
+  "class": "row"
 };
 var _hoisted_20 = {
   "class": "col-md-6"
@@ -326,131 +361,76 @@ var _hoisted_20 = {
 
 var _hoisted_21 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "col-form-label"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "JEV Date")], -1
-/* HOISTED */
-);
-
-var _hoisted_22 = {
-  key: 0,
-  "class": "text-danger"
-};
-var _hoisted_23 = {
-  "class": "row"
-};
-var _hoisted_24 = {
-  "class": "col-md-6"
-};
-
-var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
-  "class": "col-form-label"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "Check No")], -1
 /* HOISTED */
 );
 
-var _hoisted_26 = {
-  key: 0,
-  "class": "fs-6 c-red-500"
-};
-var _hoisted_27 = {
+var _hoisted_22 = {
   "class": "col-md"
 };
 
-var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_23 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "col-form-label"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "Ref #")], -1
 /* HOISTED */
 );
 
-var _hoisted_29 = {
-  key: 0,
-  "class": "fs-6 c-red-500"
-};
-
-var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_24 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "col-mb-3 col-form-label"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "Payee")], -1
 /* HOISTED */
 );
 
-var _hoisted_31 = {
-  key: 1,
-  "class": "fs-6 c-red-500"
-};
-
-var _hoisted_32 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "col-mb-3 col-form-label"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "Description")], -1
 /* HOISTED */
 );
 
-var _hoisted_33 = {
-  key: 2,
-  "class": "fs-6 c-red-500"
-};
-
-var _hoisted_34 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_26 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "col-mb-3 col-form-label"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "Prepared by:")], -1
 /* HOISTED */
 );
 
-var _hoisted_35 = {
-  key: 3,
-  "class": "fs-6 c-red-500"
-};
-
-var _hoisted_36 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "col-mb-3 col-form-label"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "Position")], -1
 /* HOISTED */
 );
 
-var _hoisted_37 = {
-  key: 4,
-  "class": "fs-6 c-red-500"
-};
-
-var _hoisted_38 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "col-mb-3 col-form-label"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "Approved by:")], -1
 /* HOISTED */
 );
 
-var _hoisted_39 = {
-  key: 5,
-  "class": "fs-6 c-red-500"
-};
-
-var _hoisted_40 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_29 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "col-mb-3 col-form-label"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "Position")], -1
 /* HOISTED */
 );
 
-var _hoisted_41 = {
-  key: 6,
-  "class": "fs-6 c-red-500"
-};
-var _hoisted_42 = {
+var _hoisted_30 = {
   "class": "col-md-9"
 };
-var _hoisted_43 = {
+var _hoisted_31 = {
   "class": "form-group row p-3"
 };
-var _hoisted_44 = {
+var _hoisted_32 = {
   "class": "col-12"
 };
-var _hoisted_45 = {
+var _hoisted_33 = {
   "class": "bgc-white p-20 bd table-responsive shadow"
 };
-var _hoisted_46 = {
+var _hoisted_34 = {
   "class": "table table-hover",
   style: {
     "height": "360px"
   }
 };
 
-var _hoisted_47 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
+var _hoisted_35 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("thead", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
   scope: "col"
 }, "RespCtr"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("th", {
   scope: "col"
@@ -485,48 +465,48 @@ var _hoisted_47 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_48 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <tr v-for=\"item in jevd1\" :key=\"item.index\">\r\n                                    <td>{{ item.FRESPCTR }}</td>\r\n                                    <td>{{ item.FACTCODE }}</td>\r\n                                    <td>{{ item.FTITLE }}</td>\r\n                                    <td>{{ item.FSUBCDE }}</td>\r\n                                    <td>{{ item.FSTITLE }}</td>\r\n                                    <td>{{ item.FSUBCDE2 }}</td>\r\n                                    <td>{{ item.FSTITLE2 }}</td>\r\n                                    <td>{{ item.FVOUCHNO }}</td>\r\n                                    <td>{{ item.FALOBNO }}</td>\r\n                                    <td>{{ item.FPRNO }}</td>\r\n                                    <td>{{ item.jevdDebit }}</td>\r\n                                    <td>{{ item.jevdCredit }}</td>\r\n                                    <td>{{ item.FREMARKS }}</td>\r\n                                    <td style=\"text-align: right\">\r\n                                        <div class=\"dropdown dropstart\">\r\n                                            <button class=\"btn btn-secondary btn-sm action-btn\" type=\"button\" id=\"dropdownMenuButton1\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">\r\n                                                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-three-dots\" viewBox=\"0 0 16 16\">\r\n                                                <path d=\"M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z\"/>\r\n                                                </svg>\r\n                                            </button>\r\n\r\n                                            <ul class=\"dropdown-menu action-dropdown\" aria-labelledby=\"dropdownMenuButton1\">\r\n                                                <li><button class=\"dropdown-item\" @click=\"editJevD(item.recid)\">\r\n                                                    <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-pencil-square\" viewBox=\"0 0 16 16\">\r\n                                                    <path d=\"M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z\"/>\r\n                                                    <path fill-rule=\"evenodd\" d=\"M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z\"/>\r\n                                                    </svg> Edit</button></li>\r\n\r\n                                                <li> <hr class=\"dropdown-divider action-divider\"></li>\r\n                                                    <li><Link class=\"text-danger dropdown-item\" @click=\"deleteJevd(item.recid)\">\r\n                                                    <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-trash-fill\" viewBox=\"0 0 16 16\">\r\n                                                    <path d=\"M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z\"/>\r\n                                                    </svg> Delete </Link></li>\r\n                                            </ul>\r\n                                        </div>\r\n                                    </td>\r\n                                </tr> ")], -1
+var _hoisted_36 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tbody", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <tr v-for=\"item in jevd1\" :key=\"item.index\">\r\n                                    <td>{{ item.FRESPCTR }}</td>\r\n                                    <td>{{ item.FACTCODE }}</td>\r\n                                    <td>{{ item.FTITLE }}</td>\r\n                                    <td>{{ item.FSUBCDE }}</td>\r\n                                    <td>{{ item.FSTITLE }}</td>\r\n                                    <td>{{ item.FSUBCDE2 }}</td>\r\n                                    <td>{{ item.FSTITLE2 }}</td>\r\n                                    <td>{{ item.FVOUCHNO }}</td>\r\n                                    <td>{{ item.FALOBNO }}</td>\r\n                                    <td>{{ item.FPRNO }}</td>\r\n                                    <td>{{ item.jevdDebit }}</td>\r\n                                    <td>{{ item.jevdCredit }}</td>\r\n                                    <td>{{ item.FREMARKS }}</td>\r\n                                    <td style=\"text-align: right\">\r\n                                        <div class=\"dropdown dropstart\">\r\n                                            <button class=\"btn btn-secondary btn-sm action-btn\" type=\"button\" id=\"dropdownMenuButton1\" data-bs-toggle=\"dropdown\" aria-expanded=\"false\">\r\n                                                <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-three-dots\" viewBox=\"0 0 16 16\">\r\n                                                <path d=\"M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z\"/>\r\n                                                </svg>\r\n                                            </button>\r\n\r\n                                            <ul class=\"dropdown-menu action-dropdown\" aria-labelledby=\"dropdownMenuButton1\">\r\n                                                <li><button class=\"dropdown-item\" @click=\"editJevD(item.recid)\">\r\n                                                    <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-pencil-square\" viewBox=\"0 0 16 16\">\r\n                                                    <path d=\"M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z\"/>\r\n                                                    <path fill-rule=\"evenodd\" d=\"M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z\"/>\r\n                                                    </svg> Edit</button></li>\r\n\r\n                                                <li> <hr class=\"dropdown-divider action-divider\"></li>\r\n                                                    <li><Link class=\"text-danger dropdown-item\" @click=\"deleteJevd(item.recid)\">\r\n                                                    <svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\" fill=\"currentColor\" class=\"bi bi-trash-fill\" viewBox=\"0 0 16 16\">\r\n                                                    <path d=\"M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z\"/>\r\n                                                    </svg> Delete </Link></li>\r\n                                            </ul>\r\n                                        </div>\r\n                                    </td>\r\n                                </tr> ")], -1
 /* HOISTED */
 );
 
-var _hoisted_49 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+var _hoisted_37 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   colspan: "6"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_50 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+var _hoisted_38 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   colspan: "2",
   "class": "text-end"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "Total Debit")], -1
 /* HOISTED */
 );
 
-var _hoisted_51 = {
+var _hoisted_39 = {
   colspan: "2"
 };
 
-var _hoisted_52 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+var _hoisted_40 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   colspan: "2",
   "class": "text-end"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "Total Credit")], -1
 /* HOISTED */
 );
 
-var _hoisted_53 = {
+var _hoisted_41 = {
   colspan: "2"
 };
-var _hoisted_54 = {
+var _hoisted_42 = {
   key: 0
 };
 
-var _hoisted_55 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+var _hoisted_43 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   colspan: "9"
 }, null, -1
 /* HOISTED */
 );
 
-var _hoisted_56 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
+var _hoisted_44 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", {
   colspan: "5"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "fs-6 c-red text-danger"
@@ -534,135 +514,123 @@ var _hoisted_56 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 /* HOISTED */
 );
 
-var _hoisted_57 = [_hoisted_55, _hoisted_56];
-var _hoisted_58 = {
+var _hoisted_45 = [_hoisted_43, _hoisted_44];
+var _hoisted_46 = {
   "class": "col-12 mb-1"
 };
-var _hoisted_59 = {
+var _hoisted_47 = {
   "class": "card card shadow"
 };
-var _hoisted_60 = {
+var _hoisted_48 = {
   "class": "card-body"
 };
-var _hoisted_61 = {
+var _hoisted_49 = {
   "class": "row"
 };
-var _hoisted_62 = {
+var _hoisted_50 = {
   "class": "col-md-2"
 };
 
-var _hoisted_63 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_51 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "col-form-label"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "RespCenter")], -1
 /* HOISTED */
 );
 
-var _hoisted_64 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_52 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "col-form-label"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "Voucher #")], -1
 /* HOISTED */
 );
 
-var _hoisted_65 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_53 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "col-mb-3 col-form-label"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "OBR #")], -1
 /* HOISTED */
 );
 
-var _hoisted_66 = {
+var _hoisted_54 = {
   "class": "col-md-5"
 };
 
-var _hoisted_67 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_55 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "col-form-label"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "Act Code/Title")], -1
 /* HOISTED */
 );
 
-var _hoisted_68 = {
-  key: 0,
-  "class": "fs-6 c-red text-danger"
-};
-
-var _hoisted_69 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_56 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "col-form-label"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "Sub Code/Title")], -1
 /* HOISTED */
 );
 
-var _hoisted_70 = {
-  key: 1,
-  "class": "text-danger"
-};
-
-var _hoisted_71 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_57 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "col-form-label"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "Sub Code2/Title")], -1
 /* HOISTED */
 );
 
-var _hoisted_72 = {
-  key: 2,
-  "class": "text-danger"
-};
-var _hoisted_73 = {
+var _hoisted_58 = {
   "class": "col-md-5"
 };
 
-var _hoisted_74 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_59 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "col-form-label"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "Remarks")], -1
 /* HOISTED */
 );
 
-var _hoisted_75 = {
+var _hoisted_60 = {
   "class": "row"
 };
-var _hoisted_76 = {
+var _hoisted_61 = {
   "class": "col-md-2"
 };
 
-var _hoisted_77 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_62 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "col-form-label"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "PR #")], -1
 /* HOISTED */
 );
 
-var _hoisted_78 = {
+var _hoisted_63 = {
   "class": "col-md-4"
 };
 
-var _hoisted_79 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_64 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "col-mb-6 col-form-label"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "Debit")], -1
 /* HOISTED */
 );
 
-var _hoisted_80 = ["disabled", "placeholder"];
-var _hoisted_81 = {
-  key: 0,
-  "class": "fs-6 c-red text-danger"
-};
-var _hoisted_82 = {
+var _hoisted_65 = ["disabled", "placeholder"];
+var _hoisted_66 = {
   "class": "col-md-4"
 };
 
-var _hoisted_83 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+var _hoisted_67 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "col-mb-6 col-form-label"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, "Credit")], -1
 /* HOISTED */
 );
 
-var _hoisted_84 = ["disabled", "placeholder"];
-var _hoisted_85 = {
-  key: 0,
-  "class": "fs-6 c-red text-danger"
+var _hoisted_68 = ["disabled", "placeholder"];
+var _hoisted_69 = {
+  "class": "col-2"
 };
-var _hoisted_86 = {
+var _hoisted_70 = ["disabled"];
+var _hoisted_71 = ["disabled"];
+
+var _hoisted_72 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "modal-footer"
-};
-var _hoisted_87 = ["disabled"];
-var _hoisted_88 = ["disabled"];
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  type: "submit",
+  "class": "btn btn-primary"
+}, "Save All")], -1
+/* HOISTED */
+);
+
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_back_button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("back-button");
 
@@ -670,27 +638,23 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
 
   var _component_select2 = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("select2");
 
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.pageTitle), 1
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h3", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.pageTitle), 1
   /* TEXT */
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_back_button, {
     backToURL: '/jevh/index'
-  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"card-header\">\r\n                    Add Jevd\r\n                </div> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
-    onSubmit: _cache[13] || (_cache[13] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
-      return $options.submit();
-    }, ["prevent"]))
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [_hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
     "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
-      return $data.jevhForm.fiscalyear = $event;
+      return $data.form.jevh.fiscalyear = $event;
     }),
     "class": "form-control",
     autocomplete: "chrome-off"
   }, null, 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.jevhForm.fiscalyear]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.jevh.fiscalyear]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [_hoisted_10, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
     "class": "form-select",
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
-      return $data.jevhForm.fjevtyp = $event;
+      return $data.form.jevh.fjevtyp = $event;
     })
   }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.jevtype, function (items, index) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
@@ -703,12 +667,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* KEYED_FRAGMENT */
   ))], 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.jevhForm.fjevtyp]]), $data.jevhForm.errors.fjevtyp ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.jevhForm.errors.fjevtyp), 1
-  /* TEXT */
-  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), _hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.form.jevh.fjevtyp]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"fs-6 c-red-500\" v-if=\"form.errors.jevh.fjevtyp\">{{ form.errors.jevh.fjevtyp }}</div> ")])]), _hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
     "class": "form-select",
     "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
-      return $data.jevhForm.fund_scode = $event;
+      return $data.form.jevh.fund_scode = $event;
     })
   }, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($data.funds, function (items) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("option", {
@@ -716,72 +678,60 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       key: items.recid
     }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(items.FUNDDETAIL_NAME), 9
     /* TEXT, PROPS */
-    , _hoisted_14);
+    , _hoisted_13);
   }), 128
   /* KEYED_FRAGMENT */
   ))], 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.jevhForm.fund_scode]]), $data.jevhForm.errors.fund_scode ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.jevhForm.errors.fund_scode), 1
-  /* TEXT */
-  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [_hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.form.jevh.fund_scode]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"fs-6 c-red-500\" v-if=\"form.errors.jevh.fund_scode\">{{ form.errors.jevh.fund_scode }}</div> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [_hoisted_16, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
     "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
-      return $data.jevhForm.fjevno = $event;
+      return $data.form.jevh.fjevno = $event;
     }),
     "class": "form-control",
     autocomplete: "chrome-off"
   }, null, 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.jevhForm.fjevno]]), $data.jevhForm.errors.fjevno ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_19, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.jevhForm.errors.fjevno), 1
-  /* TEXT */
-  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [_hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.jevh.fjevno]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"text-danger\" v-if=\"form.errors.jevh.fjevno\">{{ form.errors.jevh.fjevno }}</div> ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_17, [_hoisted_18, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "date",
     "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
-      return $data.jevhForm.fjevdate = $event;
+      return $data.form.jevh.fjevdate = $event;
     }),
     "class": "form-control",
     autocomplete: "chrome-off"
   }, null, 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.jevhForm.fjevdate]]), $data.jevhForm.errors.fjevdate ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.jevhForm.errors.fjevdate), 1
-  /* TEXT */
-  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [_hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.jevh.fjevdate]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"text-danger\" v-if=\"form.errors.jevh.fjevdate\">{{ form.errors.jevh.fjevdate }}</div> ")])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_20, [_hoisted_21, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
     "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
-      return $data.jevhForm.fchkno = $event;
+      return $data.form.jevh.fchkno = $event;
     }),
     "class": "form-control",
     autocomplete: "chrome-off"
   }, null, 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.jevhForm.fchkno]]), $data.jevhForm.errors.fchkno ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_26, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.jevhForm.errors.fchkno), 1
-  /* TEXT */
-  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_27, [_hoisted_28, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.jevh.fchkno]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"fs-6 c-red-500\" v-if=\"form.errors.jevh.fchkno\">{{ form.errors.jevh.fchkno }}</div> ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_22, [_hoisted_23, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
     "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
-      return $data.jevhForm.frefno = $event;
+      return $data.form.jevh.frefno = $event;
     }),
     "class": "form-control",
     autocomplete: "chrome-off"
   }, null, 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.jevhForm.frefno]]), $data.jevhForm.errors.frefno ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_29, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.jevhForm.errors.frefno), 1
-  /* TEXT */
-  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), _hoisted_30, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.jevh.frefno]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"fs-6 c-red-500\" v-if=\"form.errors.jevh.frefno\">{{ form.errors.jevh.frefno }}</div> ")])]), _hoisted_24, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
     "onUpdate:modelValue": _cache[7] || (_cache[7] = function ($event) {
-      return $data.jevhForm.fpayee = $event;
+      return $data.form.jevh.fpayee = $event;
     }),
     "class": "form-control",
     autocomplete: "chrome-off"
   }, null, 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.jevhForm.fpayee]]), $data.jevhForm.errors.fpayee ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_31, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.jevhForm.errors.fpayee), 1
-  /* TEXT */
-  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_32, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.jevh.fpayee]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"fs-6 c-red-500\" v-if=\"form.errors.jevh.fpayee\">{{ form.errors.jevh.fpayee }}</div> "), _hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
     "class": "form-control",
     "onUpdate:modelValue": _cache[8] || (_cache[8] = function ($event) {
-      return $data.jevhForm.fremk = $event;
+      return $data.form.jevh.fremk = $event;
     }),
     placeholder: "Write here",
     id: "floatingTextarea2",
@@ -790,188 +740,172 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     }
   }, "\r\n                        ", 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.jevhForm.fremk]]), $data.jevhForm.errors.fremk ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_33, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.jevhForm.errors.fremk), 1
-  /* TEXT */
-  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_34, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.jevh.fremk]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"fs-6 c-red-500\" v-if=\"form.errors.jevh.fremk\">{{ form.errors.jevh.fremk }}</div> "), _hoisted_26, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
     "onUpdate:modelValue": _cache[9] || (_cache[9] = function ($event) {
-      return $data.jevhForm.fprepby = $event;
+      return $data.form.jevh.fprepby = $event;
     }),
     "class": "form-control",
     autocomplete: "chrome-off"
   }, null, 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.jevhForm.fprepby]]), $data.jevhForm.errors.fprepby ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_35, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.jevhForm.errors.fprepby), 1
-  /* TEXT */
-  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_36, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.jevh.fprepby]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"fs-6 c-red-500\" v-if=\"form.errors.jevh.fprepby\">{{ form.errors.jevh.fprepby }}</div> "), _hoisted_27, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
     "onUpdate:modelValue": _cache[10] || (_cache[10] = function ($event) {
-      return $data.jevhForm.fprepd = $event;
+      return $data.form.jevh.fprepd = $event;
     }),
     "class": "form-control",
     autocomplete: "chrome-off"
   }, null, 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.jevhForm.fprepd]]), $data.jevhForm.errors.fprepd ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_37, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.jevhForm.errors.fprepd), 1
-  /* TEXT */
-  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_38, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.jevh.fprepd]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"fs-6 c-red-500\" v-if=\"form.errors.jevh.fprepd\">{{ form.errors.jevh.fprepd }}</div> "), _hoisted_28, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
     "onUpdate:modelValue": _cache[11] || (_cache[11] = function ($event) {
-      return $data.jevhForm.fappvby = $event;
+      return $data.form.jevh.fappvby = $event;
     }),
     "class": "form-control",
     autocomplete: "chrome-off"
   }, null, 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.jevhForm.fappvby]]), $data.jevhForm.errors.fappvby ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_39, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.jevhForm.errors.fappvby), 1
-  /* TEXT */
-  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_40, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.jevh.fappvby]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"fs-6 c-red-500\" v-if=\"form.errors.jevh.fappvby\">{{ form.errors.jevh.fappvby }}</div> "), _hoisted_29, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
     "onUpdate:modelValue": _cache[12] || (_cache[12] = function ($event) {
-      return $data.jevhForm.fappvd = $event;
+      return $data.form.jevh.fappvd = $event;
     }),
     "class": "form-control",
     autocomplete: "chrome-off"
   }, null, 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.jevhForm.fappvd]]), $data.jevhForm.errors.fappvd ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_41, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.jevhForm.errors.fappvd), 1
-  /* TEXT */
-  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])], 32
-  /* HYDRATE_EVENTS */
-  )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_42, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_43, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_44, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_45, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_46, [_hoisted_47, _hoisted_48, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tfoot", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [_hoisted_49, _hoisted_50, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_51, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_to_currency, {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.jevh.fappvd]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"fs-6 c-red-500\" v-if=\"form.errors.jevh.fappvd\">{{ form.errors.jevh.fappvd }}</div> ")])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_30, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_31, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_32, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_33, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("table", _hoisted_34, [_hoisted_35, _hoisted_36, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tfoot", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("tr", null, [_hoisted_37, _hoisted_38, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_39, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_to_currency, {
     money: $props.totalDebit
   }, null, 8
   /* PROPS */
-  , ["money"])])]), _hoisted_52, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_53, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_to_currency, {
+  , ["money"])])]), _hoisted_40, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("td", _hoisted_41, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("b", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_to_currency, {
     money: $props.totalCredit
   }, null, 8
   /* PROPS */
-  , ["money"])])])]), $props.totalCredit != $props.totalDebit ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", _hoisted_54, _hoisted_57)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_58, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_59, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_60, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
-    onSubmit: _cache[25] || (_cache[25] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
+  , ["money"])])])]), $props.totalCredit != $props.totalDebit ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("tr", _hoisted_42, _hoisted_45)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_46, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_47, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_48, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
+    onSubmit: _cache[26] || (_cache[26] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function ($event) {
       return $options.submit();
     }, ["prevent"]))
-  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_61, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_62, [_hoisted_63, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_49, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_50, [_hoisted_51, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "text",
+    "onUpdate:modelValue": _cache[13] || (_cache[13] = function ($event) {
+      return $data.form.jevd.FRESPCTR = $event;
+    }),
+    "class": "form-control",
+    autocomplete: "chrome-off"
+  }, null, 512
+  /* NEED_PATCH */
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.jevd.FRESPCTR]]), _hoisted_52, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
     "onUpdate:modelValue": _cache[14] || (_cache[14] = function ($event) {
-      return $data.jevdForm.FRESPCTR = $event;
+      return $data.form.jevd.FVOUCHNO = $event;
     }),
     "class": "form-control",
     autocomplete: "chrome-off"
   }, null, 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.jevdForm.FRESPCTR]]), _hoisted_64, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.jevd.FVOUCHNO]]), _hoisted_53, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
     "onUpdate:modelValue": _cache[15] || (_cache[15] = function ($event) {
-      return $data.jevdForm.FVOUCHNO = $event;
+      return $data.form.jevd.FALOBNO = $event;
     }),
     "class": "form-control",
     autocomplete: "chrome-off"
   }, null, 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.jevdForm.FVOUCHNO]]), _hoisted_65, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    type: "text",
-    "onUpdate:modelValue": _cache[16] || (_cache[16] = function ($event) {
-      return $data.jevdForm.FALOBNO = $event;
-    }),
-    "class": "form-control",
-    autocomplete: "chrome-off"
-  }, null, 512
-  /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.jevdForm.FALOBNO]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_66, [_hoisted_67, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_select2, {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.jevd.FALOBNO]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_54, [_hoisted_55, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_select2, {
     id: "FACTCODE",
-    modelValue: $data.jevdForm.FACTCODE,
-    "onUpdate:modelValue": _cache[17] || (_cache[17] = function ($event) {
-      return $data.jevdForm.FACTCODE = $event;
+    modelValue: $data.form.jevd.FACTCODE,
+    "onUpdate:modelValue": _cache[16] || (_cache[16] = function ($event) {
+      return $data.form.jevd.FACTCODE = $event;
     }),
     options: $data.factcodes,
     placeholder: "Select Account Code",
-    onSelect: _cache[18] || (_cache[18] = function ($event) {
+    onSelect: _cache[17] || (_cache[17] = function ($event) {
       return $options.getSubCode1(), $options.getSubCode2();
     })
   }, null, 8
   /* PROPS */
-  , ["modelValue", "options"]), $data.jevdForm.errors.FACTCODE ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_68, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.jevdForm.errors.FACTCODE), 1
-  /* TEXT */
-  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_69, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_select2, {
-    modelValue: $data.jevdForm.FSUBCDE,
-    "onUpdate:modelValue": _cache[19] || (_cache[19] = function ($event) {
-      return $data.jevdForm.FSUBCDE = $event;
+  , ["modelValue", "options"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"fs-6 c-red text-danger\" v-if=\"form.errors.jevd.FACTCODE\"> {{form.errors.jevd.FACTCODE}}</div> "), _hoisted_56, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_select2, {
+    modelValue: $data.form.jevd.FSUBCDE,
+    "onUpdate:modelValue": _cache[18] || (_cache[18] = function ($event) {
+      return $data.form.jevd.FSUBCDE = $event;
     }),
     options: $data.subcode1,
     placeholder: "Select Account Code First"
   }, null, 8
   /* PROPS */
-  , ["modelValue", "options"]), $data.jevdForm.errors.FSUBCDE ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_70, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.jevdForm.errors.FSUBCDE), 1
-  /* TEXT */
-  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _hoisted_71, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_select2, {
-    modelValue: $data.jevdForm.FSUBCDE2,
-    "onUpdate:modelValue": _cache[20] || (_cache[20] = function ($event) {
-      return $data.jevdForm.FSUBCDE2 = $event;
+  , ["modelValue", "options"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"text-danger\" v-if=\"form.errors.jevd.FSUBCDE\"> {{form.errors.jevd.FSUBCDE}}</div> "), _hoisted_57, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_select2, {
+    modelValue: $data.form.jevd.FSUBCDE2,
+    "onUpdate:modelValue": _cache[19] || (_cache[19] = function ($event) {
+      return $data.form.jevd.FSUBCDE2 = $event;
     }),
     options: $data.subcode2,
     placeholder: "Select Account Code First"
   }, null, 8
   /* PROPS */
-  , ["modelValue", "options"]), $data.jevdForm.errors.FSUBCDE2 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_72, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.jevdForm.errors.FSUBCDE2), 1
-  /* TEXT */
-  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_73, [_hoisted_74, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
+  , ["modelValue", "options"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"text-danger\" v-if=\"form.errors.jevd.FSUBCDE2\"> {{form.errors.jevd.FSUBCDE2}}</div> ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_58, [_hoisted_59, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("textarea", {
     "class": "form-control",
-    "onUpdate:modelValue": _cache[21] || (_cache[21] = function ($event) {
-      return $data.jevdForm.FREMARKS = $event;
+    "onUpdate:modelValue": _cache[20] || (_cache[20] = function ($event) {
+      return $data.form.jevd.FREMARKS = $event;
     }),
     rows: "7"
   }, null, 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.jevdForm.FREMARKS]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_75, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_76, [_hoisted_77, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.jevd.FREMARKS]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_60, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_61, [_hoisted_62, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "text",
-    "onUpdate:modelValue": _cache[22] || (_cache[22] = function ($event) {
-      return $data.jevdForm.FPRNO = $event;
+    "onUpdate:modelValue": _cache[21] || (_cache[21] = function ($event) {
+      return $data.form.jevd.FPRNO = $event;
     }),
     "class": "form-control",
     autocomplete: "chrome-off"
   }, null, 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.jevdForm.FPRNO]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_78, [_hoisted_79, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.jevd.FPRNO]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_63, [_hoisted_64, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+    type: "number",
+    "onUpdate:modelValue": _cache[22] || (_cache[22] = function ($event) {
+      return $data.form.jevd.FDEBIT = $event;
+    }),
+    "class": "form-control",
+    autocomplete: "chrome-off",
+    disabled: $data.form.jevd.FCREDIT != '',
+    placeholder: $data.form.jevd.FCREDIT != '' ? "Unable to input Debit" : ""
+  }, null, 8
+  /* PROPS */
+  , _hoisted_65), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.jevd.FDEBIT]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"fs-6 c-red text-danger\" v-if=\"form.errors.jevd.FDEBIT\"> {{form.errors.jevd.FDEBIT}}</div> ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_66, [_hoisted_67, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
     type: "number",
     "onUpdate:modelValue": _cache[23] || (_cache[23] = function ($event) {
-      return $data.jevdForm.FDEBIT = $event;
+      return $data.form.jevd.FCREDIT = $event;
     }),
     "class": "form-control",
     autocomplete: "chrome-off",
-    disabled: $data.jevdForm.FCREDIT != '',
-    placeholder: $data.jevdForm.FCREDIT != '' ? "Unable to input Debit" : ""
+    disabled: $data.form.jevd.FDEBIT != '',
+    placeholder: $data.form.jevd.FDEBIT != '' ? "Unable to input Credit" : ""
   }, null, 8
   /* PROPS */
-  , _hoisted_80), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.jevdForm.FDEBIT]]), $data.jevdForm.errors.FDEBIT ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_81, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.jevdForm.errors.FDEBIT), 1
-  /* TEXT */
-  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_82, [_hoisted_83, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
-    type: "number",
-    "onUpdate:modelValue": _cache[24] || (_cache[24] = function ($event) {
-      return $data.jevdForm.FCREDIT = $event;
-    }),
-    "class": "form-control",
-    autocomplete: "chrome-off",
-    disabled: $data.jevdForm.FDEBIT != '',
-    placeholder: $data.jevdForm.FDEBIT != '' ? "Unable to input Credit" : ""
-  }, null, 8
-  /* PROPS */
-  , _hoisted_84), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.jevdForm.FCREDIT]]), $data.jevdForm.errors.FCREDIT ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_85, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.jevdForm.errors.FCREDIT), 1
-  /* TEXT */
-  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_86, [$data.pageTitle === 'Create' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
+  , _hoisted_68), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.jevd.FCREDIT]]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"fs-6 c-red text-danger\" v-if=\"form.errors.jevd.FCREDIT\"> {{form.errors.jevd.FCREDIT}}</div> ")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_69, [_ctx.pageTitle === 'Create' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
     key: 0,
-    type: "submit",
+    type: "button",
     "class": "btn btn-primary",
-    disabled: $data.isDisabled
-  }, " Add" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.jevdForm.processing ? 'ing...' : ''), 9
+    disabled: $data.isDisabled,
+    onClick: _cache[24] || (_cache[24] = function ($event) {
+      return _ctx.saveAll();
+    })
+  }, " Add" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($data.form.jevd.processing ? 'ing...' : ''), 9
   /* TEXT, PROPS */
-  , _hoisted_87)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.pageTitle === 'Edit' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
+  , _hoisted_70)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _ctx.pageTitle === 'Edit' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
     key: 1,
-    type: "submit",
+    type: "button",
     "class": "btn btn-primary",
-    disabled: $data.isDisabled
+    disabled: $data.isDisabled,
+    onClick: _cache[25] || (_cache[25] = function ($event) {
+      return _ctx.saveAll();
+    })
   }, "Update", 8
   /* PROPS */
-  , _hoisted_88)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])], 32
+  , _hoisted_71)) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]), _hoisted_72], 32
   /* HYDRATE_EVENTS */
   )])])])])])]);
 }
