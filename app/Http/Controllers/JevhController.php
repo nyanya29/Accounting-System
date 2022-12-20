@@ -113,9 +113,12 @@ class JevhController extends Controller
     //         'data' => $data
     //     ]);
     // }
-    public function storeJev(Request $request)
+    public function storeJev(JevhValidation $request)
     {
-        // dd($request);
+        // dd($request->all());
+
+        $request->validated();
+
         $jevhData = $this->model->create([
                 "fiscalyear"    =>  $request->jevh['fiscalyear'],
                 "fund_scode"    =>  $request->jevh['fund_scode'],
@@ -129,7 +132,7 @@ class JevhController extends Controller
                 "fprepby"       =>  $request->jevh['fprepby'],
                 "fprepd"        =>  $request->jevh['fprepd'],
                 "fappvby"       =>  $request->jevh['fappvby'],
-                "fappvd"        =>  $request->jevh['fappvd'],  
+                "fappvd"        =>  $request->jevh['fappvd'],
         ]);
         
         $jevhRecid = $jevhData->recid;

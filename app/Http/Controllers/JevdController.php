@@ -91,7 +91,8 @@ class JevdController extends Controller
                 ->map(fn($item) => [
                     'id'    =>  $item->FACTCODE,
                     // 'text'  =>  "$item->FTITLE",
-                    'text' =>  "$item->FACTCODE ----- $item->FTITLE"
+                    'text' =>  "$item->FACTCODE ----- $item->FTITLE",
+                    'jtitle' => $item->FTITLE
                 ]);
     }
 
@@ -143,10 +144,10 @@ class JevdController extends Controller
     //jevd crud
     public function store(Request $request)
     {
-        dd($request->jevh);
+        // dd($request->jevh);
         $request['FCREDIT'] = $request->FCREDIT ? $request->FCREDIT : 0;
         $request['FDEBIT'] = $request->FDEBIT ? $request->FDEBIT : 0;
-        $validated = $request->validated();
+        // $validated = $request->validated();
         
         $jevd = $this->model->create($request->all());
         return redirect()->back()->with('message', "Added Successfully");
@@ -176,5 +177,11 @@ class JevdController extends Controller
         $data->delete();
         
        return back()->with('message', 'Successfully Deleted!');
+    }
+
+    public function validate_jevD(JevdValidation $request)
+    {
+        $request->validated();
+        return back();
     }
 }

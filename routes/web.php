@@ -93,6 +93,7 @@ Route::middleware('auth')->group(function() {
         // Route::post('/get-jevdData', [JevdController::class, 'jevDetails']);
         Route::get('/{id}/edit', [JevdController::class, 'editJevd']);
         Route::delete('/{id}', [JevdController::class, 'destroy']);
+        Route::post('/validate', [JevdController::class, 'validate_jevD']);
     });
     //reports
 });

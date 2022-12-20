@@ -24,6 +24,7 @@ class JevdValidation extends FormRequest
      */
     public function rules()
     {
+        // dd($this->all());
         $isRequired = !$this->FDEBIT && !$this->FCREDIT;
 
         return [
