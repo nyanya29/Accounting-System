@@ -23,37 +23,53 @@ class JevhValidation extends FormRequest
      */
     public function rules()
     {
+        // $this['is_balance'] = true;
+        // $jevd = collect($this->jevd);
+        // if ($jevd->sum('FCREDIT') != $jevd->sum('FDEBIT')) {
+        //    $this['is_balance'] = false; 
+        // }
+        // dd($this->is_balance);
+        // dd($this->all());
+        
         return [
-           'fjevno' => 'required',
-           'fchkno' => 'required',
-           'fjevtyp' => 'required',
-           'fund_scode' => 'required',
-           'fjevdate' => 'required',
-           'frefno' => 'required',
-           'fpayee' => 'required',
-           'fremk' => 'required',
-           'fprepby' => 'required',
-           'fprepd' => 'required',
-           'fappvby' => 'required',
-           'fappvd' => 'required',
+           'jevh.fjevno' => 'required',
+           'jevh.fchkno' => 'required',
+           'jevh.fjevtyp' => 'required',
+           'jevh.fund_scode' => 'required',
+           'jevh.fjevdate' => 'required',
+           'jevh.frefno' => 'required',
+           'jevh.fpayee' => 'required',
+           'jevh.fremk' => 'required',
+           'jevh.fprepby' => 'required',
+           'jevh.fprepd' => 'required',
+           'jevh.fappvby' => 'required',
+           'jevh.fappvd' => 'required',
+           'jevh.is_balance' => [
+                function ($attribute, $value, $fail) {
+                    $jevd = collect($this->jevd);
+                    if ($jevd->sum('FCREDIT') != $jevd->sum('FDEBIT')) {
+                        $fail('Churvaley is not balance!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+                    }
+                },
+            ]
         ];
     }
 
     public function messages()
     {
         return [
-            'fjevno.required' => 'Jev Number is required',
-            'fchkno.required' => 'Check Number is required',
-            'fjevtyp.required' => 'Jev Type is required',
-            'fund_scode.required' => 'Fund_Scode is required',
-            'fjevdate.required' => 'Date is required',
-            'frefno.required' => 'Reference Number is required',
-            'fpayee.required' => 'Payee is required',
-            'fremk.required' => 'Remarks is required',
-            'fprepby.required' => 'Prepare by is required',
-            'fprepd.required' => 'Position is required',
-            'fappvby.required' => 'Approved by is required',
-            'fappvd.required' => 'Approver position is required',
+            'jevh.fjevno.required' => 'Jev Number is required',
+            'jevh.fchkno.required' => 'Check Number is required',
+            'jevh.fjevtyp.required' => 'Jev Type is required',
+            'jevh.fund_scode.required' => 'Fund_Scode is required',
+            'jevh.fjevdate.required' => 'Date is required',
+            'jevh.frefno.required' => 'Reference Number is required',
+            'jevh.fpayee.required' => 'Payee is required',
+            'jevh.fremk.required' => 'Remarks is required',
+            'jevh.fprepby.required' => 'Prepare by is required',
+            'jevh.fprepd.required' => 'Position is required',
+            'jevh.fappvby.required' => 'Approved by is required',
+            'jevh.fappvd.required' => 'Approver position is required',
         ];
     }
     

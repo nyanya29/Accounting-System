@@ -42,7 +42,6 @@ class JevhController extends Controller
                             ->withQueryString(),
             "filters" => $request->only(['search']),
         ]);
-       
     }
     
     public function getFilter($request)
@@ -115,10 +114,12 @@ class JevhController extends Controller
     // }
     public function storeJev(JevhValidation $request)
     {
-        // dd($request->all());
 
-        $request->validated();
-
+        
+        if ($request->validated()) {
+            dd($request);
+        };
+        
         $jevhData = $this->model->create([
                 "fiscalyear"    =>  $request->jevh['fiscalyear'],
                 "fund_scode"    =>  $request->jevh['fund_scode'],
@@ -136,7 +137,7 @@ class JevhController extends Controller
         ]);
         
         $jevhRecid = $jevhData->recid;
-        dd($jevhRecid);
+        // dd($jevhRecid);
         $jevdData= $this->jevd->findOrFail($jevhRecid);
         // $jevdData->create([
         //     "fiscalyear"    =>  $request->jevh->fiscalyear,

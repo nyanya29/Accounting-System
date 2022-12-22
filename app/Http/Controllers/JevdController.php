@@ -113,8 +113,9 @@ class JevdController extends Controller
                 ->where('subaccounts1.FACTCODE','=',$request->FACTCODE)
                 ->get()
                 ->map(fn($item) => [
-                   'id'     =>  $item->FSUBCDE,
-                   'text'   =>  "$item->FSUBCDE ----- $item->FSTITLE"
+                   'id'         =>  $item->FSUBCDE,
+                   'text'       =>  "$item->FSUBCDE ----- $item->FSTITLE",
+                   'fs_title'    =>  $item->FSTITLE
                 ]);
 
                 // return $subcode1;
@@ -138,7 +139,8 @@ class JevdController extends Controller
                 ->get()
                 ->map(fn($item) => [
                     'id'     =>  $item->FSUBCDE2,
-                    'text'   =>  "$item->FSUBCDE2 ----- $item->FSTITLE2"
+                    'text'   =>  "$item->FSUBCDE2 ----- $item->FSTITLE2",
+                    'fs_title' => "$item->FSTITLE2"
                 ]);
     }
     //jevd crud
