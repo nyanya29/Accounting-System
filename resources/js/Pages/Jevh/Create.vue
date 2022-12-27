@@ -178,22 +178,22 @@
                                         <label class="col-form-label"><b>Act Code/Title</b></label>
                                         <select2 id="FACTCODE" v-model="jevdForm.FACTCODE" :options="factcodes" placeholder="Select Account Code" @select="getSubCode1($event), getSubCode2()"></select2>
 
-                                        <div class="fs-6 c-red text-danger" v-if="jevdForm.errors.FACTCODE"> {{jevdForm.errors.FACTCODE}}</div>
+                                        <!-- <div class="fs-6 c-red text-danger" v-if="jevdForm.errors.FACTCODE"> {{jevdForm.errors.FACTCODE}}</div> -->
 
                                         <label class="col-form-label"><b>Sub Code/Title</b></label>
                                         <select2 v-model="jevdForm.FSUBCDE" :options="subcode1" placeholder="Select Account Code First" @select="getFtitle($event, 'FSTITLE')"></select2>
 
-                                        <div class="text-danger" v-if="jevdForm.errors.FSUBCDE"> {{jevdForm.errors.FSUBCDE}}</div>
+                                        <!-- <div class="text-danger" v-if="jevdForm.errors.FSUBCDE"> {{jevdForm.errors.FSUBCDE}}</div> -->
 
                                         <label class="col-form-label"><b>Sub Code2/Title</b></label>
                                         <select2 v-model="jevdForm.FSUBCDE2" :options="subcode2" placeholder="Select Account Code First" @select="getFtitle($event, 'FSTITLE2')"></select2>
 
-                                        <div class="text-danger" v-if="jevdForm.errors.FSUBCDE2"> {{jevdForm.errors.FSUBCDE2}}</div>
+                                        <!-- <div class="text-danger" v-if="jevdForm.errors.FSUBCDE2"> {{jevdForm.errors.FSUBCDE2}}</div> -->
                                     </div>
                                     
                                     <div class="col-md-5">
                                         <label class="col-form-label"><b>Remarks</b></label>
-                                        <textarea class="form-control" v-model="jevdForm.FREMARKS" rows="7"></textarea>
+                                        <textarea class="form-control" v-model="jevdForm.FREMARKS" rows="7" placeholder="Write here..."></textarea>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -211,7 +211,7 @@
                                             :disabled="jevdForm.FCREDIT != ''"
                                             :placeholder="jevdForm.FCREDIT != '' ? `Unable to input Debit` : ``"
                                         >
-                                        <div class="fs-6 c-red text-danger" v-if="jevdForm.errors.FDEBIT"> {{jevdForm.errors.FDEBIT}}</div>
+                                        <!-- <div class="fs-6 c-red text-danger" v-if="jevdForm.errors.FDEBIT"> {{jevdForm.errors.FDEBIT}}</div> -->
                                     </div>
                                     <div class="col-md-6">
                                         <label class="col-mb-6 col-form-label"><b>Credit</b></label>
@@ -225,7 +225,7 @@
                                                     :disabled="jevdForm.FDEBIT != ''"
                                                     :placeholder="jevdForm.FDEBIT != '' ? `Unable to input Credit` : ``"
                                                 >
-                                                <div class="fs-6 c-red text-danger" v-if="jevdForm.errors.FCREDIT"> {{jevdForm.errors.FCREDIT}}</div>
+                                                <!-- <div class="fs-6 c-red text-danger" v-if="jevdForm.errors.FCREDIT"> {{jevdForm.errors.FCREDIT}}</div> -->
                                             </div>
                                             <div class="col-md-4">
                                                 <button type="button" class="btn btn-primary" v-if="pageTitle === 'Create'" :disabled="isDisabled" @click="addJevD()"> {{ buttonJevd }}</button>
@@ -269,8 +269,6 @@ export default {
                 {value:6, name:"Procurement"},
             ],
             funds: "",
-            // jevd:{},
-            jevd_temp: [],
             jevdForm: useForm({
                 FRESPCTR:   "",
                 FACTCODE:   "",
@@ -290,7 +288,6 @@ export default {
             factcodes:[],
             subcode1: [],
             subcode2: [],
-            addMode :true,
             temp_account_title:"",
             form: useForm({
                jevh: {
@@ -311,9 +308,6 @@ export default {
                },
                jevd: [],
             }),
-            
-            // jevdData:{},
-            // total:{},
             pageTitle: 'Create',
             isDisabled: false,
             recid_to_update:null,
@@ -364,7 +358,7 @@ export default {
 
     methods: {
         getFtitle(e, _model) {
-            // console.log(e)
+            console.log(e)
             this.jevdForm[_model] = e.fs_title
         }, 
 
@@ -379,7 +373,7 @@ export default {
             })
         },
         getSubCode1(e) {
-            // console.log(e)
+            console.log(e.jtitle);
             this.jevdForm.FTITLE = e.jtitle;
                 axios.post('/jevd/getSubCode1', {FACTCODE: this.jevdForm.FACTCODE}).then( response => {
                 this.subcode1 = response.data
@@ -396,30 +390,50 @@ export default {
             })
         },
         submit () {
+            if (this.form.errors['jevh.is_balance']) {
+                let text = `Warning! ${this.form.errors['jevh.is_balance']}`;
+                alert(text);
+            }
             if( this.pageTitle == 'Create')
-            {
-                this.form.post("/jevh/store-jev", {
-                        
-                        // onSuccess: () => {
-
-                        //     this.form.reset();
+                {
+                    this.form.post("/jevh/store-jev", {
                             
-                        // }
-                    }
-                );
-        } else {
-            this.form.patch('/jevh/jevd-update/'+this.recid_to_update, {
-                onFinish: visit => {
-                    this.$inertia.visit('/jevh/jevd-create/'+this.data.recid)
-                } 
-            });
+                            // onSuccess: () => {
+
+                            //     this.form.reset();
+                                
+                            // }
+                        }
+                    );
         }
+        // else {
+        //     this.form.patch('/jevh/jevd-update/'+this.recid_to_update, {
+        //         onFinish: visit => {
+        //             this.$inertia.visit('/jevh/jevd-create/'+this.data.recid)
+        //         } 
+        //     });
+        // }
 
         },
         addJevD(){
             var data = {};
-            _.assign(data, this.jevdForm)
-            // console.log(data)
+            _.assign(data, {
+                FRESPCTR: this.jevdForm.FRESPCTR,
+                FACTCODE: this.jevdForm.FACTCODE,
+                FSUBCDE: this.jevdForm.FSUBCDE,
+                FSTITLE: this.jevdForm.FSTITLE,
+                FSUBCDE2: this.jevdForm.FSUBCDE2,
+                FSTITLE2: this.jevdForm.FSTITLE2,
+                FALOBNO: this.jevdForm.FALOBNO,
+                FVOUCHNO: this.jevdForm.FVOUCHNO,
+                FPRNO: this.jevdForm.FPRNO,
+                FDEBIT: this.jevdForm.FDEBIT,
+                FCREDIT: this.jevdForm.FCREDIT,
+                FREMARKS: this.jevdForm.FREMARKS,
+                isSubcode1: this.jevdForm.isSubcode1,
+                isSubcode2: this.jevdForm.isSubcode2
+            })
+            console.log(data)
             this.jevdForm.post('/jevd/validate', {
                 onSuccess: () => {
                     if (!this.isEdit) {
@@ -436,6 +450,7 @@ export default {
            
         },
         async editJevD(item, index) {
+            this.isEdit = true
             console.log(index);
             console.log(item.FACTCODE)
             this.jevdForm = {index:index, FACTCODE: item.FACTCODE}
@@ -444,7 +459,6 @@ export default {
             // _.assign(this.jevdForm, {index:index});
             _.assign(this.jevdForm, item);
             console.log(item)
-            this.isEdit = true
             
         },
 
@@ -453,7 +467,10 @@ export default {
             let text = "Warning!\Are you sure you want to Delete this Record?";
             if(confirm(text) == true) {
             //    console.log(index);
-               this.form.jevd.splice(index,1);
+            this.form.jevd.splice(index,1);
+            // setTimeout(() => {
+            //     this.form.jevd.splice(index,1);
+            // }, timeout),1000;
             //    console.log(this.form.jevd);
             }  
         },

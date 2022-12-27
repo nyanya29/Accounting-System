@@ -23,14 +23,6 @@ class JevhValidation extends FormRequest
      */
     public function rules()
     {
-        // $this['is_balance'] = true;
-        // $jevd = collect($this->jevd);
-        // if ($jevd->sum('FCREDIT') != $jevd->sum('FDEBIT')) {
-        //    $this['is_balance'] = false; 
-        // }
-        // dd($this->is_balance);
-        // dd($this->all());
-        
         return [
            'jevh.fjevno' => 'required',
            'jevh.fchkno' => 'required',
@@ -48,7 +40,7 @@ class JevhValidation extends FormRequest
                 function ($attribute, $value, $fail) {
                     $jevd = collect($this->jevd);
                     if ($jevd->sum('FCREDIT') != $jevd->sum('FDEBIT')) {
-                        $fail('Churvaley is not balance!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+                        $fail('Debit and Credit not balance!!!');
                     }
                 },
             ]

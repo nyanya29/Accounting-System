@@ -22,15 +22,6 @@ class JevhController extends Controller
     public function index(Request $request){
 
         $index = $this->getFilter($request);
-        // $index = $this->model->leftjoin('jevd', function($q){
-        //                         $q->on('jevd.FUND_SCODE','jevh.fund_scode')
-        //                             ->on('jevd.FJEVNO','jevh.fjevno')
-        //                             ->on('jevd.fiscalyear','jevh.fiscalyear')
-        //                             // ->orderBy('recid','desc')
-        //                             ->groupBy(
-        //                                 'jevh.recid'
-        //                             );
-        // });
         return inertia('Jevh/Index', [
             // "jevd" => $jevD,
             "jevh" => $index
@@ -114,11 +105,11 @@ class JevhController extends Controller
     // }
     public function storeJev(JevhValidation $request)
     {
-
-        
-        if ($request->validated()) {
-            dd($request);
-        };
+        // dd($request->all());
+        $request->validated();
+        // if ($request->validated()) {
+        //     dd($request);
+        // };
         
         $jevhData = $this->model->create([
                 "fiscalyear"    =>  $request->jevh['fiscalyear'],
@@ -137,43 +128,31 @@ class JevhController extends Controller
         ]);
         
         $jevhRecid = $jevhData->recid;
-        // dd($jevhRecid);
-        $jevdData= $this->jevd->findOrFail($jevhRecid);
-        // $jevdData->create([
-        //     "fiscalyear"    =>  $request->jevh->fiscalyear,
-        //     "fund_scode"    =>  $request->jevh->FUND_SCODE,
-        //     "fjevno"        =>  $request->jevh->FJEVNO,
-        //     "FRESPCTR"      =>  $request->jevd->FRESPCTR,  
-        //     "FACTCODE"      =>  $request->jevd->FACTCODE,
-        //     "FSUBCDE"       =>  $request->jevd->FSUBCDE,   
-        //     "FSUBCDE2"      =>  $request->jevd->FSUBCDE2,  
-        //     "FALOBNO"       =>  $request->jevd->FALOBNO,   
-        //     "FVOUCHNO"      =>  $request->jevd->FVOUCHNO,  
-        //     "FPRNO"         =>  $request->jevd->FPRNO,     
-        //     "FDEBIT"        =>  $request->jevd->FDEBIT,    
-        //     "FCREDIT"       =>  $request->jevd->FCREDIT,   
-        //     "FREMARKS"      =>  $request->jevd->FREMARKS,  
-        // ]);
-        $jevdData->create([
-            "fiscalyear"    =>  $jevhData->fiscalyear,
-            "fund_scode"    =>  $jevhData->FUND_SCODE,
-            "fjevno"        =>  $jevhData->FJEVNO,
-            "FRESPCTR"      =>  'test001',
-            "FACTCODE"      =>  'test001',
-            "FSUBCDE"       =>  'test001',
-            "FSUBCDE2"      =>  'test001',
-            "FALOBNO"       =>  'test001',
-            "FVOUCHNO"      =>  'test001',
-            "FPRNO"         =>  'test001',
-            "FDEBIT"        =>  'test001',
-            "FCREDIT"       =>  'test001',
-            "FREMARKS"      =>  'test001',
+        // dd(collect(collect($request->jevd)->all())->except(['FSTITLE']));
+        // $jevdData= $this->jevd->findOrFail($jevhRecid);
+       $data = collect($request->jevd)->map( fn($item) => [
+            collect($item)->merge([
+                'FJEVNO'=> $request->jevh['fjevno'],
+                'FUND_SCODE'=> $request->jevh['fund_scode'],
+                'fiscalyear'=> $request->jevh['fiscalyear'],
+            ])->except(['FSTITLE', 'FSTITLE2', 'isSubcode1', 'isSubcode2'])->all()
+       ]);
+
+    //    dd($data->flatten(1)->toArray());
+       
+        $this->jevd->upsert($data->flatten(1)->toArray(), [$jevhRecid],[
+            'FRESPCTR',
+            'FACTCODE',  
+            'FSUBCDE',
+            'FSUBCDE2',  
+            'FALOBNO',   
+            'FVOUCHNO',  
+            'FPRNO',     
+            'FDEBIT',    
+            'FCREDIT',   
+            'FREMARKS',
         ]);
         // dd( $jevRecid);
-
-        // $array = array();
-
-        // foreach ($request->)
         return redirect("/jevh/index")->with('message', 'Added Successfully');
     }
 
