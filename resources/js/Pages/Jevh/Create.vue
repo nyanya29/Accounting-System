@@ -396,12 +396,12 @@ export default {
             })
         },
         submit () {
-            if (!this.totalDebit == this.totalCredit) {
+            if (this.totalDebit != this.totalCredit) {
                 let text =`Warning! Debit and Credit not balance!`;
                 alert(text);
                 return false;
             }
-            
+
             if(this.pageTitle == 'Create')
                 {
                     this.form.post("/jevh/store-jev", {
@@ -444,7 +444,7 @@ export default {
                     if (!this.isEdit) {
                         this.form.jevd.push(data)
                     } else {
-                        _.assign(this.form.jevd[this.jevdForm.index], this.jevdForm)
+                        _.assign(this.form.jevd[this.jevdForm.index], data)
                         this.isEdit = false 
                     }
                     this.jevdForm.reset()

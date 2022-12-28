@@ -99,7 +99,7 @@
                                             Print
                                         </button>
                                     </li>
-                                    <span v-if="jevhdata.fdatepost == '0000-00-00' || jevhdata.fdatepost == null">
+                                    <span v-if="jevhdata.fdatepost == '0000-00-00' || jevhdata.fdatepost == null || jevhdata.fdatepost == 0">
                                         <li><hr class="dropdown-divider action-divider"></li>
                                         <li>
                                             <button class="text-danger dropdown-item" @click="deleteJevh(jevhdata.recid)">Delete</button>

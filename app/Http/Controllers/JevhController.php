@@ -76,10 +76,10 @@ class JevhController extends Controller
     {
         return DB::table('funds_details')->select(DB::raw('TRIM(funds_details.FUND_SCODE) as FUND_SCODE'), 'FUNDDETAIL_NAME')->get();
     }
-    // public function getFundDetails()
-    // {
-    //     return $this->funds->select(DB::raw('TRIM(FUND_SCODE) as FUND_SCODE'), 'FUNDDETAIL_NAME')->get();
-    // }
+    public function getFundDetails()
+    {
+        return $this->funds->select(DB::raw('TRIM(FUND_SCODE) as FUND_SCODE'), 'FUNDDETAIL_NAME')->get();
+    }
 
     // public function store(JevhValidation $request)
     // {

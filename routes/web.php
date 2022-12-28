@@ -70,7 +70,7 @@ Route::middleware('auth')->group(function() {
         //delete
         Route::delete('/jevh-delete/{recid}', [JevhController::class, 'deleteJevh']);
         //getFunds---------
-        // Route::post('/get-fund-details', [JevhController::class, 'getFundDetails']);
+        Route::post('/get-fund-details', [JevhController::class, 'getFundDetails']);
         //charlie update
         Route::patch('/jevd-update/{id}', [JevdController::class, 'update']);
         Route::get('/jevh-report', [JevhController::class, 'JevReport']);
