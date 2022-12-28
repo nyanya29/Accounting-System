@@ -76,12 +76,7 @@ class JevdController extends Controller
                 ->first();
 
         return $totalSum;
-        // dd($totalSum);
     }
-    // public function create()
-    // {
-    //     return inertia('Jevd/Create');
-    // }
 
     public function getChartAccount()
     {

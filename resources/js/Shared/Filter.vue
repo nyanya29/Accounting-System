@@ -5,7 +5,7 @@
     >
         <div class="row" style="width: 380px;">
             <div class="bgc-white">  
-                <div class="modal-header" style="background-color: #42A6F5">
+                <div class="modal-header" style="background-color: #2F365F">
                     <h5 class="modal-title text-light" id="advancedFiltering">Advanced Filtering</h5>
                     <button type="button" class="btn-close" @click="$emit('closeFilter')"></button>
                 </div>

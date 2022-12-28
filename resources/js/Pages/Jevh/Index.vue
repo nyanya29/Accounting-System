@@ -55,7 +55,7 @@
                             <th scope="col">Check No.</th>
                             <th scope="col">Payee</th>
                             <th scope="col">Particulars</th>
-                            <th scope="col">Status</th>
+                            <!-- <th scope="col">Status</th> -->
                             <!-- <th scope="col" style="width: 30%"></th> -->
                             <th scope="col" style="text-align: right">Action</th>
                         </tr>
@@ -69,7 +69,7 @@
                             <td>{{ jevhdata.fchkno }}</td>
                             <td>{{ jevhdata.fpayee }}</td>
                             <td>{{ jevhdata.fremk }}</td>
-                            <td><span class="badge rounded-pill bg-success">✔</span></td>
+                            <!-- <td><span class="badge rounded-pill bg-success">✔</span></td> -->
                             <!-- <td><span class="badge rounded-pill bg-danger">✖</span></td> -->
                             <td style="text-align: right">
                                 <div class="dropdown dropstart">
@@ -99,7 +99,6 @@
                                             Print
                                         </button>
                                     </li>
-                                    <!-- v-if="jevhdata.fdatepost == '0000-00-00' || jevhdata.fdatepost == null " -->
                                     <span v-if="jevhdata.fdatepost == '0000-00-00' || jevhdata.fdatepost == null">
                                         <li><hr class="dropdown-divider action-divider"></li>
                                         <li>

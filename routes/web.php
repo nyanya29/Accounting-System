@@ -63,17 +63,14 @@ Route::middleware('auth')->group(function() {
         Route::post('/store-jev', [JevhController::class, 'storeJev']);
         //------
         Route::post('getFundDetail', [JevhController::class, 'getFundDetail']);
-        Route::post('/store', [JevhController::class, 'store']);
+        // Route::post('/store', [JevhController::class, 'store']);
         //edit update for jevh
-        Route::get('/{recid}/edit', [JevhController::class, 'editJevh']);
-        Route::patch('/update-jevh/{recid}', [JevhController::class, 'updateJevh']);
+        // Route::get('/{recid}/edit', [JevhController::class, 'editJevh']);
+        // Route::patch('/update-jevh/{recid}', [JevhController::class, 'updateJevh']);
         //delete
         Route::delete('/jevh-delete/{recid}', [JevhController::class, 'deleteJevh']);
         //getFunds---------
-        Route::post('/get-fund-details', [JevhController::class, 'getFundDetails']);
-        //garcia----------
-        Route::get('/jevh-create', [JevhController::class, 'jevhCreate']);
-        Route::get('/jevd-create/{id}', [JevhController::class, 'jevdCreate']);
+        // Route::post('/get-fund-details', [JevhController::class, 'getFundDetails']);
         //charlie update
         Route::patch('/jevd-update/{id}', [JevdController::class, 'update']);
         Route::get('/jevh-report', [JevhController::class, 'JevReport']);
@@ -84,7 +81,6 @@ Route::middleware('auth')->group(function() {
     //jevd 
     Route::prefix('/jevd')->group(function($slug){
         Route::post('/index', [JevdController::class, 'jevDetails']);
-        // Route::get('/jevdcreate', [JevdController::class, 'jevdcreate']);
         Route::post('getChartAccount', [JevdController::class, 'getChartAccount']);
         Route::post('getSubCode1', [JevdController::class, 'getSubcode1']);
         Route::post('getSubCode2', [JevdController::class, 'getSubCode2']);

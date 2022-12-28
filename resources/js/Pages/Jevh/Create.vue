@@ -16,7 +16,7 @@
                             <div class="col-md-6">
                                 <label class="col-form-label"><b>Jev Type</b></label>
                                 <select  class="form-select" v-model="form.jevh.fjevtyp">
-                                    <option v-for="(items,index) in jevtype" :value="items.value" :key="index"> {{ items.name }}</option>
+                                    <option v-for="(items,index) in jevtype" :value="items.value" :key="index" aria-placeholder="Select FUND CODE"> {{ items.name }}</option>
                                 </select>
                                 <div class="fs-6 c-red-500">{{ form.errors['jevh.fjevtyp'] }}</div>
                             </div>
@@ -86,10 +86,8 @@
         <div class="col-md-9">
             <div class="form-group row">
                 <div class="col-12 mB-2">
-                    <div class="bgc-white bd p-10 table-responsive-sm shadow my-custom-scrollbar">
-                    <!-- <div class="bgc-white bd table-responsive shadow my-table"> -->
-                        <!-- <table class="table table-hover" style="height: 360px"> -->
-                        <table class="table table-striped table-hover">
+                    <div class="bgc-white bd table-responsive-sm shadow my-custom-scrollbar">
+                        <table class="table table-striped table-hover table-scroll">
                             <thead class="table-warning">
                                 <tr>
                                     <th scope="col">RespCtr</th>
@@ -135,9 +133,9 @@
                                     </td>
                                 </tr>
                             </tbody>
-                            <!-- <tfoot>
+                            <tfoot>
                                 <tr>
-                                    <td colspan="6"></td>
+                                    <td colspan="4" class="fs-6 c-red text-danger" style="text-align: right"><span v-if="totalCredit != totalDebit"><b>Debit is not equal to credit!!!</b></span></td>
                                     <td colspan="2" class="text-end"><b>Total Debit</b></td>
                                     <td colspan="2">
                                         <b>
@@ -151,11 +149,11 @@
                                         </b>
                                     </td>
                                 </tr>
-                                <tr v-if="totalCredit != totalDebit">
+                                <!-- <tr v-if="totalCredit != totalDebit">
                                     <td colspan="9"></td>
-                                    <td colspan="5"><div class="fs-6 c-red text-danger">Debit is not equal to credit!!!</div></td>
-                                </tr>
-                            </tfoot> -->
+                                    <td colspan="5"><div class="fs-6 c-red text-danger"><b>Debit is not equal to credit!!!</b></div></td>
+                                </tr> -->
+                            </tfoot>
                         </table>
                     </div>
                 </div>
@@ -178,17 +176,17 @@
                                         <label class="col-form-label"><b>Act Code/Title</b></label>
                                         <select2 id="FACTCODE" v-model="jevdForm.FACTCODE" :options="factcodes" placeholder="Select Account Code" @select="getSubCode1($event), getSubCode2()"></select2>
 
-                                        <!-- <div class="fs-6 c-red text-danger" v-if="jevdForm.errors.FACTCODE"> {{jevdForm.errors.FACTCODE}}</div> -->
+                                        <div class="fs-6 c-red text-danger" v-if="jevdForm.errors.FACTCODE"> {{jevdForm.errors.FACTCODE}}</div>
 
                                         <label class="col-form-label"><b>Sub Code/Title</b></label>
-                                        <select2 v-model="jevdForm.FSUBCDE" :options="subcode1" placeholder="Select Account Code First" @select="getFtitle($event, 'FSTITLE')"></select2>
+                                        <select2 v-model="jevdForm.FSUBCDE" :options="subcode1" placeholder="Select Account Code First" @select="getFstitle($event, 'FSTITLE')"></select2>
 
-                                        <!-- <div class="text-danger" v-if="jevdForm.errors.FSUBCDE"> {{jevdForm.errors.FSUBCDE}}</div> -->
+                                        <div class="text-danger" v-if="jevdForm.errors.FSUBCDE"> {{jevdForm.errors.FSUBCDE}}</div>
 
                                         <label class="col-form-label"><b>Sub Code2/Title</b></label>
-                                        <select2 v-model="jevdForm.FSUBCDE2" :options="subcode2" placeholder="Select Account Code First" @select="getFtitle($event, 'FSTITLE2')"></select2>
+                                        <select2 v-model="jevdForm.FSUBCDE2" :options="subcode2" placeholder="Select Account Code First" @select="getFstitle($event, 'FSTITLE2')"></select2>
 
-                                        <!-- <div class="text-danger" v-if="jevdForm.errors.FSUBCDE2"> {{jevdForm.errors.FSUBCDE2}}</div> -->
+                                        <div class="text-danger" v-if="jevdForm.errors.FSUBCDE2"> {{jevdForm.errors.FSUBCDE2}}</div>
                                     </div>
                                     
                                     <div class="col-md-5">
@@ -211,7 +209,7 @@
                                             :disabled="jevdForm.FCREDIT != ''"
                                             :placeholder="jevdForm.FCREDIT != '' ? `Unable to input Debit` : ``"
                                         >
-                                        <!-- <div class="fs-6 c-red text-danger" v-if="jevdForm.errors.FDEBIT"> {{jevdForm.errors.FDEBIT}}</div> -->
+                                        <div class="fs-6 c-red text-danger" v-if="jevdForm.errors.FDEBIT"> {{jevdForm.errors.FDEBIT}}</div>
                                     </div>
                                     <div class="col-md-6">
                                         <label class="col-mb-6 col-form-label"><b>Credit</b></label>
@@ -225,11 +223,10 @@
                                                     :disabled="jevdForm.FDEBIT != ''"
                                                     :placeholder="jevdForm.FDEBIT != '' ? `Unable to input Credit` : ``"
                                                 >
-                                                <!-- <div class="fs-6 c-red text-danger" v-if="jevdForm.errors.FCREDIT"> {{jevdForm.errors.FCREDIT}}</div> -->
+                                                <div class="fs-6 c-red text-danger" v-if="jevdForm.errors.FCREDIT"> {{jevdForm.errors.FCREDIT}}</div>
                                             </div>
                                             <div class="col-md-4">
-                                                <button type="button" class="btn btn-primary" v-if="pageTitle === 'Create'" :disabled="isDisabled" @click="addJevD()"> {{ buttonJevd }}</button>
-                                                <button type="button" class="btn btn-primary" v-if="pageTitle === 'Edit'" :disabled="isDisabled" @click="saveAll()">Update</button>
+                                                <button type="button" class="btn btn-primary" @click="addJevD()">{{ buttonJevd }}</button>
                                             </div>
                                         </div>
                                     </div>
@@ -254,8 +251,8 @@ export default {
     props:{
         data:Object,
         jevd1:Array,
-        totalCredit: Number,
-        totalDebit: Number,
+        // totalCredit: Number,
+        // totalDebit: Number,
         data1:Object
     },
     data () {
@@ -272,6 +269,7 @@ export default {
             jevdForm: useForm({
                 FRESPCTR:   "",
                 FACTCODE:   "",
+                FTITLE:     "",
                 FSUBCDE:    "",
                 FSTITLE:    "",
                 FSUBCDE2:   "",
@@ -308,6 +306,8 @@ export default {
                },
                jevd: [],
             }),
+
+
             pageTitle: 'Create',
             isDisabled: false,
             recid_to_update:null,
@@ -353,12 +353,18 @@ export default {
     computed: {
         buttonJevd: function() {
             return !this.isEdit ? "Add" : "Update"
+        },
+        totalDebit () {
+            return _.sumBy(this.form.jevd, 'FDEBIT');
+        },
+        totalCredit () {
+            return _.sumBy(this.form.jevd, 'FCREDIT');
         }
     },
 
     methods: {
-        getFtitle(e, _model) {
-            console.log(e)
+        getFstitle(e, _model) {
+            // console.log(e)
             this.jevdForm[_model] = e.fs_title
         }, 
 
@@ -373,7 +379,7 @@ export default {
             })
         },
         getSubCode1(e) {
-            console.log(e.jtitle);
+            // console.log(e.jtitle);
             this.jevdForm.FTITLE = e.jtitle;
                 axios.post('/jevd/getSubCode1', {FACTCODE: this.jevdForm.FACTCODE}).then( response => {
                 this.subcode1 = response.data
@@ -390,22 +396,21 @@ export default {
             })
         },
         submit () {
-            if (this.form.errors['jevh.is_balance']) {
-                let text = `Warning! ${this.form.errors['jevh.is_balance']}`;
+            if (!this.totalDebit == this.totalCredit) {
+                let text =`Warning! Debit and Credit not balance!`;
                 alert(text);
+                return false;
             }
-            if( this.pageTitle == 'Create')
+            
+            if(this.pageTitle == 'Create')
                 {
                     this.form.post("/jevh/store-jev", {
-                            
                             // onSuccess: () => {
-
                             //     this.form.reset();
-                                
                             // }
                         }
                     );
-        }
+            }
         // else {
         //     this.form.patch('/jevh/jevd-update/'+this.recid_to_update, {
         //         onFinish: visit => {
@@ -416,7 +421,7 @@ export default {
 
         },
         addJevD(){
-            var data = {};
+            var data = {FTITLE: this.jevdForm.FTITLE};
             _.assign(data, {
                 FRESPCTR: this.jevdForm.FRESPCTR,
                 FACTCODE: this.jevdForm.FACTCODE,
@@ -433,15 +438,13 @@ export default {
                 isSubcode1: this.jevdForm.isSubcode1,
                 isSubcode2: this.jevdForm.isSubcode2
             })
-            console.log(data)
+            // console.log(data)
             this.jevdForm.post('/jevd/validate', {
                 onSuccess: () => {
                     if (!this.isEdit) {
                         this.form.jevd.push(data)
                     } else {
-                        console.log(this.jevdForm.index)
                         _.assign(this.form.jevd[this.jevdForm.index], this.jevdForm)
-                        // this.form.jevd[this.]
                         this.isEdit = false 
                     }
                     this.jevdForm.reset()
@@ -451,14 +454,9 @@ export default {
         },
         async editJevD(item, index) {
             this.isEdit = true
-            console.log(index);
-            console.log(item.FACTCODE)
-            this.jevdForm = {index:index, FACTCODE: item.FACTCODE}
-            // await this.getSubCode1({jtitle:item.FTITLE});
+            _.assign(this.jevdForm, {index:index, FACTCODE: item.FACTCODE})
             await this.getSubCode1({FACTCODE:this.jevdForm.FACTCODE});
-            // _.assign(this.jevdForm, {index:index});
             _.assign(this.jevdForm, item);
-            console.log(item)
             
         },
 
@@ -472,8 +470,28 @@ export default {
             //     this.form.jevd.splice(index,1);
             // }, timeout),1000;
             //    console.log(this.form.jevd);
-            }  
+            }
+            this.jevdForm.reset() 
         },
     },
 }
 </script>
+<style scoped>
+    .table-scroll tfoot,
+    .table-scroll tfoot th,
+    .table-scroll tfoot td {
+        position: -webkit-sticky;
+        position: sticky;
+        bottom: 0;
+        background: rgb(47, 54, 95);
+        color: #fff;
+        z-index:4;
+    }
+    .table-scroll thead th {
+        background: rgb(6, 13, 50);
+        color: #fff;
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+    }
+</style>

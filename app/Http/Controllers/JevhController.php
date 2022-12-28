@@ -76,23 +76,21 @@ class JevhController extends Controller
     {
         return DB::table('funds_details')->select(DB::raw('TRIM(funds_details.FUND_SCODE) as FUND_SCODE'), 'FUNDDETAIL_NAME')->get();
     }
-    public function getFundDetails()
-    {
-        return $this->funds->select(DB::raw('TRIM(FUND_SCODE) as FUND_SCODE'), 'FUNDDETAIL_NAME')->get();
-    }
+    // public function getFundDetails()
+    // {
+    //     return $this->funds->select(DB::raw('TRIM(FUND_SCODE) as FUND_SCODE'), 'FUNDDETAIL_NAME')->get();
+    // }
 
-    public function store(JevhValidation $request)
-    {
-        $request->validated();
+    // public function store(JevhValidation $request)
+    // {
+    //     $request->validated();
 
-        $data = $this->model->create($request->all());
-        return redirect("/jevh/jevd-create/$data->recid")->with('message', 'Added Successfully');
-    }
+    //     $data = $this->model->create($request->all());
+    //     return redirect("/jevh/jevd-create/$data->recid")->with('message', 'Added Successfully');
+    // }
     //garcia
     public function create()
     {
-        // $data = $this->model->create();
-        // return redirect("/jevh/create-jevd/$data->recid");
         return inertia('Jevh/Create');
     }
     // public function createJevd(Request $request, $recid)
@@ -105,11 +103,7 @@ class JevhController extends Controller
     // }
     public function storeJev(JevhValidation $request)
     {
-        // dd($request->all());
         $request->validated();
-        // if ($request->validated()) {
-        //     dd($request);
-        // };
         
         $jevhData = $this->model->create([
                 "fiscalyear"    =>  $request->jevh['fiscalyear'],
@@ -128,18 +122,14 @@ class JevhController extends Controller
         ]);
         
         $jevhRecid = $jevhData->recid;
-        // dd(collect(collect($request->jevd)->all())->except(['FSTITLE']));
-        // $jevdData= $this->jevd->findOrFail($jevhRecid);
+
        $data = collect($request->jevd)->map( fn($item) => [
             collect($item)->merge([
                 'FJEVNO'=> $request->jevh['fjevno'],
                 'FUND_SCODE'=> $request->jevh['fund_scode'],
                 'fiscalyear'=> $request->jevh['fiscalyear'],
-            ])->except(['FSTITLE', 'FSTITLE2', 'isSubcode1', 'isSubcode2'])->all()
+            ])->except(['FTITLE','FSTITLE', 'FSTITLE2', 'isSubcode1', 'isSubcode2'])->all()
        ]);
-
-    //    dd($data->flatten(1)->toArray());
-       
         $this->jevd->upsert($data->flatten(1)->toArray(), [$jevhRecid],[
             'FRESPCTR',
             'FACTCODE',  
@@ -152,82 +142,34 @@ class JevhController extends Controller
             'FCREDIT',   
             'FREMARKS',
         ]);
-        // dd( $jevRecid);
         return redirect("/jevh/index")->with('message', 'Added Successfully');
     }
-
-    public function jevdCreate(Request $request, $id)
-    {
-        $data = $this->model->findOrFail($id);
-        // $data1 = $request->session()->all();
-
-        $jevD =  DB::table('jevd')
-                    ->select('jevd.*',
-                            'chartofaccounts.FTITLE',
-                            'subaccounts1.FTITLE',
-                            'subaccounts1.FSTITLE',
-                            'subaccounts2.FSTITLE2',
-                            'funds_details.FUNDDETAIL_NAME',
-                            DB::raw(
-                                'FORMAT(jevd.FCREDIT, 2) as jevdCredit, 
-                                FORMAT(jevd.FDEBIT, 2) as jevdDebit'
-                            )
-                        )
-                    ->leftJoin('chartofaccounts', function ($query) {
-                        $query->on('chartofaccounts.FACTCODE', '=', 'jevd.FACTCODE')
-                            ->on('jevd.fiscalyear', '>=', 'chartofaccounts.fiscalyear')
-                            ->on('jevd.fiscalyear', '<=', 'chartofaccounts.fiscalyear_to');
-                    })
-                    ->leftJoin('subaccounts1', function ($query) {
-                        $query->on('subaccounts1.FACTCODE', '=', 'jevd.FACTCODE')
-                            ->on('subaccounts1.FSUBCDE', '=', 'jevd.FSUBCDE');
-                    })
-                    ->leftJoin('subaccounts2', function ($query) {
-                        $query->on('subaccounts2.FACTCODE', '=', 'jevd.FACTCODE')
-                            ->on('subaccounts2.FSUBCDE', '=', 'jevd.FSUBCDE')
-                            ->on('subaccounts2.FSUBCDE2', '=', 'jevd.FSUBCDE2');
-                    })
-                    ->leftJoin('funds_details', 'jevd.FUND_SCODE', 'funds_details.FUND_SCODE')
-                    ->where('jevd.FJEVNO','=',$data->fjevno)
-                    ->where('jevd.FUND_SCODE','=',$data->fund_scode)
-                    ->where('jevd.fiscalyear','=',$data->fiscalyear)
-                    ->orderBy('jevd.recid', 'desc')
-                    ->get();
-        // dd($jevD);
-        return inertia('Jevh/Jevd/Create',[
-            'jevd1' => $jevD,
-            'data' => $data,
-            'totalDebit' => $jevD->sum('FDEBIT'),
-            'totalCredit' => $jevD->sum('FCREDIT'),
-        ]);
-    }
-
     public function JevReport()
     {
        return inertia('Jevh/JevReport');
     }
-    public function editJevh(Request $request, $recid)
-    {
-        $data = $this->model->where('recid',$recid)->first();
-        return inertia('Jevh/JevhCreate',[
-            'editData'=> $data
-        ]);
-    }
-    public function updateJevh(Request $request)
-    {
-        try {
-            //code...
-            $data = $this->model->findOrFail($request->recid);
-            // dd($request->all());
-            $data->update($request->all());
-        } catch (\Throwable $th) {
-            //throw $th;
-            return $th->getMessage();
-        }
-        // dd("test");
+    // public function editJevh(Request $request, $recid)
+    // {
+    //     $data = $this->model->where('recid',$recid)->first();
+    //     return inertia('Jevh/JevhCreate',[
+    //         'editData'=> $data
+    //     ]);
+    // }
+    // public function updateJevh(Request $request)
+    // {
+    //     try {
+    //         //code...
+    //         $data = $this->model->findOrFail($request->recid);
+    //         // dd($request->all());
+    //         $data->update($request->all());
+    //     } catch (\Throwable $th) {
+    //         //throw $th;
+    //         return $th->getMessage();
+    //     }
+    //     // dd("test");
 
-        return redirect("/jevh/jevd-create/".$data->recid)->with('message', 'Updated Successfully');
-    }
+    //     return redirect("/jevh/jevd-create/".$data->recid)->with('message', 'Updated Successfully');
+    // }
     public function deleteJevh(Request $request)
     {
         $data = $this->model->findorFail($request->recid);
