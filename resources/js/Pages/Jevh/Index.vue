@@ -226,7 +226,7 @@ export default {
             this.$inertia.get('/jevh/index')
         },
         print(jevhdata){
-            window.open('http://122.54.19.170:8000/jasperserver/flow.html?pp=u%3DJamshasadid%7Cr%3DManager%7Co%3DEMEA,Sales%7Cpa1%3DSweden&_flowId=viewReportFlow&_flowId=viewReportFlow&_flowId=viewReportFlow&ParentFolderUri=%2Freports%2Faccounting_system&reportUnit=%2Freports%2Faccounting_system%2Fjevd_report&standAlone=true&decorate=no&FJEVNO='+jevhdata.fjevno+'&FUND_SCODE='+jevhdata.fund_scode+'&fiscalyear='+jevhdata.fiscalyear);
+            window.open('http://122.54.19.171:8080/jasperserver/flow.html?pp=u%3DJamshasadid%7Cr%3DManager%7Co%3DEMEA,Sales%7Cpa1%3DSweden&_flowId=viewReportFlow&_flowId=viewReportFlow&_flowId=viewReportFlow&ParentFolderUri=%2Freports%2Faccounting_system&reportUnit=%2Freports%2Faccounting_system%2Fjevd_report&standAlone=true&decorate=no&FJEVNO='+jevhdata.fjevno+'&FUND_SCODE='+jevhdata.fund_scode+'&fiscalyear='+jevhdata.fiscalyear);
         },
         deleteJevh(recid){
             let text = "Warning!\Are you sure you want to delete this record?";

@@ -494,7 +494,7 @@ var _hoisted_3 = {
 var _hoisted_4 = {
   "class": "modal-header",
   style: {
-    "background-color": "#42A6F5"
+    "background-color": "#2F365F"
   }
 };
 
