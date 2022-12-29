@@ -1,5 +1,5 @@
 <template>
-<div class="row gap-10 masonry pos-r">
+    <div class="row gap-10 masonry pos-r">
     <div class="peers fxw-nw jc-sb ai-c">
         <h3>{{ pageTitle}}</h3>
         <back-button :backToURL="'/jevh/index'"></back-button>
@@ -18,41 +18,41 @@
                                 <select  class="form-select" v-model="form.jevh.fjevtyp">
                                     <option v-for="(items,index) in jevtype" :value="items.value" :key="index" aria-placeholder="Select FUND CODE"> {{ items.name }}</option>
                                 </select>
-                                <div class="fs-6 c-red-500">{{ form.errors['jevh.fjevtyp'] }}</div>
+                                <!-- <div class="fs-6 c-red-500">{{ form.errors['jevh.fjevtyp'] }}</div> -->
                             </div>
                         </div>
                         <label class="col-form-label"><b>Fund Details Code</b></label>
                             <select class="form-select" v-model="form.jevh.fund_scode">
                                 <option v-for="items in funds" :value="items.FUND_SCODE" :key="items.recid">{{ items.FUNDDETAIL_NAME }}</option>
                             </select>
-                            <div class="fs-6 c-red-500">{{ form.errors['jevh.fund_scode'] }}</div>
+                            <!-- <div class="fs-6 c-red-500">{{ form.errors['jevh.fund_scode'] }}</div> -->
                         <div class="row">
                             <div class="col-md-6">
                                 <label class="col-form-label"><b>JEV Number</b></label>
                                 <input type="text" v-model="form.jevh.fjevno" class="form-control" autocomplete="chrome-off">
-                                <div class="text-danger">{{ form.errors['jevh.fjevno'] }}</div>
+                                <!-- <div class="text-danger">{{ form.errors['jevh.fjevno'] }}</div> -->
                             </div>
                             <div class="col-md-6">
                                 <label class="col-form-label"><b>JEV Date</b></label>
                                 <input type="date" v-model="form.jevh.fjevdate" class="form-control" autocomplete="chrome-off">
-                                <div class="text-danger">{{ form.errors['jevh.fjevdate'] }}</div>
+                                <!-- <div class="text-danger">{{ form.errors['jevh.fjevdate'] }}</div> -->
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <label class="col-form-label"><b>Check No</b></label>
                                 <input type="text" v-model="form.jevh.fchkno" class="form-control" autocomplete="chrome-off">
-                                <div class="fs-6 c-red-500">{{ form.errors['jevh.fchkno'] }}</div>
+                                <!-- <div class="fs-6 c-red-500">{{ form.errors['jevh.fchkno'] }}</div> -->
                             </div>
                             <div class="col-md">
                                 <label class="col-form-label"><b>Ref #</b></label>
                                 <input type="text" v-model="form.jevh.frefno" class="form-control" autocomplete="chrome-off">
-                                <div class="fs-6 c-red-500">{{ form.errors['jevh.frefno'] }}</div>
+                                <!-- <div class="fs-6 c-red-500">{{ form.errors['jevh.frefno'] }}</div> -->
                             </div>
                         </div>
                         <label class="col-mb-3 col-form-label"><b>Payee</b></label>
                         <input type="text" v-model="form.jevh.fpayee" class="form-control" autocomplete="chrome-off">
-                        <div class="fs-6 c-red-500">{{ form.errors['jevh.fpayee'] }}</div>
+                        <!-- <div class="fs-6 c-red-500">{{ form.errors['jevh.fpayee'] }}</div> -->
 
                         <label class="col-mb-3 col-form-label"><b>Description</b></label>
                         <textarea 
@@ -62,23 +62,23 @@
                             id="floatingTextarea2" 
                             style="height:105px;">
                         </textarea>
-                        <div class="fs-6 c-red-500">{{ form.errors['jevh.fremk'] }}</div>
+                        <!-- <div class="fs-6 c-red-500">{{ form.errors['jevh.fremk'] }}</div> -->
                         <label class="col-mb-3 col-form-label"><b>Prepared by:</b></label>
 
                         <input type="text" v-model="form.jevh.fprepby" class="form-control" autocomplete="chrome-off"/>
-                        <div class="fs-6 c-red-500">{{ form.errors['jevh.fprepby'] }}</div>
+                        <!-- <div class="fs-6 c-red-500">{{ form.errors['jevh.fprepby'] }}</div> -->
 
                         <label class="col-mb-3 col-form-label"><b>Position</b></label>
                         <input type="text" v-model="form.jevh.fprepd" class="form-control" autocomplete="chrome-off"/>
-                        <div class="fs-6 c-red-500">{{ form.errors['jevh.fprepd'] }}</div>
+                        <!-- <div class="fs-6 c-red-500">{{ form.errors['jevh.fprepd'] }}</div> -->
 
                         <label class="col-mb-3 col-form-label"><b>Approved by:</b></label>
                         <input type="text" v-model="form.jevh.fappvby" class="form-control" autocomplete="chrome-off"/>
-                        <div class="fs-6 c-red-500" >{{ form.errors['jevh.fappvby'] }}</div>
+                        <!-- <div class="fs-6 c-red-500" >{{ form.errors['jevh.fappvby'] }}</div> -->
 
                         <label class="col-mb-3 col-form-label"><b>Position</b></label>
                         <input type="text" v-model="form.jevh.fappvd" class="form-control" autocomplete="chrome-off"/>
-                        <div class="fs-6 c-red-500" >{{ form.errors['jevh.fappvd'] }}</div>
+                        <!-- <div class="fs-6 c-red-500" >{{ form.errors['jevh.fappvd'] }}</div> -->
                     </div>
                 </form>
             </div>
@@ -206,8 +206,8 @@
                                             v-model="jevdForm.FDEBIT" 
                                             class="form-control" 
                                             autocomplete="chrome-off" 
-                                            :disabled="jevdForm.FCREDIT != ''"
-                                            :placeholder="jevdForm.FCREDIT != '' ? `Unable to input Debit` : ``"
+                                            :disabled="!!jevdForm.FCREDIT"
+                                            :placeholder="!!jevdForm.FCREDIT ? `Unable to input Debit` : ``"
                                         >
                                         <div class="fs-6 c-red text-danger" v-if="jevdForm.errors.FDEBIT"> {{jevdForm.errors.FDEBIT}}</div>
                                     </div>
@@ -220,8 +220,8 @@
                                                     v-model="jevdForm.FCREDIT" 
                                                     class="form-control"
                                                     autocomplete="chrome-off"
-                                                    :disabled="jevdForm.FDEBIT != ''"
-                                                    :placeholder="jevdForm.FDEBIT != ''? `Unable to input Credit` : ``"
+                                                    :disabled="!!jevdForm.FDEBIT"
+                                                    :placeholder="!!jevdForm.FDEBIT ? `Unable to input Credit` : ``"
                                                 >
                                                 <div class="fs-6 c-red text-danger" v-if="jevdForm.errors.FCREDIT"> {{jevdForm.errors.FCREDIT}}</div>
                                             </div>
@@ -240,14 +240,20 @@
                 </div>
             </div>
         </div>
-    </div>    
+    </div>  
 </template>
+
 <script>
 import { useForm } from '@inertiajs/inertia-vue3';
 import ToCurrency from '../../Shared/ToCurrency.vue';
 
 export default {
-  components: { ToCurrency },
+    components: { ToCurrency },
+    props: {
+        factcodes: Array,
+        editData: Object,
+        jevd: Array
+    },  
     data () {
         return {
             jevtype:[
@@ -259,6 +265,8 @@ export default {
                 {value:6, name:"Procurement"},
             ],
             funds: [],
+            subcode1: [],
+            subcode2: [],
             jevdForm: useForm({
                 FRESPCTR:   "",
                 FACTCODE:   "",
@@ -276,78 +284,59 @@ export default {
                 isSubcode1: '',
                 isSubcode2: '',
             }),
-            factcodes:[],
-            subcode1: [],
-            subcode2: [],
-            temp_account_title:"",
             form: useForm({
-               jevh: {
-                    fiscalyear: new Date().getFullYear(),
-                    fund_scode: "",
-                    fjevno:     "",
-                    fjevtyp:    "",
-                    fjevdate:   "",
-                    fpayee:     "",
-                    fchkno:     "",
-                    fremk:      "",
-                    frefno:     "",
-                    fprepby:    "",
-                    fprepd:     "",
-                    fappvby:    "",
-                    fappvd:     "",
-                    is_balance: "",
-               },
+               jevh: this.editData,
                jevd: [],
             }),
-
-
-            pageTitle: 'Create',
+            pageTitle: 'Edit',
             isDisabled: false,
             isEdit: false
         }
     },
-
-    mounted() {
+    mounted () {
         this.getFundDetail()
-        this.getChartAccount()
-    },
 
-    watch: {
-        // 'jevdData': function(value) {
-        //     this.getSubCode1()
-        //     this.getSubCode2()
-        // },
-        'jevdForm.FACTCODE': function(value) {
-            this.jevdForm.FSUBCDE = ''
-            this.jevdForm.FSUBCDE2 = ''
-        },
+        _.assign(this.form.jevd, this.jevd)
     },
     computed: {
         buttonJevd: function() {
             return !this.isEdit ? "Add" : "Update"
         },
         totalDebit () {
-            return _.sumBy(this.form.jevd, 'FDEBIT');
+            var total =_.map(this.form.jevd, (obj)  => {  
+                let current_value = [];
+                if (obj.FDEBIT == null) {
+                    current_value.push(0)
+                } else {
+                    current_value.push(obj.FDEBIT)
+                }
+                return Number(current_value);
+            })
+            return _.sum(total);
+            // return _.sumBy(this.form.jevd, 'FDEBIT');
         },
         totalCredit () {
-            return _.sumBy(this.form.jevd, 'FCREDIT');
+            var total =_.map(this.form.jevd, (obj)  => {  
+                let current_value = [];
+                if (obj.FCREDIT == null) {
+                    current_value.push(0)
+                } else {
+                    current_value.push(obj.FCREDIT)
+                }
+                return Number(current_value);
+            })
+            return _.sum(total);
+            // return _.sumBy(this.form.jevd, 'FCREDIT');
         }
     },
-
     methods: {
         getFstitle(e, _model) {
             // console.log(e)
             this.jevdForm[_model] = e.fs_title
         }, 
-
         getFundDetail() {
             axios.post('/jevh/getFundDetail').then(response => {
                 this.funds = response.data
-            })
-        },
-        getChartAccount() {
-            axios.post('/jevd/getChartAccount').then(response => {
-                this.factcodes = response.data
             })
         },
         getSubCode1(e) {
@@ -367,31 +356,6 @@ export default {
                 
             })
         },
-        submit () {
-            if (this.totalDebit != this.totalCredit) {
-                let text =`Warning! Debit and Credit not balance!`;
-                alert(text);
-                return false;
-            }
-
-            if(this.pageTitle == 'Create')
-                {
-                    this.form.post("/jevh/store-jev", {
-                            // onSuccess: () => {
-                            //     this.form.reset();
-                            // }
-                        }
-                    );
-            }
-        // else {
-        //     this.form.patch('/jevh/jevd-update/'+this.recid_to_update, {
-        //         onFinish: visit => {
-        //             this.$inertia.visit('/jevh/jevd-create/'+this.data.recid)
-        //         } 
-        //     });
-        // }
-
-        },
         addJevD(){
             var data = {FTITLE: this.jevdForm.FTITLE};
             _.assign(data, {
@@ -404,8 +368,8 @@ export default {
                 FALOBNO: this.jevdForm.FALOBNO,
                 FVOUCHNO: this.jevdForm.FVOUCHNO,
                 FPRNO: this.jevdForm.FPRNO,
-                FDEBIT: this.jevdForm.FDEBIT ? this.jevdForm.FDEBIT : 0,
-                FCREDIT: this.jevdForm.FCREDIT ? this.jevdForm.FCREDIT : 0,
+                FDEBIT: this.jevdForm.FDEBIT,
+                FCREDIT: this.jevdForm.FCREDIT,
                 FREMARKS: this.jevdForm.FREMARKS,
                 isSubcode1: this.jevdForm.isSubcode1,
                 isSubcode2: this.jevdForm.isSubcode2
@@ -436,18 +400,27 @@ export default {
         {
             let text = "Warning!\Are you sure you want to Delete this Record?";
             if(confirm(text) == true) {
-            //    console.log(index);
-            this.form.jevd.splice(index,1);
-            // setTimeout(() => {
-            //     this.form.jevd.splice(index,1);
-            // }, timeout),1000;
-            //    console.log(this.form.jevd);
+
+                this.form.jevd.splice(index,1);
+            
             }
+            
             this.jevdForm.reset() 
         },
-    },
+        submit () {
+            if (this.totalDebit != this.totalCredit) {
+                let text =`Warning! Debit and Credit not balance!`;
+                alert(text);
+                return false;
+            }
+            
+            this.form.post(`/jevh/store-jev/${this.form.jevh.recid}`);
+
+        },
+    }
 }
 </script>
+
 <style scoped>
     .table-scroll tfoot,
     .table-scroll tfoot th,

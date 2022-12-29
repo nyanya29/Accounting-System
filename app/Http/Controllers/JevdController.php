@@ -80,38 +80,40 @@ class JevdController extends Controller
 
     public function getChartAccount()
     {
-        return DB::table('chartofaccounts')
-                ->select(DB::raw('TRIM(FACTCODE) as FACTCODE'), 'FTITLE')
-                ->get()
-                ->map(fn($item) => [
-                    'id'    =>  $item->FACTCODE,
-                    // 'text'  =>  "$item->FTITLE",
-                    'text' =>  "$item->FACTCODE ----- $item->FTITLE",
-                    'jtitle' => $item->FTITLE
-                ]);
+        return getChartAccount();
+        // return DB::table('chartofaccounts')
+        //         ->select(DB::raw('TRIM(FACTCODE) as FACTCODE'), 'FTITLE')
+        //         ->get()
+        //         ->map(fn($item) => [
+        //             'id'    =>  $item->FACTCODE,
+        //             // 'text'  =>  "$item->FTITLE",
+        //             'text' =>  "$item->FACTCODE ----- $item->FTITLE",
+        //             'jtitle' => $item->FTITLE
+        //         ]);
     }
 
     public  function getSubCode1(Request $request)
     {
-       return DB::table('subaccounts1')
-                ->select(
-                    'subaccounts1.*',
-                    'chartofaccounts.FACTCODE',
-                    'chartofaccounts.FTITLE',
-                    'subaccounts1.FSUBCDE',
-                    'subaccounts1.FSTITLE',
-                    DB::raw('TRIM(subaccounts1.FSUBCDE) as FSUBCDE, TRIM(subaccounts1.FSTITLE) as FSTITLE')
-                )
-                ->leftJoin('chartofaccounts', function ($query) {
-                    $query->on('chartofaccounts.FACTCODE', '=', 'subaccounts1.FACTCODE');
-                })
-                ->where('subaccounts1.FACTCODE','=',$request->FACTCODE)
-                ->get()
-                ->map(fn($item) => [
-                   'id'         =>  $item->FSUBCDE,
-                   'text'       =>  "$item->FSUBCDE ----- $item->FSTITLE",
-                   'fs_title'    =>  $item->FSTITLE
-                ]);
+        return getSubCode1($request);
+    //    return DB::table('subaccounts1')
+    //             ->select(
+    //                 'subaccounts1.*',
+    //                 'chartofaccounts.FACTCODE',
+    //                 'chartofaccounts.FTITLE',
+    //                 'subaccounts1.FSUBCDE',
+    //                 'subaccounts1.FSTITLE',
+    //                 DB::raw('TRIM(subaccounts1.FSUBCDE) as FSUBCDE, TRIM(subaccounts1.FSTITLE) as FSTITLE')
+    //             )
+    //             ->leftJoin('chartofaccounts', function ($query) {
+    //                 $query->on('chartofaccounts.FACTCODE', '=', 'subaccounts1.FACTCODE');
+    //             })
+    //             ->where('subaccounts1.FACTCODE','=',$request->FACTCODE)
+    //             ->get()
+    //             ->map(fn($item) => [
+    //                'id'         =>  $item->FSUBCDE,
+    //                'text'       =>  "$item->FSUBCDE ----- $item->FSTITLE",
+    //                'fs_title'    =>  $item->FSTITLE
+    //             ]);
 
                 // return $subcode1;
     }
@@ -137,43 +139,6 @@ class JevdController extends Controller
                     'text'   =>  "$item->FSUBCDE2 ----- $item->FSTITLE2",
                     'fs_title' => "$item->FSTITLE2"
                 ]);
-    }
-    //jevd crud
-    public function store(Request $request)
-    {
-        // dd($request->jevh);
-        $request['FCREDIT'] = $request->FCREDIT ? $request->FCREDIT : 0;
-        $request['FDEBIT'] = $request->FDEBIT ? $request->FDEBIT : 0;
-        // $validated = $request->validated();
-        
-        $jevd = $this->model->create($request->all());
-        return redirect()->back()->with('message', "Added Successfully");
-    }
-
-    public function editJevd(Request $request,$id)
-    {
-        $data = $this->model->where('recid', $id)->first();
-        $data->FCREDIT = $data->FCREDIT != 0 ? $data->FCREDIT : ''; 
-        $data->FDEBIT = $data->FDEBIT != 0 ? $data->FDEBIT : ''; 
-        return $data;
-    }
-
-    public function update(Request $request, $id)
-    {
-        $request['FCREDIT'] = $request->FCREDIT ? $request->FCREDIT : 0;
-        $request['FDEBIT'] = $request->FDEBIT ? $request->FDEBIT : 0;   
-        $data = $this->model->findOrFail($request->id);
-        $data->update($request->all());
-
-        return back()->with('message', "Updated Succesfuly");
-    }
-
-    public function destroy(Request $request)
-    {
-        $data = $this->model->findOrFail($request->id);
-        $data->delete();
-        
-       return back()->with('message', 'Successfully Deleted!');
     }
 
     public function validate_jevD(JevdValidation $request)

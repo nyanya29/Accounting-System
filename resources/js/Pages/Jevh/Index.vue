@@ -68,7 +68,7 @@
                             <td>{{ jevhdata.fjevdate }}</td>
                             <td>{{ jevhdata.fchkno }}</td>
                             <td>{{ jevhdata.fpayee }}</td>
-                            <td>{{ jevhdata.fremk }}</td>
+                            <td width="400">{{ jevhdata.fremk }}</td>
                             <!-- <td><span class="badge rounded-pill bg-success">✔</span></td> -->
                             <!-- <td><span class="badge rounded-pill bg-danger">✖</span></td> -->
                             <td style="text-align: right">

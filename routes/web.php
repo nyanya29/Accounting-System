@@ -57,24 +57,13 @@ Route::middleware('auth')->group(function() {
     //jevh
     Route::prefix('/jevh')->group(function(){
         Route::get('/index', [JevhController::class, 'index']);
-        //------
         Route::get('/create', [JevhController::class, 'create']);
-        // Route::get('/create-jevd/{recid}', [JevhController::class, 'createJevd']);
-        Route::post('/store-jev', [JevhController::class, 'storeJev']);
-        //------
+        Route::post('/store-jev/{edit_id?}', [JevhController::class, 'storeJev']);
+        Route::get('/{recid}/edit', [JevhController::class, 'edit']);
         Route::post('getFundDetail', [JevhController::class, 'getFundDetail']);
-        // Route::post('/store', [JevhController::class, 'store']);
-        //edit update for jevh
-        // Route::get('/{recid}/edit', [JevhController::class, 'editJevh']);
-        // Route::patch('/update-jevh/{recid}', [JevhController::class, 'updateJevh']);
-        //delete
         Route::delete('/jevh-delete/{recid}', [JevhController::class, 'deleteJevh']);
-        //getFunds---------
         Route::post('/get-fund-details', [JevhController::class, 'getFundDetails']);
-        //charlie update
-        Route::patch('/jevd-update/{id}', [JevdController::class, 'update']);
         Route::get('/jevh-report', [JevhController::class, 'JevReport']);
-        //jev posting----
         Route::get('/jev-posting-index', [JevhController::class, 'postingIndex']);
         Route::post('/jev-posting', [JevhController::class, 'posting']);
     });
@@ -85,10 +74,6 @@ Route::middleware('auth')->group(function() {
         Route::post('getSubCode1', [JevdController::class, 'getSubcode1']);
         Route::post('getSubCode2', [JevdController::class, 'getSubCode2']);
         Route::post('/credit-debit-total', [JevdController::class, 'jevdTotal']);
-        Route::post('/', [JevdController::class, 'store']);
-        // Route::post('/get-jevdData', [JevdController::class, 'jevDetails']);
-        Route::get('/{id}/edit', [JevdController::class, 'editJevd']);
-        Route::delete('/{id}', [JevdController::class, 'destroy']);
         Route::post('/validate', [JevdController::class, 'validate_jevD']);
     });
     //reports
