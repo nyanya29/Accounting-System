@@ -10,6 +10,7 @@ use App\Http\Controllers\JevdController;
 use App\Http\Controllers\JevdReportsController;
 use App\Http\Controllers\JevhController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\SystemUserController;
 use App\Http\Requests\JevhValidation;
 use App\Models\Jevh;
 
@@ -23,6 +24,7 @@ Route::middleware('auth')->group(function() {
 
     Route::prefix('/users')->group(function() {
         Route::get('/', [UserController::class, 'index']);
+        // Route::get('/', [SystemUserController::class, 'index']);
         Route::post('/', [UserController::class, 'store']);
         Route::get('/create', [UserController::class, 'create'])->can('create', 'App\Model\User');
         Route::get('/{id}/edit', [UserController::class, 'edit']);

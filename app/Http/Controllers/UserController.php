@@ -29,16 +29,17 @@ class UserController extends Controller
             "users" => $this->model
                 ->with('permissions')
                 ->when($request->search, function ($query, $searchItem) {
-                    $query->where('name', 'like', '%' . $searchItem . '%');
+                    $query->where('FullName', 'like', '%' . $searchItem . '%');
                 })
-                ->orderBy('name', 'asc')
+                ->orderBy('FullName', 'asc')
                 ->simplePaginate(10)
                 ->withQueryString()
                 ->through(fn($user) => [
-                    'id' => $user->id,
+                    // dd($user),
+                    'recid' => $user->recid,
                     'permissions' => $user->permissions,
                     'email' => $user->email,
-                    'name' => $user->name,
+                    'name' => $user->FullName,
                     'photo' => $user->getFirstMedia('avatars') ? $user->getFirstMedia('avatars')->getUrl() : '/images/no-avatar.png',
                     "can" => [
                         // 'edit' => auth()->user()->can('edit', $user),

@@ -10,7 +10,8 @@
                 <div class="peer mR-10">
                     <input v-model="search" type="text" class="form-control form-control-sm" placeholder="Search...">
                 </div>
-                <div class="peer"  v-if="can.createUser">
+                <!-- v-if="can.createUser" -->
+                <div class="peer"  >
                     <Link class="btn btn-primary btn-sm" href="/users/create">Add User</Link>
                     <button class="btn btn-primary btn-sm mL-2 text-white" @click="showFilter()">Filter</button>
                 </div>
@@ -20,7 +21,7 @@
         <filtering v-if="filter" @closeFilter="filter=false">
             <label>Sample Inputs</label>
             <input type="text" class="form-control">
-            <button class="btn btn-sm btn-primary mT-5 text-white" @click="">Filter</button>
+            <button class="btn btn-sm btn-primary mT-5 text-white">Filter</button>
         </filtering>
  
         <div class="col-12">
@@ -35,28 +36,29 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="(user, index) in users.data" :key="index">
+                        <!-- v-for="(user, index) in users.data" :key="index" -->
+                        <tr >
                             <td>
                                 <div class="row g-3 align-items-center">
                                     <div class="col-12 col-lg-auto text-center text-lg-start">						        
-                                        <img
+                                        <!-- <img
                                             class="w-2r bdrs-50p"
                                             :src="user.photo"
                                             alt=""
-                                        />
+                                        /> -->
                                     </div>
                                     <div class="col-12 col-lg-auto text-center text-lg-start">
-                                        <p class="notification-title mb-1">{{ user.name }}</p>
+                                        <!-- <p class="notification-title mb-1">{{ user.name }}</p> -->
                                     </div>
                                 </div>
                             </td>
                             <td>
-                                {{ user.email }}
+                                <!-- {{ user.email }} -->
                             </td>
                             <td>
-                                <div class="badge bg-info me-1" v-for="permission in user.permissions">
+                                <!-- <div class="badge bg-info me-1" v-for="permission in user.permissions">
                                     {{ permission.permission_name }}
-                                </div>
+                                </div> -->
                             </td>
                             <td style="text-align: right">
                                 <!-- v-if="user.can.edit" -->
@@ -67,12 +69,12 @@
                                     </svg>
                                   </button>
                                   <ul class="dropdown-menu action-dropdown" aria-labelledby="dropdownMenuButton1">
-                                    <li><Link class="dropdown-item" :href="`/users/${user.id}/edit`">Edit</Link></li>
+                                    <!-- <li><Link class="dropdown-item" :href="`/users/${user.id}/edit`">Edit</Link></li> -->
                                     <li><a class="dropdown-item" href="#" @click="editPermissions(user.id)">Permissions</a></li>
                                     <li><hr class="dropdown-divider action-divider"></li>
-                                    <li v-if="can.canDeleteUser">
+                                    <!-- <li v-if="can.canDeleteUser">
                                         <Link class="text-danger dropdown-item" @click="deleteUser(user.id)">Delete</Link>
-                                    </li>
+                                    </li> -->
                                   </ul>
                                 </div>
                             </td>
@@ -84,14 +86,14 @@
                     <div class="col-md-12">
                         <!-- read the explanation in the Paginate.vue component -->
                         <!-- <pagination :links="users.links" /> -->
-                        <pagination :next="users.next_page_url" :prev="users.prev_page_url" />
+                        <!-- <pagination :next="users.next_page_url" :prev="users.prev_page_url" /> -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <Modal 
+    <!-- <Modal 
         v-if="showModal" 
         :modalTitle="'Permissions'" 
         @closeModal="closeModal"
@@ -103,7 +105,7 @@
                 <input type="checkbox" v-model="selectedPermissions" :value="item.id" :id="item.id"> {{ item.permission_name }}
             </div>
         </div>
-    </Modal>
+    </Modal> -->
 </template>
 
 <script>
@@ -111,77 +113,77 @@ import Filtering from "@/Shared/Filter";
 import Pagination from "@/Shared/Pagination";
 
 export default {
-    components: { Pagination, Filtering },
-    props: {
-        users: Object,
-        filters: Object,
-        can: Object,
-    },
+    // components: { Pagination, Filtering },
+    // props: {
+    //     users: Object,
+    //     filters: Object,
+    //     can: Object,
+    // },
     data() {
         return {
-            search: this.$props.filters.search,
-            confirm: false,
+            // search: this.$props.filters.search,
+            // confirm: false,
             filter: false,
-            showModal: false,
-            permissions: [],
-            selectedPermissions: [],
-            selectedUser: ""
+            // showModal: false,
+            // permissions: [],
+            // selectedPermissions: [],
+            // selectedUser: ""
         };
     },
-    watch: {
-        search: _.debounce(function (value) {
-            this.$inertia.get(
-                "/users",
-                { search: value },
-                {
-                    preserveScroll: true,
-                    preserveState: true,
-                    replace: true,
-                }
-            );
-        }, 300),
-    },
+    // watch: {
+    //     search: _.debounce(function (value) {
+    //         this.$inertia.get(
+    //             "/users",
+    //             { search: value },
+    //             {
+    //                 preserveScroll: true,
+    //                 preserveState: true,
+    //                 replace: true,
+    //             }
+    //         );
+    //     }, 300),
+    // },
     methods: {
-        deleteUser(id) {
-            let text = "WARNING!\nAre you sure you want to delete the record?";
-              if (confirm(text) == true) {
-                this.$inertia.delete("/users/" + id);
-              }
-        },
+    //     deleteUser(id) {
+    //         let text = "WARNING!\nAre you sure you want to delete the record?";
+    //           if (confirm(text) == true) {
+    //             this.$inertia.delete("/users/" + id);
+    //           }
+    //     },
         showFilter() {
             this.filter = !this.filter
         },
-        editPermissions(userId) {
-            var vm = this
-            var user = _.find(this.users.data, { id: userId })
-            this.showModal = true
-            this.selectedUser = userId
-            this.selectedPermissions = []
+    //     editPermissions(userId) {
+    //         var vm = this
+    //         var user = _.find(this.users.data, { id: userId })
+    //         this.showModal = true
+    //         this.selectedUser = userId
+    //         this.selectedPermissions = []
 
-            _.forEach(user.permissions, function(e) {
-                vm.selectedPermissions.push(e.id)
-            })
+    //         _.forEach(user.permissions, function(e) {
+    //             vm.selectedPermissions.push(e.id)
+    //         })
 
-            this.getAllPermissions()
-        },
-        updatePermissions() {
-            this.showModal = false
+    //         this.getAllPermissions()
+    //     },
+    //     updatePermissions() {
+    //         this.showModal = false
 
-            this.$inertia.post('update-user-permissions', {
-                    'user_id' : this.selectedUser,
-                    'permissions' : this.selectedPermissions
-                }, {
-                replace: true,
-            })
-        },
-        closeModal() {
-            this.showModal = false
-        },
-        async getAllPermissions() {
-            await axios.post('get-all-permissions').then( response => {
-                this.permissions = _.groupBy(response.data, 'permission_group');
-            })
-        },
+    //         this.$inertia.post('update-user-permissions', {
+    //                 'user_id' : this.selectedUser,
+    //                 'permissions' : this.selectedPermissions
+    //             }, {
+    //             replace: true,
+    //         })
+    //     },
+    //     closeModal() {
+    //         this.showModal = false
+    //     },
+    //     async getAllPermissions() {
+    //         await axios.post('get-all-permissions').then( response => {
+    //             this.permissions = _.groupBy(response.data, 'permission_group');
+    //         })
+    //     },
     },
 };
 </script>

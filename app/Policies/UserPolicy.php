@@ -16,7 +16,7 @@ class UserPolicy
 
     public function canDeleteUser(User $user)
     {
-        return $user->permissions()->where('id', 3)->exists();
+        return $user->permissions()->where('recid', 3)->exists();
     }
 
    

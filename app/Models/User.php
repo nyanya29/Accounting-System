@@ -16,6 +16,11 @@ class User extends Authenticatable implements HasMedia
 {
     use HasApiTokens, HasFactory, Notifiable, InteractsWithMedia;
 
+    // protected $connection = "fms";
+    protected $table = "systemusers";
+    protected $primaryKey = "recid";
+    protected $rememberTokenName = false;
+
     protected $fillable = [
         'name',
         'email',
@@ -34,7 +39,7 @@ class User extends Authenticatable implements HasMedia
     ];
 
     public function permissions() {
-        return $this->belongsToMany(Permission::class);
+        return $this->belongsTo(Permission::class,'recid', 'iduser');
     }
 
     // public function setPasswordAttribute($value)

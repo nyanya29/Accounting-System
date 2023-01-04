@@ -18,13 +18,13 @@ class HandleInertiaRequests extends Middleware
     public function share(Request $request): array
     {
         if (auth()->check()) {
-            $profile =  User::where('id', auth()->user()->id)->first()->getFirstMedia('avatars');
+            // $profile =  User::where('id', auth()->user()->id)->first()->getFirstMedia('avatars');
 
             return array_merge(parent::share($request), [
                 'auth' => auth()->user() ? [ //if there is a user
                     'user' => [
-                        'username' => ucfirst(auth()->user()->name),
-                        'photo' => $profile ? $profile->getUrl() : ''
+                        'username' => ucfirst(auth()->user()->FullName),
+                        // 'photo' => $profile ? $profile->getUrl() : ''
                     ]
                 ] : null,
                 'flash' => [

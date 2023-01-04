@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
@@ -41,17 +42,43 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function username()
+    // public function username()
+    // {
+    //     return 'username';
+    // }
+
+
+
+    // public function logout(Request $request)
+    // {
+        
+    //     $request->session()->invalidate();
+    //     $request->session()->regenerateToken();
+    //     Auth::logout();
+    //     return Inertia::location('/');
+    // }
+    public function login(Request $request)
     {
-        return 'username';
+
+        $user = User::where('UserName', $request->username)
+            ->where('UserPassword', md5($request->password))
+            ->first();
+
+        if ($user) {
+            Auth::login($user, true);
+        }
+
+        return redirect('/');
     }
 
-    public function logout(Request $request)
+    public function logout()
     {
-        
-        $request->session()->invalidate();
-        $request->session()->regenerateToken();
-        Auth::logout();
-        return Inertia::location('/');
+        Auth::guard('web')->logout();
+ 
+        request()->session()->invalidate();
+ 
+        request()->session()->regenerateToken();
+
+        return inertia()->location('/');
     }
 }
