@@ -349,7 +349,7 @@ var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 
 var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
   "class": "mB-5"
-}, "Payee No.", -1
+}, "Payee", -1
 /* HOISTED */
 );
 

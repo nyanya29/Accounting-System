@@ -20,11 +20,9 @@ class JevhController extends Controller
         $this->jevd = $jevd;
     }
     public function index(Request $request){
-
-        $index = $this->getFilter($request);
+        
         return inertia('Jevh/Index', [
-            // "jevd" => $jevD,
-            "jevh" => $index
+            "jevh" => $this->model
                             ->when($request->search, function ($query, $searchItem) {
                                 $query->where('fjevno', 'like', '%' . $searchItem . '%')
                                 ->orWhere('fjevtyp', 'like', '%'.$searchItem.'%')
@@ -32,54 +30,33 @@ class JevhController extends Controller
                                 ->orWhere('frefno', 'like', '%'.$searchItem.'%')
                                 ->orWhere('fpayee', 'like', '%'.$searchItem.'%');
                             })
+                            ->when($request->fundscode, function($q,$filterItem) {
+                                $q->where('fund_scode', 'like', '%' . $filterItem . '%');
+                            })
+                            ->when($request->jType, function($q,$filterItem) {
+                                $q->where('fjevtyp', 'like', '%' . $filterItem . '%');
+                            })
+                            ->when($request->FJEVNO, function($q,$filterItem) {
+                                $q->where('fjevno', 'like', '%' . $filterItem . '%');
+                            })
+                            ->when($request->FCHKNO, function($q,$filterItem) {
+                                $q->where('fchkno', 'like', '%' . $filterItem . '%');
+                            })
+                            ->when($request->FREFNO, function($q,$filterItem) {
+                                $q->where('frefno', 'like', '%' . $filterItem . '%');
+                            })
+                            ->when($request->FPAYEE, function($q,$filterItem) {
+                                $q->where('fpayee', 'like', '%' . $filterItem . '%');
+                            })
+                            ->when($request->from && $request->to, function($q) use($request) {
+                                $q->whereBetween('fjevdate', [$request->from, $request->to])
+                                    ->orderBy('fjevdate', 'asc');
+                            })
                             ->orderBy('recid', 'desc')
                             ->paginate(10)
                             ->withQueryString(),
             "filters" => $request->only(['search']),
         ]);
-    }
-    
-    public function getFilter($request)
-    {
-        // dd($request);
-        // $index = $this->model->when($request, function($q,$filterItem) {
-        //                         $q->where('')
-        // })
-
-        $index = $this->model;
-        
-        if ($request->fundscode) {
-            $index = $index->where('fund_scode', 'like', '%' . $request->fundscode . '%');
-        }
-        if ($request->jType) {
-            $index = $index->where('fjevtyp', 'like', '%' . $request->jType . '%');
-        }
-        if ($request->FJEVNO) {
-            $index = $index->where('fjevno', 'like', '%' . $request->FJEVNO . '%');
-        }
-        if ($request->FCHKNO) {
-            $index = $index->where('fchkno', 'like', '%' . $request->FCHKNO . '%');
-        }
-        if ($request->FREFNO) {
-            $index = $index->where('frefno', 'like', '%' . $request->FREFNO . '%');
-        }
-        if ($request->FPAYEE) {
-            $index = $index->where('fpayee', 'like', '%' . $request->FPAYEE . '%');
-        }
-        if (($request->from && !$request->to) || ($request->to && !$request->from)) {
-            
-            $date = $request->from ? $request->from : $request->to;
-            
-            $index = $index->whereDate('fjevdate', $date);
-        } 
-        if($request->from && $request->to) {
-            $index = $index->whereBetween('fjevdate', [$request->from, $request->to]);
-        }
-        if ($request->sortBy) {
-            $index = $this->model->orderBy($request->sortBy, 'asc');
-        }
-
-        return $index;
     }
     public function getFundDetail()
     {

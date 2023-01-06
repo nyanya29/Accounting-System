@@ -33,7 +33,7 @@
             <input type="text" class="form-control" v-model="filterData.FCHKNO">
             <label class="mB-5">Ref No.</label>
             <input type="text" class="form-control" v-model="filterData.FREFNO">
-            <label class="mB-5">Payee No.</label>
+            <label class="mB-5">Payee</label>
             <input type="text" class="form-control" v-model="filterData.FPAYEE">
             <label class="mB-5">From.</label>
             <input type="date" class="form-control" v-model="filterData.from">
