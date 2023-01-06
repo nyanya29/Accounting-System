@@ -55,6 +55,7 @@
                             <th scope="col">Check No.</th>
                             <th scope="col">Payee</th>
                             <th scope="col">Particulars</th>
+                            <th scope="col">Posted</th>
                             <!-- <th scope="col">Status</th> -->
                             <!-- <th scope="col" style="width: 30%"></th> -->
                             <th scope="col" style="text-align: right">Action</th>
@@ -69,8 +70,8 @@
                             <td>{{ jevhdata.fchkno }}</td>
                             <td>{{ jevhdata.fpayee }}</td>
                             <td width="400">{{ jevhdata.fremk }}</td>
-                            <!-- <td><span class="badge rounded-pill bg-success">✔</span></td> -->
-                            <!-- <td><span class="badge rounded-pill bg-danger">✖</span></td> -->
+                            <td v-if="!!jevhdata.fdatepost && jevhdata.fdatepost != '0000-00-00' && jevhdata.fdatepost != '0'">{{ jevhdata.fdatepost }}</td>
+                            <td v-else></td>
                             <td style="text-align: right">
                                 <div class="dropdown dropstart">
                                   <button class="btn btn-secondary btn-sm action-btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">

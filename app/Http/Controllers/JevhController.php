@@ -26,7 +26,11 @@ class JevhController extends Controller
             // "jevd" => $jevD,
             "jevh" => $index
                             ->when($request->search, function ($query, $searchItem) {
-                                $query->where('FJEVNO', 'like', '%' . $searchItem . '%');
+                                $query->where('fjevno', 'like', '%' . $searchItem . '%')
+                                ->orWhere('fjevtyp', 'like', '%'.$searchItem.'%')
+                                ->orWhere('fchkno', 'like', '%'.$searchItem.'%')
+                                ->orWhere('frefno', 'like', '%'.$searchItem.'%')
+                                ->orWhere('fpayee', 'like', '%'.$searchItem.'%');
                             })
                             ->orderBy('recid', 'desc')
                             ->paginate(10)
@@ -37,6 +41,11 @@ class JevhController extends Controller
     
     public function getFilter($request)
     {
+        // dd($request);
+        // $index = $this->model->when($request, function($q,$filterItem) {
+        //                         $q->where('')
+        // })
+
         $index = $this->model;
         
         if ($request->fundscode) {

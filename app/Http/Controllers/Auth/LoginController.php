@@ -41,22 +41,6 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
-
-    // public function username()
-    // {
-    //     return 'username';
-    // }
-
-
-
-    // public function logout(Request $request)
-    // {
-        
-    //     $request->session()->invalidate();
-    //     $request->session()->regenerateToken();
-    //     Auth::logout();
-    //     return Inertia::location('/');
-    // }
     public function login(Request $request)
     {
 
