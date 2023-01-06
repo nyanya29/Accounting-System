@@ -66,12 +66,12 @@
                             <td>{{ jevhdata.fiscalyear }}</td>
                             <td>{{ jevhdata.fund_scode }}</td> 
                             <td>{{ jevhdata.fjevno }}</td>
-                            <td>{{ jevhdata.fjevdate }}</td>
+                            <td>{{ formatDate(jevhdata.fjevdate) }}</td>
                             <td>{{ jevhdata.fchkno }}</td>
                             <td>{{ jevhdata.fpayee }}</td>
                             <td width="400">{{ jevhdata.fremk }}</td>
-                            <td v-if="!!jevhdata.fdatepost && jevhdata.fdatepost != '0000-00-00' && jevhdata.fdatepost != '0'">{{ jevhdata.fdatepost }}</td>
-                            <td v-else></td>
+                            <td v-if="!!jevhdata.fdatepost && jevhdata.fdatepost != '0000-00-00' && jevhdata.fdatepost != '0'">{{ formatDate(jevhdata.fdatepost) }}</td>
+                            <td v-else>--</td>
                             <td style="text-align: right">
                                 <div class="dropdown dropstart">
                                   <button class="btn btn-secondary btn-sm action-btn" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
@@ -197,8 +197,11 @@ export default {
     mounted() {
         this.getFunds();
     },
-
     methods: {
+        formatDate(jevhdata) {
+            const options = { year: 'numeric', month: 'long', day: 'numeric' }
+            return new Date(jevhdata).toLocaleDateString('en', options)
+        },
         showFilter() {
             this.filter = !this.filter
         },
