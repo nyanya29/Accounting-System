@@ -169,9 +169,12 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       }
 
       if (this.pageTitle == 'Create') {
-        this.form.post("/jevh/store-jev", {// onSuccess: () => {
-          //     this.form.reset();
-          // }
+        this.form.post("/jevh/store-jev", {
+          onError: function onError(data) {
+            if (Object.keys(data).length == 1 && data.jevd) {
+              alert("Needs to add journal entry voucher details");
+            }
+          }
         });
       } // else {
       //     this.form.patch('/jevh/jevd-update/'+this.recid_to_update, {
@@ -218,6 +221,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
           }
 
           _this5.jevdForm.reset();
+
+          _this5.form.clearErrors();
         }
       });
     },

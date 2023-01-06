@@ -36,6 +36,7 @@ class JevhValidation extends FormRequest
            'jevh.fprepd' => 'required',
            'jevh.fappvby' => 'required',
            'jevh.fappvd' => 'required',
+           'jevd'   => 'required',
            'jevh.is_balance' => [
                 function ($attribute, $value, $fail) {
                     $jevd = collect($this->jevd);
@@ -62,6 +63,7 @@ class JevhValidation extends FormRequest
             'jevh.fprepd.required' => 'Position is required',
             'jevh.fappvby.required' => 'Approved by is required',
             'jevh.fappvd.required' => 'Approver position is required',
+            'jevd.required' => 'Needs to add journal entry voucher details'
         ];
     }
     

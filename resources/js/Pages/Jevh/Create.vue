@@ -373,13 +373,19 @@ export default {
                 alert(text);
                 return false;
             }
+           
 
             if(this.pageTitle == 'Create')
                 {
                     this.form.post("/jevh/store-jev", {
-                            // onSuccess: () => {
-                            //     this.form.reset();
-                            // }
+                        onError: (data) => {
+                            
+                                if (Object.keys(data).length == 1 && data.jevd) 
+                                {
+                                    alert(`Needs to add journal entry voucher details`)
+                                }
+                            }
+                        
                         }
                     );
             }
@@ -420,6 +426,7 @@ export default {
                         this.isEdit = false 
                     }
                     this.jevdForm.reset()
+                    this.form.clearErrors()
                 },
             })
            
