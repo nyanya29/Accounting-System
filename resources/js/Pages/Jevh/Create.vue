@@ -54,7 +54,7 @@
                         <input type="text" v-model="form.jevh.fpayee" class="form-control" autocomplete="chrome-off">
                         <div class="fs-6 c-red-500">{{ form.errors['jevh.fpayee'] }}</div>
 
-                        <label class="col-mb-3 col-form-label"><b>Description</b></label>
+                        <label class="col-mb-3 col-form-label"><b>Particulars</b></label>
                         <textarea 
                             class="form-control" 
                             v-model="form.jevh.fremk" 
@@ -95,8 +95,9 @@
                                     <th scope="col">SubCode/Title</th>
                                     <th scope="col">SubCode2/Title</th>
                                     <th scope="col">Voucher</th>
-                                    <th scope="col">OBR#</th>
+                                    <th scope="col">CAFOA#</th>
                                     <th scope="col">PR#</th>
+                                    <th scope="col">Property#</th>
                                     <th scope="col">Debit</th>
                                     <th scope="col">Credit</th>
                                     <th scope="col">Remarks</th>
@@ -113,6 +114,7 @@
                                     <td scope="col">{{ item.FVOUCHNO }}</td>
                                     <td scope="col">{{ item.FALOBNO }}</td>
                                     <td scope="col">{{ item.FPRNO }}</td>
+                                    <td scope="col">{{ item.FPROPNO }}</td>
                                     <td scope="col">{{ item.FDEBIT }}</td>
                                     <td scope="col">{{ item.FCREDIT }}</td>
                                     <td scope="col">{{ item.FREMARKS }}</td>
@@ -169,7 +171,7 @@
                                         <label class="col-form-label"><b>Voucher #</b></label>
                                         <input type="text" v-model="jevdForm.FVOUCHNO" class="form-control" autocomplete="chrome-off">
 
-                                        <label class="col-mb-3 col-form-label"><b>OBR #</b></label>
+                                        <label class="col-mb-3 col-form-label"><b>CAFOA #</b></label>
                                         <input type="text" v-model="jevdForm.FALOBNO" class="form-control" autocomplete="chrome-off">
                                     </div>
                                     <div class="col-md-5">
@@ -199,22 +201,32 @@
                                         <label class="col-form-label"><b>PR #</b></label>
                                         <input type="text" v-model="jevdForm.FPRNO" class="form-control" autocomplete="chrome-off"> 
                                     </div>
-                                    <div class="col-md-4">
-                                        <label class="col-mb-6 col-form-label"><b>Debit</b></label>
-                                        <input 
-                                            type="number" 
-                                            v-model="jevdForm.FDEBIT" 
-                                            class="form-control" 
-                                            autocomplete="chrome-off" 
-                                            :disabled="jevdForm.FCREDIT != ''"
-                                            :placeholder="jevdForm.FCREDIT != '' ? `Unable to input Debit` : ``"
-                                        >
-                                        <div class="fs-6 c-red text-danger" v-if="jevdForm.errors.FDEBIT"> {{jevdForm.errors.FDEBIT}}</div>
+                                    <div class="col-md-5">
+                                        <div class="row">
+
+                                            <div class="col-6">
+                                                <label class="col-form-label"><b>Property #</b></label>
+                                                <input type="text" v-model="jevdForm.FPROPNO" class="form-control" autocomplete="chrome-off"> 
+                                            </div>
+                                            <div class="col-6">
+                                                
+                                                <label class="col-mb-6 col-form-label"><b>Debit</b></label>
+                                                <input 
+                                                    type="number" 
+                                                    v-model="jevdForm.FDEBIT" 
+                                                    class="form-control" 
+                                                    autocomplete="chrome-off" 
+                                                    :disabled="jevdForm.FCREDIT != ''"
+                                                    :placeholder="jevdForm.FCREDIT != '' ? `Unable to input Debit` : ``"
+                                                >
+                                                <div class="fs-6 c-red text-danger" v-if="jevdForm.errors.FDEBIT"> {{jevdForm.errors.FDEBIT}}</div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-5">
                                         <label class="col-mb-6 col-form-label"><b>Credit</b></label>
                                         <div class="row">
-                                            <div class="col-md-8">
+                                            <div class="col-md-6">
                                                 <input 
                                                     type="number" 
                                                     v-model="jevdForm.FCREDIT" 
@@ -273,6 +285,7 @@ export default {
                 FDEBIT:     "",
                 FCREDIT:    "",
                 FREMARKS:   "",
+                FPROPNO:   "",
                 isSubcode1: '',
                 isSubcode2: '',
             }),
@@ -291,10 +304,10 @@ export default {
                     fchkno:     "",
                     fremk:      "",
                     frefno:     "",
-                    fprepby:    "",
+                    fprepby:    this.$page.props.auth.user.username,
                     fprepd:     "",
-                    fappvby:    "",
-                    fappvd:     "",
+                    fappvby:    "Ariel D. Mandawe",
+                    fappvd:     "Accounting Officer",
                     is_balance: "",
                },
                jevd: [],
@@ -413,6 +426,7 @@ export default {
                 FDEBIT: this.jevdForm.FDEBIT ? this.jevdForm.FDEBIT : 0,
                 FCREDIT: this.jevdForm.FCREDIT ? this.jevdForm.FCREDIT : 0,
                 FREMARKS: this.jevdForm.FREMARKS,
+                FPROPNO: this.jevdForm.FPROPNO,
                 isSubcode1: this.jevdForm.isSubcode1,
                 isSubcode2: this.jevdForm.isSubcode2
             })

@@ -128,6 +128,7 @@ class JevhController extends Controller
              'FDEBIT',
              'FCREDIT',
              'FREMARKS',
+             'FPROPNO',
          ]);  
         return redirect("/jevh/index")->with('message', 'Added Successfully');
     }
