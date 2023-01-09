@@ -73,7 +73,7 @@ class JevhController extends Controller
     public function storeJev(JevhValidation $request)
     {
         // dd($request);
-        $request->jevh->validated();
+        $request->validated();
         if(!$request->edit_id){
             $jevhData = $this->model->create([
                     "fiscalyear"    =>  $request->jevh['fiscalyear'],

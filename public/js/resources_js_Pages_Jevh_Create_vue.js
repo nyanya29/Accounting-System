@@ -261,11 +261,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var text = "Warning!\Are you sure you want to Delete this Record?";
 
       if (confirm(text) == true) {
-        //    console.log(index);
-        this.form.jevd.splice(index, 1); // setTimeout(() => {
-        //     this.form.jevd.splice(index,1);
-        // }, timeout),1000;
-        //    console.log(this.form.jevd);
+        this.form.jevd.splice(index, 1);
       }
 
       this.jevdForm.reset();

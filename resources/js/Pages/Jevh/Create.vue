@@ -379,7 +379,7 @@ export default {
                 {
                     this.form.post("/jevh/store-jev", {
                         onError: (data) => {
-                            
+
                                 if (Object.keys(data).length == 1 && data.jevd) 
                                 {
                                     alert(`Needs to add journal entry voucher details`)
@@ -443,12 +443,9 @@ export default {
         {
             let text = "Warning!\Are you sure you want to Delete this Record?";
             if(confirm(text) == true) {
-            //    console.log(index);
-            this.form.jevd.splice(index,1);
-            // setTimeout(() => {
-            //     this.form.jevd.splice(index,1);
-            // }, timeout),1000;
-            //    console.log(this.form.jevd);
+
+                this.form.jevd.splice(index,1);
+                
             }
             this.jevdForm.reset() 
         },
