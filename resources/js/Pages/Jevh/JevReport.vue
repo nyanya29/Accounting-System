@@ -15,8 +15,8 @@
                                     <label for="">Report Type</label>
                                     <select class="form-select mt-1 pt-1 mb-1" v-model="type">
                                         <option disabled value="0"> Select here</option>
-                                        <option value="1">Detailed Cash Receipts Journal</option>
-                                        <option value="2">Summary Cash Receipts Journal</option>
+                                        <option value="1">Detailed Journal</option>
+                                        <option value="2">Summary Journal</option>
                                     </select>
                                 </div>
                             </div>

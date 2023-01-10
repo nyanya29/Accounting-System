@@ -130,13 +130,13 @@ var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElement
 
 var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
   value: "1"
-}, "Detailed Cash Receipts Journal", -1
+}, "Detailed Journal", -1
 /* HOISTED */
 );
 
 var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
   value: "2"
-}, "Summary Cash Receipts Journal", -1
+}, "Summary Journal", -1
 /* HOISTED */
 );
 
