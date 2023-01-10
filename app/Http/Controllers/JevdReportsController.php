@@ -345,13 +345,8 @@ class JevdReportsController extends Controller
             "FJEVDATE" => $item->fjevdate,
             "FUNDDETAIL_NAME" => $item->FUNDDETAIL_NAME,
             "FTITLE" => $item->FTITLE,
-            'date' => Carbon::parse($item->fjevdate)->format('F j Y'),
-            'date_from' => Carbon::parse($request->from)->format('F j Y'),
-            'date_to' => Carbon::parse($request->to)->format('F j Y'),
+            'date_from' => Carbon::parse($request->from)->format('F j, Y'),
+            'date_to' => Carbon::parse($request->to)->format('F j, Y'),
         ]);
-    }
-    public function collectionReport(Request $request)
-    {
-        return summaryReport($request);
     }
 }
