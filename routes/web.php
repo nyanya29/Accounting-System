@@ -83,3 +83,5 @@ Route::middleware('auth')->group(function() {
 Route::get('print-jevd', [JevdReportsController::class, 'jevdReport']);
 Route::get('print-jevtype', [JevdReportsController::class, 'jevdTypeReport']);
 Route::get('jevtype-second-report', [JevdReportsController::class, 'jevdTypeSecondReport']);
+///
+Route::get('collection-summary', [JevdReportsController::class, 'collectionReport']);

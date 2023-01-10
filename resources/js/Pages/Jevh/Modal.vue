@@ -167,6 +167,7 @@
                                     <th scope="col">Voucher</th>
                                     <th scope="col">OBR#</th>
                                     <th scope="col">PR#</th>
+                                    <th scope="col">Property#</th>
                                     <th scope="col">Debit</th>
                                     <th scope="col">Credit</th>
                                     <th scope="col">Remarks</th>
@@ -187,6 +188,7 @@
                                     <td>{{ item.FVOUCHNO }}</td>
                                     <td>{{ item.FALOBNO }}</td>
                                     <td>{{ item.FPRNO }}</td>
+                                    <td>{{ item.FPROPNO }}</td>
                                     <td>{{ item.jevdDebit }}</td>
                                     <td>{{ item.jevdCredit }}</td>
                                     <td>{{ item.FREMARKS }}</td>

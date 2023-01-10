@@ -97,6 +97,7 @@
                                     <th scope="col">Voucher</th>
                                     <th scope="col">OBR#</th>
                                     <th scope="col">PR#</th>
+                                    <th scope="col">Property#</th>
                                     <th scope="col">Debit</th>
                                     <th scope="col">Credit</th>
                                     <th scope="col">Remarks</th>
@@ -113,6 +114,7 @@
                                     <td scope="col">{{ item.FVOUCHNO }}</td>
                                     <td scope="col">{{ item.FALOBNO }}</td>
                                     <td scope="col">{{ item.FPRNO }}</td>
+                                    <td scope="col">{{ item.FPROPNO }}</td>
                                     <td scope="col">{{ item.FDEBIT }}</td>
                                     <td scope="col">{{ item.FCREDIT }}</td>
                                     <td scope="col">{{ item.FREMARKS }}</td>
@@ -199,19 +201,29 @@
                                         <label class="col-form-label"><b>PR #</b></label>
                                         <input type="text" v-model="jevdForm.FPRNO" class="form-control" autocomplete="chrome-off"> 
                                     </div>
-                                    <div class="col-md-4">
-                                        <label class="col-mb-6 col-form-label"><b>Debit</b></label>
-                                        <input 
-                                            type="number" 
-                                            v-model="jevdForm.FDEBIT" 
-                                            class="form-control" 
-                                            autocomplete="chrome-off" 
-                                            :disabled="!!jevdForm.FCREDIT"
-                                            :placeholder="!!jevdForm.FCREDIT ? `Unable to input Debit` : ``"
-                                        >
-                                        <div class="fs-6 c-red text-danger" v-if="jevdForm.errors.FDEBIT"> {{jevdForm.errors.FDEBIT}}</div>
+                                    <div class="col-md-5">
+                                        <div class="row">
+
+                                            <div class="col-6">
+                                                <label class="col-form-label"><b>Property #</b></label>
+                                                <input type="text" v-model="jevdForm.FPROPNO" class="form-control" autocomplete="chrome-off"> 
+                                            </div>
+                                            <div class="col-6">
+                                                
+                                                <label class="col-mb-6 col-form-label"><b>Debit</b></label>
+                                                <input 
+                                                    type="number" 
+                                                    v-model="jevdForm.FDEBIT" 
+                                                    class="form-control" 
+                                                    autocomplete="chrome-off" 
+                                                    :disabled="jevdForm.FCREDIT != ''"
+                                                    :placeholder="jevdForm.FCREDIT != '' ? `Unable to input Debit` : ``"
+                                                >
+                                                <div class="fs-6 c-red text-danger" v-if="jevdForm.errors.FDEBIT"> {{jevdForm.errors.FDEBIT}}</div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <div class="col-md-5">
                                         <label class="col-mb-6 col-form-label"><b>Credit</b></label>
                                         <div class="row">
                                             <div class="col-md-8">
@@ -281,6 +293,7 @@ export default {
                 FDEBIT:     "",
                 FCREDIT:    "",
                 FREMARKS:   "",
+                FPROPNO:    "",
                 isSubcode1: '',
                 isSubcode2: '',
             }),
@@ -371,6 +384,7 @@ export default {
                 FDEBIT: this.jevdForm.FDEBIT,
                 FCREDIT: this.jevdForm.FCREDIT,
                 FREMARKS: this.jevdForm.FREMARKS,
+                FPROPNO: this.jevdForm.FPROPNO,
                 isSubcode1: this.jevdForm.isSubcode1,
                 isSubcode2: this.jevdForm.isSubcode2
             })

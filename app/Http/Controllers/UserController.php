@@ -40,7 +40,7 @@ class UserController extends Controller
                     'permissions' => $user->permissions,
                     'email' => $user->email,
                     'name' => $user->FullName,
-                    'photo' => $user->getFirstMedia('avatars') ? $user->getFirstMedia('avatars')->getUrl() : '/images/no-avatar.png',
+                    // 'photo' => $user->getFirstMedia('avatars') ? $user->getFirstMedia('avatars')->getUrl() : '/images/no-avatar.png',
                     "can" => [
                         // 'edit' => auth()->user()->can('edit', $user),
                     ],
