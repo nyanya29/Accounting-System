@@ -331,8 +331,8 @@ class JevdReportsController extends Controller
                             'funds_details.FUNDDETAIL_NAME',
                             'jevh.fjevtyp',
                             'chartofaccounts.FTITLE',
-                            DB::raw('SUM(jevd.FDEBIT) as debit'),
-                            DB::raw('SUM(jevd.FCREDIT) as credit'),
+                            DB::raw('SUM(jevd.FDEBIT) as FDEBIT'),
+                            DB::raw('SUM(jevd.FCREDIT) as FCREDIT'),
                             DB::raw("DATE_FORMAT('$request->from', '%M %e, %Y') as date_from"),
                             DB::raw("DATE_FORMAT('$request->to', '%M %e, %Y') as date_to")
                             )
