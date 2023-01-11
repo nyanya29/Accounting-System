@@ -284,10 +284,10 @@ class JevdReportsController extends Controller
     public function jevdTypeSecondReport(Request $request)
     {  
         // dd($request->all());
-        // $request['FJEVTYP'] = $request->FJEVTYP ? $request->FJEVTYP :'';
-        // $request['from'] = $request->from ? $request->from : '';
-        // $request['to'] = $request->to ? $request->to : '';
-        // $request['FUND_SCODE'] = $request->FUND_SCODE ? $request->FUND_SCODE : '';
+        $request['FJEVTYP'] = $request->FJEVTYP ? $request->FJEVTYP :'';
+        $request['from'] = $request->from ? $request->from : '';
+        $request['to'] = $request->to ? $request->to : '';
+        $request['FUND_SCODE'] = $request->FUND_SCODE ? $request->FUND_SCODE : '';
 
         $details = DB::select("
                 SELECT 
