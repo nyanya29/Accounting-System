@@ -84,5 +84,5 @@ Route::get('print-jevd', [JevdReportsController::class, 'jevdReport']);
 Route::get('print-jevtype', [JevdReportsController::class, 'jevdTypeReport']);
 Route::get('jevtype-second-report', [JevdReportsController::class, 'jevdTypeSecondReport']);
 ///
-Route::get('/check-disb-journal', [JevdReportsController::class, 'checkDisbursementJournal']);
+Route::get('checkdisbjournal', [JevdReportsController::class, 'checkDisbursementJournal']);
 // Route::get('check-disb-journal', [JevdReportsController::class, 'jevdTypeReport']);
