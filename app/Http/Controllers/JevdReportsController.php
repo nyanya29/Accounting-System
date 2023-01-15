@@ -317,6 +317,7 @@ class JevdReportsController extends Controller
     }
     public function checkDisbursementJournal(Request $request)
     {
+        // dd(getChartAccount());
         $details = DB::table('jevd')
                         ->select(
                             // 'jevh.*',
@@ -328,7 +329,7 @@ class JevdReportsController extends Controller
                             'jevd.FVOUCHNO',
                             //'jevd.FCREDIT',
                             DB::raw('SUM(CASE WHEN jevd.FACTCODE NOT IN (
-                                    10102010
+                                10102010
                                 ,10305020
                                 ,10305040
                                 ,20101010

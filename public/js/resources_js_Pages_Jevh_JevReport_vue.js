@@ -59,11 +59,14 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     print: function print(FUND_SCODE, FJEVTYP, date_from, date_to) {
-      // console.log(FUND_SCODE,FJEVTYP,date_from,date_to);
+      console.log(FUND_SCODE, FJEVTYP, date_from, date_to);
       window.open('http://122.54.19.171:8080/jasperserver/flow.html?pp=u%3DJamshasadid%7Cr%3DManager%7Co%3DEMEA,Sales%7Cpa1%3DSweden&_flowId=viewReportFlow&_flowId=viewReportFlow&_flowId=viewReportFlow&ParentFolderUri=%2Freports%2Faccounting_system&reportUnit=%2Freports%2Faccounting_system%2Fcash_reciept_journal&standAlone=true&decorate=no&FJEVTYP=' + FJEVTYP + '&FUND_SCODE=' + FUND_SCODE + '&from=' + date_from + '&to=' + date_to);
     },
     printSecond: function printSecond(FUND_SCODE, FJEVTYP, date_from, date_to) {
       window.open('http://122.54.19.171:8080/jasperserver/flow.html?pp=u%3DJamshasadid%7Cr%3DManager%7Co%3DEMEA,Sales%7Cpa1%3DSweden&_flowId=viewReportFlow&_flowId=viewReportFlow&_flowId=viewReportFlow&ParentFolderUri=%2Freports%2Faccounting_system&reportUnit=%2Freports%2Faccounting_system%2Fcash_reciept_journal_one&standAlone=true&decorate=no&FJEVTYP=' + FJEVTYP + '&FUND_SCODE=' + FUND_SCODE + '&from=' + date_from + '&to=' + date_to);
+    },
+    printJevDetailedCheck: function printJevDetailedCheck(FUND_SCODE, FJEVTYP, date_from, date_to) {
+      window.open('http://192.168.6.23:8080/jasperserver/flow.html?_flowId=viewReportFlow&_flowId=viewReportFlow&ParentFolderUri=%2Freports%2Faccounting_system&reportUnit=%2Freports%2Faccounting_system%2Fdetailed_check_report&standAlone=true&decorate=no&FJEVTYP=' + FJEVTYP + '&FUND_SCODE=' + FUND_SCODE + '&from=' + date_from + '&to=' + date_to);
     }
   }
 });
@@ -273,21 +276,28 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* KEYED_FRAGMENT */
   ))], 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.FJEVTYP]])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_30, [$data.type === '0' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", _hoisted_31, "Print")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.type === '1' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.FJEVTYP]])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_30, [$data.type === '0' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", _hoisted_31, "Print 1")) : $data.type === '1' && $data.FJEVTYP === 1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
     key: 1,
     type: "button",
     "class": "btn btn-primary mt-3",
     onClick: _cache[5] || (_cache[5] = function ($event) {
       return $options.print($data.FUND_SCODE, $data.FJEVTYP, $data.date_from, $data.date_to);
     })
-  }, "Print")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $data.type === '2' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
+  }, "Print 2")) : $data.type === '2' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
     key: 2,
     type: "button",
     "class": "btn btn-primary mt-3",
     onClick: _cache[6] || (_cache[6] = function ($event) {
       return $options.printSecond($data.FUND_SCODE, $data.FJEVTYP, $data.date_from, $data.date_to);
     })
-  }, "Print")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])])])]);
+  }, "Print 3")) : $data.type === '1' && $data.FJEVTYP === 2 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
+    key: 3,
+    type: "button",
+    "class": "btn btn-primary mt-3",
+    onClick: _cache[7] || (_cache[7] = function ($event) {
+      return $options.printJevDetailedCheck($data.FUND_SCODE, $data.FJEVTYP, $data.date_from, $data.date_to);
+    })
+  }, "Print 4")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])])])]);
 }
 
 /***/ }),

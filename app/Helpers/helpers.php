@@ -26,6 +26,7 @@ if (!function_exists('getSubCode1')) {
                 ]);
     }
 }
+
 if (!function_exists('getChartAccount')) {
     function getChartAccount() {
         return DB::table('chartofaccounts')
@@ -39,6 +40,7 @@ if (!function_exists('getChartAccount')) {
                 ]);
     }
 }
+
 // if (!function_exists('checkDisbursementJournal')) {
 //     function checkDisbursementJournal($request) {
 //         $details = DB::table('jevd')
