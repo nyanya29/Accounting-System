@@ -49,10 +49,10 @@
                         </div>
                     </div>
                     <div class="modal-footer p-1">
-                        <button type="button" class="btn btn-primary mt-3" v-if="type === '0'">Print 1</button>
+                        <button type="button" class="btn btn-primary mt-3" v-if="type === '0'">Print</button>
                         <button type="button" class="btn btn-primary mt-3" v-else-if="type === '1' && FJEVTYP === 1" @click="print(FUND_SCODE,FJEVTYP,date_from,date_to)">Print 2</button>
                         <button type="button" class="btn btn-primary mt-3" v-else-if="type === '2'" @click="printSecond(FUND_SCODE,FJEVTYP,date_from,date_to)">Print 3</button>
-                        <button type="button" class="btn btn-primary mt-3" v-else-if="(type === '1' && FJEVTYP === 2)" @click="printJevDetailedCheck(FUND_SCODE,FJEVTYP,date_from,date_to)">Print 4</button>
+                        <button type="button" class="btn btn-primary mt-3" v-else-if="type === '1' && FJEVTYP === 2" @click="printJevDetailedCheck(FUND_SCODE,FJEVTYP,date_from,date_to)">Print 4</button>
                     </div>
                 </div>
             </div>
@@ -105,7 +105,7 @@ export default({
             window.open('http://122.54.19.171:8080/jasperserver/flow.html?pp=u%3DJamshasadid%7Cr%3DManager%7Co%3DEMEA,Sales%7Cpa1%3DSweden&_flowId=viewReportFlow&_flowId=viewReportFlow&_flowId=viewReportFlow&ParentFolderUri=%2Freports%2Faccounting_system&reportUnit=%2Freports%2Faccounting_system%2Fcash_reciept_journal_one&standAlone=true&decorate=no&FJEVTYP='+FJEVTYP+'&FUND_SCODE='+FUND_SCODE+'&from='+date_from+'&to='+date_to);
         },
         printJevDetailedCheck(FUND_SCODE,FJEVTYP,date_from,date_to) {
-            window.open('http://192.168.6.23:8080/jasperserver/flow.html?_flowId=viewReportFlow&_flowId=viewReportFlow&ParentFolderUri=%2Freports%2Faccounting_system&reportUnit=%2Freports%2Faccounting_system%2Fdetailed_check_report&standAlone=true&decorate=no&FJEVTYP='+FJEVTYP+'&FUND_SCODE='+FUND_SCODE+'&from='+date_from+'&to='+date_to);
+            window.open('http://122.54.19.171:8080/jasperserver/flow.html?pp=u%3DJamshasadid%7Cr%3DManager%7Co%3DEMEA,Sales%7Cpa1%3DSweden&_flowId=viewReportFlow&_flowId=viewReportFlow&_flowId=viewReportFlow&ParentFolderUri=%2Freports%2Faccounting_system&reportUnit=%2Freports%2Faccounting_system%2Fdetailed_check_report&standAlone=true&decorate=no&FJEVTYP='+FJEVTYP+'&FUND_SCODE='+FUND_SCODE+'&from='+date_from+'&to='+date_to);
         }
     },
 })
