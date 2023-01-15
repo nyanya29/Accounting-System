@@ -532,6 +532,6 @@ class JevdReportsController extends Controller
                             }
                         }
                         return $details; 
+        // return checkDisbursementJournal($request);
     }
-    // public function procurement
 }
