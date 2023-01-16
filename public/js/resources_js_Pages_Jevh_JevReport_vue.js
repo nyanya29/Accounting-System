@@ -66,7 +66,7 @@ __webpack_require__.r(__webpack_exports__);
       window.open('http://122.54.19.171:8080/jasperserver/flow.html?pp=u%3DJamshasadid%7Cr%3DManager%7Co%3DEMEA,Sales%7Cpa1%3DSweden&_flowId=viewReportFlow&_flowId=viewReportFlow&_flowId=viewReportFlow&ParentFolderUri=%2Freports%2Faccounting_system&reportUnit=%2Freports%2Faccounting_system%2Fcash_reciept_journal_one&standAlone=true&decorate=no&FJEVTYP=' + FJEVTYP + '&FUND_SCODE=' + FUND_SCODE + '&from=' + date_from + '&to=' + date_to);
     },
     printJevDetailedCheck: function printJevDetailedCheck(FUND_SCODE, FJEVTYP, date_from, date_to) {
-      window.open('http://192.168.6.23:8080/jasperserver/flow.html?_flowId=viewReportFlow&_flowId=viewReportFlow&ParentFolderUri=%2Freports%2Faccounting_system&reportUnit=%2Freports%2Faccounting_system%2Fdetailed_check_report&standAlone=true&decorate=no&FJEVTYP=' + FJEVTYP + '&FUND_SCODE=' + FUND_SCODE + '&from=' + date_from + '&to=' + date_to);
+      window.open('http://122.54.19.171:8080/jasperserver/flow.html?pp=u%3DJamshasadid%7Cr%3DManager%7Co%3DEMEA,Sales%7Cpa1%3DSweden&_flowId=viewReportFlow&_flowId=viewReportFlow&_flowId=viewReportFlow&ParentFolderUri=%2Freports%2Faccounting_system&reportUnit=%2Freports%2Faccounting_system%2Fdetailed_check_report&standAlone=true&decorate=no&FJEVTYP=' + FJEVTYP + '&FUND_SCODE=' + FUND_SCODE + '&from=' + date_from + '&to=' + date_to);
     }
   }
 });
@@ -276,7 +276,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* KEYED_FRAGMENT */
   ))], 512
   /* NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.FJEVTYP]])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_30, [$data.type === '0' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", _hoisted_31, "Print 1")) : $data.type === '1' && $data.FJEVTYP === 1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.FJEVTYP]])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_30, [$data.type === '0' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", _hoisted_31, "Print")) : $data.type === '1' && $data.FJEVTYP === 1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
     key: 1,
     type: "button",
     "class": "btn btn-primary mt-3",
