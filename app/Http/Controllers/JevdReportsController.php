@@ -371,8 +371,8 @@ class JevdReportsController extends Controller
                         ->where('jevd.FUND_SCODE','=',$request->FUND_SCODE)
                         ->whereBetween('jevh.fjevdate',[$request->from,$request->to])
                         ->groupBy('jevd.FJEVNO','jevd.FACTCODE')
-                        ->orderBy('jevh.fjevno');
-                        // ->orderBy('jevd.FACTCODE');
+                        ->orderBy('jevh.fjevno')
+                        ->orderBy('jevd.FACTCODE');
 
                         $this->temp = $details
                             ->get()
