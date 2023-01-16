@@ -67,6 +67,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     printJevDetailedCheck: function printJevDetailedCheck(FUND_SCODE, FJEVTYP, date_from, date_to) {
       window.open('http://122.54.19.171:8080/jasperserver/flow.html?pp=u%3DJamshasadid%7Cr%3DManager%7Co%3DEMEA,Sales%7Cpa1%3DSweden&_flowId=viewReportFlow&_flowId=viewReportFlow&_flowId=viewReportFlow&ParentFolderUri=%2Freports%2Faccounting_system&reportUnit=%2Freports%2Faccounting_system%2Fdetailed_check_report&standAlone=true&decorate=no&FJEVTYP=' + FJEVTYP + '&FUND_SCODE=' + FUND_SCODE + '&from=' + date_from + '&to=' + date_to);
+    },
+    printJevDetailedCash: function printJevDetailedCash(FUND_SCODE, FJEVTYP, date_from, date_to) {
+      window.open('http://122.54.19.171:8080/jasperserver/flow.html?pp=u%3DJamshasadid%7Cr%3DManager%7Co%3DEMEA,Sales%7Cpa1%3DSweden&_flowId=viewReportFlow&_flowId=viewReportFlow&_flowId=viewReportFlow&ParentFolderUri=%2Freports%2Faccounting_system&reportUnit=%2Freports%2Faccounting_system%2Fdetailed_cash_report&standAlone=true&decorate=no&FJEVTYP=' + FJEVTYP + '&FUND_SCODE=' + FUND_SCODE + '&from=' + date_from + '&to=' + date_to);
     }
   }
 });
@@ -297,7 +300,14 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[7] || (_cache[7] = function ($event) {
       return $options.printJevDetailedCheck($data.FUND_SCODE, $data.FJEVTYP, $data.date_from, $data.date_to);
     })
-  }, "Print 4")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])])])]);
+  }, "Print 4")) : $data.type === '1' && $data.FJEVTYP === 3 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
+    key: 4,
+    type: "button",
+    "class": "btn btn-primary mt-3",
+    onClick: _cache[8] || (_cache[8] = function ($event) {
+      return $options.printJevDetailedCash($data.FUND_SCODE, $data.FJEVTYP, $data.date_from, $data.date_to);
+    })
+  }, "Print 5")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])])])]);
 }
 
 /***/ }),
