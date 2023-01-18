@@ -86,4 +86,8 @@ Route::get('jevtype-second-report', [JevdReportsController::class, 'jevdTypeSeco
 ///
 Route::get('check-disb-journal', [JevdReportsController::class, 'checkDisbursementJournal']);
 Route::get('cash-disb-journal', [JevdReportsController::class, 'cashDisbursementJournal']);
+//
+Route::get('general-journal', [JevdReportsController::class, 'generalJournal']);
+// Route::get('general-journal-subset', [JevdReportsController::class, 'generalJournalSubset']);
+//
 Route::get('procurement-journal', [JevdReportsController::class, 'procurementJournal']);

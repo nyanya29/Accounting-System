@@ -66,7 +66,7 @@ class JevdReportsController extends Controller
                         'jevd.FCREDIT',
                         'jevd.fiscalyear',
                         'jevh.fjevno',
-                        'jevd.factcode',
+                        'jevd.FACTCODE',
                         'jevh.fjevtyp',
                         'jevh.fpayee',
                         'jevh.fjevdate',
@@ -251,7 +251,7 @@ class JevdReportsController extends Controller
                             "FCREDIT"           => $item->FCREDIT,
                             "fiscalyear"        => $item->fiscalyear,
                             "FJEVNO"            => $item->fjevno,
-                            "FACTCODE"          => $item->factcode,
+                            "FACTCODE"          => $item->FACTCODE,
                             "FJEVTYP"           => $item->fjevtyp,
                             "FPAYEE"            => $item->fpayee,
                             "FJEVDATE"          => $finalFJEVDATE,//$item->FJEVDATE,//
@@ -799,7 +799,47 @@ class JevdReportsController extends Controller
                             ->where('jevd.fiscalyear','=','2022')
                             ->groupBy('jevh.fjevno')
                             ->groupBy('jevd.FACTCODE')
-                            ->orderBy('jevh.FJEVNO')
+                            ->orderBy('jevh.fjevno')
+                            ->get();
+
+        return $details;
+    }
+    public function generalJournal(Request $request)
+    {
+        // return generalJournalReport($request);
+        $details = DB::table('jevd')
+                        ->select(
+                            'jevd.FACTCODE',
+                            'funds_details.FUNDDETAIL_NAME',
+                            'jevh.fjevtyp',
+                            'chartofaccounts.FTITLE',
+                            'jevh.fremk',
+                            'jevd.FPRNO',
+                            'jevh.fjevdate',
+                            'jevh.fjevno',
+                            'jevd.FDEBIT',
+                            'jevd.FCREDIT',
+                            DB::raw("DATE_FORMAT('$request->from', '%M %e, %Y') as date_from"),
+                            DB::raw("DATE_FORMAT('$request->to', '%M %e, %Y') as date_to")
+                            )
+                            ->leftJoin('jevh', function($query){
+                                $query->on('jevh.fund_scode', '=', 'jevd.FUND_SCODE')
+                                ->on('jevh.fjevno', '=', 'jevd.FJEVNO')
+                                ->on('jevh.fiscalyear', '=', 'jevd.fiscalyear');                  
+                            })
+                            ->leftJoin('chartofaccounts', function ($query) {
+                                $query->on('chartofaccounts.FACTCODE', '=', 'jevd.FACTCODE')
+                                    ->on('jevd.fiscalyear', '>=', 'chartofaccounts.fiscalyear')
+                                    ->on('jevd.fiscalyear', '<=', 'chartofaccounts.fiscalyear_to');
+                            })
+                            ->leftJoin('funds_details', 'jevd.FUND_SCODE', 'funds_details.FUND_SCODE')
+                            ->where('jevh.fjevtyp','=',$request->FJEVTYP)
+                            ->where('jevd.FUND_SCODE','=',$request->FUND_SCODE)
+                            ->whereBetween('jevh.fjevdate',[$request->from,$request->to])
+                            ->where('jevd.fiscalyear','=','2022')
+                            ->groupBy('jevh.fjevno')
+                            ->groupBy('jevd.FACTCODE')
+                            ->orderBy('jevh.fjevno')
                             ->get();
 
         return $details;

@@ -217,6 +217,7 @@ var _hoisted_30 = {
 var _hoisted_31 = {
   key: 0,
   type: "button",
+  name: "print0",
   "class": "btn btn-primary mt-3"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -282,32 +283,36 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.FJEVTYP]])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_30, [$data.type === '0' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", _hoisted_31, "Print")) : $data.type === '1' && $data.FJEVTYP === 1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
     key: 1,
     type: "button",
+    name: "print1",
     "class": "btn btn-primary mt-3",
     onClick: _cache[5] || (_cache[5] = function ($event) {
       return $options.print($data.FUND_SCODE, $data.FJEVTYP, $data.date_from, $data.date_to);
     })
-  }, "Print 2")) : $data.type === '2' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
+  }, "Print")) : $data.type === '2' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
     key: 2,
     type: "button",
+    name: "print2",
     "class": "btn btn-primary mt-3",
     onClick: _cache[6] || (_cache[6] = function ($event) {
       return $options.printSecond($data.FUND_SCODE, $data.FJEVTYP, $data.date_from, $data.date_to);
     })
-  }, "Print 3")) : $data.type === '1' && $data.FJEVTYP === 2 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
+  }, "Print")) : $data.type === '1' && $data.FJEVTYP === 2 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
     key: 3,
     type: "button",
+    name: "print3",
     "class": "btn btn-primary mt-3",
     onClick: _cache[7] || (_cache[7] = function ($event) {
       return $options.printJevDetailedCheck($data.FUND_SCODE, $data.FJEVTYP, $data.date_from, $data.date_to);
     })
-  }, "Print 4")) : $data.type === '1' && $data.FJEVTYP === 3 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
+  }, "Print")) : $data.type === '1' && $data.FJEVTYP === 3 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
     key: 4,
     type: "button",
+    name: "prrint4",
     "class": "btn btn-primary mt-3",
     onClick: _cache[8] || (_cache[8] = function ($event) {
       return $options.printJevDetailedCash($data.FUND_SCODE, $data.FJEVTYP, $data.date_from, $data.date_to);
     })
-  }, "Print 5")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])])])]);
+  }, "Print")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])])])]);
 }
 
 /***/ }),

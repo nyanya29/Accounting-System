@@ -49,11 +49,11 @@
                         </div>
                     </div>
                     <div class="modal-footer p-1">
-                        <button type="button" class="btn btn-primary mt-3" v-if="type === '0'">Print</button>
-                        <button type="button" class="btn btn-primary mt-3" v-else-if="type === '1' && FJEVTYP === 1" @click="print(FUND_SCODE,FJEVTYP,date_from,date_to)">Print 2</button>
-                        <button type="button" class="btn btn-primary mt-3" v-else-if="type === '2'" @click="printSecond(FUND_SCODE,FJEVTYP,date_from,date_to)">Print 3</button>
-                        <button type="button" class="btn btn-primary mt-3" v-else-if="type === '1' && FJEVTYP === 2" @click="printJevDetailedCheck(FUND_SCODE,FJEVTYP,date_from,date_to)">Print 4</button>
-                        <button type="button" class="btn btn-primary mt-3" v-else-if="type === '1' && FJEVTYP === 3" @click="printJevDetailedCash(FUND_SCODE,FJEVTYP,date_from,date_to)">Print 5</button>
+                        <button type="button" name="print0" class="btn btn-primary mt-3" v-if="type === '0'">Print</button>
+                        <button type="button" name="print1" class="btn btn-primary mt-3" v-else-if="type === '1' && FJEVTYP === 1" @click="print(FUND_SCODE,FJEVTYP,date_from,date_to)">Print</button>
+                        <button type="button" name="print2" class="btn btn-primary mt-3" v-else-if="type === '2'" @click="printSecond(FUND_SCODE,FJEVTYP,date_from,date_to)">Print</button>
+                        <button type="button" name="print3" class="btn btn-primary mt-3" v-else-if="type === '1' && FJEVTYP === 2" @click="printJevDetailedCheck(FUND_SCODE,FJEVTYP,date_from,date_to)">Print</button>
+                        <button type="button" name="prrint4" class="btn btn-primary mt-3" v-else-if="type === '1' && FJEVTYP === 3" @click="printJevDetailedCash(FUND_SCODE,FJEVTYP,date_from,date_to)">Print</button>
                     </div>
                 </div>
             </div>
