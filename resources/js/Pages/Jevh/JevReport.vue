@@ -54,6 +54,7 @@
                         <button type="button" name="print2" class="btn btn-primary mt-3" v-else-if="type === '2'" @click="printSecond(FUND_SCODE,FJEVTYP,date_from,date_to)">Print</button>
                         <button type="button" name="print3" class="btn btn-primary mt-3" v-else-if="type === '1' && FJEVTYP === 2" @click="printJevDetailedCheck(FUND_SCODE,FJEVTYP,date_from,date_to)">Print</button>
                         <button type="button" name="prrint4" class="btn btn-primary mt-3" v-else-if="type === '1' && FJEVTYP === 3" @click="printJevDetailedCash(FUND_SCODE,FJEVTYP,date_from,date_to)">Print</button>
+                        <button type="button" name="prrint5" class="btn btn-primary mt-3" v-else-if="type === '1' && FJEVTYP === 4" @click="printJevDetailedGeneral(FUND_SCODE,FJEVTYP,date_from,date_to)">Print</button>
                     </div>
                 </div>
             </div>
@@ -110,6 +111,9 @@ export default({
         },
         printJevDetailedCash(FUND_SCODE,FJEVTYP,date_from,date_to){
             window.open('http://122.54.19.171:8080/jasperserver/flow.html?pp=u%3DJamshasadid%7Cr%3DManager%7Co%3DEMEA,Sales%7Cpa1%3DSweden&_flowId=viewReportFlow&_flowId=viewReportFlow&_flowId=viewReportFlow&ParentFolderUri=%2Freports%2Faccounting_system&reportUnit=%2Freports%2Faccounting_system%2Fdetailed_cash_report&standAlone=true&decorate=no&FJEVTYP='+FJEVTYP+'&FUND_SCODE='+FUND_SCODE+'&from='+date_from+'&to='+date_to);
+        },
+        printJevDetailedGeneral(FUND_SCODE,FJEVTYP,date_from,date_to){
+            window.open('http://122.54.19.171:8080/jasperserver/flow.html?pp=u%3DJamshasadid%7Cr%3DManager%7Co%3DEMEA,Sales%7Cpa1%3DSweden&_flowId=viewReportFlow&_flowId=viewReportFlow&_flowId=viewReportFlow&ParentFolderUri=%2Freports%2Faccounting_system&reportUnit=%2Freports%2Faccounting_system%2Fdetailed_gen_report&standAlone=true&decorate=no&FJEVTYP='+FJEVTYP+'&FUND_SCODE='+FUND_SCODE+'&from='+date_from+'&to='+date_to);
         }
     },
 })
