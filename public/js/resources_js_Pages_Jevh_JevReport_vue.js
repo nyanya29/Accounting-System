@@ -73,6 +73,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     printJevDetailedGeneral: function printJevDetailedGeneral(FUND_SCODE, FJEVTYP, date_from, date_to) {
       window.open('http://122.54.19.171:8080/jasperserver/flow.html?pp=u%3DJamshasadid%7Cr%3DManager%7Co%3DEMEA,Sales%7Cpa1%3DSweden&_flowId=viewReportFlow&_flowId=viewReportFlow&_flowId=viewReportFlow&ParentFolderUri=%2Freports%2Faccounting_system&reportUnit=%2Freports%2Faccounting_system%2Fdetailed_gen_report&standAlone=true&decorate=no&FJEVTYP=' + FJEVTYP + '&FUND_SCODE=' + FUND_SCODE + '&from=' + date_from + '&to=' + date_to);
+    },
+    printJevDetailedProcurement: function printJevDetailedProcurement(FUND_SCODE, FJEVTYP, date_from, date_to) {
+      window.open('http://122.54.19.171:8080/jasperserver/flow.html?pp=u%3DJamshasadid%7Cr%3DManager%7Co%3DEMEA,Sales%7Cpa1%3DSweden&_flowId=viewReportFlow&_flowId=viewReportFlow&_flowId=viewReportFlow&ParentFolderUri=%2Freports%2Faccounting_system&reportUnit=%2Freports%2Faccounting_system%2Fdetailed_proc_report&standAlone=true&decorate=no&FJEVTYP=' + FJEVTYP + '&FUND_SCODE=' + FUND_SCODE + '&from=' + date_from + '&to=' + date_to);
     }
   }
 });
@@ -286,7 +289,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.FJEVTYP]])])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_30, [$data.type === '0' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", _hoisted_31, "Print")) : $data.type === '1' && $data.FJEVTYP === 1 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
     key: 1,
     type: "button",
-    name: "print1",
+    name: "print",
     "class": "btn btn-primary mt-3",
     onClick: _cache[5] || (_cache[5] = function ($event) {
       return $options.print($data.FUND_SCODE, $data.FJEVTYP, $data.date_from, $data.date_to);
@@ -294,7 +297,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, "Print")) : $data.type === '2' ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
     key: 2,
     type: "button",
-    name: "print2",
+    name: "printSecondSummary",
     "class": "btn btn-primary mt-3",
     onClick: _cache[6] || (_cache[6] = function ($event) {
       return $options.printSecond($data.FUND_SCODE, $data.FJEVTYP, $data.date_from, $data.date_to);
@@ -302,7 +305,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, "Print")) : $data.type === '1' && $data.FJEVTYP === 2 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
     key: 3,
     type: "button",
-    name: "print3",
+    name: "DetailedCheck",
     "class": "btn btn-primary mt-3",
     onClick: _cache[7] || (_cache[7] = function ($event) {
       return $options.printJevDetailedCheck($data.FUND_SCODE, $data.FJEVTYP, $data.date_from, $data.date_to);
@@ -310,7 +313,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, "Print")) : $data.type === '1' && $data.FJEVTYP === 3 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
     key: 4,
     type: "button",
-    name: "prrint4",
+    name: "DetailedCash",
     "class": "btn btn-primary mt-3",
     onClick: _cache[8] || (_cache[8] = function ($event) {
       return $options.printJevDetailedCash($data.FUND_SCODE, $data.FJEVTYP, $data.date_from, $data.date_to);
@@ -318,10 +321,18 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   }, "Print")) : $data.type === '1' && $data.FJEVTYP === 4 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
     key: 5,
     type: "button",
-    name: "prrint5",
+    name: "DetailedGeneral",
     "class": "btn btn-primary mt-3",
     onClick: _cache[9] || (_cache[9] = function ($event) {
       return $options.printJevDetailedGeneral($data.FUND_SCODE, $data.FJEVTYP, $data.date_from, $data.date_to);
+    })
+  }, "Print")) : $data.type === '1' && $data.FJEVTYP === 6 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("button", {
+    key: 6,
+    type: "button",
+    name: "DetailedProcurement",
+    "class": "btn btn-primary mt-3",
+    onClick: _cache[10] || (_cache[10] = function ($event) {
+      return $options.printJevDetailedProcurement($data.FUND_SCODE, $data.FJEVTYP, $data.date_from, $data.date_to);
     })
   }, "Print")) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])])])])]);
 }

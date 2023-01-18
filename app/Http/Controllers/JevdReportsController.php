@@ -777,8 +777,6 @@ class JevdReportsController extends Controller
                             'jevh.fjevno',
                             'jevd.FDEBIT',
                             'jevd.FCREDIT',
-                            // DB::raw('SUM(jevd.FDEBIT) as FDEBIT'),
-                            // DB::raw('SUM(jevd.FCREDIT) as FCREDIT'),
                             DB::raw("DATE_FORMAT('$request->from', '%M %e, %Y') as date_from"),
                             DB::raw("DATE_FORMAT('$request->to', '%M %e, %Y') as date_to")
                             )
@@ -800,6 +798,7 @@ class JevdReportsController extends Controller
                             ->groupBy('jevh.fjevno')
                             ->groupBy('jevd.FACTCODE')
                             ->orderBy('jevh.fjevno')
+                            ->orderBy('jevd.FACTCODE','desc')
                             ->get();
 
         return $details;
