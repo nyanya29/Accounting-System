@@ -838,7 +838,6 @@ class JevdReportsController extends Controller
                             ->whereBetween('jevh.fjevdate',[$request->from,$request->to])
                             ->where('jevd.fiscalyear','=','2022')
                             ->groupBy('jevh.fjevno')
-                            ->groupBy('jevd.FACTCODE')
                             ->orderBy('jevh.fjevno')
                             ->get();
 
