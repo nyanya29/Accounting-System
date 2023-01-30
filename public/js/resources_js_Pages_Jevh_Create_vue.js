@@ -177,14 +177,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
             }
           }
         });
-      } // else {
-      //     this.form.patch('/jevh/jevd-update/'+this.recid_to_update, {
-      //         onFinish: visit => {
-      //             this.$inertia.visit('/jevh/jevd-create/'+this.data.recid)
-      //         } 
-      //     });
-      // }
-
+      }
     },
     addJevD: function addJevD() {
       var _this5 = this;

@@ -109,7 +109,7 @@ var _hoisted_4 = {
   "class": "row justify-content-center"
 };
 var _hoisted_5 = {
-  "class": "col-4"
+  "class": "col-md-4"
 };
 var _hoisted_6 = {
   "class": "card"

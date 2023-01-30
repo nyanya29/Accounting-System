@@ -88,5 +88,7 @@ Route::get('check-disb-journal', [JevdReportsController::class, 'checkDisburseme
 Route::get('cash-disb-journal', [JevdReportsController::class, 'cashDisbursementJournal']);
 //
 Route::get('general-journal', [JevdReportsController::class, 'generalJournal']);
+Route::get('ada-journal', [JevdReportsController::class, 'adaJournal']);
 //
 Route::get('procurement-journal', [JevdReportsController::class, 'procurementJournal']);
+Route::get('test', [JevdReportsController::class, 'testQuery']);

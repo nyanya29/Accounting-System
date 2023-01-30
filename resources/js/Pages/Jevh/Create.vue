@@ -402,13 +402,6 @@ export default {
                         }
                     );
             }
-        // else {
-        //     this.form.patch('/jevh/jevd-update/'+this.recid_to_update, {
-        //         onFinish: visit => {
-        //             this.$inertia.visit('/jevh/jevd-create/'+this.data.recid)
-        //         } 
-        //     });
-        // }
 
         },
         addJevD(){
